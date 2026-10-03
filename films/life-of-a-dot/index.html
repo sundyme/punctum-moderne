@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>Punctum — the life of one dot</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script src="assets/glyphs.js"></script>
+    <script src="assets/engine.js"></script>
+    <style>
+      @font-face {
+        font-family: "Punctum Moderne";
+        src: url("assets/fonts/PunctumModerne-VF.woff2") format("woff2");
+        font-weight: 100 900;
+        font-display: block;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 100%; height: 100%; overflow: hidden; background: #0c0b0e; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; background: #0c0b0e; }
+      #stage { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+      /* baseline at y = 909.6: line-height 1em, ascent 0.75em (64px) */
+      #tagline {
+        position: absolute; left: 211px; top: 861.6px;
+        font-family: "Punctum Moderne", serif; font-size: 64px; line-height: 64px;
+        font-variation-settings: "wght" 400, "CNTR" 100, "opsz" 64;
+        color: #edebe6; white-space: nowrap; opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-width="1920" data-height="1080" data-duration="60" data-fps="60">
+      <!-- One continuous take: every frame is painted by the dot engine as a pure function of time. -->
+      <canvas id="stage" class="clip" data-layout-allow-overflow width="1920" height="1080" data-start="0" data-duration="60" data-track-index="1"></canvas>
+      <!-- The tagline is set with the real font file, not the dot engine. -->
+      <div id="tagline" class="clip" data-start="51.8" data-duration="4.0" data-track-index="2">A dot-matrix Didone</div>
+      <audio id="score" src="assets/score.wav" data-start="0" data-duration="60" data-track-index="10" data-volume="1"></audio>
+    </div>
+    <script>
+      const E = createPunctum(window.PM_GLYPHS);
+      const ctx = document.getElementById("stage").getContext("2d");
+      const tl = gsap.timeline({ paused: true });
+      const clock = { t: 0 };
+      tl.fromTo(clock, { t: 0 }, { t: 60, duration: 60, ease: "none", onUpdate: () => E.draw(ctx, clock.t) }, 0);
+      tl.fromTo("#tagline", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "sine.inOut" }, 52.0);
+      tl.to("#tagline", { opacity: 0, duration: 0.6, ease: "sine.inOut" }, 55.0);
+      E.draw(ctx, 0);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

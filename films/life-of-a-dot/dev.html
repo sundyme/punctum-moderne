@@ -1,0 +1,13 @@
+<!doctype html><meta charset="utf-8"><title>Punctum dev</title>
+<style>body{margin:0;background:#000;color:#ccc;font:12px ui-monospace,monospace}canvas{width:100%;display:block}#bar{position:fixed;left:0;right:0;bottom:0;padding:6px 10px;background:#000c;display:flex;gap:10px;align-items:center}input[type=range]{flex:1}</style>
+<canvas id="c" width="1920" height="1080"></canvas>
+<div id="bar"><span id="lab">0.00</span><input id="r" type="range" min="0" max="60" step="0.0166667" value="0"><span id="ms"></span></div>
+<script src="assets/glyphs.js"></script><script src="assets/engine.js"></script>
+<script>
+const E = createPunctum(window.PM_GLYPHS), ctx = document.getElementById('c').getContext('2d');
+const q = new URLSearchParams(location.search), loop = q.has('loop');
+const r = document.getElementById('r'); if (loop) r.max = 15;
+window.go = (t) => { const t0 = performance.now(); (loop ? E.drawLoop : E.draw)(ctx, t); const ms = performance.now() - t0; document.getElementById('lab').textContent = t.toFixed(2); document.getElementById('ms').textContent = ms.toFixed(1) + 'ms'; r.value = t; return ms; };
+r.oninput = () => go(+r.value);
+go(+(q.get('t') || 0));
+</script>

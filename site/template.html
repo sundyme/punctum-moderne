@@ -1,0 +1,2319 @@
+<title>Punctum Moderne</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..500&family=Noto+Serif+SC:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+@font-face {
+  font-family: "Punctum Moderne";
+  src: url(data:font/woff2;base64,__WOFF2__) format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "Punctum Moderne";
+  src: url(data:font/woff2;base64,__WOFF2_I__) format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: block;
+}
+
+/* Layout: a foundry site that sits on the type's own grid. A 12rem label rail beside a wide measure.
+   Order: hero → index → the idea and its five images (paper and night bands, live demos) → the system
+   (stress, axes, loupe, grid, details) → italic → specimens → family → characters → languages → install → FAQ.
+   Paper sections, ink and night bands where the material asks for them; one accent, Parma violet. */
+:root {
+  --paper: #F1F1EE;
+  --ink: #111111;
+  --ink-2: #6A6A65;
+  --rule: #D3D3CD;
+  --grid: #DEDED8;
+  --lattice: #CFC7E0;
+  --violet: #5A3D8E;
+  --violet-wash: #E6E0F0;
+  --field: #F8F8F6;
+  /* printed objects keep their own colours in both themes */
+  --poster-bg: #4E347D; --poster-fg: #F3EFE6;
+  --sheet-bg: #FBFAF6; --sheet-fg: #171615; --sheet-rule: #CFCBC1;
+  --device-bg: #0D0D0E; --device-fg: #F1F1EC; --device-2: #77777A;
+  /* the five images keep their materials in both themes */
+  --night: #0C0B0E; --dot: #EDEBE6; --mute-n: #908C99; --rule-n: #2A2830; --violet-lit: #B9A4E8;
+  --manila: #E3D8B9; --manila-ink: #85764F;
+  --paper-2: #E8E7E1;
+
+  --display: "Punctum Moderne", "Bodoni Moda", serif;
+  --serif: "Bodoni Moda", "Noto Serif SC", "Songti SC", "STSong", serif;
+  --zh: "Noto Serif SC", "Songti SC", "STSong", serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+
+  --fs-xs: 0.75rem; --fs-s: 0.875rem; --fs-m: 1.0625rem; --fs-l: 1.375rem;
+  --fs-h: clamp(1.75rem, 3.6vw, 2.75rem);
+  --rail: 12rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0F0F10; --ink: #EDEDE9; --ink-2: #8E8E89; --rule: #2A2A2C; --grid: #222225; --lattice: #3A3249;
+    --violet: #B9A4E8; --violet-wash: #241E31; --field: #161618; --paper-2: #18181B;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0F0F10; --ink: #EDEDE9; --ink-2: #8E8E89; --rule: #2A2A2C; --grid: #222225; --lattice: #3A3249;
+  --violet: #B9A4E8; --violet-wash: #241E31; --field: #161618; --paper-2: #18181B;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: var(--serif); font-size: var(--fs-m); line-height: 1.75; font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--violet); color: var(--paper); }
+a { color: inherit; }
+p, dd, li, figcaption { text-wrap: pretty; }
+:focus-visible { outline: 2px solid var(--violet); outline-offset: 3px; }
+/* scroll reveal: only for blocks that start below the fold, so the first screen and thumbnails are never blank */
+.rv { opacity: 0; transform: translate3d(0, 28px, 0); transition: opacity .9s cubic-bezier(.2, .65, .2, 1) var(--rd, 0s), transform 1.1s cubic-bezier(.2, .65, .2, 1) var(--rd, 0s); }
+.rv.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; transition: none; } }
+.wrap { max-width: 1240px; margin-inline: auto; padding-inline: clamp(16px, 5vw, 56px); }
+.mono { font-family: var(--mono); }
+.eyebrow { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+
+/* nav */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--paper); border-bottom: 1px solid var(--rule); }
+.nav .wrap { display: flex; align-items: center; gap: 24px; height: 56px; }
+.nav .mark { font-family: var(--display); font-size: 22px; line-height: 1; font-variation-settings: "wght" 800, "CNTR" 100; text-decoration: none; white-space: nowrap; }
+.nav ul { list-style: none; margin: 0 0 0 auto; padding: 0; display: flex; gap: 20px; overflow-x: auto; scrollbar-width: none; min-width: 0; }
+.nav ul::-webkit-scrollbar { display: none; }
+.nav li a { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: .06em; text-decoration: none; color: var(--ink-2); white-space: nowrap; }
+.nav li a:hover { color: var(--ink); }
+.nav li a[aria-current="true"] { color: var(--ink); }
+.nav li a { position: relative; }
+.nav li a[aria-current="true"]::after { content: ""; position: absolute; left: 50%; bottom: -9px; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: var(--violet); }
+.nav .prog { position: absolute; left: 0; bottom: -1px; height: 1px; width: 100%; background: var(--violet); transform-origin: 0 50%; transform: scaleX(0); pointer-events: none; }
+@media (max-width: 640px) { .nav ul { gap: 14px; padding-right: 24px; -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); } }
+
+/* hero */
+.hero { padding-block: 28px 48px; }
+@media (min-width: 861px) and (min-height: 620px) {
+  .hero { min-height: calc(100svh - 56px); display: flex; flex-direction: column; padding-block: clamp(20px, 4vh, 48px); }
+  .hero > .wrap { flex: 1; width: 100%; display: flex; flex-direction: column; justify-content: center; gap: clamp(20px, 5vh, 56px); }
+  .hero-foot { margin-top: 0; }
+}
+#hero-cv { display: block; width: 100%; touch-action: pan-y; cursor: crosshair; }
+.hero-foot { display: grid; grid-template-columns: var(--rail) minmax(0, 1fr) auto; gap: 16px 40px; align-items: end; margin-top: 20px; }
+.hero-foot .tag { font-family: var(--zh); font-size: clamp(1.25rem, 2.4vw, 1.75rem); line-height: 1.5; margin: 0; max-width: 24em; text-wrap: balance; }
+.hero-foot .tag em { font-family: "Bodoni Moda", serif; font-style: italic; font-weight: 400; display: block; font-size: .72em; color: var(--ink-2); }
+.cta { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn {
+  font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: .06em; text-transform: uppercase; text-decoration: none;
+  padding: 12px 18px; border: 1px solid var(--ink); color: var(--ink); background: transparent; cursor: pointer; display: inline-block;
+}
+.btn.solid { background: var(--ink); color: var(--paper); }
+.btn:hover { border-color: var(--violet); color: var(--violet); }
+.btn.solid:hover { background: var(--violet); color: var(--paper); }
+@media (max-width: 860px) { .hero-foot { grid-template-columns: 1fr; } .hero-foot .eyebrow { order: -1; } }
+
+/* index */
+.index { border-top: 1px solid var(--ink); display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.index a { display: grid; gap: 6px; align-content: start; padding: 22px 16px 26px 0; text-decoration: none; border-right: 1px solid var(--rule); min-width: 0; }
+.index a + a { padding-left: 16px; }
+.index a:last-child { border-right: 0; }
+.index .n { font-family: var(--display); font-variation-settings: "wght" 900, "CNTR" 100; font-size: clamp(56px, 6.4vw, 88px); line-height: 1; }
+.index .k { font-family: var(--zh); font-size: var(--fs-m); font-weight: 600; line-height: 1.4; }
+.index .e { font-family: var(--mono); font-size: var(--fs-xs); color: var(--ink-2); line-height: 1.5; }
+.index .go { font-family: var(--mono); font-size: var(--fs-xs); color: var(--violet); margin-top: 6px; }
+.index a:hover .n { color: var(--violet); }
+@media (max-width: 1000px) { .index { grid-template-columns: repeat(3, minmax(0, 1fr)); } .index a:nth-child(3) { border-right: 0; } .index a:nth-child(4) { padding-left: 0; } .index a:nth-child(-n+3) { border-bottom: 1px solid var(--rule); } }
+@media (max-width: 560px) { .index { grid-template-columns: repeat(2, minmax(0, 1fr)); } .index a, .index a + a { padding-left: 0; padding-right: 12px; border-right: 0; border-bottom: 1px solid var(--rule); } .index a:nth-child(even) { padding-left: 12px; border-left: 1px solid var(--rule); } }
+
+/* sections */
+section.s { padding-block: clamp(72px, 10vw, 136px); border-top: 1px solid var(--rule); scroll-margin-top: 56px; }
+.head { display: grid; grid-template-columns: var(--rail) minmax(0, 1fr); gap: 12px 40px; margin-bottom: clamp(36px, 5vw, 64px); }
+.head .eyebrow { padding-top: .7em; }
+body { counter-reset: sec; }
+section.s > .wrap > .head > .eyebrow::before { counter-increment: sec; content: counter(sec, decimal-leading-zero); display: block; font-family: var(--display); font-variation-settings: "wght" 700, "CNTR" 100; font-size: 30px; line-height: 1; letter-spacing: 0; color: var(--ink); margin-bottom: 10px; }
+section.s.band > .wrap > .head > .eyebrow::before { color: var(--paper); }
+.head h2 { font-family: var(--zh); font-weight: 700; font-size: var(--fs-h); line-height: 1.3; margin: 0; letter-spacing: .01em; text-wrap: balance; }
+.head .deck { font-family: "Bodoni Moda", serif; font-style: italic; font-size: var(--fs-l); color: var(--ink-2); margin: 6px 0 0; line-height: 1.4; }
+.head p.lede { margin: 18px 0 0; max-width: 36em; }
+.body { display: grid; grid-template-columns: var(--rail) minmax(0, 1fr); gap: 0 40px; }
+.body > .main { grid-column: 2; min-width: 0; display: grid; gap: 40px; }
+@media (max-width: 860px) {
+  .head, .body { grid-template-columns: 1fr; }
+  .body > .main { grid-column: 1; }
+}
+p { margin: 0; }
+.note { color: var(--ink-2); font-size: var(--fs-s); line-height: 1.7; }
+
+/* tones */
+.tones { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 40px; align-items: center; }
+#tones-cv { width: 100%; max-width: 100%; aspect-ratio: 1 / 1; display: block; }
+.tone-list { list-style: none; margin: 0; padding: 0; display: grid; }
+.tone-list li { display: grid; grid-template-columns: 2.25rem 56px minmax(0, 1fr); gap: 16px; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--rule); }
+.tone-list li:first-child { border-top: 1px solid var(--ink); }
+.tone-list .i { font-family: var(--mono); font-size: var(--fs-xs); color: var(--violet); }
+.tone-list canvas { width: 56px; height: 56px; }
+.tone-list b { font-family: var(--zh); font-weight: 600; display: block; line-height: 1.4; }
+.tone-list span { font-size: var(--fs-s); color: var(--ink-2); line-height: 1.6; display: block; }
+.tone-list code { font-family: var(--mono); font-size: var(--fs-xs); color: var(--ink); }
+@media (max-width: 860px) { .tones { grid-template-columns: 1fr; } #tones-cv { max-width: 420px; } }
+@media (max-width: 560px) {
+          }
+
+/* axes */
+.axes { display: grid; grid-template-columns: minmax(240px, 340px) minmax(0, 1fr); gap: 48px; align-items: start; }
+@media (max-width: 860px) { .axes { grid-template-columns: 1fr; } }
+.pad-wrap { display: grid; gap: 10px; max-width: 340px; }
+.pad-row { display: grid; grid-template-columns: 1.5rem minmax(0, 1fr); gap: 8px; }
+.pad-y { writing-mode: vertical-rl; transform: rotate(180deg); font-family: var(--mono); font-size: var(--fs-xs); color: var(--ink-2); text-align: center; letter-spacing: .06em; }
+.pad-x { font-family: var(--mono); font-size: var(--fs-xs); color: var(--ink-2); text-align: center; letter-spacing: .06em; margin-left: 2rem; }
+.pad {
+  position: relative; aspect-ratio: 1; border: 1px solid var(--ink); touch-action: none; cursor: grab;
+  background-image: linear-gradient(var(--rule) 1px, transparent 1px), linear-gradient(90deg, var(--rule) 1px, transparent 1px);
+  background-size: 12.5% 50%, 12.5% 50%; background-position: -1px -1px;
+}
+.pad:active { cursor: grabbing; }
+.pad .mk { position: absolute; width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; border-radius: 50%; background: var(--ink-2); border: 0; padding: 0; cursor: pointer; }
+.pad .mk::after { content: ""; position: absolute; inset: -8px; }
+.pad .hd { position: absolute; width: 22px; height: 22px; margin: -11px 0 0 -11px; border-radius: 50%; background: var(--violet); box-shadow: 0 0 0 4px var(--paper), 0 0 0 5px var(--violet); pointer-events: none; }
+.pad-ctl { display: grid; gap: 10px; margin-top: 8px; }
+.pad-ctl label { font-family: var(--mono); font-size: var(--fs-xs); color: var(--ink-2); display: flex; justify-content: space-between; letter-spacing: .04em; }
+.pad-ctl output { color: var(--ink); font-variant-numeric: tabular-nums; }
+input[type=range] { width: 100%; margin: 0; accent-color: var(--violet); }
+.ax-spec { display: grid; gap: 18px; min-width: 0; }
+.ax-name { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: .06em; text-transform: uppercase; display: flex; gap: 16px; flex-wrap: wrap; color: var(--ink-2); }
+.ax-name b { color: var(--violet); font-weight: 500; }
+#ax-text { font-family: var(--display); font-size: clamp(64px, 10vw, 150px); line-height: 1; margin: 0; overflow-wrap: anywhere; font-variation-settings: "wght" 400, "CNTR" 100; outline: none; }
+.snippet { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; font-family: var(--mono); font-size: var(--fs-xs); color: var(--ink-2); border-top: 1px solid var(--rule); padding-top: 14px; }
+.snippet code { color: var(--ink); white-space: nowrap; overflow-x: auto; max-width: 100%; min-width: 0; flex: 0 1 auto; }
+.ax-spec > * { min-width: 0; }
+.linkbtn { font: inherit; color: var(--violet); background: none; border: 0; border-bottom: 1px solid currentColor; padding: 0; cursor: pointer; }
+
+/* loupe band (inverted) */
+.band { background: var(--ink); color: var(--paper); border-top: 0 !important; }
+.band .eyebrow, .band .head .deck, .band .note { color: color-mix(in srgb, var(--paper) 62%, var(--ink)); }
+.band ::selection { background: var(--paper); color: var(--ink); }
+.stage { position: relative; cursor: none; touch-action: none; border-block: 1px solid color-mix(in srgb, var(--paper) 25%, var(--ink)); padding-block: 28px; user-select: none; }
+.fine { font-family: var(--display); font-size: clamp(18px, 2vw, 22px); line-height: 1.6; font-variation-settings: "wght" 600, "CNTR" 100; margin: 0; max-width: 46em; }
+.lens {
+  position: absolute; width: 220px; height: 220px; border-radius: 50%; overflow: hidden; pointer-events: none;
+  background: var(--ink); box-shadow: 0 0 0 1px var(--paper), 0 18px 40px rgba(0,0,0,.35);
+}
+.lens-inner { position: absolute; left: 0; top: 0; transform-origin: 0 0; padding-block: 28px; }
+.lens-mag { position: absolute; right: -1px; bottom: 26px; font-family: var(--mono); font-size: 10px; letter-spacing: .06em; color: var(--ink-2); }
+@media (max-width: 560px) { .lens { width: 170px; height: 170px; } }
+.ab { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid color-mix(in srgb, var(--paper) 25%, var(--ink)); }
+.ab > div { display: grid; gap: 8px; padding: 16px 20px 18px 0; min-width: 0; }
+.ab > div + div { padding-left: 20px; border-left: 1px solid color-mix(in srgb, var(--paper) 25%, var(--ink)); }
+.ab span { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: .04em; color: color-mix(in srgb, var(--paper) 55%, var(--ink)); }
+.ab p { font-family: var(--display); font-size: 16px; line-height: 1.5; }
+@media (max-width: 640px) { .ab { grid-template-columns: 1fr; } .ab > div + div { padding-left: 0; border-left: 0; border-top: 1px solid color-mix(in srgb, var(--paper) 25%, var(--ink)); } }
+.fall { display: grid; gap: 8px; }
+.fall div { display: grid; grid-template-columns: 3.5rem minmax(0, 1fr); gap: 18px; align-items: baseline; }
+.fall span { font-family: var(--mono); font-size: var(--fs-xs); color: color-mix(in srgb, var(--paper) 55%, var(--ink)); }
+.fall p { font-family: var(--display); font-variation-settings: "wght" 600, "CNTR" 100; line-height: 1.15; white-space: nowrap; overflow: hidden; }
+
+/* grid */
+.gridbox { position: relative; overflow-x: auto; }
+.gdemo {
+  --gs: 128px;
+  font-family: var(--display); font-size: var(--gs); line-height: 1; margin: 0; padding: 0;
+  font-variation-settings: "wght" 700, "CNTR" 100; white-space: pre; position: relative; width: max-content;
+  background-repeat: repeat; background-size: calc(var(--gs) / 16) calc(var(--gs) / 16);
+}
+.gdemo.on { background-image: radial-gradient(circle, var(--lattice) 0 1.5px, transparent 2px); }
+@media (max-width: 700px) { .gdemo { --gs: 64px; } .gdemo.on { background-image: radial-gradient(circle, var(--lattice) 0 1px, transparent 1.4px); } }
+.gline { position: absolute; left: 0; right: 0; border-top: 1px dashed var(--rule); pointer-events: none; }
+.gline.base { border-top-style: solid; border-color: var(--ink-2); }
+.gline span { position: absolute; right: 0; top: -1.55em; font-family: var(--mono); font-size: 11px; color: var(--ink-2); background: var(--paper); padding-left: 6px; }
+.switch { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: .04em; cursor: pointer; }
+.switch input { appearance: none; width: 36px; height: 20px; border-radius: 10px; background: var(--rule); position: relative; cursor: pointer; margin: 0; transition: background .2s; }
+.switch input::after { content: ""; position: absolute; left: 3px; top: 3px; width: 14px; height: 14px; border-radius: 50%; background: var(--paper); transition: transform .2s; }
+.switch input:checked { background: var(--violet); }
+.switch input:checked::after { transform: translateX(16px); }
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--ink); }
+.facts div { padding: 14px 16px 0 0; display: grid; gap: 4px; }
+.facts b { font-family: var(--display); font-variation-settings: "wght" 800, "CNTR" 100; font-size: 44px; line-height: 1; font-weight: normal; }
+.facts span { font-size: var(--fs-s); color: var(--ink-2); line-height: 1.55; }
+@media (max-width: 700px) { .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 0; } }
+
+/* details */
+.details { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--ink); border-left: 1px solid var(--rule); }
+.card { border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 20px; display: grid; gap: 14px; align-content: start; min-width: 0; }
+.card canvas, .card .figs { width: 100%; aspect-ratio: 16 / 9; display: block; }
+.card h3 { font-family: var(--zh); font-weight: 600; font-size: var(--fs-m); margin: 0; line-height: 1.4; }
+.card h3 small { font-family: var(--mono); font-weight: 400; font-size: var(--fs-xs); color: var(--ink-2); margin-left: 8px; letter-spacing: .04em; }
+.card p { font-size: var(--fs-s); color: var(--ink-2); line-height: 1.65; }
+.figs { display: grid !important; align-content: center; font-family: var(--display); font-variation-settings: "wght" 700, "CNTR" 100; font-size: clamp(30px, 3.3vw, 44px); line-height: 1.08; font-variant-numeric: tabular-nums; }
+.figs div { display: grid; grid-template-columns: 1fr auto; gap: 12px; border-bottom: 1px solid var(--rule); }
+.figs div span:first-child { font-family: var(--mono); font-size: 11px; color: var(--ink-2); align-self: center; }
+@media (max-width: 900px) { .details { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .details { grid-template-columns: 1fr; } }
+
+/* in use */
+.uses { display: grid; grid-template-columns: 1.05fr 1fr 0.95fr; gap: 24px; align-items: start; }
+@media (max-width: 960px) { .uses { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .uses { grid-template-columns: 1fr; } }
+.use { display: grid; gap: 12px; margin: 0; min-width: 0; }
+.use figcaption { font-family: var(--mono); font-size: var(--fs-xs); color: var(--ink-2); display: flex; justify-content: space-between; gap: 8px; letter-spacing: .04em; }
+.poster { aspect-ratio: 3 / 4; max-width: 100%; background: var(--poster-bg); color: var(--poster-fg); padding: 7% 7% 6%; display: grid; grid-template-rows: auto 1fr auto; container-type: inline-size; overflow: hidden; }
+.poster .p-top { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 3cqi; letter-spacing: .08em; text-transform: uppercase; }
+.poster .p-word { font-family: var(--display); font-variation-settings: "wght" 900, "CNTR" 100; font-size: 27cqi; line-height: .9; margin: auto 0 0; }
+.poster .p-foot { display: grid; grid-template-columns: 1fr auto; gap: 4% ; align-items: end; border-top: 1px solid color-mix(in srgb, var(--poster-fg) 50%, transparent); padding-top: 4%; margin-top: 6%; }
+.poster .p-foot p { font-family: "Bodoni Moda", serif; font-size: 4.2cqi; line-height: 1.3; }
+.poster .p-foot .d { font-family: var(--display); font-variation-settings: "wght" 600, "CNTR" 100; font-size: 7cqi; line-height: 1; text-align: right; }
+.sheet { aspect-ratio: 3 / 4; max-width: 100%; background: var(--sheet-bg); color: var(--sheet-fg); box-shadow: 0 1px 0 var(--sheet-rule), 0 0 0 1px var(--sheet-rule); container-type: inline-size; display: grid; justify-items: center; align-content: center; text-align: center; gap: 4cqi; padding: 10%; }
+.sheet .t1 { font-family: var(--display); font-variation-settings: "wght" 500, "CNTR" 100; font-size: 11.5cqi; line-height: 1; letter-spacing: 0; }
+.sheet .rule { width: 30%; height: 1px; background: var(--sheet-fg); }
+.sheet .t2 { font-family: "Bodoni Moda", serif; font-style: italic; font-size: 4.6cqi; line-height: 1.45; }
+.sheet .orn { font-family: var(--display); font-variation-settings: "wght" 700, "CNTR" 100; font-size: 6cqi; line-height: 1; letter-spacing: 0; }
+.sheet .t3 { font-family: var(--display); font-variation-settings: "wght" 400, "CNTR" 100; font-size: 6cqi; line-height: 1.2; }
+.device { aspect-ratio: 4 / 5; max-width: 100%; background: var(--device-bg); color: var(--device-fg); border-radius: 22px; padding: 9%; display: grid; align-content: space-between; container-type: inline-size; }
+.device .d-top { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 4cqi; color: var(--device-2); letter-spacing: .06em; text-transform: uppercase; }
+.device .time { font-family: var(--display); font-variation-settings: "wght" 900, "CNTR" 0; font-size: 31cqi; line-height: 1; font-variant-numeric: tabular-nums; }
+.device .time small { font-size: .38em; font-variation-settings: "wght" 700, "CNTR" 100; color: var(--device-2); margin-left: 3cqi; }
+.device .date { font-family: var(--display); font-variation-settings: "wght" 500, "CNTR" 100; font-size: 8.4cqi; line-height: 1.1; }
+
+/* family */
+.fam-top { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.seg { display: inline-flex; border: 1px solid var(--ink); }
+.seg button { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: .06em; text-transform: uppercase; background: none; color: var(--ink); border: 0; padding: 9px 16px; cursor: pointer; }
+.seg button + button { border-left: 1px solid var(--ink); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.fam { --c: 100; --o: 144; list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+.fam li { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); gap: 16px; align-items: baseline; border-bottom: 1px solid var(--rule); padding-block: 10px 6px; }
+.fam .lab { font-family: var(--mono); font-size: var(--fs-xs); color: var(--ink-2); letter-spacing: .04em; }
+.fam.it .spec { font-style: italic; }
+.segs { display: flex; gap: 12px; flex-wrap: wrap; }
+.pangrams p.it { font-style: italic; }
+#cs-style { justify-self: start; }
+.cs-grid button.sw { font-feature-settings: "swsh" 1; }
+.cs.it .cs-grid button { font-style: italic; }
+.fam .spec { font-family: var(--display); font-size: clamp(40px, 6vw, 80px); line-height: 1.05; white-space: nowrap; overflow: hidden; text-overflow: clip; }
+.fam li:hover .lab { color: var(--violet); }
+@media (max-width: 560px) { .fam li { grid-template-columns: 1fr; gap: 0; } }
+
+/* charset */
+.cs { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; align-items: start; }
+@media (max-width: 960px) { .cs { grid-template-columns: 1fr; } }
+.cs-groups { display: grid; gap: 32px; min-width: 0; }
+.cs-group h3 { font-family: var(--mono); font-weight: 400; font-size: var(--fs-xs); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); margin: 0 0 10px; display: flex; justify-content: space-between; }
+.cs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(58px, 1fr)); border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
+.cs-grid button {
+  font-family: var(--display); font-size: 46px; line-height: 1; color: var(--ink); background: transparent;
+  border: 0; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); aspect-ratio: 58 / 72;
+  display: flex; align-items: flex-end; justify-content: center; padding: 0 0 8px; cursor: pointer;
+  font-variation-settings: "wght" 700, "CNTR" 100;
+}
+.cs-grid button:hover { background: var(--violet-wash); }
+.cs-grid button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.insp { position: sticky; top: 76px; display: grid; gap: 12px; border-top: 1px solid var(--ink); padding-top: 14px; }
+@media (max-width: 960px) { .insp { position: static; max-width: 340px; } }
+#insp-cv { width: 100%; aspect-ratio: 300 / 400; display: block; }
+.insp dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 4px 16px; font-family: var(--mono); font-size: var(--fs-xs); }
+.insp dt { color: var(--ink-2); }
+.insp dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+
+/* languages */
+.langs { list-style: none; margin: 0; padding: 0; columns: 4 11rem; column-gap: 32px; border-top: 1px solid var(--ink); padding-top: 18px; }
+.langs li { font-family: var(--display); font-variation-settings: "wght" 700, "CNTR" 100; font-size: 30px; line-height: 1.45; break-inside: avoid; }
+.pangrams { display: grid; gap: 22px; }
+.pangrams div { display: grid; grid-template-columns: 5rem minmax(0, 1fr); gap: 16px; align-items: baseline; border-top: 1px solid var(--rule); padding-top: 14px; }
+.pangrams span { font-family: var(--mono); font-size: var(--fs-xs); color: var(--ink-2); }
+.pangrams p { font-family: var(--display); font-variation-settings: "wght" 500, "CNTR" 100; font-size: clamp(30px, 4.2vw, 54px); line-height: 1.12; }
+@media (max-width: 560px) { .pangrams div { grid-template-columns: 1fr; gap: 4px; } }
+
+/* install */
+.cols3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--ink); }
+.cols3 > div { padding: 16px 20px 0 0; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.cols3 > div + div { padding-left: 20px; border-left: 1px solid var(--rule); }
+.cols3 h3 { font-family: var(--mono); font-weight: 500; font-size: var(--fs-xs); letter-spacing: .06em; text-transform: uppercase; margin: 0; }
+.cols3 p { font-size: var(--fs-s); line-height: 1.7; }
+.cols3 code { overflow-wrap: anywhere; font-size: 12.5px; }
+@media (max-width: 760px) { .cols3 { grid-template-columns: 1fr; } .cols3 > div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--rule); padding-top: 16px; margin-top: 16px; } }
+pre.code { margin: 0; padding: 20px; background: var(--field); border: 1px solid var(--rule); overflow-x: auto; font-family: var(--mono); font-size: 13px; line-height: 1.7; color: var(--ink); }
+pre.code .c { color: var(--ink-2); }
+pre.code .v { color: var(--violet); }
+.code-head { display: flex; justify-content: flex-start; align-items: center; font-family: var(--mono); font-size: var(--fs-xs); color: var(--ink-2); margin-bottom: 8px; gap: 12px; }
+table { width: 100%; border-collapse: collapse; font-size: var(--fs-s); font-variant-numeric: tabular-nums; }
+th, td { text-align: left; vertical-align: top; padding: 11px 20px 11px 0; border-bottom: 1px solid var(--rule); line-height: 1.6; }
+thead th { font-family: var(--mono); font-weight: 500; font-size: var(--fs-xs); letter-spacing: .06em; text-transform: uppercase; border-bottom: 1px solid var(--ink); }
+td code { font-family: var(--mono); font-size: 12.5px; white-space: nowrap; }
+.tbl { overflow-x: auto; }
+.files { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-family: var(--mono); font-size: 12.5px; }
+.files li { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 4px 24px; align-items: baseline; border-bottom: 1px dashed var(--rule); padding-bottom: 6px; }
+.files li span { color: var(--ink-2); text-align: right; font-family: var(--zh); font-size: 13px; line-height: 1.6; }
+.files li code { overflow-wrap: anywhere; line-height: 1.6; }
+@media (max-width: 560px) { .files li { grid-template-columns: 1fr; } .files li span { text-align: left; } }
+
+/* faq */
+.faq { border-top: 1px solid var(--ink); }
+.faq details { border-bottom: 1px solid var(--rule); }
+.faq summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; padding: 18px 0; font-family: var(--zh); font-weight: 600; font-size: var(--fs-m); }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-family: var(--mono); color: var(--violet); }
+.faq details[open] summary::after { content: "−"; }
+.faq details p { padding: 0 0 22px; max-width: 40em; }
+
+
+/* ── concept: the idea, the equation, five images ── */
+.manifesto { columns: 2 20em; column-gap: 40px; max-width: 64em; }
+.manifesto p { break-inside: avoid; margin-bottom: 1em; color: var(--ink-2); }
+
+/* Didone + dot matrix = Punctum: three panels on one baseline */
+.eq { margin: 0 0 clamp(40px, 5vw, 64px); display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr); gap: 0 14px; align-items: start; }
+.eq-cell { display: grid; gap: 10px; min-width: 0; }
+.eq-cv { width: 100%; aspect-ratio: 5 / 4; display: block; background: var(--field); box-shadow: 0 0 0 1px var(--rule); }
+.eq-hl .eq-cv { box-shadow: 0 0 0 1px var(--ink); }
+.eq { grid-template-rows: auto auto auto auto; }
+.eq-cell { grid-row: 1 / span 3; grid-template-rows: subgrid; }
+.eq > :nth-child(1) { grid-column: 1; } .eq > :nth-child(2) { grid-column: 2; } .eq > :nth-child(3) { grid-column: 3; }
+.eq > :nth-child(4) { grid-column: 4; } .eq > :nth-child(5) { grid-column: 5; }
+.eq-op { grid-row: 1; align-self: center; font-family: var(--serif); font-weight: 400; font-size: clamp(32px, 3.6vw, 52px); line-height: 1; color: var(--ink-2); }
+.eq-cap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 2px 8px; border-top: 1px solid var(--ink); padding-top: 8px; }
+.eq-cap b { font-family: var(--zh); font-weight: 600; font-size: var(--fs-m); white-space: nowrap; }
+.eq-hl .eq-cap b { font-family: var(--display); font-weight: normal; font-variation-settings: "wght" 700, "CNTR" 100; font-size: 20px; }
+.eq-cap span { font-family: var(--mono); font-size: var(--fs-xs); color: var(--ink-2); letter-spacing: .04em; white-space: nowrap; }
+.eq-traits { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; font-family: var(--zh); font-size: var(--fs-s); color: var(--ink-2); }
+.eq-traits li { display: flex; align-items: center; gap: 10px; }
+.eq-traits li::before { content: ""; width: 9px; height: 9px; border-radius: 50%; box-shadow: inset 0 0 0 1px var(--ink-2); flex: none; }
+.eq-traits li.on { color: var(--ink); }
+.eq-traits li.on::before { background: var(--ink); box-shadow: none; }
+.eq-hl .eq-traits li.on::before { background: var(--violet); }
+.eq figcaption { grid-column: 1 / -1; grid-row: 4; margin-top: 16px; }
+.eq.eq-2 { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); max-width: 52rem; margin-top: clamp(40px, 5vw, 64px); }
+.eq.eq-2 > figcaption { grid-column: 1 / -1; }
+@media (max-width: 720px) {
+  .eq { gap: 0 6px; }
+  .eq-op { font-size: 22px; }
+  .eq-cv { aspect-ratio: 4 / 5; }
+  .eq-cap { flex-direction: column; gap: 2px; }
+  .eq-cap b, .eq-hl .eq-cap b { font-size: 14px; white-space: normal; }
+  .eq-cap span { font-size: 10px; white-space: normal; }
+  .eq-traits { font-size: 12px; }
+  .eq-traits li { gap: 6px; align-items: baseline; }
+  .eq-traits li::before { width: 7px; height: 7px; }
+}
+
+
+/* films */
+.films { display: grid; gap: clamp(16px, 2vw, 24px); }
+.film-stage { position: relative; aspect-ratio: 16 / 9; max-width: 100%; background: var(--night); overflow: hidden; }
+.film-stage video { display: block; width: 100%; height: 100%; object-fit: cover; background: var(--night); }
+.film-play { position: absolute; inset: 0; display: grid; place-items: center; border: 0; padding: 0; cursor: pointer; color: var(--dot); background: linear-gradient(to top, rgb(0 0 0 / .62), rgb(0 0 0 / 0) 46%); transition: opacity .4s ease; }
+.film-stage.playing .film-play { opacity: 0; pointer-events: none; }
+.film-play .pb { width: clamp(64px, 7.4vw, 104px); aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; border: 1px solid rgb(237 235 230 / .75); background: rgb(12 11 14 / .28); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); transition: transform .35s cubic-bezier(.2, .7, .2, 1), background .3s, color .3s; }
+.film-play .pb svg { margin-left: 4px; }
+.film-play:hover .pb { transform: scale(1.07); background: var(--dot); color: var(--night); }
+.film-meta { position: absolute; left: clamp(16px, 3vw, 36px); right: clamp(16px, 3vw, 36px); bottom: clamp(14px, 2.6vw, 32px); display: grid; gap: 6px; justify-items: start; text-align: left; }
+.film-k { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: .1em; opacity: .7; }
+.film-t { font-family: var(--zh); font-weight: 600; font-size: clamp(1.125rem, 2.2vw, 1.75rem); line-height: 1.3; }
+.film-t em { font-style: normal; font-family: var(--mono); font-weight: 400; font-size: var(--fs-xs); letter-spacing: .08em; margin-left: 12px; opacity: .7; }
+.film-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 1.6vw, 20px); }
+.film-card { display: grid; gap: 10px; align-content: start; text-align: left; padding: 0 0 14px; background: none; border: 0; border-bottom: 1px solid var(--rule); color: var(--ink); cursor: pointer; font: inherit; }
+.film-card img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; display: block; filter: saturate(.85); transition: filter .3s, transform .5s cubic-bezier(.2, .7, .2, 1); }
+.film-card:hover img { filter: none; }
+.film-card[aria-pressed="true"] { border-bottom-color: var(--violet); }
+.film-card[aria-pressed="true"] img { box-shadow: 0 0 0 2px var(--violet); filter: none; }
+.fc-top { display: flex; justify-content: space-between; font-family: var(--mono); font-size: var(--fs-xs); color: var(--ink-2); letter-spacing: .08em; font-variant-numeric: tabular-nums; }
+.fc-top b { font-weight: 500; color: var(--ink); margin-right: 10px; }
+.film-card[aria-pressed="true"] .fc-top b { color: var(--violet); }
+.fc-t { font-family: var(--zh); font-weight: 600; font-size: var(--fs-l); line-height: 1.3; }
+.fc-t small { font-family: "Bodoni Moda", serif; font-style: italic; font-weight: 400; font-size: .72em; color: var(--ink-2); margin-left: 10px; }
+.fc-d { font-family: var(--zh); font-size: var(--fs-s); line-height: 1.7; color: var(--ink-2); }
+@media (max-width: 760px) { .film-list { grid-template-columns: minmax(0, 1fr); } .film-card { grid-template-columns: minmax(0, 132px) minmax(0, 1fr); column-gap: 14px; } .film-card img { grid-row: span 3; } .fc-d { display: none; } }
+
+/* five images: one full-bleed horizontal carousel */
+.car {
+  /* the inner edge of .wrap, so headings and the current slide line up with the page */
+  --g: clamp(16px, 5vw, 56px);
+  --pad: max(var(--g), calc((100% - 1240px) / 2 + var(--g)));
+  --gap: clamp(12px, 1.6vw, 24px);
+  margin-top: clamp(64px, 8vw, 120px); display: grid;
+}
+/* head + slide + timeline share one screen below the 56px nav */
+.car-frame { display: flex; flex-direction: column; height: calc(100svh - 56px); min-height: 560px; max-height: 980px; padding-block: clamp(14px, 2.6vh, 32px); scroll-margin-top: 56px; }
+.car-frame > .car-track { flex: 1 1 0; min-height: 0; }
+.car-head, .car-foot, .car > .word-bar { padding-inline: var(--pad); }
+.car-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 20px 32px; padding-bottom: clamp(12px, 2.2vh, 24px); }
+.car-eyebrow { margin: 0 0 6px; font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
+.car-h { margin: 0; font-family: var(--zh); font-weight: 600; font-size: clamp(1.5rem, min(2.8vw, 4.4vh), 2.5rem); line-height: 1.15; letter-spacing: .02em; text-wrap: balance; }
+.car-nav { display: flex; align-items: center; gap: 12px; }
+.car-count { font-family: var(--mono); font-size: var(--fs-s); color: var(--ink-2); letter-spacing: .06em; margin-right: 10px; font-variant-numeric: tabular-nums; }
+.car-count b { color: var(--ink); font-weight: 500; font-size: 1.6em; vertical-align: -.12em; }
+.car-btn { width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--ink); background: transparent; color: var(--ink); font: 18px/1 var(--mono); cursor: pointer; transition: background .2s, color .2s; }
+.car-btn:hover { background: var(--ink); color: var(--paper); }
+
+.car-track { position: relative; display: flex; gap: var(--gap); overflow-x: auto; padding-inline: var(--pad); scroll-padding-inline: var(--pad); scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; overscroll-behavior-x: contain; }
+.car-track::-webkit-scrollbar { display: none; }
+@media (prefers-reduced-motion: reduce) { .car-track { scroll-behavior: auto; } }
+.slide { flex: 0 0 100%; min-width: 0; scroll-snap-align: start; scroll-snap-stop: always; display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.6fr); gap: clamp(32px, 5vw, 88px); align-items: center; padding: clamp(20px, 4.4vh, 64px) clamp(24px, 4.5vw, 72px); background: var(--field); }
+.slide > * { transition: opacity .5s ease; }
+.slide[inert] > * { opacity: .2; }
+.slide.manila { background: var(--paper-2); }
+.slide.night { background: var(--night); color: var(--dot); }
+.slide.night ::selection { background: var(--dot); color: var(--night); }
+.sl-txt { display: grid; gap: clamp(10px, 1.8vh, 18px); align-content: center; min-width: 0; }
+.mhead { display: grid; grid-template-columns: auto 1fr; align-items: end; column-gap: clamp(14px, 1.6vw, 24px); margin-bottom: 4px; }
+.mhead .han { font-family: var(--zh); font-weight: 700; font-size: clamp(60px, min(9vw, 13vh), 140px); line-height: .82; }
+.mhead .year { font-family: var(--display); font-size: clamp(34px, min(4.4vw, 6.4vh), 66px); line-height: .8; font-variation-settings: "wght" 600, "CNTR" 100; }
+.sl-txt h3 { font-family: var(--zh); font-size: clamp(1.375rem, 2vw, 1.75rem); font-weight: 600; line-height: 1.35; margin: 0; }
+.sl-txt h3 span { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: .14em; text-transform: uppercase; font-weight: 400; margin-left: 12px; opacity: .6; }
+.sl-txt p { font-family: var(--zh); font-size: clamp(.875rem, 1.9vh, 1.0625rem); line-height: 1.8; max-width: 30em; margin: 0; opacity: .86; }
+.maps { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 14px; padding-top: 12px; margin: 0; border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent); font-family: var(--zh); font-size: 13px; line-height: 1.6; }
+.maps dt { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; opacity: .62; padding-top: 2px; }
+.maps dd { margin: 0; }
+.demo { display: grid; gap: 12px; min-width: 0; }
+.demo canvas { width: 100%; display: block; max-width: 100%; }
+.mctl { display: flex; flex-wrap: wrap; gap: 10px 22px; align-items: center; }
+.mctl label { display: flex; align-items: center; gap: 10px; font: 500 var(--fs-xs)/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+.mctl input[type=range] { width: 150px; }
+.mctl output { min-width: 3.2em; font-variant-numeric: tabular-nums; }
+.slide.night input[type=range] { accent-color: var(--violet-lit); }
+.mbtn { border: 1px solid currentColor; background: transparent; color: inherit; padding: 9px 15px; font: 500 var(--fs-xs)/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; cursor: pointer; }
+.mbtn:hover { background: color-mix(in srgb, currentColor 10%, transparent); }
+.mbtn[aria-pressed="true"] { background: var(--violet-lit); color: var(--night); border-color: var(--violet-lit); }
+.mcap { font-family: var(--zh); font-size: 13px; opacity: .72; line-height: 1.6; }
+#c-ink { aspect-ratio: 16 / 7; }
+#c-music { aspect-ratio: 16 / 7; outline: 1px solid var(--rule-n); }
+#c-card { aspect-ratio: 16 / 6.6; }
+#c-jet { aspect-ratio: 16 / 6; }
+#c-light { aspect-ratio: 16 / 7; outline: 1px solid var(--rule-n); }
+.legend { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.legend div { display: grid; grid-template-rows: 44px auto auto; gap: 4px; align-items: end; justify-items: start; }
+.legend i { display: block; border-radius: 50%; background: var(--ink); }
+.legend b { font-family: var(--mono); font-size: 12px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.legend span { font-family: var(--zh); font-size: 12px; color: var(--ink-2); }
+/* timeline under the track: a hairline that fills up to the current year */
+.car-foot { padding-top: clamp(18px, 3vh, 36px); }
+.car-tabs { position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1px solid var(--rule); }
+.car-fill { position: absolute; left: 0; top: -1px; height: 1px; width: 0; background: var(--ink); pointer-events: none; }
+.car-tabs button { position: relative; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; text-align: left; background: none; border: 0; color: var(--ink-2); padding: clamp(16px, 2.4vh, 24px) 12px 0 0; cursor: pointer; font: inherit; transition: color .3s; }
+.car-tabs button::before { content: ""; position: absolute; top: -6px; left: 0; width: 11px; height: 11px; border-radius: 50%; background: var(--paper); box-shadow: inset 0 0 0 1.5px var(--ink-2); transition: transform .3s, background .3s, box-shadow .3s; }
+.car-tabs button[aria-selected="true"] { color: var(--ink); }
+.car-tabs button[aria-selected="true"]::before { background: var(--violet); box-shadow: none; transform: scale(1.5); }
+.car-tabs button:hover { color: var(--ink); }
+.car-tabs .y { font-family: var(--display); font-size: clamp(24px, min(3vw, 4.6vh), 44px); line-height: 1; font-variation-settings: "wght" 400, "CNTR" 100; }
+.car-tabs [aria-selected="true"] .y { font-variation-settings: "wght" 700, "CNTR" 100; }
+.car-tabs .c { font-family: var(--zh); font-size: var(--fs-s); }
+.word-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; padding-top: 0; margin-top: clamp(28px, 3vw, 40px); }
+.word-bar label { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: .06em; color: var(--ink-2); }
+.word-bar input { font-family: var(--display); font-size: 28px; line-height: 1; border: 0; border-bottom: 1px solid var(--ink); background: transparent; color: var(--ink); padding: 2px 2px 4px; width: min(300px, 100%); font-variation-settings: "wght" 500, "CNTR" 100; }
+.word-bar input:focus { outline: none; border-bottom-color: var(--violet); }
+.word-bar .mcap { flex: 1 1 18em; min-width: 0; }
+@media (max-width: 860px), (max-height: 600px) {
+  .car-frame { height: auto; min-height: 0; max-height: none; }
+  .car-frame > .car-track { flex: none; }
+}
+@media (max-width: 860px) {
+  .car-head { grid-template-columns: minmax(0, 1fr); }
+  .slide { grid-template-columns: minmax(0, 1fr); align-items: start; align-content: start; min-height: 0; }
+  .mhead .han { font-size: 76px; }
+  .mhead .year { font-size: 40px; }
+  .sl-txt p { font-size: var(--fs-s); }
+}
+@media (max-width: 560px) {
+  .car { --pad: 16px; --gap: 10px; }
+  .slide { flex-basis: calc(100% - 16px); padding: 24px 20px; }
+  .car-btn { width: 44px; height: 44px; }
+  .car-tabs .c { font-size: 12px; }
+  .car-tabs button { display: grid; gap: 4px; }
+  .legend { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ── kerning strip in the grid section ── */
+.kern { display: grid; gap: 2px; border-top: 1px solid var(--rule); padding-top: 14px; }
+.kern div { display: grid; grid-template-columns: 5rem minmax(0, 1fr); gap: 16px; align-items: baseline; }
+.kern span { font-family: var(--mono); font-size: var(--fs-xs); color: var(--ink-2); }
+.kern p { font-family: var(--display); font-variation-settings: "wght" 600, "CNTR" 100; font-size: clamp(30px, 5vw, 64px); line-height: 1.15; white-space: nowrap; overflow-x: auto; }
+.kern p.off { font-kerning: none; color: var(--ink-2); }
+
+/* ── italic ── */
+.pmi { font-family: var(--display); font-style: italic; }
+.shear { display: grid; gap: 10px; }
+#shear-cv { width: 100%; display: block; max-width: 100%; }
+.shear-ctl { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 16px; align-items: center; font-family: var(--mono); font-size: var(--fs-xs); color: var(--ink-2); letter-spacing: .04em; }
+.shear-ctl output { color: var(--ink); min-width: 13ch; text-align: right; font-variant-numeric: tabular-nums; }
+.it-block { display: grid; gap: 18px; border-top: 1px solid var(--ink); padding-top: 18px; }
+.it-text { display: grid; gap: 12px; justify-items: start; max-width: 44em; }
+.it-text h3, .gal-intro h3 { font-family: var(--zh); font-weight: 600; font-size: var(--fs-l); margin: 0; line-height: 1.4; }
+.it-text h3 small, .gal-intro h3 small { font-family: var(--mono); font-weight: 400; font-size: var(--fs-xs); color: var(--ink-2); margin-left: 10px; letter-spacing: .04em; }
+.it-text p, .gal-intro p { font-size: var(--fs-s); color: var(--ink-2); line-height: 1.75; }
+.it-text code { font-size: 12.5px; color: var(--ink); white-space: nowrap; }
+.pairs { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
+.pair { border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 10px 10px 8px; display: grid; gap: 2px; min-width: 0; }
+.pair .g { font-family: var(--display); font-variation-settings: "wght" 600, "CNTR" 100; font-size: clamp(34px, 4.2vw, 54px); line-height: 1.15; display: flex; gap: .3em; align-items: baseline; }
+.pair .g span:first-child { color: var(--ink-2); }
+.pair .g span:last-child { font-style: italic; }
+.pair small { font-family: var(--mono); font-size: 10.5px; color: var(--ink-2); letter-spacing: .04em; }
+@media (max-width: 900px) { .pairs { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.swash { font-family: var(--display); font-style: italic; font-variation-settings: "wght" 500, "CNTR" 100; background: var(--field); border: 1px solid var(--rule); padding: 20px clamp(10px, 3vw, 40px) 10px; overflow-x: auto; }
+.swash.on { font-feature-settings: "swsh" 1; }
+.swash .alpha { font-size: clamp(40px, 7.4vw, 96px); line-height: 1.22; white-space: nowrap; }
+.swash .words { font-size: clamp(28px, 4.6vw, 60px); line-height: 1.3; margin-top: 16px; white-space: nowrap; font-variation-settings: "wght" 650, "CNTR" 100; }
+.swash .words span { font-variation-settings: "wght" 250, "CNTR" 100; }
+
+/* ── specimens gallery ── */
+.gal-intro { display: grid; gap: 8px; border-top: 1px solid var(--ink); padding-top: 18px; max-width: 44em; }
+.gal { display: grid; gap: 28px; }
+.gal-row { display: grid; gap: 10px; }
+.gal-row > .eyebrow { border-bottom: 1px solid var(--rule); padding-bottom: 8px; }
+.gal-items { display: grid; grid-template-columns: var(--cols); gap: 20px; align-items: start; }
+.board-fig { margin: 0; display: grid; gap: 10px; min-width: 0; align-content: start; }
+.board-frame { position: relative; display: block; width: 100%; aspect-ratio: var(--w) / var(--h); max-width: 100%; overflow: hidden; cursor: zoom-in; box-shadow: 0 0 0 1px var(--rule); background: var(--field); }
+.board-frame:hover { box-shadow: 0 0 0 1px var(--violet); }
+.board-frame:focus-visible { outline: 2px solid var(--violet); outline-offset: 3px; }
+.board { position: absolute; left: 0; top: 0; transform-origin: 0 0; pointer-events: none; }
+.board-fig figcaption { font-family: var(--mono); font-size: var(--fs-xs); color: var(--ink-2); display: flex; justify-content: space-between; gap: 8px; letter-spacing: .04em; flex-wrap: wrap; }
+.board-fig figcaption b { font-family: var(--zh); font-weight: 600; color: var(--ink); letter-spacing: 0; font-size: var(--fs-s); }
+@media (max-width: 640px) { .gal-items { grid-template-columns: minmax(0, 1fr); } }
+dialog.lb { border: 0; padding: 0; background: transparent; max-width: 100vw; max-height: 100vh; width: 100vw; height: 100vh; }
+dialog.lb::backdrop { background: rgba(8, 8, 10, .86); }
+.lb-in { width: 100%; height: 100%; display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 12px; padding: max(16px, env(safe-area-inset-top, 0px)) 16px 16px; box-sizing: border-box; }
+.lb-bar { display: flex; justify-content: space-between; align-items: center; gap: 16px; color: #EDEDE9; font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: .04em; }
+.lb-bar b { font-family: var(--zh); font-weight: 600; font-size: var(--fs-m); letter-spacing: 0; margin-right: 12px; }
+.lb-bar button { font: inherit; color: #EDEDE9; background: transparent; border: 1px solid rgba(237,237,233,.5); padding: 8px 14px; cursor: pointer; text-transform: uppercase; }
+.lb-stage { position: relative; display: grid; place-items: center; overflow: hidden; }
+.lb-box { position: relative; box-shadow: 0 24px 60px rgba(0,0,0,.5); overflow: hidden; }
+
+/* footer */
+footer.f { border-top: 1px solid var(--ink); padding-block: clamp(56px, 8vw, 112px) 40px; }
+.f-top { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 40px clamp(32px, 6vw, 96px); align-items: end; padding-bottom: clamp(48px, 7vw, 96px); }
+.f-cta { display: grid; gap: 18px; justify-items: start; }
+.f-cta .eyebrow { margin: 0; }
+.f-line { margin: 0; font-family: var(--zh); font-weight: 700; font-size: clamp(2rem, 4.6vw, 3.75rem); line-height: 1.2; letter-spacing: .01em; }
+.f-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.f-cols > div { display: grid; gap: 8px; align-content: start; font-family: var(--zh); font-size: var(--fs-s); }
+.f-cols .eyebrow { margin: 0 0 6px; padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
+.f-cols a { text-decoration: none; color: var(--ink); width: fit-content; background: linear-gradient(var(--violet), var(--violet)) 0 100% / 0 1px no-repeat; transition: background-size .35s ease, color .2s; }
+.f-cols a:hover { color: var(--violet); background-size: 100% 1px; }
+.f-cols span { color: var(--ink-2); }
+.f-up { margin-top: 8px; font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: .06em; }
+@media (max-width: 760px) { .f-top { grid-template-columns: minmax(0, 1fr); align-items: start; } }
+@media (max-width: 420px) { .f-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.f-mark { font-family: var(--display); font-variation-settings: "wght" 900, "CNTR" 100; font-size: clamp(56px, 12.4vw, 168px); line-height: 1; margin: 0 0 28px; white-space: nowrap; overflow: hidden; }
+.f-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; font-family: var(--mono); font-size: var(--fs-xs); color: var(--ink-2); letter-spacing: .04em; }
+</style>
+
+<nav class="nav" aria-label="页面导航">
+  <div class="wrap">
+    <a class="mark" href="#top">Punctum Moderne</a>
+    <ul>
+      <li><a href="#idea">理念</a></li>
+      <li><a href="#tones">笔调</a></li>
+      <li><a href="#axes">可变轴</a></li>
+      <li><a href="#grid">网格</a></li>
+      <li><a href="#italic">斜体</a></li>
+      <li><a href="#inuse">样例</a></li>
+      <li><a href="#films">影像</a></li>
+      <li><a href="#family">字族</a></li>
+      <li><a href="#charset">字符集</a></li>
+      <li><a href="#install">安装</a></li>
+    </ul>
+  </div>
+  <span class="prog" id="nav-prog" aria-hidden="true"></span>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <canvas id="hero-cv" role="img" aria-label="Punctum Moderne 字样，由点阵逐点组成。指针经过时，附近的点恢复成等大的点阵。"></canvas>
+    <div class="hero-foot">
+      <div class="eyebrow">Version 2.400<br>Roman · Italic<br>2026 · SIL OFL 1.1</div>
+      <p class="tag">点阵上的 Didone。竖笔是大点，横笔是针尖。<em>A dot-matrix Didone, roman and italic, in three axes and one grid.</em></p>
+      <div class="cta"><a class="btn solid" href="#axes">试排</a><a class="btn" href="#inuse">样例</a><a class="btn" href="#install">安装</a></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="index" aria-label="要点">
+    <a href="#idea"><span class="n">5</span><span class="k">种意象</span><span class="e">Ink · Music box · Card · Inkjet · Light</span><span class="go">理念 →</span></a>
+    <a href="#tones"><span class="n">4</span><span class="k">种笔调</span><span class="e">Tones per dot</span><span class="go">笔法 →</span></a>
+    <a href="#axes"><span class="n">3</span><span class="k">条可变轴</span><span class="e">Weight · Contrast · Optical size</span><span class="go">试排 →</span></a>
+    <a href="#italic"><span class="n">2</span><span class="k">种字形</span><span class="e">Roman · Italic, with swashes</span><span class="go">斜体 →</span></a>
+    <a href="#charset"><span class="n">__N__</span><span class="k">个字符</span><span class="e">Latin-1 and Latin Extended-A</span><span class="go">字符集 →</span></a>
+    <a href="#family"><span class="n">54</span><span class="k">个命名样式</span><span class="e">Display · Slab · Text × Roman · Italic</span><span class="go">字族 →</span></a>
+  </nav>
+</div>
+
+<section class="s" id="idea" aria-labelledby="h-idea">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">The idea</div>
+      <div>
+        <h2 id="h-idea">点是最古老的印记，也是最新的像素。</h2>
+        <p class="deck">Ink, pins, holes, droplets and light: five ways a dot has carried a letter.</p>
+      </div>
+    </div>
+    <figure class="eq" aria-label="迪多体加点阵体，得到 Punctum Moderne">
+        <div class="eq-cell">
+          <canvas class="eq-cv" data-kind="didone" role="img" aria-label="Bodoni Moda 排出的 ag：粗细连续变化，没有网格"></canvas>
+          <div class="eq-cap"><b>迪多体</b><span>Didone · 1788</span></div>
+          <ul class="eq-traits"><li class="on">粗细来自笔压</li><li>没有网格</li></ul>
+        </div>
+        <div class="eq-op" aria-hidden="true">+</div>
+        <div class="eq-cell">
+          <canvas class="eq-cv" data-kind="matrix" role="img" aria-label="点阵排出的 ag：每个点一样大，落在网格上"></canvas>
+          <div class="eq-cap"><b>点阵体</b><span>Dot matrix · 1970s</span></div>
+          <ul class="eq-traits"><li>每个点一样大</li><li class="on">落在网格上</li></ul>
+        </div>
+        <div class="eq-op" aria-hidden="true">=</div>
+        <div class="eq-cell eq-hl">
+          <canvas class="eq-cv" data-kind="punctum" role="img" aria-label="Punctum Moderne 排出的 ag：点落在网格上，点的大小记录笔压"></canvas>
+          <div class="eq-cap"><b>Punctum Moderne</b><span>2026</span></div>
+          <ul class="eq-traits"><li class="on">粗细来自笔压</li><li class="on">落在网格上</li></ul>
+        </div>
+        <figcaption class="note">同一组字母 ag，同一字号、同一基线。迪多体的粗细，换成点阵上点的大小：竖笔是大点，细线是针尖，收笔是一颗球。</figcaption>
+    </figure>
+    <div class="body"><div class="main">
+      <div class="manifesto">
+        <p>迪多体诞生于十八世纪末，是当时的“现代体”。它的美来自宽头笔：下压留下饱满的竖笔，抬起留下发丝般的细线。点阵字属于机器，每个点一样大，像针式打印机和车站的显示屏。</p>
+        <p>Punctum Moderne 把两者放进同一张网格。点不去模仿笔画，而是每个点记住一份笔压：粗点是下压，发丝点是抬起，过渡点是笔在放松，球点是收笔时停住的那一滴。</p>
+        <p>所以它既复古又现代。点是人类最早的记号之一：一滴墨，一枚销钉，一个孔。点也是今天最小的显示单位：一滴喷墨，一颗像素，一束光。下面五种意象按年代排列，每一种都对应字体里一项真实的设计决定。</p>
+      </div>
+    </div></div>
+
+  </div>
+
+  <div class="car" id="motifs" aria-roledescription="carousel" aria-label="五种意象">
+      <div class="car-frame">
+      <div class="car-head">
+        <div class="car-title"><p class="car-eyebrow">Five lives of a dot · 1788 — 2026</p><h3 class="car-h">从一滴墨，到一束光</h3></div>
+        <div class="car-nav">
+          <span class="car-count"><b id="car-i">01</b> / 05</span>
+          <button type="button" class="car-btn" id="car-prev" aria-label="上一个意象">←</button>
+          <button type="button" class="car-btn" id="car-next" aria-label="下一个意象">→</button>
+        </div>
+      </div>
+      <div class="car-track" id="car-track">
+      <article class="slide paper" id="ink" role="tabpanel" aria-labelledby="tab-ink" aria-roledescription="slide" aria-label="1 / 5">
+        <div class="sl-txt">
+      <div class="mhead"><span class="han">墨</span><span class="year">1788</span></div>
+      <h3 id="h-ink">墨滴<span>Ink drop</span></h3>
+      <p>1788 年，博多尼在帕尔马出版了第一版《印刷手册》，宽头笔的压力从此被铸成铅字。Punctum 把这份压力换算成墨滴的大小：下压的竖笔是饱满的大滴，抬笔的发丝是细小的雾点，收笔处停住一颗球滴。</p>
+      <dl class="maps"><dt>对应</dt><dd>四种笔调：粗、过渡、发丝、球</dd><dt>看点</dt><dd>相邻的大滴会轻轻洇在一起，像真的墨落在纸上</dd></dl>
+    </div>
+        <div class="demo">
+      <canvas id="c-ink" aria-label="输入的词由一滴滴墨落在纸上写成"></canvas>
+      <div class="mctl"><button class="mbtn" id="ink-again" type="button">再滴一次</button><span class="mcap">每一滴的落点和大小都来自字形数据，墨洇用模糊加阈值实时计算。</span></div>
+    </div>
+      </article>
+      <article class="slide night" id="music" role="tabpanel" aria-labelledby="tab-music" aria-roledescription="slide" aria-label="2 / 5">
+        <div class="sl-txt">
+      <div class="mhead"><span class="han">音</span><span class="year">1796</span></div>
+      <h3 id="h-music">音乐盒<span>Music box</span></h3>
+      <p>1796 年，日内瓦钟表匠安托万·法夫尔做出了第一只滚筒音乐盒：销钉转过音梳，就变成音符。Punctum 的点同样落在固定的网格上，每一行是一个音高，每一列是一拍。把字送过音梳，它就能被演奏。</p>
+      <dl class="maps"><dt>对应</dt><dd>16 行网格：大写高 10 行，x 高 7 行，行高正好 16 行</dd><dt>听法</dt><dd>粗点低沉，发丝点清亮，球点是一声铃</dd></dl>
+    </div>
+        <div class="demo">
+      <canvas id="c-music" aria-label="输入的词向左穿过音梳，每个点拨响一根音齿"></canvas>
+      <div class="mctl"><button class="mbtn" id="music-sound" type="button" aria-pressed="false">▶ 播放声音</button><span class="mcap">声音在浏览器里实时合成，D 大调五声音阶，16 行对应三个八度。</span></div>
+    </div>
+      </article>
+      <article class="slide manila" id="card" role="tabpanel" aria-labelledby="tab-card" aria-roledescription="slide" aria-label="3 / 5">
+        <div class="sl-txt">
+      <div class="mhead"><span class="han">孔</span><span class="year">1890</span></div>
+      <h3 id="h-card">打孔卡<span>Punch card</span></h3>
+      <p>1890 年，美国人口普查用霍尔瑞斯的打孔卡统计全国人口。卡片只有两种状态：有孔，或者无孔。把 Punctum 的对比度轴调到 0，所有点一样大，它就回到这种机器的平等；调回 100，孔开始记得笔压。</p>
+      <dl class="maps"><dt>对应</dt><dd>CNTR 对比度轴：0 是平衬线点阵，100 是迪多体</dd><dt>细节</dt><dd>卡片顶端印着这张卡的内容，和真实的打孔卡一样</dd></dl>
+    </div>
+        <div class="demo">
+      <canvas id="c-card" aria-label="输入的词被打在一张 64 列、16 行的打孔卡上"></canvas>
+      <div class="mctl"><label for="card-cntr">CNTR <input id="card-cntr" type="range" min="0" max="100" value="0"><output id="card-cntr-v">0</output></label><span class="mcap">Punctum 卡：64 列 × 16 行，一行对应字体网格的一行（标准卡是 80 列 × 12 行）。</span></div>
+    </div>
+      </article>
+      <article class="slide paper" id="jet" role="tabpanel" aria-labelledby="tab-jet" aria-roledescription="slide" aria-label="4 / 5">
+        <div class="sl-txt">
+      <div class="mhead"><span class="han">滴</span><span class="year">1984</span></div>
+      <h3 id="h-jet">喷墨<span>Inkjet</span></h3>
+      <p>1984 年，桌面喷墨打印机走进办公室。今天的喷头用几种不同体积的墨滴表现明暗，一滴只有几皮升。Punctum 用同样的思路造字：四种点就是四种墨滴。下面的体积以粗点 12 皮升为基准，按半径的立方换算。</p>
+      <dl class="maps"><dt>对应</dt><dd>可变点径：wght 字重轴决定粗点的大小</dd><dt>看点</dt><dd>喷头每经过一列，16 个喷孔同时决定喷或不喷、喷多大</dd></dl>
+    </div>
+        <div class="demo">
+      <canvas id="c-jet" aria-label="喷头扫过纸面，用四种大小的墨滴印出输入的词"></canvas>
+      <div class="legend" id="jet-legend"></div>
+    </div>
+      </article>
+      <article class="slide night" id="light" role="tabpanel" aria-labelledby="tab-light" aria-roledescription="slide" aria-label="5 / 5">
+        <div class="sl-txt">
+      <div class="mhead"><span class="han">光</span><span class="year">2026</span></div>
+      <h3 id="h-light">光斑<span>Light</span></h3>
+      <p>今天，点是屏幕上的像素，是夜里的灯，是失焦镜头里的光斑。离得近，每个点都是一颗光；离得远，光连成了线。Punctum 的光学尺寸轴就是这样工作的：字越小，点越饱满，最后融成一条实心的笔画。</p>
+      <dl class="maps"><dt>对应</dt><dd>opsz 光学尺寸轴：12 到 144，小字号自动加粗发丝</dd><dt>试试</dt><dd>拉远距离，看点按光学尺寸变饱满并连成线</dd></dl>
+    </div>
+        <div class="demo">
+      <canvas id="c-light" aria-label="输入的词由光点组成，可以调整对焦和距离"></canvas>
+      <div class="mctl">
+        <label for="light-focus">对焦 <input id="light-focus" type="range" min="0" max="100" value="70"><output id="light-focus-v">70</output></label>
+        <label for="light-far">距离 <input id="light-far" type="range" min="0" max="100" value="0"><output id="light-far-v">0</output></label>
+      </div>
+      <p class="mcap" id="light-cap">字号 — · opsz —</p>
+    </div>
+      </article>
+      </div>
+      <div class="car-foot">
+        <div class="car-tabs" role="tablist" aria-label="五种意象">
+        <span class="car-fill" id="car-fill" aria-hidden="true"></span>
+        <button type="button" role="tab" id="tab-ink" aria-controls="ink" aria-selected="true" tabindex="0"><span class="y">1788</span><span class="c">墨滴</span></button>
+        <button type="button" role="tab" id="tab-music" aria-controls="music" aria-selected="false" tabindex="-1"><span class="y">1796</span><span class="c">音乐盒</span></button>
+        <button type="button" role="tab" id="tab-card" aria-controls="card" aria-selected="false" tabindex="-1"><span class="y">1890</span><span class="c">打孔卡</span></button>
+        <button type="button" role="tab" id="tab-jet" aria-controls="jet" aria-selected="false" tabindex="-1"><span class="y">1984</span><span class="c">喷墨</span></button>
+        <button type="button" role="tab" id="tab-light" aria-controls="light" aria-selected="false" tabindex="-1"><span class="y">2026</span><span class="c">光斑</span></button>
+        </div>
+      </div>
+      </div>
+      <div class="word-bar">
+        <label for="word">演示用词</label>
+        <input id="word" type="text" value="Punctum" maxlength="14" autocomplete="off" spellcheck="false" aria-describedby="word-cap">
+        <span class="mcap" id="word-cap">五个演示都用这个词，字形和点的大小直接取自字体数据，最多 14 个字符。左右滑动、点年份或按 ← → 切换。</span>
+      </div>
+  </div>
+</section>
+
+<section class="s" id="tones" aria-labelledby="h-tones">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">The stress</div>
+      <div>
+        <h2 id="h-tones">点没有粗细，只有大小。所以让大小来表达笔法。</h2>
+        <p class="deck">Four tones per dot, placed by hand.</p>
+        <p class="lede">普通点阵屏的点只有亮和灭两种状态。Punctum Moderne 的每个点都标注了四种笔调之一，对应一支宽头笔在纸上的四种状态。__N__ 个字符、上万个点，没有一个是算法放的。</p>
+      </div>
+    </div>
+    <div class="body"><div class="main">
+      <div class="tones">
+        <canvas id="tones-cv" role="img" aria-label="字母 a 的点阵结构，四个编号的点分别标出四种笔调"></canvas>
+        <ol class="tone-list" id="tone-list"></ol>
+      </div>
+      <figure class="eq eq-2 song" aria-label="宋体的“王”与 Punctum 的 E：同一套横细竖粗，横画末端都留一个记号">
+        <div class="eq-cell">
+          <canvas class="eq-cv" data-kind="song" role="img" aria-label="宋体的“王”：竖画粗，横画细，横画右端起三角形的喙"></canvas>
+          <div class="eq-cap"><b>宋体</b><span>Song · 16 世纪</span></div>
+          <ul class="eq-traits"><li class="on">竖画粗，横画细</li><li class="on">横画收尾起一个“喙”</li></ul>
+        </div>
+        <div class="eq-op" aria-hidden="true">≈</div>
+        <div class="eq-cell eq-hl">
+          <canvas class="eq-cv" data-kind="beak" role="img" aria-label="Punctum Moderne 的 E：竖笔是大点，横笔是小点，横笔末端向上折出一颗点"></canvas>
+          <div class="eq-cap"><b>Punctum Moderne</b><span>E · 2026</span></div>
+          <ul class="eq-traits"><li class="on">竖点大，横点小</li><li class="on">横笔收尾折出一颗点</li></ul>
+        </div>
+        <figcaption class="note">宋体和 Didone 相隔万里，却长出同一套对比：竖画粗，横画细，横画收尾处留一个记号。宋体是三角形的“喙”，Didone 是竖起的细衬线；Punctum 把它做成向上折出的一颗点（紫色）。</figcaption>
+      </figure>
+    </div></div>
+  </div>
+</section>
+
+<section class="s" id="axes" aria-labelledby="h-axes">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Design space</div>
+      <div>
+        <h2 id="h-axes">三条轴，一个文件，二十七个命名样式</h2>
+        <p class="deck">Weight sets the stems, contrast the hairlines, optical size the reading distance.</p>
+        <p class="lede">可变轴不会移动任何一个点，只改变点的半径，所以设计空间里任何位置的字形结构都完全一致。方块控制字重和对比度；光学尺寸默认跟随字号自动调整，也可以手动指定。</p>
+      </div>
+    </div>
+    <div class="body"><div class="main">
+      <div class="axes">
+        <div class="pad-wrap">
+          <div class="pad-row">
+            <div class="pad-y">CNTR 对比度 0 → 100</div>
+            <div class="pad" id="pad" aria-hidden="true"><div class="hd" id="pad-hd"></div></div>
+          </div>
+          <div class="pad-x">wght 字重 100 → 900</div>
+          <div class="pad-ctl">
+            <label for="ax-w">wght <output id="ax-wo">400</output></label><input id="ax-w" type="range" min="100" max="900" value="400">
+            <label for="ax-c">CNTR <output id="ax-co">100</output></label><input id="ax-c" type="range" min="0" max="100" value="100">
+            <label for="ax-o">opsz <output id="ax-oo">自动</output></label><input id="ax-o" type="range" min="12" max="144" value="144" disabled>
+            <label class="switch" for="ax-auto" style="justify-content:flex-start"><input id="ax-auto" type="checkbox" checked> 跟随字号</label>
+          </div>
+        </div>
+        <div class="ax-spec">
+          <div class="ax-name"><span>样式 <b id="ax-style">Regular</b></span><span id="ax-coords">wght 400 · CNTR 100</span></div>
+          <p id="ax-text" contenteditable="true" spellcheck="false" aria-label="试排文本，可编辑">Manuale Tipografico</p>
+          <div class="snippet"><code id="ax-css">font-variation-settings: "wght" 400, "CNTR" 100;</code><button class="linkbtn" type="button" id="ax-copy">复制 CSS</button><span id="ax-msg" role="status"></span></div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<section class="s band" id="loupe" aria-labelledby="h-loupe">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Optical fusion</div>
+      <div>
+        <h2 id="h-loupe">远看是线，近看是点</h2>
+        <p class="deck">Small sizes switch to the Text optical size automatically.</p>
+        <p class="lede">字号越小，点距越密，眼睛就把相邻的点融成连续的笔画，这和网点印刷是同一个原理。但针尖大小的细线在小字号下会被抗锯齿吃掉，所以字体内置了光学尺寸轴：浏览器按字号自动调整，字号越小，竖笔越饱满、细线越粗。下面这段文字就是 22px 的 Punctum Moderne；把放大镜移上去看。</p>
+      </div>
+    </div>
+    <div class="body"><div class="main">
+      <div class="stage" id="stage">
+        <p class="fine" id="fine">Giambattista Bodoni cut his types in Parma for the Duke, and printed the Manuale Tipografico as a catalogue of everything a letter could be. Two centuries later the same contrast survives on a grid of dots: vertical strokes as full circles, hairlines as pin-pricks, terminals as single round drops of ink. Set it small and it reads as a Didone. Set it large, or look closer, and the machine shows through.</p>
+        <div class="lens" id="lens" aria-hidden="true"><div class="lens-inner" id="lens-inner"></div></div>
+      </div>
+      <div class="ab" aria-label="光学尺寸对比">
+        <div><span>opsz 144 · 关闭</span><p style="font-variation-settings:'wght' 500, 'CNTR' 100, 'opsz' 144">Hamburgefonstiv. A minimum of rnm, clue 1Il0O, ñüé.</p></div>
+        <div><span>opsz 自动 · 16px</span><p style="font-variation-settings:'wght' 500, 'CNTR' 100">Hamburgefonstiv. A minimum of rnm, clue 1Il0O, ñüé.</p></div>
+      </div>
+      <div class="fall" aria-label="字号阶梯">
+        <div><span>13px</span><p style="font-size:13px">The quick brown fox jumps over the lazy dog. Parma, 1818. Manuale Tipografico.</p></div>
+        <div><span>18px</span><p style="font-size:18px">The quick brown fox jumps over the lazy dog. Parma, 1818.</p></div>
+        <div><span>28px</span><p style="font-size:28px">The quick brown fox jumps over the lazy dog.</p></div>
+        <div><span>48px</span><p style="font-size:48px">The quick brown fox jumps.</p></div>
+        <div><span>88px</span><p style="font-size:88px">Brown fox.</p></div>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<section class="s" id="grid" aria-labelledby="h-grid">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">One grid</div>
+      <div>
+        <h2 id="h-grid">字母之间、行与行之间，都是同一张网格</h2>
+        <p class="deck">Every advance width is a whole number of dots, and kerning moves letters by whole dots too.</p>
+        <p class="lede">一个点距是 1/16 em。每个字宽都是整数个点距，行高 1 时一行正好 16 个点距。字偶距调整也只按整点移动：算法先找出右边的字母能左移多远而不让任何点靠得太近，再取这段空隙的三分之二。所以 To、AV 会收紧，网格却不会断。打开网格看看。</p>
+      </div>
+    </div>
+    <div class="body"><div class="main">
+      <label class="switch" for="grid-on"><input id="grid-on" type="checkbox" checked> 显示网格 Show grid</label>
+      <div class="gridbox">
+        <p class="gdemo on" id="gdemo">Hamburg
+fjords</p>
+      </div>
+      <div class="facts">
+        <div><b>1/16</b><span>点距 em，等于 100 个单位（UPM 1600）</span></div>
+        <div><b>10·7</b><span>大写高 10 个点，x 高 7 个点</span></div>
+        <div><b>16</b><span>行高为 1 时，每行 16 个点距</span></div>
+        <div><b>__KR__</b><span>对字偶距调整，每一对都是整数个点距</span></div>
+      </div>
+      <div class="kern" aria-label="字偶距调整前后对比">
+        <div><span>未调整</span><p class="off">LAVA · Toyota · P.T. Wafer</p></div>
+        <div><span>已调整</span><p>LAVA · Toyota · P.T. Wafer</p></div>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<section class="s" id="details" aria-labelledby="h-details">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Details</div>
+      <div>
+        <h2 id="h-details">Didone 的细节，一个点一个点地保留下来</h2>
+        <p class="deck">Violet dots mark the detail each card describes.</p>
+      </div>
+    </div>
+    <div class="body"><div class="main">
+      <div class="details">
+        <div class="card"><canvas data-word="acfry" data-hl="ball" role="img" aria-label="a c f r y 的球形收笔"></canvas><h3>球形收笔<small>Ball terminals</small></h3><p>a c f g j r y 和数字 2 3 5 6 9 的收笔是一颗比竖笔更大的点，这是 Didone 最显眼的特征。</p></div>
+        <div class="card"><canvas data-word="HIN" data-hl="hair" role="img" aria-label="H I N 的发丝衬线与细线"></canvas><h3>发丝衬线<small>Hairline serifs</small></h3><p>衬线没有托槽，只是竖笔两侧各一个针尖大小的点。对比度轴调到 0 时，它们变成板衬线。</p></div>
+        <div class="card"><canvas data-word="AVX" data-hl="diag" role="img" aria-label="A V X 的粗细斜笔"></canvas><h3>斜笔有方向<small>Diagonal stress</small></h3><p>从左上到右下的斜笔是粗的，从左下到右上的是细的，和宽头笔的书写方向一致。</p></div>
+        <div class="card"><canvas data-word="CEST" data-hl="beak" role="img" aria-label="C E S T 的垂直喙"></canvas><h3>垂直的喙<small>Beaks</small></h3><p>C E S T 的笔端向下或向上折出一两个点，在点阵里保留了 Didone 收笔的锐度。</p></div>
+        <div class="card"><div class="figs" aria-label="等宽数字示例"><div><span>Bodoni</span>1740</div><div><span>Manuale</span>1818</div><div><span>v2.4</span>2026</div></div><h3>等宽数字<small>Tabular figures</small></h3><p>十个数字一样宽，都是 6 个点。表格和时钟里的数字天然对齐，跳动时也不会左右晃。</p></div>
+        <div class="card"><canvas data-word="“a,b.”" data-hl="ball" role="img" aria-label="引号、逗号和句号"></canvas><h3>有球的标点<small>Punctuation</small></h3><p>逗号和引号是一颗球加一根细尾，句号只有一颗球。小字号下也能分清。</p></div>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<section class="s" id="italic" aria-labelledby="h-italic">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Italic</div>
+      <div>
+        <h2 id="h-italic">斜体：点阵被推斜，字母开始书写</h2>
+        <p class="deck">A sheared lattice, sixteen cursive lowercase and twenty-six swash capitals.</p>
+        <p class="lede">斜体先把整张点阵推斜：每往上一行，点向右错开 tan&nbsp;12° ≈ 0.21 个点距，就像针式打印头逐行延迟击针。点本身始终是正圆。在推斜的点阵上，小写重画成书写体，大写另有一套花式字母。斜体是独立的可变字体，三条轴和正体完全相同。</p>
+      </div>
+    </div>
+    <div class="body"><div class="main">
+      <div class="shear">
+        <canvas id="shear-cv" role="img" aria-label="单词 Italique 由点组成，点阵从直立推斜到 12 度，小写换成书写体"></canvas>
+        <div class="shear-ctl">
+          <label for="shear-r">倾斜</label>
+          <input id="shear-r" type="range" min="0" max="1000" value="1000">
+          <output id="shear-o">12.0° · 斜体字形</output>
+        </div>
+      </div>
+
+      <div class="it-block">
+        <div class="it-text">
+          <h3>十六个书写体小写<small>Cursive lowercase</small></h3>
+          <p>其余小写只做剪切。重画的这些字母去掉了脚衬，竖笔收尾时用一根细线小钩向上卷，引向下一个字母；a 改为单层，f 穿过基线以墨球收尾，v 和 w 的底部改成圆转。小钩的末端点伸进侧距，所以 <i class="pmi">minimum</i> 里的间距和正体一样均匀。</p>
+        </div>
+        <div class="pairs" id="pairs"></div>
+      </div>
+
+      <div class="it-block">
+        <div class="it-text">
+          <h3>二十六个花式大写<small>Swash capitals · swsh · ss01</small></h3>
+          <p>花式大写叠加在斜体大写之上，字宽不变，花饰伸进两侧的空白。全套只用三种笔势：入笔从最左端的墨球起，细线拱过大写高度落进衬线；收笔的脚从基线下方扫过，再向上卷成墨球；腿和臂的末端向上一勾，以墨球结束。在 CSS 里写 <code class="mono">font-feature-settings: "swsh"</code>，或在设计软件里打开风格集 1。</p>
+          <div class="seg" role="group" aria-label="花式大写" id="sw-seg">
+            <button type="button" data-sw="1" aria-pressed="true">Swash</button>
+            <button type="button" data-sw="0" aria-pressed="false">Standard</button>
+          </div>
+        </div>
+        <div class="swash on" id="swash">
+          <div class="alpha">ABCDEFGHI<br>JKLMNOPQR<br>STUVWXYZ</div>
+          <div class="words">Rendezvous at Midnight<br><span>The Quiet Printhead, Vol. II</span></div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<section class="s" id="inuse" aria-labelledby="h-use">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">In use</div>
+      <div>
+        <h2 id="h-use">字体样例：从海报到表盘</h2>
+        <p class="deck">Posters, books, packaging, signage and screens, all set in Punctum Moderne.</p>
+        <p class="lede">前三件实时排版：海报用 Black，扉页用 Medium，表盘用 Slab 并显示你的本地时间。后面十件是样例画板，覆盖展览、出版、包装、餐饮、导视、名片和腕表。</p>
+      </div>
+    </div>
+    <div class="body"><div class="main">
+      <div class="uses">
+        <figure class="use">
+          <div class="poster" role="img" aria-label="虚构展览海报示例">
+            <div class="p-top"><span>Mostra</span><span>Parma</span></div>
+            <p class="p-word">Punto<br>per<br>punto</p>
+            <div class="p-foot"><p>Una mostra sulla<br>tipografia a punti</p><div class="d">12.03<br>30.06</div></div>
+          </div>
+          <figcaption><span>展览海报（虚构）</span><span>Black 900</span></figcaption>
+        </figure>
+        <figure class="use">
+          <div class="sheet" role="img" aria-label="向 Bodoni《Manuale Tipografico》扉页致敬的排版示例">
+            <div class="t1">MANUALE<br>TIPOGRAFICO</div>
+            <div class="rule"></div>
+            <div class="t2">del cavaliere<br>Giambattista Bodoni</div>
+            <div class="orn">· • ·</div>
+            <div class="t3">PARMA<br>MDCCCXVIII</div>
+          </div>
+          <figcaption><span>扉页，致敬 1818 年原版</span><span>Medium 500</span></figcaption>
+        </figure>
+        <figure class="use">
+          <div class="device" role="img" aria-label="实时时钟示例">
+            <div class="d-top"><span>Parma</span><span id="clk-tz">Ora locale</span></div>
+            <div class="time" id="clk-time">18:42<small>07</small></div>
+            <div class="date" id="clk-date">sabato<br>3 ottobre</div>
+          </div>
+          <figcaption><span>表盘，你的本地时间</span><span>Slab Black · Regular</span></figcaption>
+        </figure>
+      </div>
+      <div class="gal-intro">
+        <h3>样例画板<small>Punctum Moderne in Use · 10 boards</small></h3>
+        <p>以下十件按印刷尺寸排版，用的是网页里同一个字体文件，缩放后放在这里。点击任一件可以放大查看。</p>
+      </div>
+      __BOARDS__
+
+    </div></div>
+  </div>
+</section>
+
+<section class="s" id="films" aria-labelledby="h-films">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Films</div>
+      <div>
+        <h2 id="h-films">一个点，三种讲法</h2>
+        <p class="deck">One dot, told three ways: as a life, through five materials, as a signal.</p>
+      </div>
+    </div>
+    <div class="body"><div class="main films">
+      <div class="film-stage" id="film-stage">
+        <video id="film-v" src="media/punctum-loop.mp4" poster="media/poster-loop.jpg" muted loop playsinline preload="metadata" aria-label="Punctum Moderne 循环片段"></video>
+        <button class="film-play" id="film-play" type="button" aria-label="播放《一个点的一生》，1 分钟，有声">
+          <span class="pb" aria-hidden="true"><svg viewBox="0 0 24 24" width="28" height="28"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg></span>
+          <span class="film-meta"><span class="film-k">静音预览 · 15 秒循环</span><span class="film-t">播放《一个点的一生》<em>1:00 · 有声</em></span></span>
+        </button>
+      </div>
+      <div class="film-list" role="group" aria-label="选择短片">
+        <button type="button" class="film-card" aria-pressed="false" data-src="media/punctum-life-of-a-dot.mp4" data-poster="media/poster-life.jpg" data-title="一个点的一生">
+          <img src="media/poster-life.jpg" alt="" loading="lazy" width="1280" height="720">
+          <span class="fc-top"><span><b>01</b>一镜到底</span><span>1:00</span></span>
+          <span class="fc-t">一个点的一生<small>The Life of a Dot</small></span>
+          <span class="fc-d">六章，一镜到底。一个点先轻轻呼吸，再被笔写成 a，被针头打成 Moderne，被音梳拨响；镜头一路拉远，整段文字原来只是字标里的一颗球点。最后一帧，回到第一帧。</span>
+        </button>
+        <button type="button" class="film-card" aria-pressed="false" data-src="media/punctum-five-materials.mp4" data-poster="media/poster-materials.jpg" data-title="五种介质">
+          <img src="media/poster-materials.jpg" alt="" loading="lazy" width="1280" height="720">
+          <span class="fc-top"><span><b>02</b>微距 · 三维渲染</span><span>0:48</span></span>
+          <span class="fc-t">五种介质<small>Five Materials</small></span>
+          <span class="fc-d">黑色空间，一盏柔光箱，一支微距镜头。同一个点按年代穿过墨滴、音乐盒、打孔卡、喷墨与光斑，每次转场都由这个点完成，剪点落在 90 BPM 的小节线上。</span>
+        </button>
+        <button type="button" class="film-card" aria-pressed="false" data-src="media/punctum-signal.mp4" data-poster="media/poster-signal.jpg" data-title="信号">
+          <img src="media/poster-signal.jpg" alt="" loading="lazy" width="1280" height="720">
+          <span class="fc-top"><span><b>03</b>快切 · 120 BPM</span><span>0:30</span></span>
+          <span class="fc-t">信号<small>Signal</small></span>
+          <span class="fc-d">摩尔斯电码、剧场灯泡、孔版套印、翻牌、针式打印、显像管：六种会发信号的点，踩着鼓点切换，转场也由点完成。结尾只有一句：Retro signal. Modern type.</span>
+        </button>
+      </div>
+      <p class="note">网页版 720p / 60 帧。画面全部由字体的点阵数据生成，配乐按画面里的事件逐音合成。</p>
+    </div></div>
+  </div>
+</section>
+
+<section class="s" id="family" aria-labelledby="h-family">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">The family</div>
+      <div>
+        <h2 id="h-family">九个字重，三种用法，正斜两体</h2>
+        <p class="deck">Display for headlines, Slab with every dot equal, Text for small sizes; each in roman and italic.</p>
+      </div>
+    </div>
+    <div class="body"><div class="main">
+      <div class="fam-top">
+        <div class="segs">
+        <div class="seg" role="group" aria-label="用法" data-k="use">
+          <button type="button" data-c="100" aria-pressed="true">Didone</button>
+          <button type="button" data-c="0" aria-pressed="false">Slab</button>
+          <button type="button" data-c="100" data-o="12" aria-pressed="false">Text</button>
+        </div>
+        <div class="seg" role="group" aria-label="字形" data-k="style">
+          <button type="button" data-i="0" aria-pressed="true">Roman</button>
+          <button type="button" data-i="1" aria-pressed="false">Italic</button>
+        </div>
+        </div>
+        <span class="note">Text 是 opsz 12 的样式，细线更粗，给小字号用</span>
+      </div>
+      <ul class="fam" id="fam"></ul>
+    </div></div>
+  </div>
+</section>
+
+<section class="s" id="charset" aria-labelledby="h-cs">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Character set</div>
+      <div>
+        <h2 id="h-cs">__N__ 个字符</h2>
+        <p class="deck">Basic Latin, Latin-1 and Latin Extended-A, figures and punctuation; every glyph drawn again in italic.</p>
+        <p class="lede">点选任意字符，右边会显示它在网格上的点位和四种笔调的数量。大写字母的变音符号上方留了一行空白，不贴在字母顶部。切换到斜体，可以看到推斜后的点阵和 26 个花式大写。</p>
+      </div>
+    </div>
+    <div class="body"><div class="main">
+      <div class="seg" role="group" aria-label="字形" id="cs-style">
+        <button type="button" data-i="0" aria-pressed="true">Roman</button>
+        <button type="button" data-i="1" aria-pressed="false">Italic</button>
+      </div>
+      <div class="cs">
+        <div class="cs-groups" id="cs-groups"></div>
+        <aside class="insp" aria-label="字符检视">
+          <canvas id="insp-cv" role="img" aria-label="所选字符的点阵结构"></canvas>
+          <dl>
+            <dt>字符</dt><dd id="i-ch">a</dd>
+            <dt>Unicode</dt><dd id="i-cp">U+0061</dd>
+            <dt>字宽</dt><dd id="i-w">6 点 · 700</dd>
+            <dt>粗 #</dt><dd id="i-t">0</dd>
+            <dt>转折 +</dt><dd id="i-m">0</dd>
+            <dt>细 −</dt><dd id="i-h">0</dd>
+            <dt>球 O</dt><dd id="i-b">0</dd>
+          </dl>
+        </aside>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<section class="s" id="languages" aria-labelledby="h-lang">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Languages</div>
+      <div>
+        <h2 id="h-lang">36 种使用拉丁字母的语言</h2>
+        <p class="deck">Western and Central European, Estonian, Lithuanian and Turkish. Vietnamese and Latvian are not yet drawn.</p>
+      </div>
+    </div>
+    <div class="body"><div class="main">
+      <ul class="langs" id="langs"></ul>
+      <div class="pangrams">
+        <div><span>Français</span><p>Voix ambiguë d’un cœur qui au zéphyr préfère les jattes de kiwis.</p></div>
+        <div><span>Deutsch</span><p>Zwölf Boxkämpfer jagen Viktor quer über den großen Sylter Deich.</p></div>
+        <div><span>Español</span><p>¿El veloz murciélago hindú comía feliz cardillo y kiwi?</p></div>
+        <div><span>Polski</span><p class="it">Pchnąć w tę łódź jeża lub ośm skrzyń fig.</p></div>
+        <div><span>Čeština</span><p>Příliš žluťoučký kůň úpěl ďábelské ódy.</p></div>
+        <div><span>Türkçe</span><p class="it">Pijamalı hasta yağız şoföre çabucak güvendi.</p></div>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<section class="s" id="install" aria-labelledby="h-inst">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Install &amp; use</div>
+      <div>
+        <h2 id="h-inst">安装与推荐设置</h2>
+        <p class="deck">Two variable files, roman and italic, cover all fifty-four named styles.</p>
+      </div>
+    </div>
+    <div class="body"><div class="main">
+      <div class="cols3">
+        <div><h3>macOS</h3><p>双击 <code class="mono">PunctumModerne<wbr>[CNTR,<wbr>opsz,wght].ttf</code> 和 <code class="mono">PunctumModerne-Italic<wbr>[CNTR,<wbr>opsz,wght].ttf</code>，在“字体册”里点“安装”。设计软件里会出现 54 个命名样式；花式大写在风格集 1。</p></div>
+        <div><h3>Windows</h3><p>右键字体文件，选择“为所有用户安装”。不支持可变字体的软件，改装 <code class="mono">static/</code> 里的 18 个静态样式（正斜各 9 个），小字号用 Text。</p></div>
+        <div><h3>Web</h3><p>正体 <code class="mono">PunctumModerne<wbr>-VF.woff2</code>（__SR__），斜体 <code class="mono">PunctumModerne<wbr>-Italic-VF.woff2</code>（__SI__），各含三条轴。光学尺寸由浏览器自动设置。</p></div>
+      </div>
+      <div>
+        <div class="code-head"><span>CSS</span><button class="linkbtn" type="button" id="css-copy" style="margin-left:auto">复制</button><span id="css-msg" role="status"></span></div>
+<pre class="code" id="css-code"><span class="c">/* 正斜两个文件，同一个字族名；opsz 跟随字号自动调整 */</span>
+@font-face {
+  font-family: <span class="v">"Punctum Moderne"</span>;
+  src: url(<span class="v">"PunctumModerne<wbr>-VF.woff2"</span>) format(<span class="v">"woff2"</span>);
+  font-weight: <span class="v">100 900</span>;
+  font-style: <span class="v">normal</span>;
+}
+@font-face {
+  font-family: <span class="v">"Punctum Moderne"</span>;
+  src: url(<span class="v">"PunctumModerne<wbr>-Italic-VF.woff2"</span>) format(<span class="v">"woff2"</span>);
+  font-weight: <span class="v">100 900</span>;
+  font-style: <span class="v">italic</span>;
+}
+em { font-style: <span class="v">italic</span>; }  <span class="c">/* 用真斜体，不会合成 */</span>
+.swash { font-feature-settings: <span class="v">"swsh" 1</span>; }  <span class="c">/* 花式大写 */</span>
+h1 {
+  font-family: <span class="v">"Punctum Moderne"</span>, serif;
+  font-variation-settings: <span class="v">"wght" 900, "CNTR" 100</span>;  <span class="c">/* 不写 opsz */</span>
+  line-height: <span class="v">1</span>;          <span class="c">/* 行与行之间网格连续 */</span>
+  letter-spacing: <span class="v">0</span>;       <span class="c">/* 或 0.0625em 的整数倍 */</span>
+}</pre>
+      </div>
+      <div class="tbl"><table>
+        <thead><tr><th>设置</th><th>推荐值</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><th>光学尺寸</th><td><code>font-optical-sizing: auto</code></td><td>这是浏览器默认值。不要在 <code>font-variation-settings</code> 里写死 <code>opsz</code>，否则小字号会失去加粗的细线。</td></tr>
+          <tr><th>字号</th><td><code>≥ 14px</code></td><td>14–32px 用 Text 光学尺寸，读起来是一款中等对比的衬线体；48px 以上点阵逐渐显现。</td></tr>
+          <tr><th>行高</th><td><code>1</code></td><td>每行正好 16 个点距，相邻行的点在同一网格上。需要更松时用 <code>1.125</code>、<code>1.25</code>，即多 2 或 4 个点距。</td></tr>
+          <tr><th>字距</th><td><code>0</code> 或 <code>n × 0.0625em</code></td><td>按整点增减才不会打断网格。字偶距调整默认开启，同样按整点。</td></tr>
+          <tr><th>斜体</th><td><code>&lt;em&gt;</code> · <code>font-style: italic</code></td><td>声明了斜体的 @font-face 后，浏览器会用真斜体，书写体小写和花式大写才会出现。</td></tr>
+          <tr><th>花式大写</th><td><code>"swsh" 1</code> 或 <code>"ss01" 1</code></td><td>只在斜体里有。适合标题和首字母，正文里不要整段打开。</td></tr>
+          <tr><th>小字号字重</th><td><code>wght 400–600</code></td><td>Text 样式已经加粗了竖笔和细线，不必再用 Bold。</td></tr>
+          <tr><th>字号像素对齐</th><td><code>16px</code> 的倍数</td><td>点距落在整像素上，屏幕渲染最锐利。</td></tr>
+        </tbody>
+      </table></div>
+      <ul class="files">
+        <li><code>fonts/PunctumModerne[CNTR,opsz,wght].ttf</code><span>正体可变字体 · 桌面安装</span></li>
+        <li><code>fonts/PunctumModerne-Italic[CNTR,opsz,wght].ttf</code><span>斜体可变字体 · 含花式大写</span></li>
+        <li><code>fonts/PunctumModerne-VF.woff2</code><span>网页用 · 正体</span></li>
+        <li><code>fonts/PunctumModerne-Italic-VF.woff2</code><span>网页用 · 斜体</span></li>
+        <li><code>fonts/static/</code><span>18 个静态样式：Thin · Light · Regular · Bold · Black · Slab · Text，各含 Italic</span></li>
+        <li><code>src/glyphs.py</code><span>逐点字形源文件：正体、斜体小写、花式大写</span></li>
+        <li><code>src/kern.py</code><span>按整点计算的字偶距</span></li>
+        <li><code>src/radii.py</code><span>笔调、字重、光学尺寸到点半径的映射</span></li>
+      </ul>
+    </div></div>
+  </div>
+</section>
+
+<section class="s" id="faq" aria-labelledby="h-faq">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">FAQ</div>
+      <div><h2 id="h-faq">常见问题</h2></div>
+    </div>
+    <div class="body"><div class="main">
+      <div class="faq">
+        <details><summary>字偶距调整会不会打断网格？</summary><p>不会。每个字宽都是整数个点距，2.3 版加入的字偶距调整也只按整点移动，所以调整后两个字母的点仍在同一张网格上（斜体则在同一张斜网格上）。算法取可收紧空隙的三分之二：To、AV、P. 会收紧，rn 不会挤成 m。</p></details>
+        <details><summary>斜体是怎么做的？</summary><p>先把整张点阵推斜 12°，每行向右错开 0.21 个点距，点保持正圆；再把 16 个小写字母重画成书写体：单层 a、穿过基线的 f、去掉脚衬，竖笔用细线小钩收尾。斜体是第二个可变字体，三条轴与正体完全一致。</p></details>
+        <details><summary>花式大写怎么用？</summary><p>斜体里的 26 个大写各有一个花式版本，用 OpenType 的 <code class="mono">swsh</code> 或风格集 <code class="mono">ss01</code> 调用。花饰伸进字侧空白，词中出现时字距会自动推开前一个字母。适合标题、首字母和签名式的排版。</p></details>
+        <details><summary>小字号能读吗？</summary><p>能。2.2 版加入了光学尺寸轴：14–32px 时竖笔变得饱满，细线加粗到抗锯齿后仍然可见，读起来是一款中等对比的衬线体。说明文字、图注、导航都可以用；但它终究是展示字体，长篇正文仍然建议用专门的正文字体。</p></details>
+        <details><summary>和第一版 Punctum 是什么关系？</summary><p>第一版是 5 × 7 的等宽点阵，点只有亮和灭，第二条轴把圆点变成方像素。第二版保留了“网格连续”的原则，换成了 10 点高的比例字宽网格，并给每个点加了笔调。</p></details>
+        <details><summary>能做中文吗？</summary><p>可以，而且原理是现成的：宋体本来就是横细竖粗。但汉字的点阵至少需要 24 × 24 的网格，还要为点、撇、捺、钩定义笔调规则，是一个独立的项目。</p></details>
+        <details><summary>怎么修改字形？</summary><p>打开 <code class="mono">src/glyphs.py</code>，每个字形是一块 ASCII 图，用 <code class="mono"># + - O</code> 四个符号标出笔调；斜体小写在 <code class="mono">ITALIC_SRC</code>，花式大写在 <code class="mono">SWASH</code>。改完运行 <code class="mono">python3 src/build.py</code>，几秒钟后生成新的字体文件。</p></details>
+        <details><summary>授权是什么？</summary><p>字体文件的名称表里写的是 SIL Open Font License 1.1：可以免费用于商业和非商业项目，可以修改和再发布，但不能单独出售字体文件。</p></details>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<footer class="f">
+  <div class="wrap">
+    <div class="f-top">
+      <div class="f-cta">
+        <p class="eyebrow">Set your next line in dots</p>
+        <p class="f-line">下一行字，<br>交给点阵来写。</p>
+        <div class="cta"><a class="btn solid" href="#axes">开始试排</a><a class="btn" href="#install">安装字体</a></div>
+      </div>
+      <nav class="f-cols" aria-label="页脚导航">
+        <div><p class="eyebrow">字体</p><a href="#idea">理念</a><a href="#tones">笔调</a><a href="#axes">可变轴</a><a href="#grid">网格</a><a href="#italic">斜体与花式大写</a><a href="#films">影像</a></div>
+        <div><p class="eyebrow">使用</p><a href="#inuse">样例</a><a href="#family">字族</a><a href="#charset">字符集</a><a href="#languages">语言</a><a href="#install">安装与设置</a></div>
+        <div><p class="eyebrow">关于</p><span>版本 2.400</span><span>SIL Open Font License 1.1</span><a href="#faq">常见问题</a><a href="#top" class="f-up">回到顶部 ↑</a></div>
+      </nav>
+    </div>
+    <p class="f-mark" aria-hidden="true">Punctum Moderne</p>
+    <div class="f-row"><span>Punctum Moderne 2.400 · Roman &amp; Italic · 2026-10-03</span><span>正文 Bodoni Moda 与 Noto Serif SC · 标注 JetBrains Mono</span><span>设计 Claude，为 sundyme</span></div>
+  </div>
+</footer>
+
+<dialog class="lb" id="lb" aria-label="样例放大查看">
+  <div class="lb-in">
+    <div class="lb-bar"><span id="lb-title"></span><button type="button" id="lb-close">关闭</button></div>
+    <div class="lb-stage" id="lb-stage"><div class="lb-box" id="lb-box"></div></div>
+  </div>
+</dialog>
+
+<script>
+const GLYPHS = __GLYPHS__;
+const GLYPHS_I = __GLYPHS_I__;
+const $ = (s) => document.querySelector(s);
+const css = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ── radius model: mirrors src/radii.py (grid pitch = 100) ── */
+const WEIGHT = [[100, 20, 7], [400, 40, 11], [900, 62, 16]], MONO = 0.86;
+function interp(w, i) {
+  if (w <= WEIGHT[0][0]) return WEIGHT[0][i];
+  for (let k = 1; k < WEIGHT.length; k++) if (w <= WEIGHT[k][0]) {
+    const a = WEIGHT[k - 1], b = WEIGHT[k], t = (w - a[0]) / (b[0] - a[0]);
+    return a[i] + (b[i] - a[i]) * t;
+  }
+  return WEIGHT[WEIGHT.length - 1][i];
+}
+function radius(tone, w, c) {
+  const rT = interp(w, 1), rH = interp(w, 2);
+  const stressed = rH + (rT - rH) * tone, mono = rT * MONO;
+  return mono + (stressed - mono) * (c / 100);
+}
+function layout(str) {
+  let x = 0; const dots = [];
+  for (const ch of str) {
+    const g = GLYPHS[ch] || GLYPHS["?"];
+    for (const [dx, dy, t] of g.d) dots.push({ x: x + dx, y: dy, t, ch, gx: dx });
+    x += g.w + 1;
+  }
+  return { dots, width: x - 1 };
+}
+function setup(cv, W, H) {
+  const dpr = Math.min(devicePixelRatio || 1, 2);
+  cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+  const ctx = cv.getContext("2d"); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+  return ctx;
+}
+function disc(ctx, x, y, r) { if (r <= 0.05) return; ctx.beginPath(); ctx.arc(x, y, r, 0, 6.2832); ctx.fill(); }
+const NAMES = { 100: "Thin", 200: "ExtraLight", 300: "Light", 400: "Regular", 500: "Medium", 600: "SemiBold", 700: "Bold", 800: "ExtraBold", 900: "Black" };
+
+/* ── hero: printed left to right; the pointer turns contrast back into a plain dot matrix ── */
+const hero = (() => {
+  const cv = $("#hero-cv");
+  const L1 = layout("Punctum"), L2 = layout("Moderne");
+  const COLS = Math.max(L1.width, L2.width) + 2, ROWS = 25;
+  const dots = [
+    ...L1.dots.map((d) => ({ ...d, col: 1 + d.x, row: 1 + (10 - d.y), w: 420 })),
+    ...L2.dots.map((d) => ({ ...d, col: 1 + d.x, row: 13 + (10 - d.y), w: 900 })),
+  ];
+  const TONE_DELAY = { 1: 0, 0.5: 140, 0: 280, 1.3: 560 };
+  dots.forEach((d) => { d.delay = (d.col / COLS) * 1100 + TONE_DELAY[d.t]; });
+  let W = 0, P = 0, ptr = null, t0 = performance.now(), running = true;
+  function size() { W = cv.clientWidth; P = W / COLS; cv.style.height = ROWS * P + "px"; }
+  const ease = (x) => 1 - Math.pow(1 - x, 3);
+  const back = (x) => { const c1 = 1.9, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+  function draw(now) {
+    const H = ROWS * P, ctx = setup(cv, W, H);
+    const ink = css("--ink"), grid = css("--grid"), violet = css("--violet");
+    const R = 6.5 * P, el = reduce ? 1e9 : now - t0;
+    // grid field
+    for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+      const x = (c + .5) * P, y = (r + .5) * P;
+      let near = 0;
+      if (ptr) { const d = Math.hypot(x - ptr.x, y - ptr.y); near = d < R ? 1 - d / R : 0; }
+      ctx.fillStyle = near > 0.02 ? violet : grid;
+      ctx.globalAlpha = near > 0.02 ? 0.25 + near * 0.6 : 1;
+      disc(ctx, x, y, Math.max(0.7, P * (0.045 + near * 0.05)));
+    }
+    ctx.globalAlpha = 1; ctx.fillStyle = ink;
+    let pending = false;
+    for (const d of dots) {
+      const x = (d.col + .5) * P, y = (d.row + .5) * P;
+      let k = Math.min(1, Math.max(0, (el - d.delay) / 420));
+      if (k < 1) pending = true;
+      k = d.t === 1.3 ? back(k) : ease(k);
+      let c = 100;
+      if (ptr) { const dd = Math.hypot(x - ptr.x, y - ptr.y); if (dd < R) { const s = 1 - dd / R; c = 100 * (1 - s * s * (3 - 2 * s)); } }
+      disc(ctx, x, y, radius(d.t, d.w, c) / 100 * P * k);
+    }
+    running = pending;
+    if (running) requestAnimationFrame(draw);
+  }
+  let queued = false;
+  function request() { if (!queued && !running) { queued = true; requestAnimationFrame((t) => { queued = false; draw(t); }); } }
+  cv.addEventListener("pointermove", (e) => { const b = cv.getBoundingClientRect(); ptr = { x: e.clientX - b.left, y: e.clientY - b.top }; request(); });
+  cv.addEventListener("pointerleave", () => { ptr = null; request(); });
+  size(); requestAnimationFrame(draw);
+  return { resize() { size(); request(); }, redraw: request };
+})();
+
+/* ── tones diagram ── */
+const TONES = [
+  { t: 1, sym: "#", name: "粗 · 竖笔", desc: "主干和竖向笔画，点最大。", at: [4, 2] },
+  { t: 0.5, sym: "+", name: "转折", desc: "曲线由粗转细的过渡处。", at: [4, 5] },
+  { t: 0, sym: "−", name: "细 · 横笔与衬线", desc: "横画、发丝衬线、细斜笔，只剩针尖。", at: [2, 6] },
+  { t: 1.3, sym: "O", name: "球", desc: "球形收笔，比竖笔更大的一颗点。", at: [0, 5] },
+];
+const toneList = $("#tone-list");
+TONES.forEach((o, i) => {
+  const li = document.createElement("li");
+  li.innerHTML = `<span class="i">0${i + 1}</span><canvas width="56" height="56" data-t="${o.t}"></canvas><div><b>${o.name}</b><span><code>${o.sym}</code>　${o.desc}</span></div>`;
+  toneList.appendChild(li);
+});
+function drawTones() {
+  const cv = $("#tones-cv"), W = cv.clientWidth, H = W, ctx = setup(cv, W, H);
+  const g = GLYPHS["a"], P = W / 10, ox = 2 * P, oy = 1.5 * P;               // rows y7 … y-1
+  const Y = (y) => oy + (7 - y) * P + P / 2, X = (x) => ox + x * P + P / 2;
+  const ink = css("--ink"), grid = css("--grid"), violet = css("--violet"), rule = css("--rule"), muted = css("--ink-2");
+  ctx.fillStyle = grid;
+  for (let y = 8; y >= -1; y--) for (let x = -2; x < 8; x++) disc(ctx, X(x), Y(y), Math.max(1, P * 0.05));
+  [[6, "x"], [0, "base"]].forEach(([y, lab]) => {
+    const yy = Math.round(y === 6 ? Y(6) - P / 2 : Y(0) + P / 2) + .5;
+    ctx.strokeStyle = rule; ctx.setLineDash(y ? [3, 4] : []); ctx.beginPath(); ctx.moveTo(0, yy); ctx.lineTo(W, yy); ctx.stroke();
+    ctx.fillStyle = muted; ctx.font = `11px "JetBrains Mono", monospace`; ctx.textAlign = "right"; ctx.fillText(lab, W, yy - 4);
+  });
+  ctx.setLineDash([]);
+  ctx.fillStyle = ink;
+  for (const [x, y, t] of g.d) disc(ctx, X(x), Y(y), radius(t, 700, 100) / 100 * P);
+  TONES.forEach((o, i) => {
+    const [x, y] = o.at, cx = X(x), cy = Y(y), r = Math.max(radius(o.t, 700, 100) / 100 * P, P * .2) + P * .12;
+    ctx.strokeStyle = violet; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(cx, cy, r, 0, 6.2832); ctx.stroke();
+    const lx = cx + (x === 0 ? -P * .9 : P * .85), ly = cy - P * .55;
+    ctx.fillStyle = violet; ctx.font = `500 ${Math.max(11, P * .3)}px "JetBrains Mono", monospace`; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+    ctx.fillText("0" + (i + 1), lx, ly);
+  });
+  toneList.querySelectorAll("canvas").forEach((c) => {
+    const x = setup(c, 56, 56); x.fillStyle = css("--ink"); disc(x, 28, 28, radius(+c.dataset.t, 700, 100) / 100 * 40);
+  });
+}
+
+/* ── axes pad ── */
+const pad = $("#pad"), hd = $("#pad-hd"), axW = $("#ax-w"), axC = $("#ax-c"), axText = $("#ax-text");
+[0, 100].forEach((c) => [100, 200, 300, 400, 500, 600, 700, 800, 900].forEach((w) => {
+  const b = document.createElement("button");
+  b.className = "mk"; b.type = "button"; b.tabIndex = -1;
+  b.title = `${c ? "" : "Slab "}${NAMES[w]}`;
+  b.style.left = ((w - 100) / 800 * 100) + "%"; b.style.top = ((100 - c) / 100 * 100) + "%";
+  b.addEventListener("click", (e) => { e.stopPropagation(); axW.value = w; axC.value = c; applyAxes(); });
+  pad.appendChild(b);
+}));
+const axO = $("#ax-o"), axAuto = $("#ax-auto");
+function applyAxes() {
+  const w = +axW.value, c = +axC.value, auto = axAuto.checked, o = +axO.value;
+  axO.disabled = auto;
+  const fvs = `"wght" ${w}, "CNTR" ${c}` + (auto ? "" : `, "opsz" ${o}`);
+  $("#ax-oo").textContent = auto ? "自动" : o;
+  axText.style.fontVariationSettings = fvs;
+  hd.style.left = ((w - 100) / 800 * 100) + "%"; hd.style.top = ((100 - c) / 100 * 100) + "%";
+  $("#ax-wo").textContent = w; $("#ax-co").textContent = c;
+  $("#ax-coords").textContent = `wght ${w} · CNTR ${c} · opsz ${auto ? "自动" : o}`;
+  let named = NAMES[w] && (c === 100 || c === 0) ? (c === 0 ? "Slab " + NAMES[w] : NAMES[w]) : "介于命名样式之间";
+  if (!auto && o !== 144) named = o === 12 && c === 100 && NAMES[w] ? "Text " + NAMES[w] : "介于命名样式之间";
+  $("#ax-style").textContent = named;
+  $("#ax-css").textContent = `font-variation-settings: ${fvs};`;
+}
+function padFrom(e) {
+  const b = pad.getBoundingClientRect();
+  const fx = Math.min(1, Math.max(0, (e.clientX - b.left) / b.width)), fy = Math.min(1, Math.max(0, (e.clientY - b.top) / b.height));
+  let w = Math.round((100 + fx * 800) / 10) * 10, c = Math.round(100 - fy * 100);
+  const sw = Math.round(w / 100) * 100; if (Math.abs(sw - w) <= 20) w = sw;      // gentle snap to named weights
+  if (c > 95) c = 100; if (c < 5) c = 0;
+  axW.value = w; axC.value = c; applyAxes();
+}
+pad.addEventListener("pointerdown", (e) => { pad.setPointerCapture(e.pointerId); padFrom(e); });
+pad.addEventListener("pointermove", (e) => { if (pad.hasPointerCapture(e.pointerId)) padFrom(e); });
+[axW, axC, axO].forEach((el) => el.addEventListener("input", applyAxes));
+axAuto.addEventListener("change", applyAxes);
+
+function copyText(text, msgEl, selectEl) {
+  const fallback = () => { const s = getSelection(), r = document.createRange(); r.selectNodeContents(selectEl); s.removeAllRanges(); s.addRange(r); msgEl.textContent = "已选中，按 ⌘C 复制"; };
+  try { navigator.clipboard.writeText(text).then(() => { msgEl.textContent = "已复制"; setTimeout(() => (msgEl.textContent = ""), 1800); }, fallback); } catch (e) { fallback(); }
+}
+$("#ax-copy").addEventListener("click", () => copyText(`font-family: "Punctum Moderne";\n${$("#ax-css").textContent}`, $("#ax-msg"), $("#ax-css")));
+$("#css-copy").addEventListener("click", () => copyText($("#css-code").innerText, $("#css-msg"), $("#css-code")));
+
+/* ── loupe ── */
+const loupe = (() => {
+  const stage = $("#stage"), fine = $("#fine"), lens = $("#lens"), inner = $("#lens-inner");
+  const K = 6;
+  const clone = fine.cloneNode(true); clone.removeAttribute("id"); clone.setAttribute("aria-hidden", "true");
+  inner.appendChild(clone);
+  let pos = null;
+  function place(px, py) {
+    const R = lens.offsetWidth / 2;
+    lens.style.left = (px - R) + "px"; lens.style.top = (py - R) + "px";
+    inner.style.width = stage.clientWidth + "px";
+    inner.style.transform = `translate(${R - px * K}px, ${R - py * K}px) scale(${K})`;
+  }
+  function rest() {
+    // rest on the word "pin-pricks" so the first frame already shows the dots
+    const r = document.createRange(), txt = fine.firstChild, i = txt.textContent.indexOf("pin-pricks");
+    const b = stage.getBoundingClientRect();
+    const R = lens.offsetWidth / 2, cx = (x) => Math.max(R + 4, Math.min(b.width - R - 4, x));
+    if (i >= 0) { r.setStart(txt, i); r.setEnd(txt, i + 3); const rr = r.getBoundingClientRect(); if (rr.width) { place(cx(rr.left - b.left + rr.width / 2), rr.top - b.top + rr.height / 2); return; } }
+    place(b.width * .4, b.height * .5);
+  }
+  stage.addEventListener("pointermove", (e) => { const b = stage.getBoundingClientRect(); pos = [e.clientX - b.left, e.clientY - b.top]; place(...pos); });
+  stage.addEventListener("pointerdown", (e) => { stage.setPointerCapture(e.pointerId); const b = stage.getBoundingClientRect(); pos = [e.clientX - b.left, e.clientY - b.top]; place(...pos); });
+  return { rest, refresh() { pos ? place(...pos) : rest(); } };
+})();
+
+/* ── grid demo ── */
+const gdemo = $("#gdemo");
+function gridLines() {
+  gdemo.querySelectorAll(".gline").forEach((n) => n.remove());
+  // line box = 1em = 1600 units, baseline at 1200 from the top
+  [[200 / 1600, "cap 1000"], [500 / 1600, "x-height 700"], [1200 / 1600, "baseline 0"], [1500 / 1600, "descender −300"]].forEach(([f, lab], i) => {
+    const d = document.createElement("div"); d.className = "gline" + (i === 2 ? " base" : "");
+    d.style.top = `calc(${f} * var(--gs))`; d.innerHTML = `<span>${lab}</span>`; gdemo.appendChild(d);
+  });
+}
+$("#grid-on").addEventListener("change", (e) => gdemo.classList.toggle("on", e.target.checked));
+
+/* ── detail cards ── */
+const BEAKS = { C: [[6, 8], [6, 7], [6, 1]], E: [[6, 8], [6, 1], [4, 6], [4, 4]], S: [[5, 9], [5, 8], [0, 1], [0, 0]], T: [[0, 8], [6, 8], [0, 9], [6, 9]] };
+function hl(kind, d) {
+  if (kind === "ball") return d.t === 1.3;
+  if (kind === "hair") return d.t === 0;
+  if (kind === "diag") return d.t === 1 && ((d.ch === "A" && d.gx >= 5) || d.ch === "V" || d.ch === "X");
+  if (kind === "beak") return (BEAKS[d.ch] || []).some(([x, y]) => x === d.gx && y === d.y);
+  return false;
+}
+function drawCards() {
+  const ink = css("--ink"), grid = css("--grid"), violet = css("--violet");
+  document.querySelectorAll(".card canvas").forEach((cv) => {
+    const W = cv.clientWidth, H = W * 9 / 16, ctx = setup(cv, W, H);
+    const L = layout(cv.dataset.word), ys = L.dots.map((d) => d.y);
+    const top = Math.max(...ys), bot = Math.min(...ys), rows = top - bot + 1;
+    const P = Math.min(W / (L.width + 2), H / (rows + 2)), ox = (W - L.width * P) / 2, oy = (H - rows * P) / 2;
+    const cols = Math.ceil(W / P) + 2, gx0 = ox - Math.ceil(ox / P) * P;
+    ctx.fillStyle = grid;
+    for (let r = -1; r <= rows; r++) for (let c = 0; c < cols; c++) disc(ctx, gx0 + c * P + P / 2, oy + r * P + P / 2, Math.max(.7, P * .05));
+    for (const d of L.dots) {
+      ctx.fillStyle = hl(cv.dataset.hl, d) ? violet : ink;
+      disc(ctx, ox + d.x * P + P / 2, oy + (top - d.y) * P + P / 2, radius(d.t, 700, 100) / 100 * P);
+    }
+  });
+}
+
+/* ── clock ── */
+function tick() {
+  const n = new Date(), p = (v) => String(v).padStart(2, "0");
+  $("#clk-time").innerHTML = `${p(n.getHours())}:${p(n.getMinutes())}<small>${p(n.getSeconds())}</small>`;
+  try {
+    const wd = new Intl.DateTimeFormat("it-IT", { weekday: "long" }).format(n);
+    const dm = new Intl.DateTimeFormat("it-IT", { day: "numeric", month: "long" }).format(n);
+    $("#clk-date").innerHTML = `${wd}<br>${dm}`;
+  } catch (e) {}
+}
+
+/* ── family ── */
+const fam = $("#fam");
+Object.entries(NAMES).forEach(([w, n]) => {
+  const li = document.createElement("li");
+  li.innerHTML = `<span class="lab">${n} ${w}</span><span class="spec" style="font-variation-settings:'wght' ${w}, 'CNTR' var(--c), 'opsz' var(--o)">Moderne Parma 1818</span>`;
+  fam.appendChild(li);
+});
+let famPre = "", famIt = false;
+document.querySelectorAll(".fam-top .seg").forEach((group) => group.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => {
+  group.querySelectorAll("button").forEach((o) => o.setAttribute("aria-pressed", String(o === b)));
+  if (group.dataset.k === "use") {
+    fam.style.setProperty("--c", b.dataset.c); fam.style.setProperty("--o", b.dataset.o || 144);
+    famPre = b.dataset.o ? "Text " : b.dataset.c === "0" ? "Slab " : "";
+  } else { famIt = b.dataset.i === "1"; fam.classList.toggle("it", famIt); }
+  fam.querySelectorAll(".lab").forEach((l, i) => {
+    const w = Object.keys(NAMES)[i], n = NAMES[w];
+    l.textContent = famPre + (famIt ? (n === "Regular" ? "Italic" : n + " Italic") : n) + " " + w;
+  });
+})));
+
+/* ── character set + inspector (roman / italic) ── */
+let csItalic = false, current = "a";
+const groupsEl = $("#cs-groups"), csEl = groupsEl.closest(".cs");
+function groups() {
+  const keys = Object.keys(GLYPHS).filter((c) => c !== " " && c !== " ");
+  const G = [
+    ["大写 Uppercase", [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"]],
+    ["小写 Lowercase", [..."abcdefghijklmnopqrstuvwxyz"]],
+    ["西欧变音字母 Latin-1", [..."ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÕÖØÙÚÛÜÝŸŒàáâãäåæçèéêëìíîïıñòóôõöøùúûüýÿœß"]],
+  ];
+  const used = new Set(G.flatMap((g) => g[1]));
+  G.push(["中欧、波罗的海与土耳其 Latin Extended-A", keys.filter((c) => !used.has(c) && c.codePointAt(0) >= 0x100 && /\p{L}/u.test(c))]);
+  G.push(["数字 Figures", [..."0123456789"]]);
+  G.forEach((g) => g[1].forEach((c) => used.add(c)));
+  G.push(["标点与符号 Punctuation & symbols", keys.filter((c) => !used.has(c))]);
+  if (csItalic) G.splice(2, 0, ["花式大写 Swash capitals · swsh", Object.keys(GLYPHS_I).filter((k) => k.endsWith(".swsh"))]);
+  return G.map(([n, l]) => [n, l.filter((c) => (csItalic ? GLYPHS_I : GLYPHS)[c])]);
+}
+function renderGroups() {
+  groupsEl.innerHTML = "";
+  csEl.classList.toggle("it", csItalic);
+  groups().forEach(([name, list]) => {
+    const g = document.createElement("div"); g.className = "cs-group";
+    g.innerHTML = `<h3><span>${name}</span><span>${list.length}</span></h3><div class="cs-grid"></div>`;
+    const grid = g.querySelector(".cs-grid");
+    list.forEach((k) => {
+      const sw = k.endsWith(".swsh"), c = sw ? k[0] : k;
+      const b = document.createElement("button"); b.type = "button"; b.textContent = c;
+      if (sw) b.className = "sw";
+      b.setAttribute("aria-label", (sw ? "Swash " : "U+" + c.codePointAt(0).toString(16).toUpperCase().padStart(4, "0") + " ") + c);
+      b.setAttribute("aria-pressed", String(k === current));
+      b.addEventListener("click", () => {
+        groupsEl.querySelector('[aria-pressed="true"]')?.setAttribute("aria-pressed", "false");
+        b.setAttribute("aria-pressed", "true"); current = k; drawInspector();
+      });
+      grid.appendChild(b);
+    });
+    groupsEl.appendChild(g);
+  });
+}
+document.querySelectorAll("#cs-style button").forEach((b) => b.addEventListener("click", () => {
+  document.querySelectorAll("#cs-style button").forEach((o) => o.setAttribute("aria-pressed", String(o === b)));
+  csItalic = b.dataset.i === "1";
+  if (!csItalic && current.endsWith(".swsh")) current = current[0];
+  renderGroups(); drawInspector();
+}));
+renderGroups();
+function drawInspector() {
+  const DATA = csItalic ? GLYPHS_I : GLYPHS, sx = (y) => (csItalic ? (y - PIVOT) * ITALIC_TAN : 0);
+  const cv = $("#insp-cv"), W = cv.clientWidth || 300, H = W * 4 / 3, ctx = setup(cv, W, H);
+  const g = DATA[current] || DATA["a"], cols = Math.max(9, g.w + 4), P = Math.min(W / cols, H / 16);
+  const ox = (W - g.w * P) / 2 - (csItalic ? P : 0), oy = (H - 16 * P) / 2, Y = (y) => oy + (12 - y) * P + P / 2;
+  const ink = css("--ink"), grid = css("--grid"), rule = css("--rule"), muted = css("--ink-2");
+  ctx.font = `11px "JetBrains Mono", monospace`; ctx.textAlign = "right"; ctx.textBaseline = "bottom";
+  [[3, "cap"], [6, "x"], [13, "base"], [16, "desc"]].forEach(([k, lab]) => {
+    const yy = Math.round(oy + k * P) + .5;
+    ctx.strokeStyle = rule; ctx.setLineDash(k === 13 ? [] : [2, 3]); ctx.beginPath(); ctx.moveTo(0, yy); ctx.lineTo(W, yy); ctx.stroke();
+    ctx.fillStyle = muted; ctx.fillText(lab, W, yy - 2);
+  });
+  ctx.setLineDash([]); ctx.fillStyle = grid;
+  for (let y = 12; y >= -3; y--) for (let x = Math.floor(-ox / P) - 3; x < Math.ceil((W - ox) / P) + 3; x++) disc(ctx, ox + (x + sx(y)) * P + P / 2, Y(y), Math.max(.8, P * .05));
+  const n = { 1: 0, 0.5: 0, 0: 0, 1.3: 0 };
+  ctx.fillStyle = ink;
+  g.d.forEach(([x, y, t]) => { n[t]++; disc(ctx, ox + x * P + P / 2, Y(y), radius(t, 700, 100) / 100 * P); });
+  const sw = current.endsWith(".swsh"), ch = sw ? current[0] : current;
+  $("#i-ch").textContent = sw ? ch + " (swash)" : ch;
+  $("#i-cp").textContent = sw ? "GSUB swsh" : "U+" + ch.codePointAt(0).toString(16).toUpperCase().padStart(4, "0");
+  $("#i-w").textContent = `${g.w} 点 · ${(g.w + 1) * 100}`;
+  $("#i-t").textContent = n[1]; $("#i-m").textContent = n[0.5]; $("#i-h").textContent = n[0]; $("#i-b").textContent = n[1.3];
+}
+
+/* ── languages ── */
+["English", "Français", "Deutsch", "Español", "Português", "Italiano", "Català", "Nederlands", "Dansk", "Norsk", "Svenska", "Suomi",
+ "Afrikaans", "Gaeilge", "Gàidhlig", "Shqip", "Lëtzebuergesch", "Euskara", "Galego", "Latina", "Bahasa Indonesia", "Bahasa Melayu", "Kiswahili", "Tagalog",
+ "Polski", "Čeština", "Slovenčina", "Magyar", "Română", "Türkçe", "Hrvatski", "Slovenščina", "Bosanski", "Srpski", "Lietuvių", "Eesti"]
+  .forEach((l) => { const li = document.createElement("li"); li.textContent = l; $("#langs").appendChild(li); });
+
+
+/* ── italic: the lattice shears, then the lowercase changes hands ── */
+const ITALIC_TAN = Math.tan(12 * Math.PI / 180), PIVOT = 3;
+const shearDemo = (() => {
+  const cv = $("#shear-cv"), range = $("#shear-r"), out = $("#shear-o");
+  const WORD = "Italique", COLS = 52, ROWS = 18, TOP = 13.5;
+  const origins = (G) => { let x = 3; return [...WORD].map((ch) => { const o = x; x += G[ch].w + 1; return o; }); };
+  const OR = origins(GLYPHS), OI = origins(GLYPHS_I);
+  let t = 1, anim = !reduce, started = false;
+  function draw() {
+    const W = cv.clientWidth, P = W / COLS, H = P * ROWS, ctx = setup(cv, W, H);
+    cv.style.height = H + "px";
+    const sh = t * ITALIC_TAN, m = Math.min(1, Math.max(0, (t - .55) / .45)), e = m * m * (3 - 2 * m);
+    ctx.fillStyle = css("--grid");
+    for (let y = -3; y <= 12; y++) for (let x = -2; x < COLS + 2; x++) disc(ctx, (x + .5 + (y - PIVOT) * sh) * P, (TOP - y) * P, Math.max(.8, P * .05));
+    const ink = css("--ink");
+    const paint = (G, italic, alpha) => {
+      if (alpha <= .002) return;
+      ctx.globalAlpha = alpha; ctx.fillStyle = ink;
+      [...WORD].forEach((ch, i) => {
+        const ox = OR[i] + (OI[i] - OR[i]) * e;
+        for (const [x0, y, tone] of G[ch].d) {
+          const x = italic ? x0 - (y - PIVOT) * ITALIC_TAN : x0;
+          disc(ctx, (ox + x + .5 + (y - PIVOT) * sh) * P, (TOP - y) * P, radius(tone, 400, 100) / 100 * P);
+        }
+      });
+      ctx.globalAlpha = 1;
+    };
+    paint(GLYPHS, false, 1 - e); paint(GLYPHS_I, true, e);
+    out.textContent = `${(Math.atan(sh) * 180 / Math.PI).toFixed(1)}° · ${m >= 1 ? "斜体字形" : m > 0 ? "字形过渡" : "正体字形"}`;
+  }
+  range.addEventListener("input", () => { anim = false; t = range.value / 1000; draw(); });
+  function play() {
+    if (!anim || started) return; started = true;
+    let s0 = null;
+    const step = (ts) => {
+      if (!anim) return;
+      if (s0 === null) s0 = ts + 300;
+      const k = Math.min(1, Math.max(0, (ts - s0) / 2600));
+      t = k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+      range.value = Math.round(t * 1000); draw();
+      if (k < 1) requestAnimationFrame(step); else anim = false;
+    };
+    t = 0; range.value = 0; requestAnimationFrame(step);
+  }
+  new IntersectionObserver((es) => { if (es[0].isIntersecting) play(); }, { threshold: .4 }).observe(cv);
+  return { draw };
+})();
+$("#pairs").innerHTML = "a d f h i k l m n p q r u v w y".split(" ").map((c) =>
+  `<div class="pair"><div class="g"><span>${c}</span><span>${c}</span></div><small>${c} → ${c}</small></div>`).join("");
+document.querySelectorAll("#sw-seg button").forEach((b) => b.addEventListener("click", () => {
+  document.querySelectorAll("#sw-seg button").forEach((o) => o.setAttribute("aria-pressed", String(o === b)));
+  $("#swash").classList.toggle("on", b.dataset.sw === "1");
+}));
+
+/* ── specimens: live artboards, scaled to their frames ── */
+const fitBoard = (frame) => {
+  const b = frame.querySelector(".board"); if (!b) return;
+  b.style.transform = `scale(${frame.clientWidth / +frame.dataset.w})`;
+};
+const frames = [...document.querySelectorAll(".board-frame")];
+const ro = new ResizeObserver((es) => es.forEach((e) => fitBoard(e.target)));
+frames.forEach((f) => { fitBoard(f); ro.observe(f); });
+const lb = $("#lb"), lbBox = $("#lb-box"), lbStage = $("#lb-stage");
+let lbFrame = null;
+function lbFit() {
+  if (!lbFrame) return;
+  const w = +lbFrame.dataset.w, h = +lbFrame.dataset.h;
+  const k = Math.min(lbStage.clientWidth / w, lbStage.clientHeight / h, 1.25);
+  lbBox.style.width = w * k + "px"; lbBox.style.height = h * k + "px";
+  lbBox.firstElementChild.style.transform = `scale(${k})`;
+}
+function lbOpen(frame) {
+  lbFrame = frame;
+  lbBox.innerHTML = ""; lbBox.appendChild(frame.querySelector(".board").cloneNode(true));
+  const fig = frame.closest("figure");
+  $("#lb-title").innerHTML = fig.querySelector("figcaption").innerHTML;
+  if (lb.showModal) lb.showModal(); else lb.setAttribute("open", "");
+  lbFit();
+}
+function lbClose() { if (lb.close) lb.close(); else lb.removeAttribute("open"); lbFrame = null; }
+frames.forEach((f) => {
+  f.addEventListener("click", () => lbOpen(f));
+  f.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); lbOpen(f); } });
+});
+$("#lb-close").addEventListener("click", lbClose);
+lbStage.addEventListener("click", (e) => { if (e.target === lbStage) lbClose(); });
+addEventListener("resize", lbFit);
+
+/* ── the five images (ported from the concept site) ── */
+(() => {
+  'use strict';
+  const G = GLYPHS;
+  const TAU = Math.PI * 2;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const C = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const COL = {};
+  const readCOL = () => Object.assign(COL, { paper: C('--paper'), ink: C('--ink'), night: C('--night'), dot: C('--dot'), violet: C('--violet'), violetLit: C('--violet-lit'), manila: C('--manila'), manilaInk: C('--manila-ink'), mute: C('--ink-2'), muteN: C('--mute-n'), rule: C('--rule'), ruleN: C('--rule-n') });
+  readCOL();
+  window.__motifTheme = () => { readCOL(); for (const d of demos) d.dirty = true; kick(); };
+
+  // ------------------------------------------------------------ radius model (src/radii.py)
+  const DISPLAY = [[100, 20, 7], [400, 40, 11], [900, 62, 16]], TEXT = [[100, 30, 16], [400, 50, 30], [900, 66, 40]];
+  const OPSZ = [[12, 1], [16, .98], [24, .85], [48, .55], [96, .2], [144, 0]];
+  const lt = (tb, w, i) => { if (w <= tb[0][0]) return tb[0][i]; for (let k = 0; k < tb.length - 1; k++) { const a = tb[k], b = tb[k + 1]; if (w <= b[0]) return a[i] + (b[i] - a[i]) * (w - a[0]) / (b[0] - a[0]); } return tb[tb.length - 1][i]; };
+  const textFraction = (o) => { if (o <= OPSZ[0][0]) return 1; for (let k = 0; k < OPSZ.length - 1; k++) if (o <= OPSZ[k + 1][0]) return OPSZ[k][1] + (OPSZ[k + 1][1] - OPSZ[k][1]) * (o - OPSZ[k][0]) / (OPSZ[k + 1][0] - OPSZ[k][0]); return 0; };
+  function radius(tone, w = 400, c = 100, f = 0) {
+    const rT = lt(DISPLAY, w, 1) + (lt(TEXT, w, 1) - lt(DISPLAY, w, 1)) * f;
+    const rH = lt(DISPLAY, w, 2) + (lt(TEXT, w, 2) - lt(DISPLAY, w, 2)) * f;
+    const st = rH + (rT - rH) * tone, mono = rT * .86;
+    return (mono + (st - mono) * c / 100) / 100;          // in cells
+  }
+  const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+  const smooth = (x) => { x = clamp(x); return x * x * (3 - 2 * x); };
+  const hash = (i) => { const s = Math.sin(i * 127.1 + 311.7) * 43758.5453; return s - Math.floor(s); };
+
+  function layout(text) {
+    const dots = []; let x = 0, idx = 0;
+    for (const ch of text) {
+      const g = G[ch]; if (!g) continue;
+      for (const [gx, gy, t] of g.d) dots.push({ col: x + gx, row: gy, tone: t, i: idx++ });
+      x += g.w + 1;
+    }
+    return { dots, width: Math.max(1, x - 1) };
+  }
+
+  // ------------------------------------------------------------ canvases + one animation clock
+  const demos = [];
+  function fit(cv) {
+    const r = cv.getBoundingClientRect(), dpr = Math.min(2, window.devicePixelRatio || 1);
+    const w = Math.max(1, Math.round(r.width * dpr)), h = Math.max(1, Math.round(r.height * dpr));
+    if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; }
+    return { w: r.width, h: r.height, dpr };
+  }
+  function addDemo(d) {
+    demos.push(d);
+    d.visible = false;
+    const io = new IntersectionObserver((es) => { d.visible = es[0].isIntersecting; if (d.visible && d.onShow) d.onShow(); kick(); }, { rootMargin: '120px' });
+    io.observe(d.el);
+    new ResizeObserver(() => { d.dirty = true; kick(); }).observe(d.el);
+    d.dirty = true;
+  }
+  let raf = 0;
+  function kick() { if (!raf) raf = requestAnimationFrame(tick); }
+  function tick(now) {
+    raf = 0;
+    let again = false;
+    for (const d of demos) {
+      if (!d.visible) continue;
+      if (d.dirty || (!reduce && d.animating && d.animating(now))) { d.dirty = false; d.draw(now / 1000); }
+      if (!reduce && d.animating && d.animating(now)) again = true;
+    }
+    if (again) kick();
+  }
+
+  // ------------------------------------------------------------ shared word
+  const wordInput = document.getElementById('word');
+  let WORD = 'Punctum';
+  const cleanWord = (s) => [...s].filter((ch) => G[ch]).join('').slice(0, 14) || 'Punctum';
+  wordInput.addEventListener('input', () => { WORD = cleanWord(wordInput.value); for (const d of demos) if (d.setWord) d.setWord(WORD); kick(); });
+
+  // ============================================================ 墨 ink drops
+  (() => {
+    const cv = document.getElementById('c-ink'), ctx = cv.getContext('2d');
+    const goo = document.createElement('canvas'), gx = goo.getContext('2d', { willReadFrequently: true });
+    let L = layout(WORD), start = null, finished = false, paperPat = null;
+    function paperTexture() {
+      const c = document.createElement('canvas'); c.width = c.height = 256; const x = c.getContext('2d');
+      const id = x.createImageData(256, 256);
+      for (let i = 0; i < id.data.length; i += 4) { const n = hash(i * .37) * 14 - 7; id.data[i] = 241 + n; id.data[i + 1] = 241 + n; id.data[i + 2] = 238 + n; id.data[i + 3] = 255; }
+      x.putImageData(id, 0, 0); return c;
+    }
+    const DROP = 0.17;
+    const landAt = (dot) => 0.3 + dot.col * 0.03 + hash(dot.i + 3) * 0.32;
+    const total = () => Math.max(...L.dots.map(landAt)) + 0.8;
+    const d = {
+      el: cv,
+      animating: (now) => !finished && start !== null,
+      onShow: () => { if (start === null) { start = performance.now() / 1000; finished = false; } },
+      setWord: (w) => { L = layout(w); start = performance.now() / 1000; finished = false; d.dirty = true; },
+      draw: (s) => {
+        const { w, h, dpr } = fit(cv);
+        if (!paperPat) paperPat = ctx.createPattern(paperTexture(), 'repeat');
+        const t = reduce || start === null ? 99 : s - start;
+        if (t > total()) finished = true;
+        const p = Math.min(w / (L.width + 6), h / 18);
+        const ox = (w - L.width * p) / 2, base = h / 2 + 4.5 * p;
+        // goo buffer at half resolution
+        const gs = 0.5 * dpr, GW = Math.ceil(w * gs), GH = Math.ceil(h * gs);
+        if (goo.width !== GW || goo.height !== GH) { goo.width = GW; goo.height = GH; }
+        gx.setTransform(1, 0, 0, 1, 0, 0); gx.globalCompositeOperation = 'source-over'; gx.filter = 'none';
+        gx.fillStyle = '#000'; gx.fillRect(0, 0, GW, GH);
+        gx.filter = `blur(${Math.max(1.2, p * 0.16 * gs).toFixed(2)}px)`;
+        gx.fillStyle = '#fff';
+        gx.beginPath();
+        const falling = [];
+        for (const dot of L.dots) {
+          const ta = t - landAt(dot);
+          const x = ox + (dot.col + .5) * p, y = base - (dot.row + .5) * p;
+          const R = radius(dot.tone) * p;
+          if (ta < -DROP) continue;
+          if (ta < 0) { falling.push([x, y + ta / DROP * p * 3.2, R]); continue; }
+          const grow = 1 - Math.exp(-ta * 22), wob = 1 + .1 * Math.sin(ta * 26) * Math.exp(-ta * 9);
+          const r = (R * 1.12 + p * .05) * (0.55 + 0.45 * grow) * wob;
+          gx.moveTo((x + r) * gs, y * gs); gx.arc(x * gs, y * gs, r * gs, 0, TAU);
+          if (dot.tone >= .99) {
+            const n = dot.tone > 1.1 ? 5 : 2;
+            for (let k = 0; k < n; k++) {
+              const a = hash(dot.i * 7 + k) * TAU, dist = R * (1.25 + hash(dot.i + k * 13) * .7) * (0.7 + 0.3 * grow);
+              const sr = R * (.07 + hash(dot.i * 3 + k) * .1) * grow;
+              const sx = x + Math.cos(a) * dist, sy = y + Math.sin(a) * dist;
+              gx.moveTo((sx + sr) * gs, sy * gs); gx.arc(sx * gs, sy * gs, sr * gs, 0, TAU);
+            }
+          }
+        }
+        gx.fill();
+        gx.filter = 'none';
+        const img = gx.getImageData(0, 0, GW, GH), px = img.data;
+        for (let i = 0; i < px.length; i += 4) {
+          const v = px[i] / 255; const a = clamp((v - .30) / .16);
+          px[i] = 20; px[i + 1] = 19; px[i + 2] = 23; px[i + 3] = Math.round(a * a * (3 - 2 * a) * 255);
+        }
+        gx.putImageData(img, 0, 0);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        ctx.fillStyle = paperPat; ctx.fillRect(0, 0, w, h);
+        ctx.imageSmoothingQuality = 'high';
+        ctx.drawImage(goo, 0, 0, w, h);
+        ctx.fillStyle = "#141317";
+        for (const [x, y, R] of falling) { ctx.beginPath(); ctx.ellipse(x, y, R * .32, R * .62, 0, 0, TAU); ctx.fill(); }
+      },
+    };
+    document.getElementById('ink-again').addEventListener('click', () => { start = performance.now() / 1000; finished = false; d.dirty = true; kick(); });
+    addDemo(d);
+  })();
+
+  // ============================================================ 音 music box
+  (() => {
+    const cv = document.getElementById('c-music'), ctx = cv.getContext('2d');
+    let L = layout(WORD), audio = null, soundOn = false;
+    const btn = document.getElementById('music-sound');
+    const COLS_PER_S = 4.2, TILT = 0.07;
+    let lastS = null, scroll = 0;
+    const lastPluck = new Float64Array(16).fill(-9);
+    const D3 = 146.83, PENTA = [0, 2, 4, 7, 9];
+    const freq = (ri) => D3 * Math.pow(2, (12 * Math.floor(ri / 5) + PENTA[ri % 5]) / 12);
+    function tine(f, tone, when) {
+      const ac = audio.ctx, out = audio.bus;
+      const parts = tone > 1.1 ? [[1, .5, 2.6], [2, .25, 1.6], [2.76, .18, 1.1], [5.4, .06, .4]]
+        : tone >= .99 ? [[.5, .28, 1.4], [1, .55, 1.8], [2.76, .16, .6], [5.4, .05, .2]]
+        : tone <= .01 ? [[1, .3, .9], [2, .22, .5], [5.4, .04, .15]]
+        : [[1, .45, 1.4], [2.76, .14, .5], [5.4, .05, .18]];
+      for (const [r, a, dec] of parts) {
+        const o = ac.createOscillator(), g = ac.createGain();
+        o.frequency.value = f * r; o.type = 'sine';
+        g.gain.setValueAtTime(0, when); g.gain.linearRampToValueAtTime(a * .22, when + .003);
+        g.gain.exponentialRampToValueAtTime(.0001, when + dec * 2.2);
+        o.connect(g).connect(out); o.start(when); o.stop(when + dec * 2.3);
+      }
+    }
+    btn.addEventListener('click', async () => {
+      if (!audio) {
+        const AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) { btn.textContent = '此浏览器不支持声音'; return; }
+        const ac = new AC(), comp = ac.createDynamicsCompressor(), bus = ac.createGain();
+        bus.gain.value = .7; bus.connect(comp).connect(ac.destination);
+        audio = { ctx: ac, bus };
+      }
+      soundOn = !soundOn;
+      if (soundOn && audio.ctx.state === 'suspended') await audio.ctx.resume();
+      btn.setAttribute('aria-pressed', String(soundOn));
+      btn.textContent = soundOn ? '■ 关闭声音' : '▶ 播放声音';
+    });
+    const d = {
+      el: cv,
+      animating: () => true,
+      setWord: (w) => { L = layout(w); d.dirty = true; },
+      draw: (s) => {
+        const { w, h, dpr } = fit(cv);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        const p = h / 19, combX = w * .3, base = h / 2 + 4.5 * p - .5 * p;
+        const period = Math.max(L.width + 10, Math.ceil(w / p) + 4);
+        const dt = lastS === null ? 0 : s - lastS; lastS = s;
+        const prev = scroll;
+        if (!reduce) scroll += clamp(dt, 0, .1) * COLS_PER_S; else scroll = period * .45;
+        ctx.fillStyle = COL.night; ctx.fillRect(0, 0, w, h);
+        const rowY = (row) => base - (row + .5) * p;
+        // tines
+        for (let ri = 0; ri < 16; ri++) {
+          const row = ri - 3, y = rowY(row), x0 = combX + TILT * (row - 4.5) * p + 4;
+          const L2 = (w - x0) * (0.85 - ri * .03), age = s - lastPluck[ri];
+          ctx.lineWidth = 1; ctx.strokeStyle = COL.dot;
+          ctx.globalAlpha = .14 + .45 * Math.exp(-age * 2.5);
+          ctx.beginPath();
+          const amp = 4 * Math.exp(-age * 3.5) * Math.cos(age * 50);
+          for (let k = 0; k <= 24; k++) { const u = k / 24; const xx = x0 + u * L2, yy = y + amp * Math.sin(Math.PI * u); k ? ctx.lineTo(xx, yy) : ctx.moveTo(xx, yy); }
+          ctx.stroke();
+        }
+        ctx.globalAlpha = .55; ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.moveTo(combX + TILT * 8 * p, rowY(12.4)); ctx.lineTo(combX - TILT * 8 * p, rowY(-3.6)); ctx.stroke();
+        ctx.globalAlpha = 1;
+        // dots: each dot has crossed the comb d columns ago (d in [0, period))
+        const ac = audio && soundOn ? audio.ctx : null;
+        for (const dot of L.dots) {
+          const ce = dot.col + TILT * (dot.row - 4.5) * -1;
+          const dd = ((scroll - ce) % period + period) % period;
+          const R = radius(dot.tone) * p, y = rowY(dot.row);
+          const xPlayed = combX - dd * p, xNext = combX + (period - dd) * p;
+          const age = dd / COLS_PER_S;
+          if (xPlayed > -R) {
+            const pulse = Math.exp(-age * 5);
+            ctx.globalAlpha = clamp(.95 - dd * .012, .45, 1);
+            ctx.fillStyle = dot.tone > 1.1 && age < 1.2 ? COL.violetLit : COL.dot;
+            ctx.beginPath(); ctx.arc(xPlayed, y, R * (1 + .3 * pulse), 0, TAU); ctx.fill();
+            if (age < .6) { ctx.globalAlpha = .35 * (1 - age / .6); ctx.strokeStyle = COL.dot; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(xPlayed, y, R + age * 70, 0, TAU); ctx.stroke(); }
+          }
+          if (xNext < w + R) { ctx.globalAlpha = .34; ctx.fillStyle = COL.dot; ctx.beginPath(); ctx.arc(xNext, y, R, 0, TAU); ctx.fill(); }
+          // crossing since last frame → pluck
+          if (!reduce && scroll > prev && scroll - prev < 1) {
+            if (Math.floor((scroll - ce) / period) > Math.floor((prev - ce) / period)) {
+              lastPluck[dot.row + 3] = s;
+              if (ac) tine(freq(dot.row + 3), dot.tone, ac.currentTime + .01);
+            }
+          }
+        }
+        ctx.globalAlpha = 1;
+      },
+    };
+    addDemo(d);
+  })();
+
+  // ============================================================ 孔 punch card
+  (() => {
+    const cv = document.getElementById('c-card'), ctx = cv.getContext('2d');
+    const slider = document.getElementById('card-cntr'), out = document.getElementById('card-cntr-v');
+    let L = layout(WORD), word = WORD;
+    const COLS = 64, ROWS = 16, LABELS = '0123456789ABCDEF';
+    const rr = (x, y, w, h, r) => { ctx.beginPath(); ctx.roundRect ? ctx.roundRect(x, y, w, h, r) : ctx.rect(x, y, w, h); };
+    const d = {
+      el: cv,
+      setWord: (w) => { L = layout(w); word = w; d.dirty = true; },
+      draw: () => {
+        const { w, h, dpr } = fit(cv);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        const c = +slider.value;
+        // ink blotter
+        ctx.fillStyle = COL.night; ctx.fillRect(0, 0, w, h);
+        const cw = Math.min((w - 40) / (COLS + 3), (h - 40) / (ROWS + 4.2));
+        const CW = cw * (COLS + 3), CH = cw * (ROWS + 4.2);
+        const x0 = (w - CW) / 2, y0 = (h - CH) / 2, cut = cw * 2.2;
+        // card with clipped corner + shadow
+        ctx.save();
+        ctx.shadowColor = 'rgba(0,0,0,.45)'; ctx.shadowBlur = 18; ctx.shadowOffsetY = 6;
+        ctx.fillStyle = COL.manila;
+        ctx.beginPath(); ctx.moveTo(x0 + cut, y0); ctx.lineTo(x0 + CW, y0); ctx.lineTo(x0 + CW, y0 + CH); ctx.lineTo(x0, y0 + CH); ctx.lineTo(x0, y0 + cut); ctx.closePath(); ctx.fill();
+        ctx.restore();
+        const gx0 = x0 + 1.5 * cw, gy0 = y0 + 2.4 * cw;
+        const fit64 = Math.min(L.width, COLS);
+        const off = Math.floor((COLS - fit64) / 2);
+        const holes = new Set();
+        for (const dot of L.dots) if (dot.col < COLS) holes.add((dot.col + off) + ',' + (12 - dot.row));
+        // printed row digits
+        ctx.fillStyle = COL.manilaInk; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.font = `500 ${Math.max(6, cw * .5)}px "JetBrains Mono", monospace`;
+        for (let ci = 0; ci < COLS; ci++) for (let ri = 0; ri < ROWS; ri++) {
+          if (holes.has(ci + ',' + ri)) continue;
+          ctx.globalAlpha = .55; ctx.fillText(LABELS[ri], gx0 + (ci + .5) * cw, gy0 + (ri + .5) * cw);
+        }
+        ctx.globalAlpha = 1;
+        // interpreted text along the top edge, one character above its columns
+        ctx.font = `600 ${Math.max(7, cw * .9)}px "JetBrains Mono", monospace`;
+        ctx.fillStyle = COL.night;
+        let cx = off;
+        for (const ch of word) { const g = G[ch]; if (!g) continue; if (cx + g.w > COLS) break; ctx.fillText(ch === ' ' ? '' : ch, gx0 + (cx + g.w / 2) * cw, y0 + 1.15 * cw); cx += g.w + 1; }
+        // column numbers
+        ctx.font = `500 ${Math.max(6, cw * .42)}px "JetBrains Mono", monospace`; ctx.fillStyle = COL.manilaInk;
+        for (const n of [1, 8, 16, 24, 32, 40, 48, 56, 64]) ctx.fillText(String(n), gx0 + (n - .5) * cw, gy0 + ROWS * cw + .75 * cw);
+        // holes: rectangles at CNTR 0, round and stress-sized at 100
+        const k = c / 100;
+        ctx.fillStyle = COL.night;
+        for (const dot of L.dots) {
+          if (dot.col >= COLS) continue;
+          const x = gx0 + (dot.col + off + .5) * cw, y = gy0 + (12 - dot.row + .5) * cw;
+          const r = radius(dot.tone, 400, c) * cw;
+          const ww = .46 * cw + (2 * r - .46 * cw) * k, hh = .84 * cw + (2 * r - .84 * cw) * k;
+          const rad = .05 * cw + (Math.min(ww, hh) / 2 - .05 * cw) * k;
+          rr(x - ww / 2, y - hh / 2, ww, hh, rad); ctx.fill();
+        }
+        if (L.width > COLS) { ctx.fillStyle = COL.manila; ctx.globalAlpha = .9; ctx.font = `500 12px "JetBrains Mono", monospace`; ctx.textAlign = 'right'; ctx.fillText('卡片只有 64 列 →', x0 + CW - cw, y0 + 1.15 * cw); ctx.globalAlpha = 1; }
+      },
+    };
+    slider.addEventListener('input', () => { out.textContent = slider.value; d.dirty = true; kick(); });
+    addDemo(d);
+  })();
+
+  // ============================================================ 滴 inkjet
+  (() => {
+    const cv = document.getElementById('c-jet'), ctx = cv.getContext('2d');
+    let L = layout(WORD), t0 = null;
+    const PL_THICK = 12;
+    const vol = (tone) => PL_THICK * Math.pow(radius(tone) / radius(1), 3);
+    const legend = document.getElementById('jet-legend');
+    const kinds = [[0, '发丝点 · 抬笔'], [.5, '过渡点 · 放松'], [1, '粗点 · 下压'], [1.3, '球点 · 收笔']];
+    const maxR = radius(1.3);
+    legend.innerHTML = kinds.map(([t, n]) => { const s = Math.round(radius(t) / maxR * 56); const v = vol(t); return `<div><i style="width:${s}px;height:${s}px${t > 1.1 ? ';background:var(--violet)' : ''}"></i><b>${v < 1 ? v.toFixed(2) : v.toFixed(1)} pl</b><span>${n}</span></div>`; }).join('');
+    const COL_T = 0.055, HOLD = 1.4, FADE = .5;
+    const cycle = () => (L.width + 6) * COL_T + HOLD + FADE;
+    const d = {
+      el: cv,
+      animating: () => true,
+      setWord: (w) => { L = layout(w); t0 = null; d.dirty = true; },
+      draw: (s) => {
+        const { w, h, dpr } = fit(cv);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        if (t0 === null) t0 = s;
+        const T = reduce ? (L.width + 6) * COL_T + .5 : (s - t0) % cycle();
+        ctx.fillStyle = COL.paper; ctx.fillRect(0, 0, w, h);
+        const p = Math.min(w / (L.width + 8), h / 19);
+        const ox = (w - L.width * p) / 2, base = h / 2 + 4.5 * p - .5 * p;
+        const headCol = T / COL_T - 3;
+        const fade = 1 - smooth((T - ((L.width + 6) * COL_T + HOLD)) / FADE);
+        ctx.fillStyle = COL.ink;
+        for (const dot of L.dots) {
+          const tf = (dot.col + 3) * COL_T + (dot.row + 3) * .0012;
+          const age = T - tf;
+          if (age < 0) continue;
+          const R = radius(dot.tone) * p, x = ox + (dot.col + .5) * p, y = base - (dot.row + .5) * p;
+          const g = clamp(age / .07);
+          const r = R * (1 - (1 - g) * (1 - g)) * (1 + .08 * Math.exp(-age * 30));
+          ctx.globalAlpha = fade;
+          ctx.fillStyle = dot.tone > 1.1 ? COL.violet : COL.ink;
+          ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fill();
+          if (age < .12) { ctx.globalAlpha = fade * .5 * (1 - age / .12); ctx.beginPath(); ctx.arc(x + R * .9, y - R * .6, R * .12, 0, TAU); ctx.fill(); }
+        }
+        ctx.globalAlpha = 1;
+        // print head: carriage with 16 nozzles
+        if (headCol < L.width + 3) {
+          const hx = ox + (headCol + .5) * p, top = base - 12.9 * p, bot = base + 3.9 * p;
+          ctx.fillStyle = 'rgba(20,19,23,.07)'; ctx.strokeStyle = COL.ink; ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.rect(hx - 1.4 * p, top, 2.8 * p, bot - top); ctx.fill(); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(0, top - .6 * p); ctx.lineTo(w, top - .6 * p); ctx.globalAlpha = .25; ctx.stroke(); ctx.globalAlpha = 1;
+          for (let ri = 0; ri < 16; ri++) {
+            const y = base - (ri - 3 + .5) * p;
+            const firing = L.dots.some((dd) => dd.row === ri - 3 && Math.abs(dd.col - headCol) < .5);
+            ctx.fillStyle = firing ? COL.violet : COL.ink;
+            ctx.globalAlpha = firing ? 1 : .35;
+            ctx.beginPath(); ctx.arc(hx, y, Math.max(1, p * .09), 0, TAU); ctx.fill();
+          }
+          ctx.globalAlpha = 1;
+        }
+      },
+    };
+    addDemo(d);
+  })();
+
+  // ============================================================ 光 light
+  (() => {
+    const cv = document.getElementById('c-light'), ctx = cv.getContext('2d');
+    const fIn = document.getElementById('light-focus'), dIn = document.getElementById('light-far');
+    const fOut = document.getElementById('light-focus-v'), dOut = document.getElementById('light-far-v');
+    const cap = document.getElementById('light-cap');
+    let L = layout(WORD), autoFocus = !reduce;
+    const sprite = (() => {
+      const c = document.createElement('canvas'); c.width = c.height = 256; const x = c.getContext('2d');
+      const g = x.createRadialGradient(128, 128, 0, 128, 128, 128);
+      g.addColorStop(0, 'rgba(237,235,230,.55)'); g.addColorStop(.78, 'rgba(237,235,230,.62)');
+      g.addColorStop(.9, 'rgba(240,236,250,.95)'); g.addColorStop(.97, 'rgba(185,164,232,.35)'); g.addColorStop(1, 'rgba(185,164,232,0)');
+      x.fillStyle = g; x.fillRect(0, 0, 256, 256); return c;
+    })();
+    const glow = (() => {
+      const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d');
+      const g = x.createRadialGradient(64, 64, 0, 64, 64, 64);
+      g.addColorStop(0, 'rgba(185,164,232,.35)'); g.addColorStop(1, 'rgba(185,164,232,0)');
+      x.fillStyle = g; x.fillRect(0, 0, 128, 128); return c;
+    })();
+    const d = {
+      el: cv,
+      animating: () => autoFocus,
+      setWord: (w) => { L = layout(w); d.dirty = true; },
+      draw: (s) => {
+        const { w, h, dpr } = fit(cv);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        if (autoFocus) { const v = Math.round(55 + 45 * Math.sin(s * .7)); fIn.value = v; fOut.textContent = v; }
+        const focus = +fIn.value / 100, far = +dIn.value / 100;
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.fillStyle = COL.night; ctx.fillRect(0, 0, w, h);
+        const p0 = Math.min(w / (L.width + 6), h / 18);
+        const p = p0 * Math.pow(0.1, far);
+        const fs = p * 16, f = textFraction(fs);
+        cap.textContent = `相当于字号 ${fs.toFixed(0)} px · opsz ${Math.round(clamp(fs, 12, 144))} · 文字母版占比 ${(f * 100).toFixed(0)}%`;
+        const ox = (w - L.width * p) / 2, base = h / 2 + 4.5 * p - .5 * p;
+        const blur = (1 - focus) * p0 * 1.5 * (1 - far * .7);
+        ctx.globalCompositeOperation = 'lighter';
+        for (const dot of L.dots) {
+          const R = radius(dot.tone, 400, 100, f) * p, x = ox + (dot.col + .5) * p, y = base - (dot.row + .5) * p;
+          if (blur > .6) {
+            const rd = R + blur, a = clamp(Math.pow(R / rd, 1.4) * 1.6, .05, 1);
+            ctx.globalAlpha = a;
+            ctx.drawImage(sprite, x - rd, y - rd, rd * 2, rd * 2);
+          } else {
+            ctx.globalAlpha = .5; ctx.drawImage(glow, x - R * 2.6, y - R * 2.6, R * 5.2, R * 5.2);
+            ctx.globalAlpha = 1; ctx.fillStyle = COL.dot;
+            ctx.beginPath(); ctx.arc(x, y, R, 0, TAU); ctx.fill();
+          }
+        }
+        ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
+      },
+    };
+    fIn.addEventListener('input', () => { autoFocus = false; fOut.textContent = fIn.value; d.dirty = true; kick(); });
+    dIn.addEventListener('input', () => { dOut.textContent = dIn.value; d.dirty = true; kick(); });
+    addDemo(d);
+  })();
+
+  document.fonts && document.fonts.ready.then(() => { for (const d of demos) d.dirty = true; kick(); });
+  kick();
+})();
+
+
+/* ── idea: Didone + dot matrix = Punctum, on one pitch and one baseline ── */
+let bodoniReady = false;
+function drawEq() {
+  const cvs = document.querySelectorAll(".eq-cv");
+  if (!cvs.length) return;
+  const ink = css("--ink"), grid = css("--grid"), rule = css("--rule"), violet = css("--violet");
+  const L = layout("ag"), ys = L.dots.map((d) => d.y);
+  const top = Math.max(...ys), bot = Math.min(...ys), rows = top - bot + 1;   // x-height rows + descender
+  cvs.forEach((cv) => {
+    const W = cv.clientWidth, H = cv.clientHeight || W * 4 / 5; if (!W) return;
+    const ctx = setup(cv, W, H);
+    let P = Math.min(W / (L.width + 4), H / (rows + 3.4));
+    // Bodoni sets ag wider than the dots do; shrink the shared pitch until it fits too
+    ctx.font = `600 100px "Bodoni Moda", "Didot", "Bodoni 72", serif`;
+    const mx = ctx.measureText("x").actualBoundingBoxAscent || 42, mw = ctx.measureText("ag").width;
+    const bw = (P * (top + 1)) * 100 / mx * mw / 100;
+    if (bw > W - 2.4 * P) P *= (W - 2.4 * P) / bw;
+    const base = (H + rows * P) / 2 + bot * P;            // y of the baseline (bottom edge of row 0)
+    const xh = base - (top + 1) * P;                      // x-height line
+    const cx = W / 2, kind = cv.dataset.kind;
+    if (kind === "song" || kind === "beak") { drawSong(cv, ctx, W, H); return; }
+    // guides: baseline + x-height, the same in all three panels
+    ctx.strokeStyle = rule; ctx.lineWidth = 1;
+    for (const y of [base, xh]) { ctx.beginPath(); ctx.moveTo(0, Math.round(y) + .5); ctx.lineTo(W, Math.round(y) + .5); ctx.stroke(); }
+    if (kind === "didone") {
+      ctx.fillStyle = ink; ctx.textBaseline = "alphabetic"; ctx.textAlign = "center";
+      // scale Bodoni so its x-height lands on the same line as the dots
+      const size = 100 * (base - xh) / mx;
+      ctx.font = `600 ${size}px "Bodoni Moda", "Didot", "Bodoni 72", serif`;
+      ctx.fillText("ag", cx, base);
+      return;
+    }
+    const ox = cx - L.width * P / 2, cols = Math.ceil(W / P) + 2, gx0 = ox - Math.ceil(ox / P) * P;
+    ctx.fillStyle = grid;
+    for (let r = top + 3; r >= bot - 2; r--) for (let c = 0; c < cols; c++) disc(ctx, gx0 + c * P + P / 2, base - (r + .5) * P, Math.max(.8, P * .06));
+    const c = kind === "matrix" ? 0 : 100;
+    for (const d of L.dots) {
+      ctx.fillStyle = kind === "punctum" && d.t === 1.3 ? violet : ink;
+      disc(ctx, ox + d.x * P + P / 2, base - (d.y + .5) * P, radius(kind === "matrix" ? 1 : d.t, 700, c) / 100 * P);
+    }
+  });
+}
+// 王 beside E: three horizontals on one stem, in Song and in dots
+function drawSong(cv, ctx, W, H) {
+  const ink = css("--ink"), grid = css("--grid"), rule = css("--rule"), violet = css("--violet");
+  const L = layout("E"), rows = 10;
+  const P = Math.min(W / (L.width + 9), H / (rows + 4.4));
+  const base = (H + rows * P) / 2, cap = base - rows * P, cx = W / 2;
+  ctx.strokeStyle = rule; ctx.lineWidth = 1;
+  for (const y of [base, cap]) { ctx.beginPath(); ctx.moveTo(0, Math.round(y) + .5); ctx.lineTo(W, Math.round(y) + .5); ctx.stroke(); }
+  if (cv.dataset.kind === "song") {
+    ctx.fillStyle = ink; ctx.textAlign = "center"; ctx.textBaseline = "alphabetic";
+    ctx.font = `400 100px "Noto Serif SC", "Songti SC", serif`;
+    const m = ctx.measureText("王"), a = m.actualBoundingBoxAscent || 80, d = m.actualBoundingBoxDescent || 8;
+    const size = 100 * (rows * P) / (a + d);
+    ctx.font = `400 ${size}px "Noto Serif SC", "Songti SC", serif`;
+    ctx.fillText("王", cx, base - d * size / 100);
+    return;
+  }
+  const ox = cx - L.width * P / 2, cols = Math.ceil(W / P) + 2, gx0 = ox - Math.ceil(ox / P) * P;
+  ctx.fillStyle = grid;
+  for (let r = rows + 1; r >= -2; r--) for (let c = 0; c < cols; c++) disc(ctx, gx0 + c * P + P / 2, base - (r + .5) * P, Math.max(.8, P * .06));
+  for (const d of L.dots) {
+    ctx.fillStyle = hl("beak", d) ? violet : ink;
+    disc(ctx, ox + d.x * P + P / 2, base - (d.y + .5) * P, radius(d.t, 700, 100) / 100 * P);
+  }
+}
+document.fonts && document.fonts.load('400 100px "Noto Serif SC"', "王").then(() => drawEq(), () => {});
+document.fonts && document.fonts.load('600 100px "Bodoni Moda"').then(() => { bodoniReady = true; drawEq(); }, () => {});
+
+/* ── five images: horizontal carousel ── */
+const carousel = (() => {
+  const track = $("#car-track"), tabs = [...document.querySelectorAll(".car-tabs [role=tab]")], slides = [...track.querySelectorAll(".slide")];
+  const fill = $("#car-fill"), n = slides.length;
+  let idx = -1, raf = 0;
+  const step = () => (slides[1].offsetLeft - slides[0].offsetLeft) || track.clientWidth;
+  const mark = (i) => {
+    if (i === idx) return;
+    idx = i;
+    tabs.forEach((b, k) => { b.setAttribute("aria-selected", String(k === i)); b.tabIndex = k === i ? 0 : -1; });
+    slides.forEach((s, k) => { s.inert = k !== i; });
+    $("#car-i").textContent = String(i + 1).padStart(2, "0");
+  };
+  // the hairline fills continuously while the track moves, ending on the current year's dot
+  const sync = () => {
+    const f = Math.max(0, Math.min(n - 1, track.scrollLeft / step()));
+    fill.style.width = `${(f / n) * 100}%`;
+    mark(Math.round(f));
+  };
+  const go = (i, focus) => {
+    i = (i + n) % n;
+    track.scrollTo({ left: slides[i].offsetLeft - slides[0].offsetLeft, behavior: reduce ? "auto" : "smooth" });
+    mark(i); if (focus) tabs[i].focus();
+  };
+  track.addEventListener("scroll", () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(sync); }, { passive: true });
+  // a click on a dimmed neighbour (inert, so the click lands on the track) brings it in
+  track.addEventListener("click", (e) => {
+    const r = slides[idx].getBoundingClientRect();
+    if (e.clientX > r.right) go(idx + 1); else if (e.clientX < r.left) go(idx - 1);
+  });
+  tabs.forEach((b, k) => {
+    b.addEventListener("click", () => go(k));
+    b.addEventListener("keydown", (e) => {
+      const m = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+      if (m) { e.preventDefault(); go(idx + m, true); }
+      else if (e.key === "Home") { e.preventDefault(); go(0, true); }
+      else if (e.key === "End") { e.preventDefault(); go(n - 1, true); }
+    });
+  });
+  $("#car-prev").addEventListener("click", () => go(idx - 1));
+  $("#car-next").addEventListener("click", () => go(idx + 1));
+  mark(0); sync();
+  // keep the current slide in place when the width changes
+  return { refresh() { track.scrollTo({ left: slides[idx].offsetLeft - slides[0].offsetLeft, behavior: "auto" }); sync(); } };
+})();
+
+/* ── nav: current section + reading progress ── */
+(() => {
+  const links = [...document.querySelectorAll(".nav li a")], prog = $("#nav-prog");
+  const targets = links.map((a) => document.querySelector(a.getAttribute("href")));
+  let raf = 0, cur = null;
+  const upd = () => {
+    raf = 0;
+    const h = document.documentElement, max = h.scrollHeight - innerHeight;
+    prog.style.transform = `scaleX(${max > 0 ? Math.min(1, scrollY / max) : 0})`;
+    let k = -1; const line = innerHeight * .35;
+    targets.forEach((s, i) => { if (s && s.getBoundingClientRect().top < line) k = i; });
+    const a = links[k] || null;
+    if (a !== cur) {
+      if (cur) cur.removeAttribute("aria-current");
+      if (a) { a.setAttribute("aria-current", "true"); const ul = a.closest("ul"); if (ul.scrollWidth > ul.clientWidth) ul.scrollTo({ left: a.offsetLeft - ul.clientWidth / 2 + a.offsetWidth / 2, behavior: "smooth" }); }
+      cur = a;
+    }
+  };
+  addEventListener("scroll", () => { if (!raf) raf = requestAnimationFrame(upd); }, { passive: true });
+  addEventListener("resize", upd); upd();
+})();
+
+/* ── scroll reveal ── */
+(() => {
+  if (reduce || !("IntersectionObserver" in window)) return;
+  // containers whose children arrive one after another
+  const GROUPS = ".eq, .details, .fam, .uses, .gal-items, .cols3, .faq, .f-cols, .index, .tones, .axes, .langs, .film-list";
+  const SKIP = ".stage, .car, .hero, .lens, dialog, .gal";
+  const els = new Set();
+  document.querySelectorAll("section.s .head > *, section.s .main > *, footer.f .f-top > *, footer.f .f-mark").forEach((el) => {
+    if (el.closest(SKIP)) return;
+    if (el.matches(GROUPS)) [...el.children].forEach((c, i) => { if (!c.matches("figcaption, .car-fill")) { c.style.setProperty("--rd", `${Math.min(i, 6) * 70}ms`); els.add(c); } });
+    else els.add(el);
+  });
+  document.querySelectorAll(".gal-items").forEach((g) => [...g.children].forEach((c, i) => { c.style.setProperty("--rd", `${Math.min(i, 6) * 70}ms`); els.add(c); }));
+  document.querySelectorAll("section.s .head").forEach((h) => [...h.children].forEach((c, i) => c.style.setProperty("--rd", `${i * 90}ms`)));
+  const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -6% 0px", threshold: 0 });
+  const fold = innerHeight;
+  els.forEach((el) => { if (el.getBoundingClientRect().top > fold) { el.classList.add("rv"); io.observe(el); } });
+  // a jump to an anchor reveals everything above the target at once
+  addEventListener("hashchange", () => els.forEach((el) => { if (el.getBoundingClientRect().top < innerHeight) el.classList.add("in"); }));
+})();
+
+/* ── films ── */
+(() => {
+  const stage = $("#film-stage"), v = $("#film-v"), play = $("#film-play"), cards = [...document.querySelectorAll(".film-card")];
+  // the muted loop only runs while the stage is on screen
+  if (!reduce) new IntersectionObserver((es) => {
+    if (stage.classList.contains("playing")) return;
+    if (es[0].isIntersecting) v.play().catch(() => {}); else v.pause();
+  }, { threshold: .25 }).observe(stage);
+  const load = (card) => {
+    cards.forEach((c) => c.setAttribute("aria-pressed", String(c === card)));
+    stage.classList.add("playing");
+    v.pause(); v.loop = false; v.muted = false; v.controls = true;
+    v.poster = card.dataset.poster; v.src = card.dataset.src;
+    v.setAttribute("aria-label", `《${card.dataset.title}》`);
+    v.play().catch(() => {});
+  };
+  play.addEventListener("click", () => load(cards[0]));
+  cards.forEach((c) => c.addEventListener("click", () => {
+    load(c);
+    const r = stage.getBoundingClientRect();
+    if (r.top < 56 || r.bottom > innerHeight) stage.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+  }));
+})();
+
+/* ── boot ── */
+function redrawAll() { hero.redraw(); drawEq(); drawTones(); drawCards(); drawInspector(); shearDemo.draw(); window.__motifTheme && window.__motifTheme(); }
+gridLines(); applyAxes(); tick(); setInterval(tick, 1000);
+matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", redrawAll);
+new MutationObserver(redrawAll).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+let rz; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => { hero.resize(); drawEq(); carousel.refresh(); drawTones(); drawCards(); drawInspector(); shearDemo.draw(); loupe.refresh(); }, 80); });
+drawEq(); drawTones(); drawCards(); drawInspector(); shearDemo.draw();
+document.fonts.ready.then(() => { redrawAll(); loupe.rest(); });
+</script>

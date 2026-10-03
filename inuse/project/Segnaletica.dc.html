@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Segnaletica</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..500&amp;display=swap">
+<style>
+@font-face { font-family: "Punctum Moderne"; src: url("/_blob/d3c53ecf9f4eda84a99d0694877a6bff") format("woff2"); font-weight: 100 900; font-display: block; }
+body { margin: 0; }
+</style>
+</helmet>
+
+<div style="width: 1680px; height: 600px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); background: #141416; color: #F1EFEA; font-family: 'Punctum Moderne', 'Bodoni Moda', serif">
+  <div style="box-sizing: border-box; padding: 44px 48px 48px; display: flex; flex-direction: column; ">
+    <div style="font-size: 256px; line-height: 160px; height: 160px; font-variation-settings: 'wght' 900, 'CNTR' 100; text-align: left" aria-hidden="true">←</div>
+    <div style="margin-top: auto; font-size: 128px; line-height: 96px; font-variation-settings: 'wght' 700, 'CNTR' 0"><div style="height: 96px; white-space: nowrap">Sala dei</div><div style="height: 96px; white-space: nowrap">Punzoni</div></div>
+    <div style="margin-top: 22px; font-size: 22px; color: #9D9B95; font-variation-settings: 'wght' 550, 'CNTR' 100">Sala 12 · Punzoni e matrici</div>
+  </div>
+  <div style="box-sizing: border-box; padding: 44px 48px 48px; display: flex; flex-direction: column; border-left: 1px solid #3A3A3E;">
+    <div style="font-size: 256px; line-height: 160px; height: 160px; font-variation-settings: 'wght' 900, 'CNTR' 100; text-align: right" aria-hidden="true">→</div>
+    <div style="margin-top: auto; font-size: 128px; line-height: 96px; font-variation-settings: 'wght' 700, 'CNTR' 0"><div style="height: 96px; white-space: nowrap">Biblioteca</div></div>
+    <div style="margin-top: 22px; font-size: 22px; color: #9D9B95; font-variation-settings: 'wght' 550, 'CNTR' 100">Sala 14 · Volumi a stampa, 1768–1813</div>
+  </div>
+  <div style="box-sizing: border-box; padding: 44px 48px 48px; display: flex; flex-direction: column; border-left: 1px solid #3A3A3E;">
+    <div style="height: 160px; display: flex; align-items: center"><span style="width: 64px; height: 64px; border-radius: 50%; background: #A28AD9"></span></div>
+    <div style="margin-top: auto; font-size: 128px; line-height: 96px; font-variation-settings: 'wght' 700, 'CNTR' 0"><div style="height: 96px; white-space: nowrap">Uscita</div></div>
+    <div style="margin-top: 22px; font-size: 22px; color: #9D9B95; font-variation-settings: 'wght' 550, 'CNTR' 100">Exit · Sortie · Ausgang</div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview": {"width": 1680, "height": 600}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

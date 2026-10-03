@@ -1,0 +1,346 @@
+<title>Punctum Moderne Italic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Noto+Sans+SC:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+@font-face { font-family: "Punctum Moderne"; src: url("data:font/woff2;base64,__ROMAN__") format("woff2"); font-weight: 100 900; font-style: normal; font-display: block; }
+@font-face { font-family: "Punctum Moderne"; src: url("data:font/woff2;base64,__ITALIC__") format("woff2"); font-weight: 100 900; font-style: italic; font-display: block; }
+
+/* Layout: a release sheet on printer stock. One live lattice at the top that shears from roman to italic,
+   then a single 760px measure of evidence (forms, kerning, languages, symbols, tester, files),
+   each section keyed by a left label column on wide screens. Ink black plus one ribbon blue. */
+:root {
+  --paper: #f4f5f7;
+  --ink: #121318;
+  --muted: #5b6070;
+  --rule: #d9dbe2;
+  --lattice: #c9ccd6;
+  --ribbon: #2b3fd4;
+  --panel: #eaecf1;
+  --display: "Punctum Moderne", Georgia, serif;
+  --body: "Hanken Grotesk", "Noto Sans SC", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --paper: #0f1014; --ink: #eceef3; --muted: #979db0; --rule: #262935; --lattice: #2c3040; --ribbon: #8d99ff; --panel: #171922; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --paper: #0f1014; --ink: #eceef3; --muted: #979db0; --rule: #262935; --lattice: #2c3040; --ribbon: #8d99ff; --panel: #171922; color-scheme: dark; }
+
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font: 400 16px/1.7 var(--body); font-synthesis: none; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); }
+.pm { font-family: var(--display); font-optical-sizing: auto; }
+.it { font-style: italic; }
+.mono { font-family: var(--mono); font-size: 12px; letter-spacing: .04em; }
+span.mono { white-space: nowrap; }
+.label { font-family: var(--mono); font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+
+header.top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-block: 22px 0; flex-wrap: wrap; }
+header.top .pm { font-size: 22px; }
+.hero { padding-block: 24px 8px; }
+.stage { position: relative; }
+#lattice { display: block; width: 100%; height: auto; max-width: 100%; }
+.controls { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; padding-block: 8px 0; }
+.controls input[type=range] { flex: 1 1 260px; accent-color: var(--ribbon); }
+.readout { font-family: var(--mono); font-size: 13px; min-width: 15ch; font-variant-numeric: tabular-nums; }
+.thesis { display: grid; grid-template-columns: 1fr; gap: 10px; max-width: 760px; padding-block: 28px 8px; }
+.thesis h1 { font-family: var(--body); font-weight: 500; font-size: clamp(30px, 4.6vw, 50px); line-height: 1.2; letter-spacing: -.01em; margin: 0; text-wrap: balance; }
+.thesis p { margin: 0; color: var(--muted); max-width: 62ch; }
+
+section.block { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 12px 40px; padding-block: 56px; border-top: 1px solid var(--rule); }
+section.block > .label { padding-top: 6px; }
+section.block h2 { font: 500 24px/1.3 var(--body); margin: 0 0 10px; text-wrap: balance; }
+section.block p { margin: 0 0 14px; max-width: 64ch; }
+.num { font-family: var(--mono); color: var(--ribbon); font-variant-numeric: tabular-nums; }
+@media (max-width: 760px) { section.block { grid-template-columns: minmax(0, 1fr); padding-block: 40px; } }
+
+.pairs { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 18px; }
+.pair { background: var(--paper); padding: 10px 10px 8px; display: grid; gap: 2px; }
+.pair .g { font-family: var(--display); font-size: clamp(36px, 4.4vw, 50px); line-height: 1.15; display: flex; gap: .28em; align-items: baseline; }
+.pair .g span:first-child { color: var(--muted); }
+.pair .mono { color: var(--muted); }
+
+.kern { display: grid; gap: 4px; margin-top: 18px; }
+.kern .row { display: grid; grid-template-columns: 74px minmax(0, 1fr); align-items: baseline; gap: 12px; }
+.kern .s { font-family: var(--display); font-size: clamp(30px, 5.4vw, 58px); line-height: 1.2; white-space: nowrap; overflow-x: auto; }
+.kern .off { font-kerning: none; color: var(--muted); }
+.kern .on { font-kerning: normal; }
+
+.langs { display: grid; gap: 0; margin-top: 12px; }
+.lang { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 14px; padding-block: 12px; border-bottom: 1px solid var(--rule); align-items: baseline; }
+.lang .pm { font-size: clamp(20px, 2.6vw, 28px); line-height: 1.35; }
+@media (max-width: 520px) { .lang { grid-template-columns: minmax(0, 1fr); gap: 2px; } }
+
+.syms { font-family: var(--display); font-size: clamp(40px, 7vw, 80px); line-height: 1.2; display: flex; flex-wrap: wrap; gap: .1em .45em; margin-top: 10px; }
+.syms .it { color: var(--ribbon); }
+
+.waterfall { display: grid; gap: 6px; margin-top: 12px; }
+.waterfall div { display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 10px; align-items: baseline; }
+.waterfall .pm { white-space: nowrap; overflow: hidden; text-overflow: clip; font-style: italic; }
+
+.tester { background: var(--panel); padding: 18px; margin-top: 16px; }
+.tester .tools { display: flex; flex-wrap: wrap; gap: 14px 22px; align-items: center; margin-bottom: 14px; }
+.tester label { display: flex; align-items: center; gap: 8px; }
+.tester input[type=range] { width: 130px; accent-color: var(--ribbon); }
+.tester .val { font-family: var(--mono); font-size: 12px; min-width: 3ch; font-variant-numeric: tabular-nums; }
+.seg { display: inline-flex; border: 1px solid var(--ink); }
+.seg button { font: 500 13px var(--body); padding: 5px 12px; background: transparent; color: var(--ink); border: 0; cursor: pointer; }
+.seg button[aria-pressed=true] { background: var(--ink); color: var(--paper); }
+.seg button:focus-visible, input:focus-visible, #ed:focus-visible { outline: 2px solid var(--ribbon); outline-offset: 2px; }
+#ed { font-family: var(--display); font-optical-sizing: auto; line-height: 1.25; outline: none; min-height: 1.3em; overflow-wrap: anywhere; }
+
+table.files { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 8px; }
+table.files td { padding: 8px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+table.files td:last-child { text-align: right; font-family: var(--mono); font-size: 12.5px; color: var(--muted); white-space: nowrap; padding-left: 12px; }
+table.files td:first-child { font-family: var(--mono); font-size: 12.5px; overflow-wrap: anywhere; }
+.tablewrap { overflow-x: auto; }
+footer { padding-block: 40px 56px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 13px; }
+ul.changes { margin: 0; padding-left: 1.1em; max-width: 64ch; }
+ul.changes li { margin-bottom: 6px; }
+.swtools { display: flex; align-items: center; gap: 16px; margin-top: 18px; flex-wrap: wrap; }
+.swash { font-family: var(--display); font-style: italic; margin-top: 14px; padding-block: 18px 6px; padding-inline: clamp(8px, 3vw, 36px); background: var(--panel); overflow-x: auto; }
+.swash.on { font-feature-settings: "swsh" 1; }
+.swash .alpha { font-size: clamp(40px, 7.4vw, 92px); line-height: 1.22; white-space: nowrap; }
+.swash .words { font-size: clamp(28px, 4.6vw, 58px); line-height: 1.3; font-weight: 600; margin-top: 14px; white-space: nowrap; }
+.swash .words .light { font-weight: 250; }
+.note { color: var(--muted); font-size: 14px; margin-top: 14px !important; }
+@media (max-width: 900px) { .pairs { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .kern .row { grid-template-columns: minmax(0, 1fr); gap: 0; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <span class="pm">Punctum Moderne <span class="it">Italic</span></span>
+    <span class="label">v2.4 · 2026-10 · OFL 1.1</span>
+  </header>
+
+  <div class="hero">
+    <div class="stage"><canvas id="lattice" width="1600" height="560" aria-label="The word Italique drawn in dots; the dot grid shears from upright to a 12 degree italic and the lowercase changes to cursive forms."></canvas></div>
+    <div class="controls">
+      <span class="label">倾斜</span>
+      <input id="slant" type="range" min="0" max="1000" value="1000" aria-label="倾斜程度">
+      <span class="readout" id="readout">12.0° · 斜体字形</span>
+    </div>
+  </div>
+
+  <div class="thesis">
+    <h1>点阵被推斜，字母开始书写</h1>
+    <p>斜体先把整张点阵推斜：每往上一行，点就向右错开 tan&nbsp;12° ≈ 0.21 个点距，就像针式打印头逐行延迟击针。点本身始终是正圆。在推斜的点阵上，小写字母再重画成真正的书写体。</p>
+  </div>
+
+  <section class="block" id="forms">
+    <div class="label">01 · 草书字形</div>
+    <div>
+      <h2>十六个小写字母重画成书写体</h2>
+      <p>其余小写只做剪切。重画的这些字母去掉了脚衬，竖笔收尾时用一根细线小钩向上卷，引向下一个字母；a 改为单层，f 穿过基线并以墨球收尾，v 和 w 的底部改成圆转。小钩的末端点伸进侧距，所以 <span class="pm it">minimum</span> 里的字母间距和正体一样均匀。</p>
+      <div class="pairs" id="pairs"></div>
+    </div>
+  </section>
+
+  <section class="block" id="swash">
+    <div class="label">02 · 花式大写</div>
+    <div>
+      <h2>二十六个斜体花式大写</h2>
+      <p>花式大写叠加在斜体大写之上，宽度不变，花饰伸进字侧的空白。全套只用三种笔势：入笔从最左端的墨球起，细线拱过大写高度落进衬线；收笔的脚从基线下方扫过，再向上卷成墨球；腿和臂的末端向上一勾，以墨球结束。墨球旁有一颗过渡点，让细线从墨球处渐渐变细，像宽头笔的提按。在 CSS 里写 <span class="mono">font-feature-settings: "swsh"</span>，或在设计软件里打开风格集 1（Swash capitals）即可使用。</p>
+      <div class="swtools"><div class="seg" role="group" aria-label="花式大写">
+        <button id="sw-on" type="button" aria-pressed="true">花式</button>
+        <button id="sw-off" type="button" aria-pressed="false">标准</button>
+      </div><span class="label">swsh · ss01</span></div>
+      <div class="swash on" id="swashdemo">
+        <div class="alpha">ABCDEFGHI<br>JKLMNOPQR<br>STUVWXYZ</div>
+        <div class="words">Rendezvous at Midnight<br><span class="light">The Quiet Printhead, Vol. II</span></div>
+      </div>
+      <p class="note">词中的花式大写会自动推开前一个字母，字距表里为此另加了 <span class="num">__KS__</span> 对正值字距；正文字母之间仍然只有收紧，没有推开。</p>
+    </div>
+  </section>
+
+  <section class="block" id="kerning">
+    <div class="label">03 · 字距调整</div>
+    <div>
+      <h2>按点阵整格计算的字距</h2>
+      <p>正体 <span class="num">__KR__</span> 对，斜体 <span class="num">__KI__</span> 对。每一对字距都是整数个点距，所以调整后两个字母的点仍落在同一张网格上；斜体则落在同一张斜网格上。算法先找出右字可以左移多远而不让任何点靠近到两个点距以内，再取这段空隙的三分之二。这样 To、AV、P. 会收紧，rn 不会挤成 m。</p>
+      <div class="kern">
+        <div class="row"><span class="label">未调整</span><span class="s off">LAVA · Toyota · P.T. Wafer</span></div>
+        <div class="row"><span class="label">已调整</span><span class="s on">LAVA · Toyota · P.T. Wafer</span></div>
+        <div class="row"><span class="label">未调整</span><span class="s off it">Your Type, Vowel. AT&amp;T</span></div>
+        <div class="row"><span class="label">已调整</span><span class="s on it">Your Type, Vowel. AT&amp;T</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="languages">
+    <div class="label">04 · 语言</div>
+    <div>
+      <h2>__N__ 个字符，覆盖中欧、波罗的海与土耳其语</h2>
+      <p>新增扬抑符反写（ˇ）、长音符、短音符、上点、双锐音、反尾形符（˛）、下逗号和斜杠字母，共 79 个带符字母。ď ť ľ Ľ 的扬抑符反写按惯例画成字母右侧的小撇。下面每行都是该语言的全字母句。</p>
+      <div class="langs" id="langs"></div>
+    </div>
+  </section>
+
+  <section class="block" id="symbols">
+    <div class="label">05 · 新符号</div>
+    <div>
+      <h2>补齐排版常用符号</h2>
+      <p>版权与商标符号、章节号、段落号、正负号、除号、分币与日元符号，以及低位引号和单书名号。蓝色为斜体。</p>
+      <div class="syms"><span>© ™ § ¶ ± ÷ ¢ ¥ ‚ „ ‹ ›</span><span class="it">© ™ § ¶ ± ÷ ¢ ¥ ‚ „ ‹ ›</span></div>
+    </div>
+  </section>
+
+  <section class="block" id="sizes">
+    <div class="label">06 · 字号</div>
+    <div>
+      <h2>斜体同样带有光学尺寸轴</h2>
+      <p>浏览器会自动把 opsz 设成字号。小字号下细线点放大、粗点变胖，所以 12&nbsp;px 的斜体仍然能读；到展示字号时，细线点收回成针眼。</p>
+      <div class="waterfall" id="waterfall"></div>
+    </div>
+  </section>
+
+  <section class="block" id="tester">
+    <div class="label">07 · 试排</div>
+    <div>
+      <h2>自己试一试</h2>
+      <div class="tester">
+        <div class="tools">
+          <div class="seg" role="group" aria-label="字形">
+            <button id="b-roman" type="button" aria-pressed="false">正体</button>
+            <button id="b-italic" type="button" aria-pressed="true">斜体</button>
+          </div>
+          <label><span class="label">字重</span><input id="t-wght" type="range" min="100" max="900" value="400"><span class="val" id="v-wght">400</span></label>
+          <label><span class="label">对比</span><input id="t-cntr" type="range" min="0" max="100" value="100"><span class="val" id="v-cntr">100</span></label>
+          <label><span class="label">字号</span><input id="t-size" type="range" min="12" max="160" value="72"><span class="val" id="v-size">72</span></label>
+        </div>
+        <div id="ed" contenteditable="true" spellcheck="false">Nocturne for a dot-matrix printer, played <span>affettuoso</span>.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="files">
+    <div class="label">08 · 文件</div>
+    <div>
+      <h2>本次构建的字体文件</h2>
+      <p>两个可变字体共用 wght、CNTR、opsz 三条轴，STAT 表用 ital 把它们连成一个字族：在 CSS 里声明两个 <span class="mono">font-style</span> 不同的 @font-face，<span class="mono">&lt;em&gt;</span> 就会用到真斜体，不会是浏览器合成的假斜体。</p>
+      <div class="tablewrap"><table class="files"><tbody id="filelist"></tbody></table></div>
+      <h2 style="margin-top:34px">v2.3 – v2.4 修改记录</h2>
+      <ul class="changes">
+        <li>新增 Italic：12° 剪切点阵，重画 16 个小写字母，可变轴与正体相同。</li>
+        <li>新增 26 个斜体花式大写，用 swsh 或 ss01 调用。</li>
+        <li>新增 GPOS 字距：正体 __KR__ 对、斜体 __KI__ 对，均按整格点距计算。</li>
+        <li>扩展字符集：从 175 个增至 __N__ 个，新增 79 个带符字母和 12 个符号。</li>
+        <li>新增 12 个符号：© ™ § ¶ ± ÷ ¢ ¥ ‚ „ ‹ ›。</li>
+        <li>重画正体 k：右臂收到第 6 行，腿部改成斜向收尾，脚衬与 h、n 对齐。</li>
+        <li>静态字体从 9 个增至 18 个，每个正体样式都有对应的斜体。</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>Punctum Moderne v2.4. Designed by Claude for sundyme, 2026. SIL Open Font License 1.1.</footer>
+</div>
+
+<script>
+const GR = __GR__, GI = __GI__, FILES = __FILES__;
+const TAN = Math.tan(12 * Math.PI / 180), PIVOT = 3;
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+
+/* --- hero lattice ------------------------------------------------------- */
+const cv = document.getElementById('lattice'), ctx = cv.getContext('2d');
+const WORD = 'Italique', COLS = 52, ROWS = 18, TOP = 13.5;
+function layout(G) { let x = 3, out = []; for (const ch of WORD) { out.push(x); x += G[ch].w + 1; } return out; }
+const OR = layout(GR), OI = layout(GI);
+const rad = tone => (11 + 29 * tone) / 100;               // display master, wght 400, full contrast
+const unshear = (x, y) => x - (y - PIVOT) * TAN;
+let t = 1;
+function draw() {
+  const W = cv.width, P = W / COLS; cv.height = Math.round(P * ROWS);
+  const H = cv.height, sh = t * TAN;
+  const m = Math.min(1, Math.max(0, (t - 0.55) / 0.45));  // cursive forms fade in over the last part of the slant
+  const ease = m * m * (3 - 2 * m);
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = css('--lattice');
+  for (let y = -3; y <= 12; y++) for (let x = -2; x < COLS + 2; x++) {
+    const px = (x + .5 + (y - PIVOT) * sh) * P, py = (TOP - y) * P;
+    ctx.beginPath(); ctx.arc(px, py, P * .045, 0, 7); ctx.fill();
+  }
+  const ink = css('--ink');
+  const paint = (G, origins, alpha, italic) => {
+    if (alpha <= 0.002) return;
+    ctx.globalAlpha = alpha; ctx.fillStyle = ink;
+    [...WORD].forEach((ch, i) => {
+      const ox = OR[i] + (OI[i] - OR[i]) * ease;
+      for (const [x0, y, tone] of G[ch].d) {
+        const x = italic ? unshear(x0, y) : x0;
+        const px = (ox + x + .5 + (y - PIVOT) * sh) * P, py = (TOP - y) * P;
+        ctx.beginPath(); ctx.arc(px, py, rad(tone) * P, 0, 7); ctx.fill();
+      }
+    });
+    ctx.globalAlpha = 1;
+  };
+  paint(GR, OR, 1 - ease, false);
+  paint(GI, OI, ease, true);
+  const deg = Math.atan(sh) * 180 / Math.PI;
+  document.getElementById('readout').textContent = `${deg.toFixed(1)}° · ${m >= 1 ? '斜体字形' : m > 0 ? '字形过渡' : '正体字形'}`;
+}
+function fit() { const w = Math.min(2000, Math.round(cv.getBoundingClientRect().width * (window.devicePixelRatio || 1))); if (w > 0) cv.width = w; draw(); }
+const slant = document.getElementById('slant');
+slant.addEventListener('input', () => { anim = false; t = slant.value / 1000; draw(); });
+let anim = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (anim) {
+  let start = null; t = 0; slant.value = 0;
+  const step = ts => {
+    if (!anim) return;
+    if (start === null) start = ts + 500;
+    const k = Math.min(1, Math.max(0, (ts - start) / 2600));
+    t = k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+    slant.value = Math.round(t * 1000); draw();
+    if (k < 1) requestAnimationFrame(step); else anim = false;
+  };
+  requestAnimationFrame(step);
+}
+addEventListener('resize', fit);
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', draw);
+new MutationObserver(draw).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+document.fonts.ready.then(fit); fit();
+
+/* --- pairs, languages, waterfall, files --------------------------------- */
+const pairs = 'a d f h i k l m n p q r u v w y'.split(' ');
+document.getElementById('pairs').innerHTML = pairs.map(c =>
+  `<div class="pair"><div class="g"><span>${c}</span><span class="it">${c}</span></div><span class="mono">${c} → <i>${c}</i></span></div>`).join('');
+const LANGS = [
+  ['Polski', 'Pchnąć w tę łódź jeża lub ośm skrzyń fig.'],
+  ['Čeština', 'Příliš žluťoučký kůň úpěl ďábelské ódy.'],
+  ['Slovenčina', 'Kŕdeľ šťastných ďatľov učí pri ústí Váhu mĺkveho koňa obhrýzať kôru a žrať čerstvé mäso.'],
+  ['Magyar', 'Árvíztűrő tükörfúrógép.'],
+  ['Română', 'Muzicologă în bej vând whisky și tequila, preț fix.'],
+  ['Türkçe', 'Pijamalı hasta yağız şoföre çabucak güvendi.'],
+  ['Hrvatski', 'Gojazni đačić s biciklom drži hmelj i finu vatu u džepu nošnje.'],
+  ['Lietuvių', 'Įlinkdama fechtuotojo špaga sublykčiojusi pragręžė apvalų arbūzą.'],
+];
+document.getElementById('langs').innerHTML = LANGS.map(([n, s], i) =>
+  `<div class="lang"><span class="label">${n}</span><span class="pm${i % 2 ? ' it' : ''}">${s}</span></div>`).join('');
+document.getElementById('waterfall').innerHTML = [12, 16, 24, 36, 56, 88].map(s =>
+  `<div><span class="mono">${s}px</span><span class="pm" style="font-size:${s}px;line-height:1.3">Quietly, the printhead leaned twelve degrees and began to write.</span></div>`).join('');
+document.getElementById('filelist').innerHTML = FILES.map(([n, s]) => `<tr><td>${n}</td><td>${s}</td></tr>`).join('');
+
+/* --- tester -------------------------------------------------------------- */
+const ed = document.getElementById('ed');
+const ctl = { wght: 400, CNTR: 100, size: 72, italic: true };
+function apply() {
+  ed.style.fontSize = ctl.size + 'px';
+  ed.style.fontWeight = ctl.wght;
+  ed.style.fontStyle = ctl.italic ? 'italic' : 'normal';
+  ed.style.fontVariationSettings = `"CNTR" ${ctl.CNTR}`;
+  document.getElementById('b-roman').setAttribute('aria-pressed', !ctl.italic);
+  document.getElementById('b-italic').setAttribute('aria-pressed', ctl.italic);
+}
+for (const [id, key] of [['t-wght', 'wght'], ['t-cntr', 'CNTR'], ['t-size', 'size']]) {
+  const el = document.getElementById(id), v = document.getElementById('v-' + id.slice(2));
+  el.addEventListener('input', () => { ctl[key] = +el.value; v.textContent = el.value; apply(); });
+}
+document.getElementById('b-roman').onclick = () => { ctl.italic = false; apply(); };
+document.getElementById('b-italic').onclick = () => { ctl.italic = true; apply(); };
+apply();
+const sw = document.getElementById('swashdemo');
+const setSw = on => { sw.classList.toggle('on', on); document.getElementById('sw-on').setAttribute('aria-pressed', on); document.getElementById('sw-off').setAttribute('aria-pressed', !on); };
+document.getElementById('sw-on').onclick = () => setSw(true);
+document.getElementById('sw-off').onclick = () => setSw(false);
+</script>

@@ -1,0 +1,11 @@
+<!doctype html><html><head><meta charset="utf-8"><title>film3 dev</title>
+<style>@font-face{font-family:"Punctum Moderne";src:url("assets/fonts/PunctumModerne-VF.woff2") format("woff2");font-weight:100 900}
+html,body{margin:0;background:#111}canvas{display:block;width:1920px;height:1080px}</style></head>
+<body><canvas id="c" width="1920" height="1080"></canvas>
+<script src="assets/glyphs.js"></script><script src="assets/film.js"></script>
+<script>
+const F=createSignal(window.PM_GLYPHS); const ctx=document.getElementById('c').getContext('2d');
+const t=+(new URLSearchParams(location.search).get('t')||0);
+window.go=(t)=>{const a=performance.now();F.draw(ctx,t);return performance.now()-a;};
+document.fonts.load('500 17px "Punctum Moderne"').then(()=>{ try{ go(t); document.title='ok'; }catch(e){ document.title='ERR '+e.message; console.error(e);} });
+</script></body></html>

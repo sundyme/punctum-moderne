@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script src="assets/glyphs.js"></script>
+    <script src="assets/shaders.js"></script>
+    <script src="assets/film.js"></script>
+    <style>
+      @font-face { font-family: "Punctum Moderne"; src: url("assets/fonts/PunctumModerne-VF.woff2") format("woff2"); font-weight: 100 900; }
+      @font-face { font-family: "Songti Sub"; src: url("assets/fonts/SongtiSC-Light-sub.woff2") format("woff2"); font-weight: 300; }
+      @font-face { font-family: "Songti Sub"; src: url("assets/fonts/SongtiSC-Regular-sub.woff2") format("woff2"); font-weight: 400; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #000; }
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; }
+      #stage { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+      .cap { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; pointer-events: none; }
+      .cap .in {
+        display: flex;
+        position: absolute; left: 116px; top: 938px;
+        display: flex; align-items: baseline; gap: 18px;
+        color: #EDEBE6; opacity: 0;
+      }
+      .cap.dark .in { color: #1B1A1D; }
+      .zh { font-family: "Songti Sub", serif; font-weight: 300; font-size: 30px; line-height: 1; }
+      .rule { display: inline-block; width: 30px; height: 1px; background: currentColor; opacity: 0.5; transform: translateY(-8px); }
+      .en, .yr {
+        font-family: "Punctum Moderne", serif; font-size: 21px; line-height: 1; letter-spacing: 0.04em;
+        font-variation-settings: "wght" 420, "CNTR" 100, "opsz" 21;
+      }
+      .yr { opacity: 0.55; }
+      .fin { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; pointer-events: none; }
+      .fin .tag {
+        display: block;
+        position: absolute; left: 0; right: 0; top: 592px; text-align: center; color: #EDEBE6; opacity: 0;
+        font-family: "Punctum Moderne", serif; font-size: 30px; letter-spacing: 0.05em;
+        font-variation-settings: "wght" 400, "CNTR" 100, "opsz" 30;
+      }
+      .fin .zhl {
+        display: block;
+        position: absolute; left: 0; right: 0; top: 646px; text-align: center; color: #EDEBE6; opacity: 0;
+        font-family: "Songti Sub", serif; font-weight: 300; font-size: 21px; letter-spacing: 0.32em;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="48" data-width="1920" data-height="1080">
+      <canvas id="stage" class="clip" width="1920" height="1080" data-start="0" data-duration="48" data-track-index="0" data-layout-allow-overflow></canvas>
+
+      <div id="cap-ink" class="cap dark clip" data-start="8.4" data-duration="2.6" data-track-index="1"><span class="in"><span class="zh">墨</span><span class="rule"></span><span class="en">Ink</span><span class="yr">1788</span></span></div>
+      <div id="cap-mb" class="cap clip" data-start="15.4" data-duration="3.2" data-track-index="1"><span class="in"><span class="zh">音</span><span class="rule"></span><span class="en">Music box</span><span class="yr">1796</span></span></div>
+      <div id="cap-card" class="cap clip" data-start="23.0" data-duration="2.9" data-track-index="1"><span class="in"><span class="zh">孔</span><span class="rule"></span><span class="en">Punch card</span><span class="yr">1890</span></span></div>
+      <div id="cap-jet" class="cap clip" data-start="29.6" data-duration="3.0" data-track-index="1"><span class="in"><span class="zh">滴</span><span class="rule"></span><span class="en">Inkjet</span><span class="yr">1984</span></span></div>
+      <div id="cap-light" class="cap clip" data-start="35.0" data-duration="3.6" data-track-index="1"><span class="in"><span class="zh">光</span><span class="rule"></span><span class="en">Light</span><span class="yr">2026</span></span></div>
+      <audio id="score" src="assets/score.wav" data-start="0" data-duration="48" data-track-index="5"></audio>
+      <div id="fin-tag" class="fin clip" data-start="42.0" data-duration="5.2" data-track-index="2"><span class="tag">A dot-matrix Didone</span></div>
+      <div id="fin-zh" class="fin clip" data-start="42.0" data-duration="5.2" data-track-index="3"><span class="zhl">一个点，穿过两百五十年。</span></div>
+    </div>
+    <script>
+      const SS = 2;
+      const F = createFilm(window.PM_GLYPHS);
+      const R = F.attach(document.getElementById("stage"), { ss: SS });
+      const clock = { t: 0 };
+      const tl = gsap.timeline({ paused: true });
+      tl.to(clock, { t: 48, duration: 48, ease: "none", onUpdate: () => R.draw(clock.t) }, 0);
+      const caps = [["#cap-ink", 8.4, 2.6], ["#cap-mb", 15.4, 3.2], ["#cap-card", 23.0, 2.9], ["#cap-jet", 29.6, 3.0], ["#cap-light", 35.0, 3.6]];
+      for (const [id, s, d] of caps) {
+        const el = document.querySelector(id + " .in");
+        tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, s);
+        tl.to(el, { opacity: 0, duration: 0.5, ease: "power1.in" }, s + d - 0.5);
+      }
+      tl.fromTo("#fin-tag .tag", { opacity: 0, y: 8 }, { opacity: 0.92, y: 0, duration: 0.9, ease: "power2.out" }, 42.1);
+      tl.fromTo("#fin-zh .zhl", { opacity: 0, y: 8 }, { opacity: 0.62, y: 0, duration: 0.9, ease: "power2.out" }, 42.9);
+      tl.to(["#fin-tag .tag", "#fin-zh .zhl"], { opacity: 0, duration: 0.8, ease: "power1.in" }, 45.95);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      R.draw(0);
+    </script>
+  </body>
+</html>

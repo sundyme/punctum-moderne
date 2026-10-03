@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Contrasto</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..500&amp;display=swap">
+<style>
+@font-face { font-family: "Punctum Moderne"; src: url("/_blob/d3c53ecf9f4eda84a99d0694877a6bff") format("woff2"); font-weight: 100 900; font-display: block; }
+body { margin: 0; }
+</style>
+</helmet>
+
+<div style="width: 900px; height: 1200px; box-sizing: border-box; position: relative; overflow: hidden; background-color: #F1F0EC; background-image: radial-gradient(circle, #D2CFC6 0 2px, transparent 2.6px); background-size: 100px 100px; background-position: 50px 30px; color: #131313; font-family: 'Punctum Moderne', 'Bodoni Moda', serif">
+  <div style="position: absolute; left: 64px; right: 64px; top: 56px; display: flex; justify-content: space-between; align-items: baseline">
+    <span style="font-size: 32px; font-variation-settings: 'wght' 800, 'CNTR' 100">Contrasto</span>
+    <span style="font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 22px; color: #5C5A55">Tavola dei punti</span>
+  </div>
+  <div aria-hidden="true" style="position: absolute; left: 150px; top: -270px; font-size: 1600px; line-height: 1600px; white-space: nowrap; color: #C9BBE8; font-variation-settings: 'wght' 900, 'CNTR' 0">a</div>
+  <div style="position: absolute; left: 150px; top: -270px; font-size: 1600px; line-height: 1600px; white-space: nowrap; color: #131313; mix-blend-mode: multiply; font-variation-settings: 'wght' 900, 'CNTR' {{cntr}}">a</div>
+  <div style="position: absolute; left: 64px; right: 64px; bottom: 56px; display: grid; gap: 18px; padding-top: 20px; border-top: 1px solid #131313">
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; font-size: 20px; font-variation-settings: 'wght' 600, 'CNTR' 100">
+      <div style="display: flex; gap: 12px; align-items: center"><span style="width: 18px; height: 18px; border-radius: 50%; background: #C9BBE8; flex: none"></span>CNTR 0 · ogni punto uguale</div>
+      <div style="display: flex; gap: 12px; align-items: center"><span style="width: 18px; height: 18px; border-radius: 50%; background: #131313; flex: none"></span>CNTR 100 · i punti seguono la penna</div>
+    </div>
+    <p style="margin: 0; font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 28px; line-height: 1.3">Stessi punti, stesso reticolo: cambia soltanto il raggio.</p>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"cntr": {"editor": "range", "default": 100, "min": 0, "max": 100, "step": 1}, "$preview": {"width": 900, "height": 1200}}'>
+class Component extends DCLogic {
+renderVals() { return { cntr: this.props.cntr ?? 100 }; }
+}
+</script>
+</body>
+</html>

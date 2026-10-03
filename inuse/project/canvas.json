@@ -1,0 +1,120 @@
+{
+ "v": 3,
+ "createdOnFiles": {
+  "v": 1,
+  "at": "2026-10-03T15:58:48Z"
+ },
+ "title": "Punctum Moderne in Use",
+ "launch": {
+  "view": "canvas"
+ },
+ "pages": [],
+ "boards": {
+  "Main.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 900,
+   "h": 1200,
+   "title": "Exhibition poster"
+  },
+  "Contrasto.dc.html": {
+   "x": 980,
+   "y": 0,
+   "w": 900,
+   "h": 1200,
+   "title": "Contrast plate"
+  },
+  "Copertina.dc.html": {
+   "x": 1960,
+   "y": 0,
+   "w": 800,
+   "h": 1200,
+   "title": "Book cover"
+  },
+  "Rivista.dc.html": {
+   "x": 2840,
+   "y": 0,
+   "w": 900,
+   "h": 1200,
+   "title": "Magazine cover"
+  },
+  "Spread.dc.html": {
+   "x": 0,
+   "y": 1560,
+   "w": 1600,
+   "h": 1000,
+   "title": "Editorial spread"
+  },
+  "Profumo.dc.html": {
+   "x": 1680,
+   "y": 1560,
+   "w": 800,
+   "h": 1000,
+   "title": "Fragrance box"
+  },
+  "Menu.dc.html": {
+   "x": 2560,
+   "y": 1560,
+   "w": 700,
+   "h": 1000,
+   "title": "Restaurant menu"
+  },
+  "Segnaletica.dc.html": {
+   "x": 0,
+   "y": 2900,
+   "w": 1680,
+   "h": 600,
+   "title": "Wayfinding"
+  },
+  "Biglietti.dc.html": {
+   "x": 1760,
+   "y": 2900,
+   "w": 1180,
+   "h": 600,
+   "title": "Business cards"
+  },
+  "Orologio.dc.html": {
+   "x": 3020,
+   "y": 2900,
+   "w": 600,
+   "h": 600,
+   "title": "Watch face"
+  }
+ },
+ "order": [
+  "Main.dc.html",
+  "Contrasto.dc.html",
+  "Copertina.dc.html",
+  "Rivista.dc.html",
+  "Spread.dc.html",
+  "Profumo.dc.html",
+  "Menu.dc.html",
+  "Segnaletica.dc.html",
+  "Biglietti.dc.html",
+  "Orologio.dc.html"
+ ],
+ "notes": {
+  "row1": {
+   "x": 0,
+   "y": -260,
+   "text": "Posters & covers",
+   "kind": "title1",
+   "maxW": 3740
+  },
+  "row2": {
+   "x": 0,
+   "y": 1300,
+   "text": "Editorial, packaging, menu",
+   "kind": "title1",
+   "maxW": 3260
+  },
+  "row3": {
+   "x": 0,
+   "y": 2640,
+   "text": "Space, identity, screen",
+   "kind": "title1",
+   "maxW": 3620
+  }
+ },
+ "designSystems": []
+}

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Studio Punto</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..500&amp;display=swap">
+<style>
+@font-face { font-family: "Punctum Moderne"; src: url("/_blob/d3c53ecf9f4eda84a99d0694877a6bff") format("woff2"); font-weight: 100 900; font-display: block; }
+body { margin: 0; }
+</style>
+</helmet>
+
+<div style="width: 1180px; height: 600px; background: #E2E0DA; display: flex; align-items: center; justify-content: center; gap: 56px; font-family: 'Punctum Moderne', 'Bodoni Moda', serif">
+  <div style="width: 520px; height: 336px; box-sizing: border-box; padding: 30px 34px 30px 34px; background: #4E347D; color: #F3EFE6; display: flex; flex-direction: column; transform: rotate(-2deg); box-shadow: 0 1px 2px rgba(0,0,0,.10), 0 16px 36px rgba(40,30,60,.22)">
+    <div style="font-size: 224px; line-height: 168px; height: 168px; font-variation-settings: 'wght' 900, 'CNTR' 100">P.</div>
+    <div style="margin-top: auto; align-self: flex-end; text-align: right">
+      <div style="font-size: 18px; font-variation-settings: 'wght' 650, 'CNTR' 100">Studio Punto</div>
+      <div style="font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 15px; opacity: .85">Caratteri e segni</div>
+    </div>
+  </div>
+  <div style="width: 520px; height: 336px; box-sizing: border-box; padding: 34px 36px 30px; background: #F7F6F2; color: #131313; display: flex; flex-direction: column; box-shadow: 0 1px 2px rgba(0,0,0,.08), 0 16px 36px rgba(0,0,0,.14)">
+    <div style="font-size: 48px; line-height: 1; font-variation-settings: 'wght' 900, 'CNTR' 100">Marta Vigilante</div>
+    <div style="margin-top: 10px; font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 17px; color: #4A4843">Disegnatrice di caratteri</div>
+    <div style="margin-top: auto; display: grid; gap: 3px; font-size: 15px; font-variation-settings: 'wght' 550, 'CNTR' 100; font-variant-numeric: tabular-nums">
+      <span>marta@studiopunto.example</span><span>+39 0521 000 000</span><span style="color: #4E347D">Studio Punto · Parma</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview": {"width": 1180, "height": 600}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

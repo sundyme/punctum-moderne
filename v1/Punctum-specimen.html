@@ -1,0 +1,499 @@
+<title>Punctum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+@font-face {
+  font-family: "Punctum";
+  src: url(data:font/woff2;base64,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) format("woff2");
+  font-weight: 100 900;
+  font-display: block;
+}
+
+/* Layout: one continuous-form printout. A 940px sheet between tractor-feed margins; sections are torn apart at perforations. */
+:root {
+  --paper: #F1F4EB;      /* continuous-form stock */
+  --band: #E2EDD9;       /* green-bar stripe, 1/2 inch */
+  --ink: #23286A;        /* nylon ribbon, blue-violet */
+  --ink-2: #5A5F7E;
+  --rule: #C3CCBB;
+  --hole: #D6DDCD;
+  --dot-off: #D5DCCB;
+  --field: #FAFBF7;
+  --board-bg: #12110E;
+  --board-frame: #2B2A26;
+
+  --display: "Punctum", ui-monospace, Menlo, monospace;
+  --body: "Atkinson Hyperlegible", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+
+  --s-1: 0.8125rem; --s0: 1rem; --s1: 1.25rem; --s2: 1.75rem; --s3: 2.5rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #071315; --band: #0A191C; --ink: #93E7DA; --ink-2: #5E8C88;
+    --rule: #1B3235; --hole: #030909; --dot-off: #14292B; --field: #0B1A1D;
+    --board-bg: #0B0B09; --board-frame: #22231F;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #071315; --band: #0A191C; --ink: #93E7DA; --ink-2: #5E8C88;
+  --rule: #1B3235; --hole: #030909; --dot-off: #14292B; --field: #0B1A1D;
+  --board-bg: #0B0B09; --board-frame: #22231F;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: var(--s0);
+  line-height: 1.6;
+  padding-inline: 16px;
+}
+
+/* ── the sheet ─────────────────────────────── */
+.sheet {
+  max-width: 1020px;
+  margin-inline: auto;
+  padding-inline: 0;
+  position: relative;
+  background-image: repeating-linear-gradient(to bottom, var(--band) 0 0.5in, transparent 0.5in 1in);
+}
+.sheet > * { padding-inline: 20px; }
+@media (min-width: 760px) {
+  .sheet > * { padding-inline: 72px; }
+  .sheet::before, .sheet::after {
+    content: ""; position: absolute; top: 0; bottom: 0; width: 40px; pointer-events: none;
+    background:
+      radial-gradient(circle at 20px 0.25in, var(--hole) 5.5px, transparent 6.5px) 0 0 / 40px 0.5in repeat-y,
+      var(--paper);
+  }
+  .sheet::before { left: 0; border-right: 1px dashed var(--rule); }
+  .sheet::after { right: 0; border-left: 1px dashed var(--rule); }
+}
+
+.perf { border: 0; border-top: 1px dashed var(--rule); margin: 0; height: 0; padding: 0 !important; }
+
+section { padding-block: 56px; display: grid; gap: 24px; }
+.eyebrow {
+  font-family: var(--mono); font-size: var(--s-1); letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink-2); display: flex; flex-wrap: wrap; gap: 6px 18px;
+}
+h2 {
+  font-family: var(--display); font-weight: 700; font-variation-settings: "wght" 700, "ROND" 100;
+  font-size: clamp(2rem, 6vw, 3.5rem); line-height: 1; margin: 0; letter-spacing: 0; text-wrap: balance;
+}
+p { margin: 0; max-width: 62ch; }
+.lede { font-size: var(--s1); line-height: 1.55; }
+.muted { color: var(--ink-2); }
+code, .mono { font-family: var(--mono); font-size: 0.9em; }
+
+/* ── hero ─────────────────────────────── */
+.hero { padding-block: 48px 56px; gap: 28px; }
+.hero h1 {
+  --w: 700; --r: 100;
+  font-family: var(--display); font-weight: normal;
+  font-variation-settings: "wght" var(--w), "ROND" var(--r);
+  font-size: clamp(64px, 17vw, 196px); line-height: 1; margin: 0; letter-spacing: 0;
+  cursor: crosshair; user-select: none; touch-action: pan-y;
+  animation: wake 1.8s cubic-bezier(.2,.7,.2,1) both;
+}
+@keyframes wake {
+  from { font-variation-settings: "wght" 100, "ROND" 0; }
+  to   { font-variation-settings: "wght" 700, "ROND" 100; }
+}
+.readout { font-family: var(--mono); font-size: var(--s-1); color: var(--ink-2); display: flex; gap: 18px; flex-wrap: wrap; }
+.readout b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px 28px; font-family: var(--mono); font-size: var(--s-1); }
+.facts span b { font-weight: 600; }
+
+/* ── controls ─────────────────────────────── */
+.controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px 28px; align-items: end; }
+.ctl { display: grid; gap: 6px; min-width: 0; }
+.ctl label { font-family: var(--mono); font-size: var(--s-1); display: flex; justify-content: space-between; color: var(--ink-2); }
+.ctl label output { color: var(--ink); font-variant-numeric: tabular-nums; }
+input[type=range] { width: 100%; accent-color: var(--ink); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  font-family: var(--mono); font-size: var(--s-1); color: var(--ink); background: var(--field);
+  border: 1px solid var(--rule); border-radius: 2px; padding: 6px 12px; cursor: pointer;
+}
+.chip:hover { border-color: var(--ink-2); }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+#tester {
+  width: 100%; min-height: 3.2em; resize: vertical; display: block;
+  background: transparent; color: var(--ink); border: 0; border-block: 1px solid var(--rule);
+  padding: 0.4em 0; font-family: var(--display); line-height: 1; letter-spacing: 0;
+  font-variation-settings: "wght" 400, "ROND" 100; font-size: 72px;
+}
+#tester:focus { outline: none; border-color: var(--ink-2); }
+.css-out {
+  display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+  font-family: var(--mono); font-size: var(--s-1); color: var(--ink-2);
+}
+.css-out code { color: var(--ink); background: var(--field); border: 1px solid var(--rule); padding: 6px 10px; overflow-x: auto; max-width: 100%; white-space: nowrap; }
+
+/* ── design space ─────────────────────────────── */
+.space-wrap { overflow-x: auto; }
+.space { display: grid; grid-template-columns: auto repeat(5, minmax(72px, 1fr)); gap: 0; min-width: 480px; }
+.space .ax { font-family: var(--mono); font-size: var(--s-1); color: var(--ink-2); padding: 8px; display: flex; align-items: center; }
+.space .ax.top { justify-content: center; border-bottom: 1px solid var(--rule); }
+.space .cell {
+  font-family: var(--display); font-size: clamp(40px, 7vw, 76px); line-height: 1;
+  display: flex; justify-content: center; align-items: center; padding: 14px 4px;
+  border-bottom: 1px dashed var(--rule);
+}
+
+/* ── grid / anatomy ─────────────────────────────── */
+.anat { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 32px; align-items: start; }
+@media (max-width: 720px) { .anat { grid-template-columns: 1fr; } }
+.anat-fig { display: grid; gap: 10px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 16px); }
+@media (max-width: 720px) { .anat-fig { position: static; max-width: 300px; } }
+#anatomy { width: 100%; max-width: 100%; aspect-ratio: 300 / 420; display: block; }
+.anat-cap { font-family: var(--mono); font-size: var(--s-1); color: var(--ink-2); display: flex; justify-content: space-between; gap: 8px; }
+.anat-cap b { color: var(--ink); font-weight: 600; }
+.glyphs { display: grid; grid-template-columns: repeat(auto-fill, minmax(46px, 1fr)); border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
+.glyphs button {
+  font-family: var(--display); font-size: 30px; line-height: 1; color: var(--ink); background: transparent;
+  border: 0; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+  aspect-ratio: 46 / 56; cursor: pointer; padding: 0; font-variation-settings: "wght" var(--gw, 400), "ROND" var(--gr, 100);
+}
+.glyphs button:hover { background: var(--field); }
+.glyphs button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+
+/* ── board ─────────────────────────────── */
+.board-wrap { overflow-x: auto; background: var(--board-frame); padding: 14px; border-radius: 3px; }
+#board { display: block; background: var(--board-bg); }
+.board-ctl { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: end; }
+@media (max-width: 620px) { .board-ctl { grid-template-columns: 1fr; } }
+.field {
+  width: 100%; font-family: var(--mono); font-size: var(--s0); color: var(--ink); background: var(--field);
+  border: 1px solid var(--rule); border-radius: 2px; padding: 8px 10px;
+}
+.swatch { width: 12px; height: 12px; border-radius: 50%; display: inline-block; vertical-align: -1px; margin-right: 6px; }
+
+/* ── specs ─────────────────────────────── */
+.specs-wrap { overflow-x: auto; }
+table.specs { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+.specs th, .specs td { text-align: left; padding: 9px 16px 9px 0; border-bottom: 1px dashed var(--rule); vertical-align: top; }
+.specs th { font-family: var(--mono); font-size: var(--s-1); font-weight: 400; color: var(--ink-2); white-space: nowrap; width: 12em; }
+.specs td.u { font-family: var(--mono); font-size: var(--s-1); }
+.files { display: grid; gap: 4px; font-family: var(--mono); font-size: var(--s-1); padding: 0; margin: 0; list-style: none; }
+.files li { overflow-wrap: anywhere; }
+footer { padding-block: 28px 48px; font-family: var(--mono); font-size: var(--s-1); color: var(--ink-2); display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+
+@media (prefers-reduced-motion: reduce) { .hero h1 { animation: none; } }
+</style>
+
+<div class="sheet">
+
+<header class="hero">
+  <div class="eyebrow"><span>Type specimen</span><span>v1.000</span><span>SIL OFL 1.1</span></div>
+  <h1 id="title" aria-label="Punctum">Punctum</h1>
+  <div class="readout" aria-live="off">
+    <span>在标题上移动指针：横向改字重，纵向改点形</span>
+    <span>wght <b id="ro-w">700</b></span><span>ROND <b id="ro-r">100</b></span>
+  </div>
+  <p class="lede">一款可变点阵字体。每个字母都由 5 × 7 的点位组成，小写字母有真正的下伸部。字体有两条轴：点的大小，和点的形状。最细时像针孔大小的 LED，最粗时点与点相接；把形状轴拉到 0，圆点就变成方形像素。</p>
+  <div class="facts">
+    <span><b>108</b> 个字符</span><span><b>2</b> 条可变轴</span><span><b>18</b> 个命名实例</span><span>等宽 <b>600</b>/1000</span>
+  </div>
+</header>
+
+<hr class="perf">
+
+<section id="test" aria-labelledby="h-test">
+  <div class="eyebrow"><span>试排</span><span>Type tester</span></div>
+  <h2 id="h-test">打一行字试试</h2>
+  <div class="controls">
+    <div class="ctl"><label for="t-w">字重 wght <output id="o-w">400</output></label><input id="t-w" type="range" min="100" max="900" value="400"></div>
+    <div class="ctl"><label for="t-r">圆度 ROND <output id="o-r">100</output></label><input id="t-r" type="range" min="0" max="100" value="100"></div>
+    <div class="ctl"><label for="t-s">字号 <output id="o-s">72px</output></label><input id="t-s" type="range" min="14" max="180" value="72"></div>
+  </div>
+  <div class="chips" role="group" aria-label="预设">
+    <button class="chip" type="button" data-w="100" data-r="100">Thin</button>
+    <button class="chip" type="button" data-w="300" data-r="100">Light</button>
+    <button class="chip" type="button" data-w="400" data-r="100" aria-pressed="true">Regular</button>
+    <button class="chip" type="button" data-w="700" data-r="100">Bold</button>
+    <button class="chip" type="button" data-w="900" data-r="100">Black</button>
+    <button class="chip" type="button" data-w="400" data-r="0">Pixel</button>
+    <button class="chip" type="button" data-w="900" data-r="0">Pixel Black</button>
+  </div>
+  <textarea id="tester" spellcheck="false" rows="3" aria-label="试排文本">PLATFORM 7 → ZURICH HB
+Departs 08:42, on time.
+glyphs: jqpy {0123456789}</textarea>
+  <div class="css-out">
+    <code id="css-snippet">font-variation-settings: "wght" 400, "ROND" 100;</code>
+    <button class="chip" type="button" id="copy-css">复制 CSS</button>
+    <span id="copy-msg" role="status"></span>
+  </div>
+</section>
+
+<hr class="perf">
+
+<section id="space" aria-labelledby="h-space">
+  <div class="eyebrow"><span>设计空间</span><span>Design space</span></div>
+  <h2 id="h-space">两条轴，一个字体文件</h2>
+  <p class="muted">每个点在所有母版里都是同一条 16 个点的二次曲线轮廓：圆形母版里它是圆，像素母版里它被径向投影到正方形上。所以两条轴可以任意组合，中间值是介于圆和方之间的“方圆形”。</p>
+  <div class="space-wrap"><div class="space" id="space-grid"></div></div>
+</section>
+
+<hr class="perf">
+
+<section id="grid" aria-labelledby="h-grid">
+  <div class="eyebrow"><span>网格</span><span>The grid</span></div>
+  <h2 id="h-grid">一张不断开的点阵</h2>
+  <p>点距是 100 单位，字宽 600（5 个点加 1 个点的字距），行高 1000（9 行点位加 1 行行距）。所以相邻的字母、相邻的行，所有点都落在同一张网格上，排出来的文字像一块完整的显示屏。点选任意字符查看它在网格上的样子。</p>
+  <div class="anat">
+    <figure class="anat-fig" style="margin:0">
+      <canvas id="anatomy" width="300" height="420" aria-label="所选字符的点阵结构图"></canvas>
+      <figcaption class="anat-cap"><span>字符 <b id="an-ch">g</b></span><span id="an-cp">U+0067</span><span><b id="an-n">0</b> 个点</span></figcaption>
+    </figure>
+    <div class="glyphs" id="glyphs" role="group" aria-label="字符集"></div>
+  </div>
+</section>
+
+<hr class="perf">
+
+<section id="board-sec" aria-labelledby="h-board">
+  <div class="eyebrow"><span>实景</span><span>In use</span></div>
+  <h2 id="h-board">它原本的位置</h2>
+  <p class="muted">一块按 Punctum 点阵驱动的 LED 发车屏。时间是你此刻的本地时间，发车时刻跟着它往后排；底行的走马灯逐列步进，就像真实的屏幕那样。</p>
+  <div class="board-wrap"><canvas id="board" aria-label="LED 发车屏演示"></canvas></div>
+  <div class="board-ctl">
+    <div class="ctl"><label for="board-text">走马灯文字</label><input class="field" id="board-text" type="text" value="Punctum: 5x7 dot matrix, two axes. Dot size & dot shape. ♥ "></div>
+    <div class="chips" role="group" aria-label="LED 颜色" id="led-chips">
+      <button class="chip" type="button" data-led="#FFB23F" aria-pressed="true"><span class="swatch" style="background:#FFB23F"></span>琥珀</button>
+      <button class="chip" type="button" data-led="#FF5040"><span class="swatch" style="background:#FF5040"></span>红</button>
+      <button class="chip" type="button" data-led="#7FF0DF"><span class="swatch" style="background:#7FF0DF"></span>VFD</button>
+      <button class="chip" type="button" data-led="#F3F0E4"><span class="swatch" style="background:#F3F0E4"></span>白</button>
+    </div>
+  </div>
+</section>
+
+<hr class="perf">
+
+<section id="specs" aria-labelledby="h-specs">
+  <div class="eyebrow"><span>规格</span><span>Specifications</span></div>
+  <h2 id="h-specs">技术参数</h2>
+  <div class="specs-wrap">
+  <table class="specs">
+    <tr><th>UPM</th><td class="u">1000</td><td>每个点位 100 × 100 单位</td></tr>
+    <tr><th>字宽 Advance</th><td class="u">600</td><td>等宽，所有字符相同</td></tr>
+    <tr><th>大写高 Cap height</th><td class="u">700</td><td>7 个点</td></tr>
+    <tr><th>x 高 x-height</th><td class="u">500</td><td>5 个点</td></tr>
+    <tr><th>下伸 Descender</th><td class="u">−200</td><td>2 个点，g j p q y 使用</td></tr>
+    <tr><th>行高 Line</th><td class="u">1000</td><td>上 800 / 下 200，行距为 0 时点阵连续</td></tr>
+    <tr><th>wght 轴</th><td class="u">100–900</td><td>点直径 24 → 100 单位，Black 时点与点相接</td></tr>
+    <tr><th>ROND 轴</th><td class="u">0–100</td><td>0 为方形像素，100 为圆点（默认）</td></tr>
+    <tr><th>命名实例</th><td class="u">18</td><td>Thin 到 Black 九个字重 × Round / Pixel</td></tr>
+    <tr><th>字符集</th><td class="u">108</td><td>基本拉丁（ASCII 全集）加 ° · • … × — ← ↑ → ↓ ♥ ■</td></tr>
+  </table>
+  </div>
+  <p class="muted">文件在项目文件夹里：</p>
+  <ul class="files">
+    <li>fonts/Punctum[ROND,wght].ttf　可变字体，安装这个即可</li>
+    <li>fonts/Punctum-VF.woff2　网页用</li>
+    <li>fonts/static/　10 个静态字重，给不支持可变字体的软件</li>
+    <li>src/glyphs.py　全部点阵数据，改这里然后运行 src/build.py 重新生成</li>
+  </ul>
+</section>
+
+<hr class="perf">
+
+<footer><span>Punctum v1.000</span><span>正文 Atkinson Hyperlegible，数据 JetBrains Mono</span><span>2026-10-03</span></footer>
+</div>
+
+<script>
+const BITMAPS = {"A": [".###.", "#...#", "#...#", "#####", "#...#", "#...#", "#...#", ".....", "....."], "B": ["####.", "#...#", "#...#", "####.", "#...#", "#...#", "####.", ".....", "....."], "C": [".###.", "#...#", "#....", "#....", "#....", "#...#", ".###.", ".....", "....."], "D": ["####.", "#...#", "#...#", "#...#", "#...#", "#...#", "####.", ".....", "....."], "E": ["#####", "#....", "#....", "####.", "#....", "#....", "#####", ".....", "....."], "F": ["#####", "#....", "#....", "####.", "#....", "#....", "#....", ".....", "....."], "G": [".###.", "#...#", "#....", "#.###", "#...#", "#...#", ".###.", ".....", "....."], "H": ["#...#", "#...#", "#...#", "#####", "#...#", "#...#", "#...#", ".....", "....."], "I": [".###.", "..#..", "..#..", "..#..", "..#..", "..#..", ".###.", ".....", "....."], "J": ["....#", "....#", "....#", "....#", "....#", "#...#", ".###.", ".....", "....."], "K": ["#...#", "#..#.", "#.#..", "##...", "#.#..", "#..#.", "#...#", ".....", "....."], "L": ["#....", "#....", "#....", "#....", "#....", "#....", "#####", ".....", "....."], "M": ["#...#", "##.##", "#.#.#", "#.#.#", "#...#", "#...#", "#...#", ".....", "....."], "N": ["#...#", "#...#", "##..#", "#.#.#", "#..##", "#...#", "#...#", ".....", "....."], "O": [".###.", "#...#", "#...#", "#...#", "#...#", "#...#", ".###.", ".....", "....."], "P": ["####.", "#...#", "#...#", "####.", "#....", "#....", "#....", ".....", "....."], "Q": [".###.", "#...#", "#...#", "#...#", "#.#.#", "#..#.", ".##.#", ".....", "....."], "R": ["####.", "#...#", "#...#", "####.", "#.#..", "#..#.", "#...#", ".....", "....."], "S": [".###.", "#...#", "#....", ".###.", "....#", "#...#", ".###.", ".....", "....."], "T": ["#####", "..#..", "..#..", "..#..", "..#..", "..#..", "..#..", ".....", "....."], "U": ["#...#", "#...#", "#...#", "#...#", "#...#", "#...#", ".###.", ".....", "....."], "V": ["#...#", "#...#", "#...#", "#...#", "#...#", ".#.#.", "..#..", ".....", "....."], "W": ["#...#", "#...#", "#...#", "#.#.#", "#.#.#", "#.#.#", ".#.#.", ".....", "....."], "X": ["#...#", "#...#", ".#.#.", "..#..", ".#.#.", "#...#", "#...#", ".....", "....."], "Y": ["#...#", "#...#", ".#.#.", "..#..", "..#..", "..#..", "..#..", ".....", "....."], "Z": ["#####", "....#", "...#.", "..#..", ".#...", "#....", "#####", ".....", "....."], "a": [".....", ".....", ".###.", "....#", ".####", "#...#", ".####", ".....", "....."], "b": ["#....", "#....", "####.", "#...#", "#...#", "#...#", "####.", ".....", "....."], "c": [".....", ".....", ".###.", "#...#", "#....", "#...#", ".###.", ".....", "....."], "d": ["....#", "....#", ".####", "#...#", "#...#", "#...#", ".####", ".....", "....."], "e": [".....", ".....", ".###.", "#...#", "#####", "#....", ".###.", ".....", "....."], "f": ["...##", "..#..", ".###.", "..#..", "..#..", "..#..", "..#..", ".....", "....."], "g": [".....", ".....", ".####", "#...#", "#...#", "#...#", ".####", "....#", ".###."], "h": ["#....", "#....", "####.", "#...#", "#...#", "#...#", "#...#", ".....", "....."], "i": ["..#..", ".....", ".##..", "..#..", "..#..", "..#..", ".###.", ".....", "....."], "j": ["...#.", ".....", "..##.", "...#.", "...#.", "...#.", "...#.", "#..#.", ".##.."], "k": ["#....", "#....", "#..#.", "#.#..", "##...", "#.#..", "#..#.", ".....", "....."], "l": [".##..", "..#..", "..#..", "..#..", "..#..", "..#..", ".###.", ".....", "....."], "m": [".....", ".....", "##.#.", "#.#.#", "#.#.#", "#.#.#", "#.#.#", ".....", "....."], "n": [".....", ".....", "####.", "#...#", "#...#", "#...#", "#...#", ".....", "....."], "o": [".....", ".....", ".###.", "#...#", "#...#", "#...#", ".###.", ".....", "....."], "p": [".....", ".....", "####.", "#...#", "#...#", "#...#", "####.", "#....", "#...."], "q": [".....", ".....", ".####", "#...#", "#...#", "#...#", ".####", "....#", "....#"], "r": [".....", ".....", "#.##.", "##..#", "#....", "#....", "#....", ".....", "....."], "s": [".....", ".....", ".####", "#....", ".###.", "....#", "####.", ".....", "....."], "t": [".#...", ".#...", "####.", ".#...", ".#...", ".#..#", "..##.", ".....", "....."], "u": [".....", ".....", "#...#", "#...#", "#...#", "#...#", ".####", ".....", "....."], "v": [".....", ".....", "#...#", "#...#", "#...#", ".#.#.", "..#..", ".....", "....."], "w": [".....", ".....", "#...#", "#...#", "#.#.#", "#.#.#", ".#.#.", ".....", "....."], "x": [".....", ".....", "#...#", ".#.#.", "..#..", ".#.#.", "#...#", ".....", "....."], "y": [".....", ".....", "#...#", "#...#", "#...#", "#...#", ".####", "....#", ".###."], "z": [".....", ".....", "#####", "...#.", "..#..", ".#...", "#####", ".....", "....."], "0": [".###.", "#...#", "#..##", "#.#.#", "##..#", "#...#", ".###.", ".....", "....."], "1": ["..#..", ".##..", "..#..", "..#..", "..#..", "..#..", ".###.", ".....", "....."], "2": [".###.", "#...#", "....#", "...#.", "..#..", ".#...", "#####", ".....", "....."], "3": [".###.", "#...#", "....#", "..##.", "....#", "#...#", ".###.", ".....", "....."], "4": ["...#.", "..##.", ".#.#.", "#..#.", "#####", "...#.", "...#.", ".....", "....."], "5": ["#####", "#....", "####.", "....#", "....#", "#...#", ".###.", ".....", "....."], "6": ["..##.", ".#...", "#....", "####.", "#...#", "#...#", ".###.", ".....", "....."], "7": ["#####", "....#", "...#.", "..#..", "..#..", "..#..", "..#..", ".....", "....."], "8": [".###.", "#...#", "#...#", ".###.", "#...#", "#...#", ".###.", ".....", "....."], "9": [".###.", "#...#", "#...#", ".####", "....#", "...#.", ".##..", ".....", "....."], " ": [".....", ".....", ".....", ".....", ".....", ".....", ".....", ".....", "....."], "!": ["..#..", "..#..", "..#..", "..#..", "..#..", ".....", "..#..", ".....", "....."], "\"": [".#.#.", ".#.#.", ".....", ".....", ".....", ".....", ".....", ".....", "....."], "#": [".#.#.", ".#.#.", "#####", ".#.#.", "#####", ".#.#.", ".#.#.", ".....", "....."], "$": ["..#..", ".####", "#.#..", ".###.", "..#.#", "####.", "..#..", ".....", "....."], "%": ["##...", "##..#", "...#.", "..#..", ".#...", "#..##", "...##", ".....", "....."], "&": [".##..", "#..#.", "#.#..", ".#...", "#.#.#", "#..#.", ".##.#", ".....", "....."], "'": ["..#..", "..#..", ".....", ".....", ".....", ".....", ".....", ".....", "....."], "(": ["...#.", "..#..", ".#...", ".#...", ".#...", "..#..", "...#.", ".....", "....."], ")": [".#...", "..#..", "...#.", "...#.", "...#.", "..#..", ".#...", ".....", "....."], "*": [".....", "..#..", "#.#.#", ".###.", "#.#.#", "..#..", ".....", ".....", "....."], "+": [".....", "..#..", "..#..", "#####", "..#..", "..#..", ".....", ".....", "....."], ",": [".....", ".....", ".....", ".....", ".....", ".....", "..#..", ".#...", "....."], "-": [".....", ".....", ".....", ".###.", ".....", ".....", ".....", ".....", "....."], ".": [".....", ".....", ".....", ".....", ".....", ".....", "..#..", ".....", "....."], "/": ["....#", "...#.", "...#.", "..#..", ".#...", ".#...", "#....", ".....", "....."], ":": [".....", ".....", "..#..", ".....", ".....", ".....", "..#..", ".....", "....."], ";": [".....", ".....", "..#..", ".....", ".....", ".....", "..#..", ".#...", "....."], "<": ["....#", "...#.", "..#..", ".#...", "..#..", "...#.", "....#", ".....", "....."], "=": [".....", ".....", "#####", ".....", "#####", ".....", ".....", ".....", "....."], ">": ["#....", ".#...", "..#..", "...#.", "..#..", ".#...", "#....", ".....", "....."], "?": [".###.", "#...#", "....#", "...#.", "..#..", ".....", "..#..", ".....", "....."], "@": [".###.", "#...#", "#.###", "#.#.#", "#.###", "#....", ".###.", ".....", "....."], "[": [".###.", ".#...", ".#...", ".#...", ".#...", ".#...", ".###.", ".....", "....."], "\\": ["#....", ".#...", ".#...", "..#..", "...#.", "...#.", "....#", ".....", "....."], "]": [".###.", "...#.", "...#.", "...#.", "...#.", "...#.", ".###.", ".....", "....."], "^": ["..#..", ".#.#.", "#...#", ".....", ".....", ".....", ".....", ".....", "....."], "_": [".....", ".....", ".....", ".....", ".....", ".....", ".....", "#####", "....."], "`": [".#...", "..#..", ".....", ".....", ".....", ".....", ".....", ".....", "....."], "{": ["...##", "..#..", "..#..", ".#...", "..#..", "..#..", "...##", ".....", "....."], "|": ["..#..", "..#..", "..#..", "..#..", "..#..", "..#..", "..#..", "..#..", "....."], "}": ["##...", "..#..", "..#..", "...#.", "..#..", "..#..", "##...", ".....", "....."], "~": [".....", ".....", ".#...", "#.#.#", "...#.", ".....", ".....", ".....", "....."], " ": [".....", ".....", ".....", ".....", ".....", ".....", ".....", ".....", "....."], "°": [".##..", "#..#.", ".##..", ".....", ".....", ".....", ".....", ".....", "....."], "·": [".....", ".....", ".....", "..#..", ".....", ".....", ".....", ".....", "....."], "•": [".....", ".....", ".###.", ".###.", ".###.", ".....", ".....", ".....", "....."], "…": [".....", ".....", ".....", ".....", ".....", ".....", "#.#.#", ".....", "....."], "×": [".....", "#...#", ".#.#.", "..#..", ".#.#.", "#...#", ".....", ".....", "....."], "—": [".....", ".....", ".....", "#####", ".....", ".....", ".....", ".....", "....."], "→": [".....", "..#..", "...#.", "#####", "...#.", "..#..", ".....", ".....", "....."], "←": [".....", "..#..", ".#...", "#####", ".#...", "..#..", ".....", ".....", "....."], "↑": ["..#..", ".###.", "#.#.#", "..#..", "..#..", "..#..", "..#..", ".....", "....."], "↓": ["..#..", "..#..", "..#..", "..#..", "#.#.#", ".###.", "..#..", ".....", "....."], "♥": [".....", ".#.#.", "#####", "#####", ".###.", "..#..", ".....", ".....", "....."], "■": ["#####", "#####", "#####", "#####", "#####", "#####", "#####", ".....", "....."]};
+const css = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const lerp = (a, b, t) => a + (b - a) * t;
+function pw(w, pts) { // piecewise-linear over [[w, v], ...]
+  for (let i = 1; i < pts.length; i++) if (w <= pts[i][0]) {
+    const [w0, v0] = pts[i - 1], [w1, v1] = pts[i];
+    return lerp(v0, v1, (w - w0) / (w1 - w0));
+  }
+  return pts[pts.length - 1][1];
+}
+// half-size of a dot in grid units (pitch = 100), mirrors build.py masters
+function dotR(w, r) {
+  const round = pw(w, [[100, 12], [400, 30], [900, 50]]);
+  const square = pw(w, [[100, 11], [400, 27], [900, 50]]);
+  return lerp(square, round, r / 100);
+}
+function drawDot(ctx, x, y, h, rond) {
+  ctx.beginPath();
+  ctx.roundRect(x - h, y - h, h * 2, h * 2, h * rond / 100);
+  ctx.fill();
+}
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* hero */
+const title = document.getElementById("title");
+const roW = document.getElementById("ro-w"), roR = document.getElementById("ro-r");
+title.addEventListener("pointermove", (e) => {
+  const b = title.getBoundingClientRect();
+  const w = Math.round(lerp(100, 900, Math.min(1, Math.max(0, (e.clientX - b.left) / b.width))));
+  const r = Math.round(lerp(100, 0, Math.min(1, Math.max(0, (e.clientY - b.top) / b.height))));
+  title.style.animation = "none";
+  title.style.setProperty("--w", w); title.style.setProperty("--r", r);
+  roW.textContent = w; roR.textContent = r;
+});
+
+/* tester */
+const tw = document.getElementById("t-w"), tr = document.getElementById("t-r"), ts = document.getElementById("t-s");
+const tester = document.getElementById("tester"), snippet = document.getElementById("css-snippet");
+const chips = [...document.querySelectorAll("#test .chip[data-w]")];
+function applyTester() {
+  const w = +tw.value, r = +tr.value, s = +ts.value;
+  const fvs = `"wght" ${w}, "ROND" ${r}`;
+  tester.style.fontVariationSettings = fvs;
+  tester.style.fontSize = s + "px";
+  document.getElementById("o-w").textContent = w;
+  document.getElementById("o-r").textContent = r;
+  document.getElementById("o-s").textContent = s + "px";
+  snippet.textContent = `font-variation-settings: ${fvs};`;
+  chips.forEach((c) => c.setAttribute("aria-pressed", String(+c.dataset.w === w && +c.dataset.r === r)));
+  const g = document.getElementById("glyphs");
+  g.style.setProperty("--gw", w); g.style.setProperty("--gr", r);
+  drawAnatomy();
+}
+[tw, tr, ts].forEach((el) => el.addEventListener("input", applyTester));
+chips.forEach((c) => c.addEventListener("click", () => { tw.value = c.dataset.w; tr.value = c.dataset.r; applyTester(); }));
+function fitTester() { if (innerWidth < 600 && +ts.value > 40) ts.value = 40; }
+document.getElementById("copy-css").addEventListener("click", () => {
+  const msg = document.getElementById("copy-msg");
+  const text = `font-family: "Punctum";\n${snippet.textContent}`;
+  const fallback = () => { const s = getSelection(), rg = document.createRange(); rg.selectNodeContents(snippet); s.removeAllRanges(); s.addRange(rg); msg.textContent = "已选中，按 ⌘C 复制"; };
+  try { navigator.clipboard.writeText(text).then(() => { msg.textContent = "已复制"; }, fallback); } catch (e) { fallback(); }
+});
+
+/* design space */
+(function () {
+  const g = document.getElementById("space-grid");
+  const ws = [100, 300, 500, 700, 900], rs = [100, 50, 0];
+  g.insertAdjacentHTML("beforeend", `<div class="ax top"></div>` + ws.map((w) => `<div class="ax top">wght ${w}</div>`).join(""));
+  rs.forEach((r) => {
+    g.insertAdjacentHTML("beforeend", `<div class="ax">ROND ${r}</div>` +
+      ws.map((w) => `<div class="cell" style="font-variation-settings:'wght' ${w},'ROND' ${r}">Rg</div>`).join(""));
+  });
+})();
+
+/* glyph set + anatomy */
+let current = "g";
+const glyphBox = document.getElementById("glyphs");
+Object.keys(BITMAPS).filter((c) => c !== " " && c !== " ").forEach((c) => {
+  const b = document.createElement("button");
+  b.type = "button"; b.textContent = c; b.dataset.ch = c;
+  b.setAttribute("aria-label", "U+" + c.codePointAt(0).toString(16).toUpperCase().padStart(4, "0") + " " + c);
+  b.setAttribute("aria-pressed", String(c === current));
+  b.addEventListener("click", () => {
+    glyphBox.querySelector('[aria-pressed="true"]')?.setAttribute("aria-pressed", "false");
+    b.setAttribute("aria-pressed", "true"); current = c; drawAnatomy();
+  });
+  glyphBox.appendChild(b);
+});
+const an = document.getElementById("anatomy");
+function drawAnatomy() {
+  const dpr = devicePixelRatio || 1, W = an.clientWidth || 300, H = W * 420 / 300;
+  an.width = Math.round(W * dpr); an.height = Math.round(H * dpr);
+  const ctx = an.getContext("2d"); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+  const ink = css("--ink"), off = css("--dot-off"), muted = css("--ink-2"), rule = css("--rule");
+  const P = W / 7.5, ox = P * 1.25, oy = P * 0.75;          // pitch, grid origin
+  const rows = BITMAPS[current], w = +tw.value, r = +tr.value, h = dotR(w, r) / 100 * P;
+  const lines = [[0, "cap 700"], [2, "x 500"], [7, "base 0"], [9, "desc −200"]];
+  ctx.font = `500 ${Math.max(9, P * 0.24)}px "JetBrains Mono", ui-monospace, monospace`;
+  ctx.textBaseline = "bottom";
+  lines.forEach(([row, label]) => {
+    const y = oy + row * P;
+    ctx.strokeStyle = rule; ctx.lineWidth = 1; ctx.setLineDash(row === 7 ? [] : [3, 3]);
+    ctx.beginPath(); ctx.moveTo(4, Math.round(y) + 0.5); ctx.lineTo(W - 4, Math.round(y) + 0.5); ctx.stroke();
+    ctx.fillStyle = muted; ctx.textAlign = "right"; ctx.fillText(label, W - 4, y - 2);
+  });
+  ctx.setLineDash([]);
+  let n = 0;
+  for (let y = 0; y < 9; y++) for (let x = 0; x < 5; x++) {
+    const on = rows[y][x] === "#"; n += on;
+    ctx.fillStyle = on ? ink : off;
+    drawDot(ctx, ox + x * P + P / 2, oy + y * P + P / 2, on ? h : Math.max(1.5, P * 0.09), on ? r : 100);
+  }
+  document.getElementById("an-ch").textContent = current;
+  document.getElementById("an-cp").textContent = "U+" + current.codePointAt(0).toString(16).toUpperCase().padStart(4, "0");
+  document.getElementById("an-n").textContent = n;
+}
+
+/* LED board */
+const board = document.getElementById("board"), boardText = document.getElementById("board-text");
+const COLS = 32, LINES = 5, DX = COLS * 6 + 1, DY = LINES * 10;
+let led = "#FFB23F", scroll = 0;
+const pad2 = (n) => String(n).padStart(2, "0");
+function fit(left, right) { left = left.slice(0, COLS - right.length - 1); return left + " ".repeat(COLS - left.length - right.length) + right; }
+function departures(now) {
+  const dests = [["Zurich HB", "7"], ["Bern via Olten", "12"], ["Geneve-Aeroport", "4"]];
+  const base = Math.ceil((now.getHours() * 60 + now.getMinutes() + 3) / 1);
+  return dests.map(([d, p], i) => {
+    const m = (base + i * 9) % 1440;
+    return fit(`${pad2(Math.floor(m / 60))}:${pad2(m % 60)} ${d}`, p);
+  });
+}
+function textToCols(s) {
+  const cols = [];
+  for (const ch of s) {
+    const rows = BITMAPS[ch] || BITMAPS["?"];
+    for (let x = 0; x < 5; x++) cols.push(rows.map((r) => r[x] === "#"));
+    cols.push(Array(9).fill(false));
+  }
+  return cols;
+}
+function hexA(hex, a) { const n = parseInt(hex.slice(1), 16); return `rgba(${n >> 16},${(n >> 8) & 255},${n & 255},${a})`; }
+function drawBoard() {
+  const wrap = board.parentElement, avail = wrap.clientWidth - 28;
+  const P = Math.max(3, avail / (DX + 2)), W = (DX + 2) * P, H = (DY + 1) * P, dpr = devicePixelRatio || 1;
+  if (board.width !== Math.round(W * dpr)) { board.width = Math.round(W * dpr); board.height = Math.round(H * dpr); board.style.width = W + "px"; board.style.height = H + "px"; }
+  const ctx = board.getContext("2d"); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.fillStyle = css("--board-bg"); ctx.fillRect(0, 0, W, H);
+  const now = new Date();
+  const lines = [fit("DEPARTURES", `${pad2(now.getHours())}:${pad2(now.getMinutes())}:${pad2(now.getSeconds())}`), ...departures(now)];
+  const grid = Array.from({ length: DY }, () => Array(DX).fill(false));
+  lines.forEach((ln, li) => textToCols(ln).forEach((col, x) => { if (x < DX) col.forEach((v, y) => { if (v) grid[li * 10 + y][x] = true; }); }));
+  const mq = textToCols(boardText.value || " ");
+  for (let x = 0; x < DX; x++) { const c = mq[(x + scroll) % mq.length]; c.forEach((v, y) => { if (v) grid[4 * 10 + y][x] = true; }); }
+  const r = P * 0.36, offC = hexA(led, 0.09), glow = hexA(led, 0.22);
+  for (let y = 0; y < DY; y++) for (let x = 0; x < DX; x++) {
+    const cx = (x + 1.5) * P, cy = (y + 1) * P;
+    if (grid[y][x]) {
+      ctx.fillStyle = glow; ctx.beginPath(); ctx.arc(cx, cy, r * 1.9, 0, 6.283); ctx.fill();
+      ctx.fillStyle = led; ctx.beginPath(); ctx.arc(cx, cy, r, 0, 6.283); ctx.fill();
+    } else {
+      ctx.fillStyle = offC; ctx.beginPath(); ctx.arc(cx, cy, r, 0, 6.283); ctx.fill();
+    }
+  }
+  // rule between header and departures
+  ctx.fillStyle = hexA(led, 0.25); ctx.fillRect(P, 9.5 * P, W - 2 * P, Math.max(1, P * 0.15));
+}
+document.querySelectorAll("#led-chips .chip").forEach((c) => c.addEventListener("click", () => {
+  document.querySelectorAll("#led-chips .chip").forEach((o) => o.setAttribute("aria-pressed", "false"));
+  c.setAttribute("aria-pressed", "true"); led = c.dataset.led; drawBoard();
+}));
+boardText.addEventListener("input", () => { scroll = 0; drawBoard(); });
+let last = 0;
+function tick(t) {
+  if (t - last > 45) { last = t; if (!reduceMotion) scroll++; drawBoard(); }
+  requestAnimationFrame(tick);
+}
+
+/* boot */
+function redrawAll() { drawAnatomy(); drawBoard(); }
+const mm = matchMedia("(prefers-color-scheme: dark)");
+mm.addEventListener?.("change", redrawAll);
+new MutationObserver(redrawAll).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+addEventListener("resize", redrawAll);
+fitTester(); applyTester();
+document.fonts.ready.then(redrawAll);
+if (reduceMotion) setInterval(drawBoard, 1000); else requestAnimationFrame(tick);
+</script>

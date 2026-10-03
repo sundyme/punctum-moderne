@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The machine learned the pen</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..500&amp;display=swap">
+<style>
+@font-face { font-family: "Punctum Moderne"; src: url("/_blob/d3c53ecf9f4eda84a99d0694877a6bff") format("woff2"); font-weight: 100 900; font-display: block; }
+body { margin: 0; }
+</style>
+</helmet>
+
+<div style="width: 1600px; height: 1000px; display: flex; background: #E6E4DE">
+  <div style="width: 800px; height: 1000px; box-sizing: border-box; padding: 64px 72px 48px; background: #F4F3EF; color: #131313; font-family: 'Punctum Moderne', 'Bodoni Moda', serif; display: flex; flex-direction: column; position: relative">
+    <div style="font-size: 18px; letter-spacing: 0.125em; color: #4E347D; font-variation-settings: 'wght' 700, 'CNTR' 100">ESSAY</div>
+    <div style="margin-top: 56px; font-size: 128px; line-height: 96px; font-variation-settings: 'wght' 900, 'CNTR' 100">
+      <div style="height: 96px; white-space: nowrap">The machine</div>
+      <div style="height: 96px; white-space: nowrap">learned</div>
+      <div style="height: 96px; white-space: nowrap">the pen.</div>
+    </div>
+    <p style="margin: 56px 0 0; font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 30px; line-height: 1.35; max-width: 17em">On grids, nibs and the two centuries between a Parma printing house and a field of lights.</p>
+    <p style="margin: 22px 0 0; font-size: 18px; font-variation-settings: 'wght' 600, 'CNTR' 100">Words by Ines Calvo</p>
+    <div style="margin-top: auto; display: flex; gap: 20px; font-size: 15px; color: #6A6862; font-variation-settings: 'wght' 600, 'CNTR' 100; font-variant-numeric: tabular-nums"><span>48</span><span>Moderne · Autunno 2026</span></div>
+    <div style="position: absolute; right: 0; top: 0; bottom: 0; width: 36px; background: linear-gradient(90deg, rgba(0,0,0,0), rgba(0,0,0,.07))"></div>
+  </div>
+  <div style="width: 800px; height: 1000px; box-sizing: border-box; padding: 64px 64px 48px 72px; background: #F4F3EF; color: #1C1B19; display: flex; flex-direction: column; position: relative">
+    <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 28px; background: linear-gradient(90deg, rgba(0,0,0,.06), rgba(0,0,0,0))"></div>
+    <div style="column-count: 2; column-gap: 32px; font-family: 'Bodoni Moda', serif; font-size: 16.5px; line-height: 1.58; hyphens: auto; text-align: left">
+      <p style="margin: 0 0 14px"><span style="float: left; font-family: 'Punctum Moderne', 'Bodoni Moda', serif; font-size: 128px; line-height: 80px; height: 80px; margin: 5px 10px 0 0; color: #131313; font-variation-settings: 'wght' 900, 'CNTR' 100">E</span>very dot-matrix display ever built has made the same promise: a letter is a pattern of lights, and each light is either on or off. It is an honest promise and a narrow one. A grid of switches can say where a stroke is, but never how it was made.</p><p style="margin: 0 0 14px; text-indent: 1.4em">Giambattista Bodoni spent forty-five years in Parma answering the second question. His letters record a pen that was never quite held, a broad nib kept flat, so that every vertical arrives heavy and every horizontal leaves as a thread. The contrast is the handwriting. Remove it and you have a skeleton; keep it and you have a voice.</p><blockquote style="margin: 6px 0 18px; padding-block: 14px; border-block: 1px solid #4E347D; break-inside: avoid; font-family: 'Punctum Moderne', 'Bodoni Moda', serif; font-size: 28px; line-height: 1.2; color: #4E347D; font-variation-settings: 'wght' 650, 'CNTR' 100">A dot cannot be thick or thin. It can only be large or small.</blockquote><p style="margin: 0 0 14px; text-indent: 1.4em">Punctum Moderne puts the two ideas on one grid. The dots never move. What changes is their size: four tones, placed by hand for every point of every letter, from the full circle of a stem to the pin-prick of a serif. At a distance the eye does what it has always done with halftone and engraving, and fuses the points into strokes. Up close, the machine shows through.</p><p style="margin: 0 0 14px; text-indent: 1.4em">There is a practical side to this. Because every advance width is a whole number of dots, even kerning moves letters by whole dots, and lines set at a leading of one em lock into the same grid as the letters themselves. A page of it is one continuous field of points. Change the weight and the field darkens; change the contrast and it flattens into a plain machine pattern; change the size and it dissolves into ink.</p><p style="margin: 0 0 14px; text-indent: 1.4em">The result is less a compromise between two traditions than a translation. A dot cannot be thick or thin. It can only be large or small, and that turns out to be enough.</p>
+    </div>
+    <div style="margin-top: auto; display: flex; justify-content: flex-end; gap: 20px; font-family: 'Punctum Moderne', 'Bodoni Moda', serif; font-size: 15px; color: #6A6862; font-variation-settings: 'wght' 600, 'CNTR' 100; font-variant-numeric: tabular-nums"><span>The machine learned the pen</span><span>49</span></div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview": {"width": 1600, "height": 1000}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

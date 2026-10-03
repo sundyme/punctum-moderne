@@ -1,0 +1,13 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>board</title>
+<style>@font-face{font-family:"Punctum Moderne";src:url("assets/fonts/PunctumModerne-VF.woff2") format("woff2");font-weight:100 900}
+html,body{margin:0;background:#000}canvas{display:block;width:1920px;height:1080px}</style></head>
+<body><canvas id="c" width="1920" height="1080"></canvas>
+<script src="assets/glyphs.js"></script><script src="assets/board.js"></script>
+<script>
+const q=new URLSearchParams(location.search); const k=+(q.get('k')||0);
+const ctx=document.getElementById('c').getContext('2d');
+window.ready=false;
+document.fonts.load('500 20px "Punctum Moderne"').then(()=>document.fonts.ready).then(()=>{ try{ PM_BOARD.KEYS[k].draw(ctx); document.title='ok '+k; }catch(e){ document.title='ERR '+e.message; console.error(e);} window.ready=true; });
+window.dataURL=()=>document.getElementById('c').toDataURL('image/jpeg',0.9);
+</script></body></html>

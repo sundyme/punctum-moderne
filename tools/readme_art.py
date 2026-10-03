@@ -78,6 +78,9 @@ class Plate:
         out = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {self.h}" width="{W}" height="{self.h}" role="img">',
                f"<title>{title}</title>", f'<rect width="{W}" height="{self.h}" fill="{T["bg"]}"/>']
         for it in self.items:
+            if it[0] == "v":
+                _, x, y0, y1 = it
+                out.append(f'<line x1="{x:.1f}" y1="{y0:.1f}" x2="{x:.1f}" y2="{y1:.1f}" stroke="{T["rule"]}" stroke-width="1"/>')
             if it[0] == "l":
                 _, x0, y, x1, _, col, dash = it
                 d = ' stroke-dasharray="3 5"' if dash else ""
@@ -106,6 +109,29 @@ def save(name, plate, title):
 
 
 M = 88  # outer margin
+
+
+def specs():
+    cells = [("2.400", "VERSION", "2026"), ("3", "AXES", "wght · CNTR · opsz"), ("2", "FONTS", "roman + italic"),
+             ("266", "GLYPHS", "+ 26 swash capitals"), ("54", "NAMED STYLES", "+ 18 static fonts"), ("36", "LANGUAGES", "Latin script")]
+    P = 14
+    cw = (W - 2 * M) / 3
+    rh = P * 11 + 130
+    h = round(M * 1.4 + rh * 2)
+    p = Plate(h)
+    for i, (num, lab, sub) in enumerate(cells):
+        r, c = divmod(i, 3)
+        x = M + cw * c + (0 if c == 0 else 36)
+        top = M * .7 + rh * r
+        if c:
+            p.items.append(("v", M + cw * c, top + 8, top + rh - 28))
+        if r:
+            p.rule(M, W - M, top - 14)
+        d, _ = layout(num)
+        p.dots(d, x, top + P * 11, P, w=900, c=100, pick=lambda x_, y, t, n: "violet" if t == 1.3 else "ink")
+        p.text(x, top + P * 11 + 46, lab, col="ink", size=19)
+        p.text(x, top + P * 11 + 76, sub, size=17)
+    save("specs", p, "Punctum Moderne in numbers")
 
 
 def hero():
@@ -257,6 +283,6 @@ def charset():
 
 
 if __name__ == "__main__":
-    for fn in (hero, tones, axes, opsz, grid, kern, italic, charset):
+    for fn in (hero, specs, tones, axes, opsz, grid, kern, italic, charset):
         fn()
     print("plates →", OUT, sorted(os.listdir(OUT)))

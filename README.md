@@ -21,17 +21,10 @@
 
 <br>
 
-<table align="center">
-  <tr>
-    <td align="center"><sub>版本 VERSION</sub><br><b>2.400</b></td>
-    <td align="center"><sub>字体 FONTS</sub><br><b>正体 · 斜体</b></td>
-    <td align="center"><sub>可变轴 AXES</sub><br><b>wght · CNTR · opsz</b></td>
-    <td align="center"><sub>字符 GLYPHS</sub><br><b>266 + 26</b></td>
-    <td align="center"><sub>命名样式 STYLES</sub><br><b>54</b></td>
-    <td align="center"><sub>字偶 KERNING</sub><br><b>6,323 · 13,670</b></td>
-    <td align="center"><sub>语言 LANGUAGES</sub><br><b>36</b></td>
-  </tr>
-</table>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/readme/specs-dark.svg">
+  <img alt="Version 2.400, 3 axes, 2 fonts, 266 glyphs plus 26 swash capitals, 54 named styles plus 18 statics, 36 languages" src="assets/readme/specs-light.svg" width="100%">
+</picture>
 
 <br>
 
@@ -94,7 +87,7 @@
 
 ## 04　一张网格 <sub>One grid</sub>
 
-一个点距是 1/16 em。每个字宽都是整数个点距，行高 1 时一行正好 16 个点距，大写高 10 行，x 高 7 行。字偶距调整也只按整点移动：算法找出右边的字能左移多远而不让任何点靠得太近，再取这段空隙的三分之二。所以 To、AV 会收紧，网格却不会断。
+一个点距是 1/16 em。每个字宽都是整数个点距，行高 1 时一行正好 16 个点距，大写高 10 行，x 高 7 行。字偶距调整也只按整点移动：算法找出右边的字能左移多远而不让任何点靠得太近，再取这段空隙的三分之二。所以 To、AV 会收紧，网格却不会断。正体共 6,323 对字偶，斜体 13,670 对。
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/readme/grid-dark.svg">

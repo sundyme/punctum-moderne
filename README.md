@@ -1,3 +1,5 @@
+<p align="right"><sub><b>简体中文</b> · <a href="README.en.md">English</a></sub></p>
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/readme/hero-dark.svg">
   <img alt="Punctum Moderne, set in itself: every letter a column of dots on one grid" src="assets/readme/hero-light.svg" width="100%">
@@ -52,7 +54,7 @@
 
 ## 02　四种笔调 <sub>Four tones per dot</sub>
 
-普通点阵屏的点只有亮和灭。Punctum Moderne 的每个点都标注了四种笔调之一，对应一支宽头笔在纸上的四种状态。全部 266 个字符、上万个点，没有一个是算法放的，都是手工标注。
+普通点阵屏的点只有亮和灭。Punctum Moderne 的每个点都标注了四种笔调之一，对应一支宽头笔在纸上的四种状态。字母与变音符号逐点手绘，五千多个点的位置和笔调都写在源文件里；带重音的字母由手绘的基本字母和变音符号组合而成。
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/readme/tones-dark.svg">
@@ -87,7 +89,7 @@
 
 ## 04　一张网格 <sub>One grid</sub>
 
-一个点距是 1/16 em。每个字宽都是整数个点距，行高 1 时一行正好 16 个点距，大写高 10 行，x 高 7 行。字偶距调整也只按整点移动：算法找出右边的字能左移多远而不让任何点靠得太近，再取这段空隙的三分之二。所以 To、AV 会收紧，网格却不会断。正体共 6,323 对字偶，斜体 13,670 对。
+一个点距是 1/16 em。每个字宽都是整数个点距，行高 1 时一行正好 16 个点距，大写高 10 行，x 高 7 行。字偶距调整也只按整点移动：算法找出右边的字能左移多远而不让任何点靠得太近，再取这段空隙的三分之二。所以 To、AV 会收紧，网格却不会断。正体共 6,323 对字偶，斜体 6,127 对，另有专为花式大写准备的字偶。
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/readme/grid-dark.svg">
@@ -103,7 +105,7 @@
 
 ## 05　斜体与花式大写 <sub>Italic and swash capitals</sub>
 
-斜体不是把正体推斜：整张点阵按 12° 剪切，每往上一行，点向右错开 tan 12° ≈ 0.21 个点距。16 个小写按书写体重画，竖画收尾时用一根细线向右上挑出，引向下一个字母。26 个花式大写以墨球起笔、以墨球收笔，在斜体中通过 `swsh` 或 `ss01` 开启。
+斜体不只是把正体推斜：整张点阵按 12° 剪切，每往上一行，点向右错开 tan 12° ≈ 0.21 个点距。16 个小写还按书写体重画，竖画收尾时用一根细线向右上挑出，引向下一个字母。26 个花式大写以墨球起笔、以墨球收笔，在斜体中通过 `swsh` 或 `ss01` 开启。
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/readme/italic-dark.svg">
@@ -119,7 +121,7 @@ em      { font-style: italic; }                      /* 真斜体，不是合成
 
 ## 06　字符集 <sub>Character set</sub>
 
-基本拉丁、Latin-1 与 Latin Extended-A：266 个字符，覆盖 36 种使用拉丁字母的语言。大写的变音符号另留了一行空白，不贴在字母顶部。每一个字形在斜体里都重新画过一遍。
+基本拉丁、Latin-1 与 Latin Extended-A：266 个字符，覆盖 36 种使用拉丁字母的语言。大写的变音符号另留了一行空白，不贴在字母顶部。每一个字形都有斜体版本：整张点阵剪切 12°，其中 16 个小写按书写体重画。
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/readme/charset-dark.svg">
@@ -194,7 +196,7 @@ em      { font-style: italic; }                      /* 真斜体，不是合成
 | :-- | :-- |
 | [`fonts/PunctumModerne[CNTR,opsz,wght].ttf`](fonts) | 正体可变字体 · 桌面安装 |
 | [`fonts/PunctumModerne-Italic[CNTR,opsz,wght].ttf`](fonts) | 斜体可变字体 · 含花式大写 |
-| [`fonts/PunctumModerne-VF.woff2`](fonts) · [`-Italic-VF.woff2`](fonts) | 网页用 · 76 KB / 135 KB |
+| [`fonts/PunctumModerne-VF.woff2`](fonts) · [`-Italic-VF.woff2`](fonts) | 网页用 · 77 KB / 135 KB |
 | [`fonts/static/`](fonts/static) | 18 个静态样式：Thin · Light · Regular · Bold · Black · Slab · Text，各含 Italic |
 
 - **macOS**：双击两个可变字体，在“字体册”中安装。设计软件里会出现 54 个命名样式。
@@ -289,5 +291,5 @@ v1/                    Punctum 第一版：5×7 点阵，ROND 与 wght 两条轴
 <br>
 
 <p align="center">
-  <sub>Punctum Moderne 2.400 · 设计 Claude，为 <a href="https://github.com/sundyme">sundyme</a> · 正文 Bodoni Moda 与 Noto Serif SC · 标注 JetBrains Mono</sub>
+  <sub>Punctum Moderne 2.400 · 设计 Claude，为 <a href="https://github.com/sundyme">sundyme</a> · 网站正文 Bodoni Moda 与 Noto Serif SC · 标注 JetBrains Mono</sub>
 </p>

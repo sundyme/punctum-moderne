@@ -121,7 +121,10 @@ def build_master(data, wght, rond):
         "version": f"Version {VERSION}",
         "designer": "Claude, for sundyme",
         "description": "A variable dot-matrix typeface on a 5×7 grid with true descenders.",
-        "licenseDescription": "SIL Open Font License 1.1",
+        "copyright": "Copyright 2026 The Punctum Project Authors (https://github.com/sundyme/punctum-moderne)",
+        "licenseDescription": "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://openfontlicense.org",
+        "licenseInfoURL": "https://openfontlicense.org",
+        "vendorURL": "https://github.com/sundyme/punctum-moderne",
     })
     fb.setupOS2(
         sTypoAscender=ASC, sTypoDescender=DESC, sTypoLineGap=0,

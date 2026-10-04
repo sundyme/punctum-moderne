@@ -2,6 +2,7 @@
 import base64
 import json
 import os
+import re
 import sys
 import warnings
 
@@ -24,6 +25,9 @@ for n in sorted(os.listdir(fonts)):
 statics = sorted(os.listdir(os.path.join(fonts, "static")))
 files.append([f"fonts/static/ · {len(statics)} 个静态字体", "Thin → Black, Slab, Text, 各含 Italic"])
 t = open(os.path.join(HERE, "template.html"), encoding="utf-8").read()
+t = t.replace("__I18N_JS__", open(os.path.join(V2, "site", "i18n.js"), encoding="utf-8").read())
+I18N = json.load(open(os.path.join(HERE, "i18n.en.json"), encoding="utf-8"))
+t = t.replace("__I18N__", json.dumps(I18N, ensure_ascii=False).replace("</", "<\\/"))
 for k, v in {"__ROMAN__": b64("PunctumModerne-VF.woff2"), "__ITALIC__": b64("PunctumModerne-Italic-VF.woff2"),
              "__GR__": json.dumps(sub(R)), "__GI__": json.dumps(sub(I)), "__FILES__": json.dumps(files, ensure_ascii=False),
              "__KR__": f"{len(kerning(R, False)):,}",
@@ -31,6 +35,7 @@ for k, v in {"__ROMAN__": b64("PunctumModerne-VF.woff2"), "__ITALIC__": b64("Pun
              "__KS__": f"{sum(1 for p, v in KI.items() if 'swsh' in p[0] + p[1] and v > 0):,}",
              "__N__": str(len([c for c in R if c not in "  "]))}.items():
     t = t.replace(k, v)
+assert "__" not in "".join(re.findall(r"__[A-Z_]+__", t)), re.findall(r"__[A-Z_]+__", t)
 HEAD = ('<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">'
         '<meta name="description" content="Punctum Moderne Italic: a sheared dot lattice, sixteen cursive lowercase and twenty-six swash capitals.">'

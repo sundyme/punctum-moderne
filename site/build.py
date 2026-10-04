@@ -66,6 +66,9 @@ gallery = '<div class="gal">' + "".join(rows_html) + "</div>"
 t = open(os.path.join(HERE, "template.html"), encoding="utf-8").read()
 glyphs = json.dumps({c: {"w": g["width"], "d": [list(d) for d in g["dots"]]} for c, g in R.items()}, ensure_ascii=False, separators=(",", ":"))
 glyphs_i = open(os.path.join(V2, "src", "glyphs-italic.json"), encoding="utf-8").read()
+I18N = json.load(open(os.path.join(HERE, "i18n.en.json"), encoding="utf-8"))
+t = t.replace("__I18N_JS__", open(os.path.join(HERE, "i18n.js"), encoding="utf-8").read())
+t = t.replace("__I18N__", json.dumps(I18N, ensure_ascii=False).replace("</", "<\\/"))
 for k, v in {"__BOARDS__": gallery, "__WOFF2_I__": b64("PunctumModerne-Italic-VF.woff2"), "__WOFF2__": b64("PunctumModerne-VF.woff2"),
              "__GLYPHS_I__": glyphs_i, "__GLYPHS__": glyphs,
              "__N__": str(len([c for c in R if c not in "  "])), "__KR__": f"{len(kerning(R, False)):,}",

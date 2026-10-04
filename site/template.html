@@ -91,6 +91,11 @@ p, dd, li, figcaption { text-wrap: pretty; }
 .nav ul::-webkit-scrollbar { display: none; }
 .nav li a { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: .06em; text-decoration: none; color: var(--ink-2); white-space: nowrap; }
 .nav li a:hover { color: var(--ink); }
+.lang { flex: none; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; line-height: 1; padding: 6px 8px; border: 1px solid var(--rule); background: transparent; color: var(--ink); cursor: pointer; border-radius: 2px; }
+.lang:hover { border-color: var(--ink); }
+/* English: Bodoni carries the headings, and the English sub-labels that sat beside Chinese ones step aside */
+html[lang="en"] { --zh: "Bodoni Moda", "Noto Serif SC", "Songti SC", serif; }
+html[lang="en"] h3 small, html[lang="en"] .sl-txt h3 span, html[lang="en"] .fc-t small { display: none; }
 .nav li a[aria-current="true"] { color: var(--ink); }
 .nav li a { position: relative; }
 .nav li a[aria-current="true"]::after { content: ""; position: absolute; left: 50%; bottom: -9px; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: var(--violet); }
@@ -142,7 +147,7 @@ section.s.band > .wrap > .head > .eyebrow::before { color: var(--paper); }
 .head .deck { font-family: "Bodoni Moda", serif; font-style: italic; font-size: var(--fs-l); color: var(--ink-2); margin: 6px 0 0; line-height: 1.4; }
 .head p.lede { margin: 18px 0 0; max-width: 36em; }
 .body { display: grid; grid-template-columns: var(--rail) minmax(0, 1fr); gap: 0 40px; }
-.body > .main { grid-column: 2; min-width: 0; display: grid; gap: 40px; }
+.body > .main { grid-column: 2; min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }
 @media (max-width: 860px) {
   .head, .body { grid-template-columns: 1fr; }
   .body > .main { grid-column: 1; }
@@ -530,7 +535,7 @@ td code { font-family: var(--mono); font-size: 12.5px; white-space: nowrap; }
 .kern { display: grid; gap: 2px; border-top: 1px solid var(--rule); padding-top: 14px; }
 .kern div { display: grid; grid-template-columns: 5rem minmax(0, 1fr); gap: 16px; align-items: baseline; }
 .kern span { font-family: var(--mono); font-size: var(--fs-xs); color: var(--ink-2); }
-.kern p { font-family: var(--display); font-variation-settings: "wght" 600, "CNTR" 100; font-size: clamp(30px, 5vw, 64px); line-height: 1.15; white-space: nowrap; overflow-x: auto; }
+.kern p { font-family: var(--display); font-variation-settings: "wght" 600, "CNTR" 100; font-size: clamp(20px, 5vw, 64px); line-height: 1.15; white-space: nowrap; overflow-x: auto; }
 .kern p.off { font-kerning: none; color: var(--ink-2); }
 
 /* ── italic ── */
@@ -596,7 +601,7 @@ footer.f { border-top: 1px solid var(--ink); padding-block: clamp(56px, 8vw, 112
 .f-up { margin-top: 8px; font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: .06em; }
 @media (max-width: 760px) { .f-top { grid-template-columns: minmax(0, 1fr); align-items: start; } }
 @media (max-width: 420px) { .f-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.f-mark { font-family: var(--display); font-variation-settings: "wght" 900, "CNTR" 100; font-size: clamp(56px, 12.4vw, 168px); line-height: 1; margin: 0 0 28px; white-space: nowrap; overflow: hidden; }
+.f-mark { font-family: var(--display); font-variation-settings: "wght" 900, "CNTR" 100; font-size: clamp(40px, 12.2vw, 164px); line-height: 1; margin: 0 0 28px; white-space: nowrap; overflow: hidden; }
 .f-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; font-family: var(--mono); font-size: var(--fs-xs); color: var(--ink-2); letter-spacing: .04em; }
 </style>
 
@@ -615,6 +620,7 @@ footer.f { border-top: 1px solid var(--ink); padding-block: clamp(56px, 8vw, 112
       <li><a href="#charset">字符集</a></li>
       <li><a href="#install">安装</a></li>
     </ul>
+    <button class="lang" id="lang" type="button" data-no-i18n lang="en" aria-label="Switch to English">EN</button>
   </div>
   <span class="prog" id="nav-prog" aria-hidden="true"></span>
 </nav>
@@ -782,7 +788,7 @@ footer.f { border-top: 1px solid var(--ink); padding-block: clamp(56px, 8vw, 112
       <div>
         <h2 id="h-tones">点没有粗细，只有大小。所以让大小来表达笔法。</h2>
         <p class="deck">Four tones per dot, placed by hand.</p>
-        <p class="lede">普通点阵屏的点只有亮和灭两种状态。Punctum Moderne 的每个点都标注了四种笔调之一，对应一支宽头笔在纸上的四种状态。__N__ 个字符、上万个点，没有一个是算法放的。</p>
+        <p class="lede">普通点阵屏的点只有亮和灭两种状态。Punctum Moderne 的每个点都标注了四种笔调之一，对应一支宽头笔在纸上的四种状态。字母与变音符号逐点手绘，五千多个点的位置和笔调都写在源文件里。</p>
       </div>
     </div>
     <div class="body"><div class="main">
@@ -1097,7 +1103,7 @@ fjords</p>
       <div class="eyebrow">Character set</div>
       <div>
         <h2 id="h-cs">__N__ 个字符</h2>
-        <p class="deck">Basic Latin, Latin-1 and Latin Extended-A, figures and punctuation; every glyph drawn again in italic.</p>
+        <p class="deck">Basic Latin, Latin-1 and Latin Extended-A, figures and punctuation; every glyph also in italic.</p>
         <p class="lede">点选任意字符，右边会显示它在网格上的点位和四种笔调的数量。大写字母的变音符号上方留了一行空白，不贴在字母顶部。切换到斜体，可以看到推斜后的点阵和 26 个花式大写。</p>
       </div>
     </div>
@@ -1163,6 +1169,7 @@ fjords</p>
         <div><h3>Windows</h3><p>右键字体文件，选择“为所有用户安装”。不支持可变字体的软件，改装 <code class="mono">static/</code> 里的 18 个静态样式（正斜各 9 个），小字号用 Text。</p></div>
         <div><h3>Web</h3><p>正体 <code class="mono">PunctumModerne<wbr>-VF.woff2</code>（__SR__），斜体 <code class="mono">PunctumModerne<wbr>-Italic-VF.woff2</code>（__SI__），各含三条轴。光学尺寸由浏览器自动设置。</p></div>
       </div>
+      <div class="cta dl"><a class="btn solid" href="https://github.com/sundyme/punctum-moderne/tree/main/fonts">在 GitHub 下载字体</a><a class="btn" href="italic.html">斜体发布说明</a></div>
       <div>
         <div class="code-head"><span>CSS</span><button class="linkbtn" type="button" id="css-copy" style="margin-left:auto">复制</button><span id="css-msg" role="status"></span></div>
 <pre class="code" id="css-code"><span class="c">/* 正斜两个文件，同一个字族名；opsz 跟随字号自动调整 */</span>
@@ -1228,7 +1235,7 @@ h1 {
         <details><summary>小字号能读吗？</summary><p>能。2.2 版加入了光学尺寸轴：14–32px 时竖笔变得饱满，细线加粗到抗锯齿后仍然可见，读起来是一款中等对比的衬线体。说明文字、图注、导航都可以用；但它终究是展示字体，长篇正文仍然建议用专门的正文字体。</p></details>
         <details><summary>和第一版 Punctum 是什么关系？</summary><p>第一版是 5 × 7 的等宽点阵，点只有亮和灭，第二条轴把圆点变成方像素。第二版保留了“网格连续”的原则，换成了 10 点高的比例字宽网格，并给每个点加了笔调。</p></details>
         <details><summary>能做中文吗？</summary><p>可以，而且原理是现成的：宋体本来就是横细竖粗。但汉字的点阵至少需要 24 × 24 的网格，还要为点、撇、捺、钩定义笔调规则，是一个独立的项目。</p></details>
-        <details><summary>怎么修改字形？</summary><p>打开 <code class="mono">src/glyphs.py</code>，每个字形是一块 ASCII 图，用 <code class="mono"># + - O</code> 四个符号标出笔调；斜体小写在 <code class="mono">ITALIC_SRC</code>，花式大写在 <code class="mono">SWASH</code>。改完运行 <code class="mono">python3 src/build.py</code>，几秒钟后生成新的字体文件。</p></details>
+        <details><summary>怎么修改字形？</summary><p>打开 <code class="mono">src/glyphs.py</code>，每个字形是一块 ASCII 图，用 <code class="mono"># + - O</code> 四个符号标出笔调；斜体小写在 <code class="mono">ITALIC_SRC</code>，花式大写在 <code class="mono">SWASH</code>。改完运行 <code class="mono">python3 src/build.py</code>，不到一分钟就会生成新的字体文件。</p></details>
         <details><summary>授权是什么？</summary><p>字体文件的名称表里写的是 SIL Open Font License 1.1：可以免费用于商业和非商业项目，可以修改和再发布，但不能单独出售字体文件。</p></details>
       </div>
     </div></div>
@@ -1246,7 +1253,7 @@ h1 {
       <nav class="f-cols" aria-label="页脚导航">
         <div><p class="eyebrow">字体</p><a href="#idea">理念</a><a href="#tones">笔调</a><a href="#axes">可变轴</a><a href="#grid">网格</a><a href="#italic">斜体与花式大写</a><a href="#films">影像</a></div>
         <div><p class="eyebrow">使用</p><a href="#inuse">样例</a><a href="#family">字族</a><a href="#charset">字符集</a><a href="#languages">语言</a><a href="#install">安装与设置</a></div>
-        <div><p class="eyebrow">关于</p><span>版本 2.400</span><span>SIL Open Font License 1.1</span><a href="#faq">常见问题</a><a href="#top" class="f-up">回到顶部 ↑</a></div>
+        <div><p class="eyebrow">关于</p><span>版本 2.400</span><a href="https://github.com/sundyme/punctum-moderne/blob/main/OFL.txt">SIL Open Font License 1.1</a><a href="https://github.com/sundyme/punctum-moderne">GitHub 源代码</a><a href="#faq">常见问题</a><a href="#top" class="f-up">回到顶部 ↑</a></div>
       </nav>
     </div>
     <p class="f-mark" aria-hidden="true">Punctum Moderne</p>
@@ -1262,6 +1269,8 @@ h1 {
 </dialog>
 
 <script>
+/* ── language: the page is written in Chinese; English comes from a dictionary keyed by the Chinese text ── */
+__I18N_JS__
 const GLYPHS = __GLYPHS__;
 const GLYPHS_I = __GLYPHS_I__;
 const $ = (s) => document.querySelector(s);
@@ -1620,7 +1629,7 @@ const shearDemo = (() => {
   function draw() {
     const W = cv.clientWidth, P = W / COLS, H = P * ROWS, ctx = setup(cv, W, H);
     cv.style.height = H + "px";
-    const sh = t * ITALIC_TAN, m = Math.min(1, Math.max(0, (t - .55) / .45)), e = m * m * (3 - 2 * m);
+    const sh = t * ITALIC_TAN, m = t >= 1 ? 1 : Math.min(1, Math.max(0, (t - .55) / .45)), e = m * m * (3 - 2 * m);
     ctx.fillStyle = css("--grid");
     for (let y = -3; y <= 12; y++) for (let x = -2; x < COLS + 2; x++) disc(ctx, (x + .5 + (y - PIVOT) * sh) * P, (TOP - y) * P, Math.max(.8, P * .05));
     const ink = css("--ink");
@@ -1995,7 +2004,7 @@ addEventListener("resize", lbFit);
           const rad = .05 * cw + (Math.min(ww, hh) / 2 - .05 * cw) * k;
           rr(x - ww / 2, y - hh / 2, ww, hh, rad); ctx.fill();
         }
-        if (L.width > COLS) { ctx.fillStyle = COL.manila; ctx.globalAlpha = .9; ctx.font = `500 12px "JetBrains Mono", monospace`; ctx.textAlign = 'right'; ctx.fillText('卡片只有 64 列 →', x0 + CW - cw, y0 + 1.15 * cw); ctx.globalAlpha = 1; }
+        if (L.width > COLS) { ctx.fillStyle = COL.manila; ctx.globalAlpha = .9; ctx.font = `500 12px "JetBrains Mono", monospace`; ctx.textAlign = 'right'; ctx.fillText(tr('卡片只有 64 列 →'), x0 + CW - cw, y0 + 1.15 * cw); ctx.globalAlpha = 1; }
       },
     };
     slider.addEventListener('input', () => { out.textContent = slider.value; d.dirty = true; kick(); });
@@ -2307,6 +2316,11 @@ const carousel = (() => {
     if (r.top < 56 || r.bottom > innerHeight) stage.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
   }));
 })();
+
+/* ── language toggle ── */
+$("#lang").addEventListener("click", () => i18n.set(i18n.lang === "en" ? "zh" : "en"));
+document.addEventListener("langchange", () => { redrawAll(); carousel.refresh(); });
+i18n.set(i18n.initial());
 
 /* ── boot ── */
 function redrawAll() { hero.redraw(); drawEq(); drawTones(); drawCards(); drawInspector(); shearDemo.draw(); window.__motifTheme && window.__motifTheme(); }

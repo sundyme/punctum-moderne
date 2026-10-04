@@ -327,7 +327,8 @@
  "样例放大查看": "Enlarged specimen",
  "，不到一分钟就会生成新的字体文件。": ", and new font files appear in under a minute.",
  "普通点阵屏的点只有亮和灭两种状态。Punctum Moderne 的每个点都标注了四种笔调之一，对应一支宽头笔在纸上的四种状态。字母与变音符号逐点手绘，五千多个点的位置和笔调都写在源文件里。": "The dots of an ordinary matrix display are either on or off. Every dot in Punctum Moderne is marked with one of four tones, the four states of a broad-nib pen on paper. Letters and accents are drawn dot by dot; the position and tone of more than five thousand dots are written in the source.",
- "在 GitHub 下载字体": "Download from GitHub",
  "斜体发布说明": "Italic release notes",
- "GitHub 源代码": "Source on GitHub"
+ "GitHub 源代码": "Source on GitHub",
+ "下载字体包 · ZIP": "Download fonts · ZIP",
+ "版本说明": "Release notes"
 }

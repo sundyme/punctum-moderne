@@ -192,6 +192,8 @@ em      { font-style: italic; }                      /* 真斜体，不是合成
 
 ## 安装与使用 <sub>Install & use</sub>
 
+**[下载字体包 PunctumModerne.zip](https://github.com/sundyme/punctum-moderne/releases/latest/download/PunctumModerne.zip)** · 可变字体、18 个静态字体、网页字体与示例 CSS，约 1 MB · [版本说明](https://github.com/sundyme/punctum-moderne/releases/latest)
+
 | 文件 File | 用途 Use |
 | :-- | :-- |
 | [`fonts/PunctumModerne[CNTR,opsz,wght].ttf`](fonts) | 正体可变字体 · 桌面安装 |

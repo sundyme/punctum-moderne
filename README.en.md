@@ -192,6 +192,8 @@ One dot, told three ways. Every frame is generated from the font’s dot data, a
 
 ## Install & use
 
+**[Download PunctumModerne.zip](https://github.com/sundyme/punctum-moderne/releases/latest/download/PunctumModerne.zip)** · variable fonts, 18 statics, web fonts and sample CSS, about 1 MB · [Release notes](https://github.com/sundyme/punctum-moderne/releases/latest)
+
 | File | Use |
 | :-- | :-- |
 | [`fonts/PunctumModerne[CNTR,opsz,wght].ttf`](fonts) | Roman variable font · desktop |

@@ -188,6 +188,8 @@ One dot, told three ways. Every frame is generated from the font’s dot data, a
   </tr>
 </table>
 
+A 72-second **release film** and a 32-second vertical social cut followed, rendered frame by frame with a hand-written WebGL2 dot engine, with two scores (synthesized in numpy, and an ElevenLabs edit). Sources are in [films/release](films/release); 1080p masters of all the films are attached to [Releases · films-2026-10](https://github.com/sundyme/punctum-moderne/releases/tag/films-2026-10).
+
 <br>
 
 ## Install & use
@@ -294,6 +296,8 @@ films/
   life-of-a-dot-loop/  15-second seamless loop
   five-materials/      Five Materials · 48s · WebGL2
   signal/              Signal · 30s · retro dot media
+  release/             Release film 72s + 9:16 social cut 32s · hand-written WebGL2 dot engine
+cjk/                   CJK extension proposal "Punctum Song": proposal page, dot converter prototype, size test
 docs/                  GitHub Pages: website, italic page, 720p films
 tools/                 README illustration generator
 v1/                    Punctum v1: a 5×7 matrix with ROND and wght axes

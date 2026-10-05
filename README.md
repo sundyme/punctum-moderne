@@ -188,6 +188,8 @@ em      { font-style: italic; }                      /* 真斜体，不是合成
   </tr>
 </table>
 
+之后又做了一支 72 秒的**发布片**和一支 32 秒的竖版社媒剪辑，用自写的 WebGL2 点阵引擎逐帧渲染，有 numpy 合成和 ElevenLabs 两版配乐。源码在 [films/release](films/release)，四支短片的 1080p 原片都在 [Releases · films-2026-10](https://github.com/sundyme/punctum-moderne/releases/tag/films-2026-10)。
+
 <br>
 
 ## 安装与使用 <sub>Install & use</sub>
@@ -294,6 +296,8 @@ films/
   life-of-a-dot-loop/  15 秒无缝循环片段
   five-materials/      《五种介质》 48s · WebGL2 渲染
   signal/              《信号》 30s · 复古点阵媒介
+  release/             发布片 72s + 9:16 社媒版 32s · 自写 WebGL2 点阵引擎
+cjk/                   中文扩展方案「点宋」：方案页、点阵转换器原型、体积实测
 docs/                  GitHub Pages：网站、斜体页、720p 短片
 tools/                 README 插图生成器
 v1/                    Punctum 第一版：5×7 点阵，ROND 与 wght 两条轴

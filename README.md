@@ -266,6 +266,21 @@ npx hyperframes render --fps 60 --quality delivery       # 渲染 1080p60
 
 <br>
 
+## 先例与差异 <sub>Prior art</sub>
+
+用点来组字是一个很老的想法，Punctum Moderne 不是第一款点阵字体，也不是第一款"点随笔画变粗细"的字体。下面列出我们知道的近亲，以及我们和它们的不同之处。
+
+| 字体 | 作者 / 年份 | 共同点 | Punctum 的不同 |
+| --- | --- | --- | --- |
+| [Doto](https://fonts.google.com/specimen/Doto) | Óliver Lalan · 2024 · OFL | 可变点阵；`wght` 控制点的大小，`ROND` 控制点的圆和方 | 这条思路与 `v1/` 最接近。v1 用 5×9 网格（大写占 5×7），Doto 用 6×10；字形逐字手写，字体文件由本仓库脚本生成，没有使用 Doto 的任何文件 |
+| [Punto](https://fonts.adobe.com/fonts/punto) | Arne Freytag · Fontador | 点的大小随笔画粗细变化 | Moderne 把这个想法落在 Didone 骨架上：四种笔调，`CNTR` 轴在点阵板材和 Didone 之间连续变化，`opsz` 光学尺寸轴，还有斜体和花式大写 |
+| [Linotype Punkt](https://www.myfonts.com/fonts/linotype/punkt) | Mischa Leiner · Linotype | 字形由等距的点组成 | 点不等大，各自承载笔画的轻重 |
+| [Powerhouse Punctum](https://matterofsorts.com/) | Vincent Chan · 2023 · Powerhouse 博物馆定制 | 同名；题材同样来自打孔卡和点阵打印机 | 两者互不相关。为避免混淆，本项目对外统一称作 **Punctum Moderne** |
+
+另外，5×7 网格的自由度很小，v1 的许多大写字母与几十年来的 LCD 和打印机字库难免相似，这是这种网格的共同语汇。
+
+<br>
+
 ## 仓库结构 <sub>Repository</sub>
 
 ```text

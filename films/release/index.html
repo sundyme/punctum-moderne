@@ -1,0 +1,30 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Punctum Moderne · Release 2.400</title>
+<style>
+@font-face { font-family: "PM"; src: url("assets/fonts/PunctumModerne-VF.woff2") format("woff2"); font-weight: 100 900; font-style: normal; }
+@font-face { font-family: "PM"; src: url("assets/fonts/PunctumModerne-Italic-VF.woff2") format("woff2"); font-weight: 100 900; font-style: italic; }
+@font-face { font-family: "SongCN"; src: url("assets/fonts/song-sub.woff2") format("woff2"); font-weight: 400; }
+html, body { margin: 0; background: #000; overflow: hidden; }
+canvas { display: block; width: 1920px; height: 1080px; }
+#probe { position: absolute; left: -9999px; font: 20px PM; }
+</style></head>
+<body>
+<canvas id="c" width="1920" height="1080"></canvas>
+<div id="probe">Punctum <i>Italic</i> <span style="font-family:SongCN">点阵</span></div>
+<script src="assets/data.js"></script>
+<script src="assets/engine.js"></script>
+<script src="assets/film.js"></script>
+<script>
+(async () => {
+  const q = new URLSearchParams(location.search);
+  await Promise.all([document.fonts.load('400 20px PM'), document.fonts.load('italic 400 20px PM'), document.fonts.load('400 20px SongCN')].map(p => p.catch(() => 0)));
+  await document.fonts.ready;
+  const E = PE.createEngine(document.getElementById('c'), 1920, 1080);
+  window.SUB = +(q.get('sub') || 1);
+  window.renderAt = (t, sub = window.SUB) => { E.render(FILM.frame, t, sub, 1 / 120); E.gl.finish(); return true; };
+  window.READY = true;
+  if (q.has('t')) renderAt(+q.get('t'));
+  if (q.has('play')) { const t0 = performance.now() - (+q.get('play') || 0) * 1000; const loop = () => { renderAt(((performance.now() - t0) / 1000) % FILM.DUR, 1); requestAnimationFrame(loop); }; loop(); }
+})();
+</script>
+</body></html>

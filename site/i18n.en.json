@@ -187,7 +187,7 @@
  "大写 Uppercase": "Uppercase",
  "小写 Lowercase": "Lowercase",
  "西欧变音字母 Latin-1": "Latin-1 accented",
- "中欧、波罗的海与土耳其 Latin Extended-A": "Latin Extended-A: Central European, Baltic, Turkish",
+ "中欧、波罗的海、土耳其与罗马尼亚 Latin Extended": "Latin Extended: Central European, Baltic, Turkish, Romanian",
  "数字 Figures": "Figures",
  "标点与符号 Punctuation & symbols": "Punctuation & symbols",
  "字符": "Glyph",
@@ -330,5 +330,11 @@
  "斜体发布说明": "Italic release notes",
  "GitHub 源代码": "Source on GitHub",
  "下载字体包 · ZIP": "Download fonts · ZIP",
- "版本说明": "Release notes"
+ "版本说明": "Release notes",
+ "切换到浅色": "Switch to light",
+ "切换到深色": "Switch to dark",
+ "打开音效": "Turn sound on",
+ "关闭音效": "Turn sound off",
+ "音效": "Sound",
+ "已选中，按 Ctrl+C 复制": "Selected; press Ctrl+C to copy"
 }

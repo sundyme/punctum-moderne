@@ -121,7 +121,7 @@ em      { font-style: italic; }                      /* 真斜体，不是合成
 
 ## 06　字符集 <sub>Character set</sub>
 
-基本拉丁、Latin-1 与 Latin Extended-A：266 个字符，覆盖 36 种使用拉丁字母的语言。大写的变音符号另留了一行空白，不贴在字母顶部。每一个字形都有斜体版本：整张点阵剪切 12°，其中 16 个小写按书写体重画。
+基本拉丁，加上 Latin-1 与 Latin Extended-A 的大部分字母：266 个字符，覆盖 36 种使用拉丁字母的语言。大写的变音符号另留了一行空白，不贴在字母顶部。每一个字形都有斜体版本：整张点阵剪切 12°，其中 16 个小写按书写体重画。
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/readme/charset-dark.svg">

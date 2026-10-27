@@ -121,7 +121,7 @@ em      { font-style: italic; }                      /* a true italic, not a syn
 
 ## 06　Character set
 
-Basic Latin, Latin-1 and Latin Extended-A: 266 characters covering 36 languages written in the Latin alphabet. Capital accents get a row of their own instead of sitting on the letter. Every glyph also comes in italic: the whole lattice is sheared 12°, and sixteen lowercase letters are redrawn as a cursive.
+Basic Latin plus most of Latin-1 and Latin Extended-A: 266 characters covering 36 languages written in the Latin alphabet. Capital accents get a row of their own instead of sitting on the letter. Every glyph also comes in italic: the whole lattice is sheared 12°, and sixteen lowercase letters are redrawn as a cursive.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/readme/charset-dark.svg">

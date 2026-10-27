@@ -15,6 +15,8 @@ V2 = os.path.dirname(HERE)
 sys.path.insert(0, os.path.join(V2, "src"))
 from glyphs import parse  # noqa: E402
 from kern import kerning  # noqa: E402
+sys.path.insert(0, os.path.join(V2, "site"))
+from icons import icon_sound, icon_theme  # noqa: E402
 
 F = lambda n: os.path.join(V2, "fonts", n)
 b64 = lambda n: base64.b64encode(open(F(n), "rb").read()).decode()
@@ -67,23 +69,38 @@ t = open(os.path.join(HERE, "template.html"), encoding="utf-8").read()
 glyphs = json.dumps({c: {"w": g["width"], "d": [list(d) for d in g["dots"]]} for c, g in R.items()}, ensure_ascii=False, separators=(",", ":"))
 glyphs_i = open(os.path.join(V2, "src", "glyphs-italic.json"), encoding="utf-8").read()
 I18N = json.load(open(os.path.join(HERE, "i18n.en.json"), encoding="utf-8"))
+missing = [k for k in ("__I18N_JS__", "__ICON_THEME__", "__ICON_SOUND__", "__CHROME_JS__") if k not in t]
+if missing:
+    raise SystemExit(f"template is missing {missing}")
 t = t.replace("__I18N_JS__", open(os.path.join(HERE, "i18n.js"), encoding="utf-8").read())
+t = t.replace("__ICON_THEME__", icon_theme()).replace("__ICON_SOUND__", icon_sound())
+t = t.replace("__CHROME_JS__", open(os.path.join(HERE, "chrome.js"), encoding="utf-8").read())
 t = t.replace("__I18N__", json.dumps(I18N, ensure_ascii=False).replace("</", "<\\/"))
 for k, v in {"__BOARDS__": gallery, "__WOFF2_I__": b64("PunctumModerne-Italic-VF.woff2"), "__WOFF2__": b64("PunctumModerne-VF.woff2"),
              "__GLYPHS_I__": glyphs_i, "__GLYPHS__": glyphs,
-             "__N__": str(len([c for c in R if c not in "  "])), "__KR__": f"{len(kerning(R, False)):,}",
+             "__N__": str(len([c for c in R if c not in " \u00a0"])), "__KR__": f"{len(kerning(R, False)):,}",
              "__SR__": kb("PunctumModerne-VF.woff2"), "__SI__": kb("PunctumModerne-Italic-VF.woff2")}.items():
     t = t.replace(k, v)
 left = re.findall(r"__[A-Z_]+__", t)
 assert not left, left
+# dark by default; a visitor's own choice (pm-theme) wins. Runs before the first paint.
+THEME_BOOT = ('<meta name="theme-color" content="#0F0F10">'
+              "<script>(function(){var t='dark';try{t=localStorage.getItem('pm-theme')||'dark'}catch(e){}"
+              "t=t==='light'?'light':'dark';document.documentElement.setAttribute('data-theme',t);"
+              "if(t==='light')document.querySelector('meta[name=theme-color]').content='#F1F1EE'})()</script>")
 HEAD = ('<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">'
         '<meta name="description" content="A dot-matrix Didone in roman and italic, three axes and one grid. 点阵上的 Didone。">'
         '<meta property="og:title" content="Punctum Moderne"><meta property="og:description" content="A dot-matrix Didone in roman and italic, three axes and one grid. 点阵上的 Didone。">'
         '<meta property="og:image" content="https://sundyme.github.io/punctum-moderne/media/social.png">'
+        '<meta property="og:type" content="website"><meta property="og:url" content="https://sundyme.github.io/punctum-moderne/">'
+        '<meta property="og:image:alt" content="Punctum Moderne, a dot-matrix Didone">'
         '<meta name="twitter:card" content="summary_large_image">'
-        '<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Ccircle cx=%228%22 cy=%228%22 r=%226%22 fill=%22%23111%22/%3E%3C/svg%3E">'
-        '</head><body style="margin:0">')
+        + THEME_BOOT +
+        '<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Cstyle%3Ecircle%7Bfill:%23111%7D@media (prefers-color-scheme:dark)%7Bcircle%7Bfill:%23EDEDE9%7D%7D%3C/style%3E%3Ccircle cx=%228%22 cy=%228%22 r=%226%22/%3E%3C/svg%3E">')
 out = os.path.join(V2, "docs", "index.html")
-open(out, "w", encoding="utf-8").write(HEAD + t + "</body></html>")
+# the template opens with <title>, font links and the page CSS: they belong in <head>; the body starts after the first </style>
+head_part, sep, body_part = t.partition("</style>")
+assert sep, "template has no </style>"
+open(out, "w", encoding="utf-8").write(HEAD + head_part + sep + '</head><body style="margin:0">' + body_part + "</body></html>")
 print(out, f"{len(t) / 1024:.0f} KB")

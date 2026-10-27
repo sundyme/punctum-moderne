@@ -54,5 +54,11 @@
  "扩展字符集：从 175 个增至 __N__ 个，新增 79 个带符字母和 12 个符号。": "Character set extended from 175 to __N__: 79 new accented letters and 12 symbols.",
  "新增 12 个符号：© ™ § ¶ ± ÷ ¢ ¥ ‚ „ ‹ ›。": "12 new symbols: © ™ § ¶ ± ÷ ¢ ¥ ‚ „ ‹ ›.",
  "重画正体 k：右臂收到第 6 行，腿部改成斜向收尾，脚衬与 h、n 对齐。": "Roman k redrawn: the arm now stops at row 6, the leg ends on a diagonal, and the foot serif lines up with h and n.",
- "静态字体从 9 个增至 18 个，每个正体样式都有对应的斜体。": "Static fonts go from 9 to 18; every roman style has a matching italic."
+ "静态字体从 9 个增至 18 个，每个正体样式都有对应的斜体。": "Static fonts go from 9 to 18; every roman style has a matching italic.",
+ "切换到浅色": "Switch to light",
+ "切换到深色": "Switch to dark",
+ "打开音效": "Turn sound on",
+ "关闭音效": "Turn sound off",
+ "音效": "Sound",
+ "用点画出的 Italique 一词：点阵从直立倾斜到 12 度，小写换成草书写法。": "The word Italique drawn in dots; the dot grid shears from upright to a 12 degree italic and the lowercase changes to cursive forms."
 }

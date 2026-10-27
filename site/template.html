@@ -1,7 +1,8 @@
 <title>Punctum Moderne</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..500&family=Noto+Serif+SC:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..500&family=Noto+Serif+SC:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..500&family=Noto+Serif+SC:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
 <style>
 @font-face {
   font-family: "Punctum Moderne";
@@ -49,6 +50,7 @@
   --fs-xs: 0.75rem; --fs-s: 0.875rem; --fs-m: 1.0625rem; --fs-l: 1.375rem;
   --fs-h: clamp(1.75rem, 3.6vw, 2.75rem);
   --rail: 12rem;
+  --navh: 56px;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -80,6 +82,8 @@ p, dd, li, figcaption { text-wrap: pretty; }
 .rv.in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; transition: none; } }
 .wrap { max-width: 1240px; margin-inline: auto; padding-inline: clamp(16px, 5vw, 56px); }
+@supports (padding: max(1px, env(safe-area-inset-left))) { .wrap { padding-left: max(clamp(16px, 5vw, 56px), env(safe-area-inset-left)); padding-right: max(clamp(16px, 5vw, 56px), env(safe-area-inset-right)); } }
+@media (pointer: coarse) { .stage, .pad { touch-action: pan-y; } }
 .mono { font-family: var(--mono); }
 .eyebrow { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
 
@@ -91,8 +95,21 @@ p, dd, li, figcaption { text-wrap: pretty; }
 .nav ul::-webkit-scrollbar { display: none; }
 .nav li a { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: .06em; text-decoration: none; color: var(--ink-2); white-space: nowrap; }
 .nav li a:hover { color: var(--ink); }
-.lang { flex: none; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; line-height: 1; padding: 6px 8px; border: 1px solid var(--rule); background: transparent; color: var(--ink); cursor: pointer; border-radius: 2px; }
+.lang { flex: none; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; line-height: 1; height: 28px; padding: 0 8px; border: 1px solid var(--rule); background: transparent; color: var(--ink); cursor: pointer; border-radius: 2px; }
 .lang:hover { border-color: var(--ink); }
+/* header switches: theme (a disc in contrast that turns over) and sound (a speaker whose wave swells when on) */
+.tools { flex: none; display: flex; align-items: center; gap: 6px; }
+.tool { flex: none; width: 28px; height: 28px; display: inline-grid; place-items: center; padding: 0; border: 1px solid var(--rule); border-radius: 2px; background: transparent; color: var(--ink); cursor: pointer; }
+.tool:hover { border-color: var(--ink); }
+.tool svg { width: 18px; height: 18px; display: block; overflow: visible; }
+/* icons: 7×7 matrices of the face's own dots (site/icons.py); the state is in the dot sizes, as stress is in the type */
+.tool circle { fill: currentColor; transform-box: fill-box; transform-origin: center; transition: transform .4s cubic-bezier(.3, 0, .2, 1) calc(var(--i, 0) * 40ms); }
+#theme circle { transform: scale(var(--d)); }
+:root[data-theme="light"] #theme circle { transform: scale(var(--l)); }
+#sound .w { transform: scale(var(--s)); }
+#sound[aria-pressed="true"] .w { transform: none; }
+#sound[aria-pressed="true"] { color: var(--violet); }
+@media (prefers-reduced-motion: reduce) { .tool circle { transition: none; } }
 /* English: Bodoni carries the headings, and the English sub-labels that sat beside Chinese ones step aside */
 html[lang="en"] { --zh: "Bodoni Moda", "Noto Serif SC", "Songti SC", serif; }
 html[lang="en"] h3 small, html[lang="en"] .sl-txt h3 span, html[lang="en"] .fc-t small { display: none; }
@@ -100,12 +117,26 @@ html[lang="en"] h3 small, html[lang="en"] .sl-txt h3 span, html[lang="en"] .fc-t
 .nav li a { position: relative; }
 .nav li a[aria-current="true"]::after { content: ""; position: absolute; left: 50%; bottom: -9px; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: var(--violet); }
 .nav .prog { position: absolute; left: 0; bottom: -1px; height: 1px; width: 100%; background: var(--violet); transform-origin: 0 50%; transform: scaleX(0); pointer-events: none; }
-@media (max-width: 640px) { .nav ul { gap: 14px; padding-right: 24px; -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); } }
+/* when the section links don't fit beside the name and switches (Chinese ≈840px, the longer English ≈1020px),
+   name and switches stay on the first row and the links get a second row of their own (scrolling on phones) */
+@media (max-width: 860px) {
+  :root { --navh: 93px; }
+  .nav .wrap { flex-wrap: wrap; height: auto; column-gap: 12px; row-gap: 0; }
+  .nav .mark { flex: 1 1 auto; min-width: 0; height: 54px; display: flex; align-items: center; }
+  .nav ul { order: 3; flex: 1 0 100%; margin: 0; height: 38px; align-items: center; border-top: 1px solid var(--rule); }
+}
+@media (min-width: 861px) and (max-width: 1040px) {
+  :root[lang="en"] { --navh: 93px; }
+  :root[lang="en"] .nav .wrap { flex-wrap: wrap; height: auto; column-gap: 12px; row-gap: 0; }
+  :root[lang="en"] .nav .mark { flex: 1 1 auto; min-width: 0; height: 54px; display: flex; align-items: center; }
+  :root[lang="en"] .nav ul { order: 3; flex: 1 0 100%; margin: 0; height: 38px; align-items: center; border-top: 1px solid var(--rule); }
+}
+@media (max-width: 700px) { .nav ul { gap: 14px; padding-right: 24px; -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); } }
 
 /* hero */
 .hero { padding-block: 28px 48px; }
 @media (min-width: 861px) and (min-height: 620px) {
-  .hero { min-height: calc(100svh - 56px); display: flex; flex-direction: column; padding-block: clamp(20px, 4vh, 48px); }
+  .hero { min-height: calc(100svh - var(--navh)); display: flex; flex-direction: column; padding-block: clamp(20px, 4vh, 48px); }
   .hero > .wrap { flex: 1; width: 100%; display: flex; flex-direction: column; justify-content: center; gap: clamp(20px, 5vh, 56px); }
   .hero-foot { margin-top: 0; }
 }
@@ -137,7 +168,7 @@ html[lang="en"] h3 small, html[lang="en"] .sl-txt h3 span, html[lang="en"] .fc-t
 @media (max-width: 560px) { .index { grid-template-columns: repeat(2, minmax(0, 1fr)); } .index a, .index a + a { padding-left: 0; padding-right: 12px; border-right: 0; border-bottom: 1px solid var(--rule); } .index a:nth-child(even) { padding-left: 12px; border-left: 1px solid var(--rule); } }
 
 /* sections */
-section.s { padding-block: clamp(72px, 10vw, 136px); border-top: 1px solid var(--rule); scroll-margin-top: 56px; }
+section.s { padding-block: clamp(72px, 10vw, 136px); border-top: 1px solid var(--rule); scroll-margin-top: var(--navh); }
 .head { display: grid; grid-template-columns: var(--rail) minmax(0, 1fr); gap: 12px 40px; margin-bottom: clamp(36px, 5vw, 64px); }
 .head .eyebrow { padding-top: .7em; }
 body { counter-reset: sec; }
@@ -194,6 +225,7 @@ input[type=range] { width: 100%; margin: 0; accent-color: var(--violet); }
 .ax-name { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: .06em; text-transform: uppercase; display: flex; gap: 16px; flex-wrap: wrap; color: var(--ink-2); }
 .ax-name b { color: var(--violet); font-weight: 500; }
 #ax-text { font-family: var(--display); font-size: clamp(64px, 10vw, 150px); line-height: 1; margin: 0; overflow-wrap: anywhere; font-variation-settings: "wght" 400, "CNTR" 100; outline: none; }
+#ax-text:focus-visible { outline: 2px solid var(--violet); outline-offset: 6px; }
 .snippet { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; font-family: var(--mono); font-size: var(--fs-xs); color: var(--ink-2); border-top: 1px solid var(--rule); padding-top: 14px; }
 .snippet code { color: var(--ink); white-space: nowrap; overflow-x: auto; max-width: 100%; min-width: 0; flex: 0 1 auto; }
 .ax-spec > * { min-width: 0; }
@@ -215,12 +247,12 @@ input[type=range] { width: 100%; margin: 0; accent-color: var(--violet); }
 .ab { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid color-mix(in srgb, var(--paper) 25%, var(--ink)); }
 .ab > div { display: grid; gap: 8px; padding: 16px 20px 18px 0; min-width: 0; }
 .ab > div + div { padding-left: 20px; border-left: 1px solid color-mix(in srgb, var(--paper) 25%, var(--ink)); }
-.ab span { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: .04em; color: color-mix(in srgb, var(--paper) 55%, var(--ink)); }
+.ab span { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: .04em; color: color-mix(in srgb, var(--paper) 62%, var(--ink)); }
 .ab p { font-family: var(--display); font-size: 16px; line-height: 1.5; }
 @media (max-width: 640px) { .ab { grid-template-columns: 1fr; } .ab > div + div { padding-left: 0; border-left: 0; border-top: 1px solid color-mix(in srgb, var(--paper) 25%, var(--ink)); } }
 .fall { display: grid; gap: 8px; }
 .fall div { display: grid; grid-template-columns: 3.5rem minmax(0, 1fr); gap: 18px; align-items: baseline; }
-.fall span { font-family: var(--mono); font-size: var(--fs-xs); color: color-mix(in srgb, var(--paper) 55%, var(--ink)); }
+.fall span { font-family: var(--mono); font-size: var(--fs-xs); color: color-mix(in srgb, var(--paper) 62%, var(--ink)); }
 .fall p { font-family: var(--display); font-variation-settings: "wght" 600, "CNTR" 100; line-height: 1.15; white-space: nowrap; overflow: hidden; }
 
 /* grid */
@@ -239,6 +271,8 @@ input[type=range] { width: 100%; margin: 0; accent-color: var(--violet); }
 .switch { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: .04em; cursor: pointer; }
 .switch input { appearance: none; width: 36px; height: 20px; border-radius: 10px; background: var(--rule); position: relative; cursor: pointer; margin: 0; transition: background .2s; }
 .switch input::after { content: ""; position: absolute; left: 3px; top: 3px; width: 14px; height: 14px; border-radius: 50%; background: var(--paper); transition: transform .2s; }
+.switch input:not(:checked) { box-shadow: inset 0 0 0 1px var(--ink-2); }
+.switch input:not(:checked)::after { background: var(--ink-2); }
 .switch input:checked { background: var(--violet); }
 .switch input:checked::after { transform: translateX(16px); }
 .facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--ink); }
@@ -317,7 +351,7 @@ input[type=range] { width: 100%; margin: 0; accent-color: var(--violet); }
 }
 .cs-grid button:hover { background: var(--violet-wash); }
 .cs-grid button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
-.insp { position: sticky; top: 76px; display: grid; gap: 12px; border-top: 1px solid var(--ink); padding-top: 14px; }
+.insp { position: sticky; top: calc(var(--navh) + 20px); display: grid; gap: 12px; border-top: 1px solid var(--ink); padding-top: 14px; }
 @media (max-width: 960px) { .insp { position: static; max-width: 340px; } }
 #insp-cv { width: 100%; aspect-ratio: 300 / 400; display: block; }
 .insp dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 4px 16px; font-family: var(--mono); font-size: var(--fs-xs); }
@@ -350,6 +384,15 @@ th, td { text-align: left; vertical-align: top; padding: 11px 20px 11px 0; borde
 thead th { font-family: var(--mono); font-weight: 500; font-size: var(--fs-xs); letter-spacing: .06em; text-transform: uppercase; border-bottom: 1px solid var(--ink); }
 td code { font-family: var(--mono); font-size: 12.5px; white-space: nowrap; }
 .tbl { overflow-x: auto; }
+/* phones: each recommended setting becomes a card, name and value on one line and the reason below, instead of a squeezed third column */
+@media (max-width: 640px) {
+  .tbl table, .tbl tbody { display: block; }
+  .tbl thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .tbl tr { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 16px; padding: 12px 0; border-bottom: 1px solid var(--rule); }
+  .tbl th, .tbl td { border: 0; padding: 0; }
+  .tbl tr > td:last-child { grid-column: 1 / -1; color: var(--ink-2); }
+  .tbl td code { white-space: normal; }
+}
 .files { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-family: var(--mono); font-size: 12.5px; }
 .files li { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 4px 24px; align-items: baseline; border-bottom: 1px dashed var(--rule); padding-bottom: 6px; }
 .files li span { color: var(--ink-2); text-align: right; font-family: var(--zh); font-size: 13px; line-height: 1.6; }
@@ -441,8 +484,8 @@ td code { font-family: var(--mono); font-size: 12.5px; white-space: nowrap; }
   --gap: clamp(12px, 1.6vw, 24px);
   margin-top: clamp(64px, 8vw, 120px); display: grid;
 }
-/* head + slide + timeline share one screen below the 56px nav */
-.car-frame { display: flex; flex-direction: column; height: calc(100svh - 56px); min-height: 560px; max-height: 980px; padding-block: clamp(14px, 2.6vh, 32px); scroll-margin-top: 56px; }
+/* head + slide + timeline share one screen below the nav */
+.car-frame { display: flex; flex-direction: column; height: calc(100svh - var(--navh)); min-height: 560px; max-height: 980px; padding-block: clamp(14px, 2.6vh, 32px); scroll-margin-top: var(--navh); }
 .car-frame > .car-track { flex: 1 1 0; min-height: 0; }
 .car-head, .car-foot, .car > .word-bar { padding-inline: var(--pad); }
 .car-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 20px 32px; padding-bottom: clamp(12px, 2.2vh, 24px); }
@@ -510,6 +553,7 @@ td code { font-family: var(--mono); font-size: 12.5px; white-space: nowrap; }
 .word-bar label { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: .06em; color: var(--ink-2); }
 .word-bar input { font-family: var(--display); font-size: 28px; line-height: 1; border: 0; border-bottom: 1px solid var(--ink); background: transparent; color: var(--ink); padding: 2px 2px 4px; width: min(300px, 100%); font-variation-settings: "wght" 500, "CNTR" 100; }
 .word-bar input:focus { outline: none; border-bottom-color: var(--violet); }
+.word-bar input:focus-visible { outline: 2px solid var(--violet); outline-offset: 3px; }
 .word-bar .mcap { flex: 1 1 18em; min-width: 0; }
 @media (max-width: 860px), (max-height: 600px) {
   .car-frame { height: auto; min-height: 0; max-height: none; }
@@ -620,10 +664,17 @@ footer.f { border-top: 1px solid var(--ink); padding-block: clamp(56px, 8vw, 112
       <li><a href="#charset">字符集</a></li>
       <li><a href="#install">安装</a></li>
     </ul>
-    <button class="lang" id="lang" type="button" data-no-i18n lang="en" aria-label="Switch to English">EN</button>
+    <div class="tools">
+      <button class="tool" id="theme" type="button" aria-label="切换到浅色" title="切换到浅色">__ICON_THEME__</button>
+      <button class="tool" id="sound" type="button" aria-pressed="false" aria-label="打开音效" title="打开音效">__ICON_SOUND__</button>
+      <button class="lang" id="lang" type="button" data-no-i18n lang="en" aria-label="Switch to English">EN</button>
+    </div>
   </div>
   <span class="prog" id="nav-prog" aria-hidden="true"></span>
 </nav>
+<script>
+__CHROME_JS__
+</script>
 
 <header class="hero" id="top">
   <div class="wrap">
@@ -642,7 +693,7 @@ footer.f { border-top: 1px solid var(--ink); padding-block: clamp(56px, 8vw, 112
     <a href="#tones"><span class="n">4</span><span class="k">种笔调</span><span class="e">Tones per dot</span><span class="go">笔法 →</span></a>
     <a href="#axes"><span class="n">3</span><span class="k">条可变轴</span><span class="e">Weight · Contrast · Optical size</span><span class="go">试排 →</span></a>
     <a href="#italic"><span class="n">2</span><span class="k">种字形</span><span class="e">Roman · Italic, with swashes</span><span class="go">斜体 →</span></a>
-    <a href="#charset"><span class="n">__N__</span><span class="k">个字符</span><span class="e">Latin-1 and Latin Extended-A</span><span class="go">字符集 →</span></a>
+    <a href="#charset"><span class="n">__N__</span><span class="k">个字符</span><span class="e">Most of Latin-1 and Latin Extended-A</span><span class="go">字符集 →</span></a>
     <a href="#family"><span class="n">54</span><span class="k">个命名样式</span><span class="e">Display · Slab · Text × Roman · Italic</span><span class="go">字族 →</span></a>
   </nav>
 </div>
@@ -686,7 +737,7 @@ footer.f { border-top: 1px solid var(--ink); padding-block: clamp(56px, 8vw, 112
 
   </div>
 
-  <div class="car" id="motifs" aria-roledescription="carousel" aria-label="五种意象">
+  <div class="car" id="motifs" role="region" aria-roledescription="carousel" aria-label="五种意象">
       <div class="car-frame">
       <div class="car-head">
         <div class="car-title"><p class="car-eyebrow">Five lives of a dot · 1788 — 2026</p><h3 class="car-h">从一滴墨，到一束光</h3></div>
@@ -864,11 +915,11 @@ footer.f { border-top: 1px solid var(--ink); padding-block: clamp(56px, 8vw, 112
         <p class="fine" id="fine">Giambattista Bodoni cut his types in Parma for the Duke, and printed the Manuale Tipografico as a catalogue of everything a letter could be. Two centuries later the same contrast survives on a grid of dots: vertical strokes as full circles, hairlines as pin-pricks, terminals as single round drops of ink. Set it small and it reads as a Didone. Set it large, or look closer, and the machine shows through.</p>
         <div class="lens" id="lens" aria-hidden="true"><div class="lens-inner" id="lens-inner"></div></div>
       </div>
-      <div class="ab" aria-label="光学尺寸对比">
+      <div class="ab" role="group" aria-label="光学尺寸对比">
         <div><span>opsz 144 · 关闭</span><p style="font-variation-settings:'wght' 500, 'CNTR' 100, 'opsz' 144">Hamburgefonstiv. A minimum of rnm, clue 1Il0O, ñüé.</p></div>
         <div><span>opsz 自动 · 16px</span><p style="font-variation-settings:'wght' 500, 'CNTR' 100">Hamburgefonstiv. A minimum of rnm, clue 1Il0O, ñüé.</p></div>
       </div>
-      <div class="fall" aria-label="字号阶梯">
+      <div class="fall" role="group" aria-label="字号阶梯">
         <div><span>13px</span><p style="font-size:13px">The quick brown fox jumps over the lazy dog. Parma, 1818. Manuale Tipografico.</p></div>
         <div><span>18px</span><p style="font-size:18px">The quick brown fox jumps over the lazy dog. Parma, 1818.</p></div>
         <div><span>28px</span><p style="font-size:28px">The quick brown fox jumps over the lazy dog.</p></div>
@@ -901,7 +952,7 @@ fjords</p>
         <div><b>16</b><span>行高为 1 时，每行 16 个点距</span></div>
         <div><b>__KR__</b><span>对字偶距调整，每一对都是整数个点距</span></div>
       </div>
-      <div class="kern" aria-label="字偶距调整前后对比">
+      <div class="kern" role="group" aria-label="字偶距调整前后对比">
         <div><span>未调整</span><p class="off">LAVA · Toyota · P.T. Wafer</p></div>
         <div><span>已调整</span><p>LAVA · Toyota · P.T. Wafer</p></div>
       </div>
@@ -1103,7 +1154,7 @@ fjords</p>
       <div class="eyebrow">Character set</div>
       <div>
         <h2 id="h-cs">__N__ 个字符</h2>
-        <p class="deck">Basic Latin, Latin-1 and Latin Extended-A, figures and punctuation; every glyph also in italic.</p>
+        <p class="deck">Basic Latin, most of Latin-1 and Latin Extended-A, figures and punctuation; every glyph also in italic.</p>
         <p class="lede">点选任意字符，右边会显示它在网格上的点位和四种笔调的数量。大写字母的变音符号上方留了一行空白，不贴在字母顶部。切换到斜体，可以看到推斜后的点阵和 26 个花式大写。</p>
       </div>
     </div>
@@ -1439,8 +1490,9 @@ pad.addEventListener("pointermove", (e) => { if (pad.hasPointerCapture(e.pointer
 axAuto.addEventListener("change", applyAxes);
 
 function copyText(text, msgEl, selectEl) {
-  const fallback = () => { const s = getSelection(), r = document.createRange(); r.selectNodeContents(selectEl); s.removeAllRanges(); s.addRange(r); msgEl.textContent = "已选中，按 ⌘C 复制"; };
-  try { navigator.clipboard.writeText(text).then(() => { msgEl.textContent = "已复制"; setTimeout(() => (msgEl.textContent = ""), 1800); }, fallback); } catch (e) { fallback(); }
+  const say = (t) => { msgEl.textContent = t; clearTimeout(msgEl.t); msgEl.t = setTimeout(() => (msgEl.textContent = ""), 2400); };
+  const fallback = () => { const s = getSelection(), r = document.createRange(); r.selectNodeContents(selectEl); s.removeAllRanges(); s.addRange(r); say(/Mac|iPhone|iPad/.test(navigator.platform) ? "已选中，按 ⌘C 复制" : "已选中，按 Ctrl+C 复制"); };
+  try { navigator.clipboard.writeText(text).then(() => say("已复制"), fallback); } catch (e) { fallback(); }
 }
 $("#ax-copy").addEventListener("click", () => copyText(`font-family: "Punctum Moderne";\n${$("#ax-css").textContent}`, $("#ax-msg"), $("#ax-css")));
 $("#css-copy").addEventListener("click", () => copyText($("#css-code").innerText, $("#css-msg"), $("#css-code")));
@@ -1551,7 +1603,7 @@ function groups() {
     ["西欧变音字母 Latin-1", [..."ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÕÖØÙÚÛÜÝŸŒàáâãäåæçèéêëìíîïıñòóôõöøùúûüýÿœß"]],
   ];
   const used = new Set(G.flatMap((g) => g[1]));
-  G.push(["中欧、波罗的海与土耳其 Latin Extended-A", keys.filter((c) => !used.has(c) && c.codePointAt(0) >= 0x100 && /\p{L}/u.test(c))]);
+  G.push(["中欧、波罗的海、土耳其与罗马尼亚 Latin Extended", keys.filter((c) => !used.has(c) && c.codePointAt(0) >= 0x100 && /\p{L}/u.test(c))]);
   G.push(["数字 Figures", [..."0123456789"]]);
   G.forEach((g) => g[1].forEach((c) => used.add(c)));
   G.push(["标点与符号 Punctuation & symbols", keys.filter((c) => !used.has(c))]);
@@ -2004,7 +2056,7 @@ addEventListener("resize", lbFit);
           const rad = .05 * cw + (Math.min(ww, hh) / 2 - .05 * cw) * k;
           rr(x - ww / 2, y - hh / 2, ww, hh, rad); ctx.fill();
         }
-        if (L.width > COLS) { ctx.fillStyle = COL.manila; ctx.globalAlpha = .9; ctx.font = `500 12px "JetBrains Mono", monospace`; ctx.textAlign = 'right'; ctx.fillText(tr('卡片只有 64 列 →'), x0 + CW - cw, y0 + 1.15 * cw); ctx.globalAlpha = 1; }
+        if (L.width > COLS) { ctx.fillStyle = COL.manilaInk; ctx.globalAlpha = .9; ctx.font = `500 12px "JetBrains Mono", monospace`; ctx.textAlign = 'right'; ctx.fillText(tr('卡片只有 64 列 →'), x0 + CW - cw, y0 + 1.15 * cw); ctx.globalAlpha = 1; }
       },
     };
     slider.addEventListener('input', () => { out.textContent = slider.value; d.dirty = true; kick(); });
@@ -2105,7 +2157,8 @@ addEventListener("resize", lbFit);
         const p0 = Math.min(w / (L.width + 6), h / 18);
         const p = p0 * Math.pow(0.1, far);
         const fs = p * 16, f = textFraction(fs);
-        cap.textContent = `相当于字号 ${fs.toFixed(0)} px · opsz ${Math.round(clamp(fs, 12, 144))} · 文字母版占比 ${(f * 100).toFixed(0)}%`;
+        const capText = `相当于字号 ${fs.toFixed(0)} px · opsz ${Math.round(clamp(fs, 12, 144))} · 文字母版占比 ${(f * 100).toFixed(0)}%`;
+        if (capText !== cap.dataset.t) { cap.dataset.t = capText; cap.textContent = capText; }
         const ox = (w - L.width * p) / 2, base = h / 2 + 4.5 * p - .5 * p;
         const blur = (1 - focus) * p0 * 1.5 * (1 - far * .7);
         ctx.globalCompositeOperation = 'lighter';
@@ -2130,6 +2183,7 @@ addEventListener("resize", lbFit);
   })();
 
   document.fonts && document.fonts.ready.then(() => { for (const d of demos) d.dirty = true; kick(); });
+  document.fonts?.addEventListener?.("loadingdone", () => { for (const d of demos) d.dirty = true; kick(); });
   kick();
 })();
 
@@ -2303,7 +2357,7 @@ const carousel = (() => {
   }, { threshold: .25 }).observe(stage);
   const load = (card) => {
     cards.forEach((c) => c.setAttribute("aria-pressed", String(c === card)));
-    stage.classList.add("playing");
+    stage.classList.add("playing"); play.inert = true;
     v.pause(); v.loop = false; v.muted = false; v.controls = true;
     v.poster = card.dataset.poster; v.src = card.dataset.src;
     v.setAttribute("aria-label", `《${card.dataset.title}》`);
@@ -2313,7 +2367,7 @@ const carousel = (() => {
   cards.forEach((c) => c.addEventListener("click", () => {
     load(c);
     const r = stage.getBoundingClientRect();
-    if (r.top < 56 || r.bottom > innerHeight) stage.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+    if (r.top < parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--navh")) || r.bottom > innerHeight) stage.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
   }));
 })();
 
@@ -2330,4 +2384,5 @@ new MutationObserver(redrawAll).observe(document.documentElement, { attributes: 
 let rz; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => { hero.resize(); drawEq(); carousel.refresh(); drawTones(); drawCards(); drawInspector(); shearDemo.draw(); loupe.refresh(); }, 80); });
 drawEq(); drawTones(); drawCards(); drawInspector(); shearDemo.draw();
 document.fonts.ready.then(() => { redrawAll(); loupe.rest(); });
+let fz; document.fonts.addEventListener?.("loadingdone", () => { clearTimeout(fz); fz = setTimeout(() => { bodoniReady = true; redrawAll(); drawEq(); }, 60); });
 </script>

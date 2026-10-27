@@ -1,7 +1,8 @@
 <title>Punctum Moderne Italic</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Noto+Sans+SC:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Noto+Sans+SC:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Noto+Sans+SC:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
 <style>
 @font-face { font-family: "Punctum Moderne"; src: url("data:font/woff2;base64,__ROMAN__") format("woff2"); font-weight: 100 900; font-style: normal; font-display: block; }
 @font-face { font-family: "Punctum Moderne"; src: url("data:font/woff2;base64,__ITALIC__") format("woff2"); font-weight: 100 900; font-style: italic; font-display: block; }
@@ -41,6 +42,20 @@ header.top .home { color: inherit; text-decoration: none; }
 header.top .meta { display: flex; align-items: center; gap: 14px; }
 .lang-toggle { flex: none; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; line-height: 1; padding: 6px 8px; border: 1px solid var(--rule); background: transparent; color: var(--ink); cursor: pointer; border-radius: 2px; }
 .lang-toggle:hover { border-color: var(--ink); }
+.lang-toggle { height: 28px; padding-block: 0; }
+/* header switches, as on the main site: theme (a disc in contrast) and sound (a speaker whose wave swells) */
+.tools { flex: none; display: flex; align-items: center; gap: 6px; }
+.tool { flex: none; width: 28px; height: 28px; display: inline-grid; place-items: center; padding: 0; border: 1px solid var(--rule); border-radius: 2px; background: transparent; color: var(--ink); cursor: pointer; }
+.tool:hover { border-color: var(--ink); }
+.tool svg { width: 18px; height: 18px; display: block; overflow: visible; }
+/* icons: 7×7 matrices of the face's own dots (site/icons.py); the state is in the dot sizes, as stress is in the type */
+.tool circle { fill: currentColor; transform-box: fill-box; transform-origin: center; transition: transform .4s cubic-bezier(.3, 0, .2, 1) calc(var(--i, 0) * 40ms); }
+#theme circle { transform: scale(var(--d)); }
+:root[data-theme="light"] #theme circle { transform: scale(var(--l)); }
+#sound .w { transform: scale(var(--s)); }
+#sound[aria-pressed="true"] .w { transform: none; }
+#sound[aria-pressed="true"] { color: var(--ribbon); }
+@media (prefers-reduced-motion: reduce) { .tool circle { transition: none; } }
 .hero { padding-block: 24px 8px; }
 .stage { position: relative; }
 #lattice { display: block; width: 100%; height: auto; max-width: 100%; }
@@ -96,7 +111,8 @@ section.block p { margin: 0 0 14px; max-width: 64ch; }
 table.files { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 8px; }
 table.files td { padding: 8px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
 table.files td:last-child { text-align: right; font-family: var(--mono); font-size: 12.5px; color: var(--muted); white-space: nowrap; padding-left: 12px; }
-table.files td:first-child { font-family: var(--mono); font-size: 12.5px; overflow-wrap: anywhere; }
+table.files td:first-child { font-family: var(--mono); font-size: 12.5px; overflow-wrap: anywhere; width: 58%; }
+table.files td.note { white-space: normal; }   /* a description, not a size: let it wrap so the file names keep their width */
 .tablewrap { overflow-x: auto; }
 footer { padding-block: 40px 56px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 13px; }
 ul.changes { margin: 0; padding-left: 1.1em; max-width: 64ch; }
@@ -116,11 +132,14 @@ ul.changes li { margin-bottom: 6px; }
 <div class="wrap">
   <header class="top">
     <a class="pm home" href="./">Punctum Moderne <span class="it">Italic</span></a>
-    <span class="meta"><span class="label">v2.4 · 2026-10 · OFL 1.1</span><button class="lang-toggle" id="lang" type="button" data-no-i18n lang="en" aria-label="Switch to English">EN</button></span>
+    <span class="meta"><span class="label">v2.4 · 2026-10 · OFL 1.1</span><span class="tools"><button class="tool" id="theme" type="button" aria-label="切换到浅色" title="切换到浅色">__ICON_THEME__</button><button class="tool" id="sound" type="button" aria-pressed="false" aria-label="打开音效" title="打开音效">__ICON_SOUND__</button><button class="lang-toggle" id="lang" type="button" data-no-i18n lang="en" aria-label="Switch to English">EN</button></span></span>
   </header>
+<script>
+__CHROME_JS__
+</script>
 
   <div class="hero">
-    <div class="stage"><canvas id="lattice" width="1600" height="560" aria-label="The word Italique drawn in dots; the dot grid shears from upright to a 12 degree italic and the lowercase changes to cursive forms."></canvas></div>
+    <div class="stage"><canvas id="lattice" width="1600" height="560" role="img" aria-label="用点画出的 Italique 一词：点阵从直立倾斜到 12 度，小写换成草书写法。"></canvas></div>
     <div class="controls">
       <span class="label">倾斜</span>
       <input id="slant" type="range" min="0" max="1000" value="1000" aria-label="倾斜程度">
@@ -305,6 +324,7 @@ addEventListener('resize', fit);
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change', draw);
 new MutationObserver(draw).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 document.fonts.ready.then(fit); fit();
+document.fonts.addEventListener?.("loadingdone", fit);
 
 /* --- pairs, languages, waterfall, files --------------------------------- */
 const pairs = 'a d f h i k l m n p q r u v w y'.split(' ');
@@ -324,7 +344,7 @@ document.getElementById('langs').innerHTML = LANGS.map(([n, s], i) =>
   `<div class="lang"><span class="label">${n}</span><span class="pm${i % 2 ? ' it' : ''}">${s}</span></div>`).join('');
 document.getElementById('waterfall').innerHTML = [12, 16, 24, 36, 56, 88].map(s =>
   `<div><span class="mono">${s}px</span><span class="pm" style="font-size:${s}px;line-height:1.3">Quietly, the printhead leaned twelve degrees and began to write.</span></div>`).join('');
-document.getElementById('filelist').innerHTML = FILES.map(([n, s]) => `<tr><td>${n}</td><td>${s}</td></tr>`).join('');
+document.getElementById('filelist').innerHTML = FILES.map(([n, s]) => `<tr><td>${n}</td><td${/KB$/.test(s) ? "" : ' class="note"'}>${s}</td></tr>`).join('');
 
 /* --- tester -------------------------------------------------------------- */
 const ed = document.getElementById('ed');

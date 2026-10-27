@@ -23,7 +23,7 @@ const i18n = (() => {
     return null;
   };
   const tr = (s) => (lang === "en" ? lookup(s) ?? s : s);
-  const texts = new Map(), attrs = new Map();   // node -> { zh, en }
+  const texts = new WeakMap(), attrs = new WeakMap();   // node -> { zh, en }
   const skip = (n) => { const p = n.parentElement; return !p || p.closest("script, style, [data-no-i18n]"); };
   function textNode(n) {
     if (skip(n)) return;

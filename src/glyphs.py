@@ -1186,6 +1186,222 @@ O
 .#..##.##
 .#..#.#.#
 .#..#...#
+== ſ 10
+..--.
+.+..O
+.#...
+.#...
+.#...
+.#...
+.#...
+.#...
+.#...
+.#...
+-#-..
+== ĸ 6
+-#..---
+.#..-..
+.#.-...
+.##....
+.#.#...
+.#..#..
+-#-.-#-
+== ŋ 6
+-#.++..
+.#-..#.
+.#...#.
+.#...#.
+.#...#.
+.#...#.
+-#-..#.
+.....#.
+...O.+.
+....-..
+== Ŋ 9
+-#...---
+.-#...-.
+.-#...-.
+.-.#..-.
+.-.#..-.
+.-..#.-.
+.-..#.-.
+.-...#-.
+.-...#-.
+---...#.
+......#.
+....O.+.
+.....-..
+== Þ 9
+-#-....
+.#.....
+.#---..
+.#...+.
+.#....#
+.#....#
+.#...+.
+.#---..
+.#.....
+-#-....
+== þ 10
+-#....
+.#....
+.#....
+.#....
+.#---.
+.#...+
+.#...#
+.#...#
+.#...#
+.#...+
+.#---.
+.#....
+.#....
+-#-...
+== ð 10
+.+.-.
+..+..
+.-.#.
+....#
+.---#
++...#
+#...#
+#...#
+#...#
++...+
+.---.
+== µ 6
+-#..-#.
+.#...#.
+.#...#.
+.#...#.
+.#...#.
+.#..-#.
+.#++.#-
+.#.....
+.#.....
+-#-....
+== ¤ 6
+-.....-
+.+---+.
+.#...#.
+.#...#.
+.#...#.
+.+---+.
+-.....-
+== ¦ 10
+#
+#
+#
+#
+#
+.
+.
+.
+#
+#
+#
+#
+#
+== ¬ 4
++++++
+....+
+....+
+== ® 9
+..-----..
+.+.....+.
++..#--..+
+-..#..+.-
+-..#--..-
+-..#.#..-
+-..#..#.-
++..#..#.+
+.+.....+.
+..-----..
+== ¹ 9
+.#.
++#.
+.#.
+.#.
+.#.
+-#-
+== ² 9
+.--.
+O..+
+...#
+..+.
+.#..
+----
+== ³ 9
+.--.
+O..+
+.-+.
+...#
+O..#
+.--.
+== ª 9
+.--.
+O..#
+.--#
+#..#
+.--#
+....
+----
+== º 9
+.--.
+#..#
+#..#
+#..#
+.--.
+....
+----
+== ′ 9
+.#
+.+
+-.
+== ″ 9
+.#.#
+.+.+
+-.-.
+== − 3
++++++
+== ≠ 6
+....+
+...+.
++++++
+..+..
++++++
+.+...
++....
+== ≤ 7
+....+
+..++.
+++...
+..++.
+....+
+.....
++++++
+== ≥ 7
++....
+.++..
+...++
+.++..
++....
+.....
++++++
+== ↑ 6
+..#..
+.+#+.
++.#.+
+..#..
+..#..
+..#..
+== ↓ 6
+..#..
+..#..
+..#..
++.#.+
+.+#+.
+..#..
 """
 
 # ---------------------------------------------------------------------------
@@ -1362,6 +1578,66 @@ O.....
 .....#.
 O...+..
 .---...
+== ŋ 6
+-#.++..
+.#-..#.
+.#...#.
+.#...#.
+.#...#.
+.#...#.
+.#...#.
+.....#.
+...O.+.
+....-..
+== ĸ 6
+-#..+-.
+.#.+...
+.#+....
+.##....
+.#.#...
+.#..#..
+.#...#-
+== þ 10
+-#....
+.#....
+.#....
+.#....
+.#---.
+.#...+
+.#...#
+.#...#
+.#...#
+.#...+
+.#---.
+.#....
+.#....
+.#....
+== ſ 10
+...--.
+..+..O
+..#...
+..#...
+..#...
+..#...
+..#...
+..#...
+..#...
+..#...
+..#...
+..+...
+.-....
+O.....
+== µ 6
+-#...#..
+.#...#..
+.#...#..
+.#...#..
+.#...#..
+.#..+#.-
+.#--..-.
+.#......
+.#......
+.#......
 """
 
 # Accents, top row first. Two variants: odd-width and even-width, chosen so the
@@ -1383,22 +1659,26 @@ UNAME = {"dieresis": "DIAERESIS", "ring": "RING ABOVE", "dotaccent": "DOT ABOVE"
          "hungarumlaut": "DOUBLE ACUTE"}
 # optical centre (in columns) where it differs from (width - 1) / 2
 CENTRE = {"a": 2, "u": 3, "n": 3, "y": 3, "Y": 4, "A": 4, "U": 3.5, "E": 3, "e": 2, "c": 2,
-          "o": 2, "g": 2, "s": 2, "z": 2, "r": 2, "L": 2, "G": 3.5}
+          "o": 2, "g": 2, "s": 2, "z": 2, "r": 2, "L": 2, "G": 3.5,
+          "h": 4, "j": 2, "J": 3}   # ĥ: over the arch (on the ascender it reads as an arrow); ĵ Ĵ: on the stem
 TALL = {"l"}              # lowercase with an ascender: marks go up at capital height
 
 ACCENTED = (
     ("a", "A", "grave acute circumflex tilde dieresis ring macron breve"),
-    ("c", "C", "acute caron dotaccent"),
-    ("e", "E", "grave acute circumflex dieresis caron macron dotaccent"),
-    ("g", "G", "breve dotaccent"),
-    ("i", "I", "grave acute circumflex dieresis macron dotaccent"),
+    ("c", "C", "acute caron dotaccent circumflex"),
+    ("e", "E", "grave acute circumflex dieresis caron macron dotaccent breve"),
+    ("g", "G", "breve dotaccent circumflex"),
+    ("h", "H", "circumflex"),
+    ("i", "I", "grave acute circumflex dieresis macron dotaccent breve tilde"),
+    ("j", "J", "circumflex"),
     ("l", "L", "acute"),
     ("n", "N", "tilde acute caron"),
-    ("o", "O", "grave acute circumflex tilde dieresis macron hungarumlaut"),
+    ("o", "O", "grave acute circumflex tilde dieresis macron hungarumlaut breve"),
     ("r", "R", "acute caron"),
-    ("s", "S", "acute caron"),
-    ("u", "U", "grave acute circumflex dieresis macron ring hungarumlaut"),
-    ("y", "Y", "acute dieresis"),
+    ("s", "S", "acute caron circumflex"),
+    ("u", "U", "grave acute circumflex dieresis macron ring hungarumlaut breve tilde"),
+    ("w", "W", "circumflex grave acute dieresis"),
+    ("y", "Y", "acute dieresis circumflex grave"),
     ("z", "Z", "acute caron dotaccent"),
     ("D", "D", "caron"),
     ("T", "T", "caron"),
@@ -1424,26 +1704,42 @@ OGONEK = {"ą": ("a", 4), "ę": ("e", 3), "į": ("i", 1), "ų": ("u", 5),
           "Ą": ("A", 7), "Ę": ("E", 5), "Į": ("I", 1), "Ų": ("U", 5)}
 OGONEK_IT = {"ą": 5, "į": 2, "ų": 6}
 CEDILLA = {"ç": ("c", 2), "Ç": ("C", 3), "ş": ("s", 2), "Ş": ("S", 2), "ţ": ("t", 2), "Ţ": ("T", 3)}
-COMMA_BELOW = {"ș": ("s", 2), "Ș": ("S", 2), "ț": ("t", 2), "Ț": ("T", 3)}
+# Latvian: Unicode calls these "with cedilla", the letters are written with a comma below
+COMMA_BELOW = {"ș": ("s", 2), "Ș": ("S", 2), "ț": ("t", 2), "Ț": ("T", 3),
+               "ķ": ("k", 3), "Ķ": ("K", 4), "ļ": ("l", 1), "Ļ": ("L", 3), "ņ": ("n", 3), "Ņ": ("N", 4),
+               "ŗ": ("r", 1), "Ŗ": ("R", 4), "Ģ": ("G", 4)}
 STROKE = {"ł": ("l", [(0, 4), (2, 6)]), "Ł": ("L", [(0, 3), (2, 5)]),
-          "đ": ("d", [(3, 8), (5, 8)]), "Đ": ("D", [(0, 5), (2, 5), (3, 5)])}
+          "đ": ("d", [(3, 8), (5, 8)]), "Đ": ("D", [(0, 5), (2, 5), (3, 5)]),
+          "ħ": ("h", [(0, 8), (2, 8), (3, 8)]), "Ħ": ("H", [(0, 7), (2, 7), (3, 7), (4, 7), (5, 7), (7, 7)]),
+          "ŧ": ("t", [(0, 4), (2, 4), (3, 4)]), "Ŧ": ("T", [(1, 5), (2, 5), (4, 5), (5, 5)])}
 # the caron on an ascender becomes a small apostrophe to its right: (base, x, y of the ball)
 CARON_APOS = {"ď": ("d", 6, 10), "ľ": ("l", 3, 10), "ť": ("t", 3, 9), "Ľ": ("L", 4, 9)}
+# Catalan middle dot: (base, x, y of the ball, new width)
+MIDDOT = {"ŀ": ("l", 3, 3, 4), "Ŀ": ("L", 4, 4, 7)}
+# two letters on one advance: (left, right, offset of the right one)
+PAIRS = {"ĳ": ("i", "j", 3), "Ĳ": ("I", "J", 4), "ŉ": ("’", "n", 2), "№": ("N", "º", 8)}
+# spacing accents, at lowercase accent height
+SPACING = {"´": "acute", "¨": "dieresis", "¯": "macron"}
+DOTLESS = {"i": "ı", "j": "ȷ"}
+# superior figures for the fractions (¹ ² ³ are drawn in SRC); top row at y9
+SUP4 = ["...#.", "..-#.", ".-.#.", "---#-", "...#.", "..-#-"]
+FRACTIONS = {"¼": ("1", "4"), "½": ("1", "2"), "¾": ("3", "4")}
 
 
 def _compose(glyphs, italic=False):
-    # dotless i for the accented i's
-    gi = glyphs["i"]
-    glyphs["ı"] = {"width": gi["width"], "dots": [d for d in gi["dots"] if d[1] < 7]}
+    # dotless i and j for the accented i's and j's
+    for base, dotless in DOTLESS.items():
+        g = glyphs[base]
+        glyphs[dotless] = {"width": g["width"], "dots": [d for d in g["dots"] if d[1] < 7]}
     for ch, (base, mark) in COMPOSE.items():
-        b = glyphs["ı" if base == "i" else base]
+        b = glyphs[DOTLESS.get(base, base)]
         w = b["width"]
         centre = CENTRE.get(base, (w - 1) / 2)
         odd, even = ACCENT[mark]
         pat = even if centre % 1 else odd
         aw = len(pat[0])
         x0 = round(centre - (aw - 1) / 2)
-        # lowercase marks: y9–y8 (one row: y8); capitals (and l) keep a row of air above y9: y12–y11
+        # lowercase marks: y9–y8 (one row: y8); capitals (and l h) keep a row of air above y9: y12–y11
         high = base.isupper() or base in TALL
         top = (12 if len(pat) == 2 else 11) if high else (9 if len(pat) == 2 else 8)
         if base == "A" and mark == "ring":      # the ring closes on the apex
@@ -1472,6 +1768,31 @@ def _compose(glyphs, italic=False):
     for ch, (base, mx, my) in CARON_APOS.items():
         glyphs[ch] = {"width": max(glyphs[base]["width"], mx + 1),
                       "dots": glyphs[base]["dots"] + [(mx, my, 1.3), (mx - 1, my - 1, 0.0)]}
+    for ch, (base, mx, my, w) in MIDDOT.items():
+        glyphs[ch] = {"width": w, "dots": glyphs[base]["dots"] + [(mx, my, 1.3)]}
+    for ch, (a, b, dx) in PAIRS.items():
+        glyphs[ch] = {"width": dx + glyphs[b]["width"],
+                      "dots": glyphs[a]["dots"] + [(x + dx, y, t) for x, y, t in glyphs[b]["dots"]]}
+    for ch, mark in SPACING.items():
+        pat = ACCENT[mark][0]
+        top = 9 if len(pat) == 2 else 8
+        glyphs[ch] = {"width": len(pat[0]),
+                      "dots": [(j, top - i, TONE[c]) for i, row in enumerate(pat) for j, c in enumerate(row) if c in TONE]}
+    glyphs["¸"] = {"width": 2, "dots": [(1, -1, 0.5), (0, -2, 0.0)]}
+    glyphs["ģ"] = {"width": glyphs["g"]["width"],            # the comma turns above the bowl
+                   "dots": glyphs["g"]["dots"] + [(3, 9, 0.0), (2, 8, 1.3)]}
+    for ch, src in (("Ð", "Đ"), ("­", "-")):         # Eth = D with stroke; soft hyphen = hyphen
+        glyphs[ch] = {"width": glyphs[src]["width"], "dots": list(glyphs[src]["dots"])}
+    # vulgar fractions: superior numerator, a hairline slash, the same figures dropped to the baseline
+    sup4 = {"width": 5, "dots": [(j, 9 - i, TONE[c]) for i, row in enumerate(SUP4) for j, c in enumerate(row) if c in TONE]}
+    sups = {"1": glyphs["¹"], "2": glyphs["²"], "3": glyphs["³"], "4": sup4}
+    for ch, (n, d) in FRACTIONS.items():
+        a, b = sups[n], sups[d]
+        x = a["width"]
+        slash = [(x, 0), (x, 1), (x + 1, 2), (x + 1, 3), (x + 1, 4), (x + 2, 5), (x + 2, 6), (x + 2, 7), (x + 3, 8), (x + 3, 9)]
+        glyphs[ch] = {"width": x + 3 + b["width"],
+                      "dots": a["dots"] + [(sx, sy, 0.5) for sx, sy in slash] +
+                              [(bx + x + 3, by - 4, t) for bx, by, t in b["dots"]]}
     glyphs["ø"] = {"width": 5, "dots": glyphs["o"]["dots"] +
                         [(0, -1, 0.0), (1, 1, 0.0), (2, 3, 0.0), (3, 5, 0.0), (4, 7, 0.0)]}
     glyphs["Ø"] = {"width": 8, "dots": glyphs["O"]["dots"] +
@@ -1591,7 +1912,7 @@ def parse(italic=False):
                     "dots": [(round(x + shear(y), 4), y, t) for x, y, t in g["dots"]]}
                for ch, g in out.items()}
     out[" "] = {"width": 3, "dots": []}
-    out[" "] = {"width": 3, "dots": []}
+    out["\u00a0"] = {"width": 3, "dots": []}
     return out
 
 

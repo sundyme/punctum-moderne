@@ -40,7 +40,7 @@ for k, v in {"__ROMAN__": b64("PunctumModerne-VF.woff2"), "__ITALIC__": b64("Pun
              "__KR__": f"{len(kerning(R, False)):,}",
              "__KI__": f"{sum(1 for p in KI if 'swsh' not in p[0] + p[1]):,}",
              "__KS__": f"{sum(1 for p, v in KI.items() if 'swsh' in p[0] + p[1] and v > 0):,}",
-             "__N__": str(len([c for c in R if c not in " \u00a0"]))}.items():
+             "__N__": str(len([c for c in R if c not in " \u00a0\u00ad"]))}.items():
     t = t.replace(k, v)
 assert "__" not in "".join(re.findall(r"__[A-Z_]+__", t)), re.findall(r"__[A-Z_]+__", t)
 # dark by default; a visitor's own choice (pm-theme, shared with the main site) wins. Runs before the first paint.

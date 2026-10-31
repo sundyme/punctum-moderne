@@ -34,7 +34,7 @@ from radii import OPSZ_CURVE, radius  # noqa: E402
 
 FAMILY = "Punctum Moderne"
 PS = "PunctumModerne"
-VERSION = "2.400"
+VERSION = "2.500"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "fonts")
 
@@ -175,6 +175,8 @@ def build(italic):
 
     vf, _, _ = varLib.build(ds, exclude=["MVAR"])
     addOpenTypeFeaturesFromString(vf, kern_fea(data, italic))
+    vf["OS/2"].recalcUnicodeRanges(vf)               # from the cmap, so the ranges follow the character set
+    vf["OS/2"].recalcCodePageRanges(vf)
     buildStatTable(vf, [
         {"tag": "wght", "name": "Weight", "values": [
             {"value": w, "name": n, **({"flags": 2, "linkedValue": 700} if w == 400 else {})}

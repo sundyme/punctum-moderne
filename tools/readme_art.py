@@ -112,8 +112,8 @@ M = 88  # outer margin
 
 
 def specs():
-    cells = [("2.400", "VERSION", "2026"), ("3", "AXES", "wght · CNTR · opsz"), ("2", "FONTS", "roman + italic"),
-             ("266", "GLYPHS", "+ 26 swash capitals"), ("54", "NAMED STYLES", "+ 18 static fonts"), ("36", "LANGUAGES", "Latin script")]
+    cells = [("2.500", "VERSION", "2026"), ("3", "AXES", "wght · CNTR · opsz"), ("2", "FONTS", "roman + italic"),
+             ("354", "GLYPHS", "+ 26 swash capitals"), ("54", "NAMED STYLES", "+ 18 static fonts"), ("43", "LANGUAGES", "Latin script")]
     P = 14
     cw = (W - 2 * M) / 3
     rh = P * 11 + 130
@@ -146,7 +146,7 @@ def hero():
     p.dots(l1, M, b1, P)
     # the one violet dot: the ball of the r, where the first film ends its zoom
     p.dots(l2, M, b2, P, pick=lambda x, y, t, n: "violet" if n == "r" and t == 1.3 else "ink")
-    p.text(M, 64, "PUNCTUM MODERNE 2.400")
+    p.text(M, 64, "PUNCTUM MODERNE 2.500")
     p.text(W - M, 64, "A DOT-MATRIX DIDONE · ROMAN &amp; ITALIC", anchor="end")
     p.text(M, h - 40, "WGHT 700 · CNTR 100 · OPSZ 144")
     p.text(W - M, h - 40, "SIL OFL 1.1", anchor="end")
@@ -268,7 +268,7 @@ def italic():
 
 def charset():
     rows = ["ABCDEFGHIJKLM", "NOPQRSTUVWXYZ", "abcdefghijklm", "nopqrstuvwxyz",
-            "0123456789 &?!", "ÀÄÅÆÇÉÑÖØŒŠÜŽ", "àäåæçéñöøœšßüž"]
+            "0123456789 &?!", "ÀÄÅÆÇÉÑÖØŒŠÜŽ", "ÐÞĦĲĢĶĻŅŊŴŶĈĜŬ", "àäåæçéñöøœšßüž", "ðþħĳģķļņŋŵŷĉĝŭ"]
     L = [layout(s) for s in rows]
     LH = 15
     P = (W - 2 * M) / max(w for _, w in L)

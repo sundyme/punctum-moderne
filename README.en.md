@@ -25,7 +25,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/readme/specs-dark.svg">
-  <img alt="Version 2.400, 3 axes, 2 fonts, 266 glyphs plus 26 swash capitals, 54 named styles plus 18 statics, 36 languages" src="assets/readme/specs-light.svg" width="100%">
+  <img alt="Version 2.500, 3 axes, 2 fonts, 354 glyphs plus 26 swash capitals, 54 named styles plus 18 statics, 43 languages" src="assets/readme/specs-light.svg" width="100%">
 </picture>
 
 <br>
@@ -89,7 +89,7 @@ The variable axes never move a dot; they only change its radius. Anywhere in the
 
 ## 04　One grid
 
-One dot pitch is 1/16 em. Every advance width is a whole number of pitches; at a line height of 1, a line is exactly 16 pitches, with the cap height at 10 rows and the x-height at 7. Kerning moves only in whole dots too: the algorithm finds how far the right letter can move left before any dots come too close, then takes two-thirds of that gap. So To and AV tighten, and the grid never breaks. The roman has 6,323 kerning pairs, the italic 6,127, plus pairs reserved for the swash capitals.
+One dot pitch is 1/16 em. Every advance width is a whole number of pitches; at a line height of 1, a line is exactly 16 pitches, with the cap height at 10 rows and the x-height at 7. Kerning moves only in whole dots too: the algorithm finds how far the right letter can move left before any dots come too close, then takes two-thirds of that gap. So To and AV tighten, and the grid never breaks. The roman has 12,428 kerning pairs, the italic 12,221, plus pairs reserved for the swash capitals.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/readme/grid-dark.svg">
@@ -121,7 +121,7 @@ em      { font-style: italic; }                      /* a true italic, not a syn
 
 ## 06　Character set
 
-Basic Latin plus most of Latin-1 and Latin Extended-A: 266 characters covering 36 languages written in the Latin alphabet. Capital accents get a row of their own instead of sitting on the letter. Every glyph also comes in italic: the whole lattice is sheared 12°, and sixteen lowercase letters are redrawn as a cursive.
+Basic Latin, all of Latin-1 and Latin Extended-A, the Welsh letters, superior figures, fractions and common maths signs: 354 characters covering 43 languages written in the Latin alphabet, Icelandic, Latvian, Maltese, Northern Sami and Esperanto among them. Vietnamese is not yet drawn. Capital accents get a row of their own instead of sitting on the letter. Every glyph also comes in italic: the whole lattice is sheared 12°, and sixteen lowercase letters are redrawn as a cursive.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/readme/charset-dark.svg">
@@ -200,7 +200,7 @@ A 72-second **release film** and a 32-second vertical social cut followed, rende
 | :-- | :-- |
 | [`fonts/PunctumModerne[CNTR,opsz,wght].ttf`](fonts) | Roman variable font · desktop |
 | [`fonts/PunctumModerne-Italic[CNTR,opsz,wght].ttf`](fonts) | Italic variable font · with swash capitals |
-| [`fonts/PunctumModerne-VF.woff2`](fonts) · [`-Italic-VF.woff2`](fonts) | Web · 77 KB / 135 KB |
+| [`fonts/PunctumModerne-VF.woff2`](fonts) · [`-Italic-VF.woff2`](fonts) | Web · 98 KB / 165 KB |
 | [`fonts/static/`](fonts/static) | 18 static styles: Thin · Light · Regular · Bold · Black · Slab · Text, each with Italic |
 
 - **macOS**: double-click both variable fonts and install them in Font Book. Design apps will show 54 named styles.
@@ -315,5 +315,5 @@ The fonts and font sources (`fonts/`, `src/`, `v1/`) are released under the [SIL
 <br>
 
 <p align="center">
-  <sub>Punctum Moderne 2.400 · Designed by Claude for <a href="https://github.com/sundyme">sundyme</a> · Website text in Bodoni Moda and Noto Serif SC · Labels in JetBrains Mono</sub>
+  <sub>Punctum Moderne 2.500 · Designed by Claude for <a href="https://github.com/sundyme">sundyme</a> · Website text in Bodoni Moda and Noto Serif SC · Labels in JetBrains Mono</sub>
 </p>

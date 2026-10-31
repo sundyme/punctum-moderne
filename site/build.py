@@ -78,7 +78,7 @@ t = t.replace("__CHROME_JS__", open(os.path.join(HERE, "chrome.js"), encoding="u
 t = t.replace("__I18N__", json.dumps(I18N, ensure_ascii=False).replace("</", "<\\/"))
 for k, v in {"__BOARDS__": gallery, "__WOFF2_I__": b64("PunctumModerne-Italic-VF.woff2"), "__WOFF2__": b64("PunctumModerne-VF.woff2"),
              "__GLYPHS_I__": glyphs_i, "__GLYPHS__": glyphs,
-             "__N__": str(len([c for c in R if c not in " \u00a0"])), "__KR__": f"{len(kerning(R, False)):,}",
+             "__N__": str(len([c for c in R if c not in " \u00a0\u00ad"])), "__KR__": f"{len(kerning(R, False)):,}",
              "__SR__": kb("PunctumModerne-VF.woff2"), "__SI__": kb("PunctumModerne-Italic-VF.woff2")}.items():
     t = t.replace(k, v)
 left = re.findall(r"__[A-Z_]+__", t)

@@ -300,7 +300,7 @@ films/
   five-materials/      《五种介质》 48s · WebGL2 渲染
   signal/              《信号》 30s · 复古点阵媒介
   release/             发布片 72s + 9:16 社媒版 32s · 自写 WebGL2 点阵引擎
-cjk/                   中文扩展方案「点宋」：方案页、点阵转换器原型、体积实测
+cjk/                   中文扩展方案「点宋」：方案页、起稿原型 0.1 / 0.2、体积实测
 docs/                  GitHub Pages：网站、斜体页、720p 短片
 tools/                 README 插图生成器
 v1/                    Punctum 第一版：5×7 点阵，ROND 与 wght 两条轴

@@ -300,7 +300,7 @@ films/
   five-materials/      Five Materials · 48s · WebGL2
   signal/              Signal · 30s · retro dot media
   release/             Release film 72s + 9:16 social cut 32s · hand-written WebGL2 dot engine
-cjk/                   CJK extension proposal "Punctum Song": proposal page, dot converter prototype, size test
+cjk/                   CJK extension proposal "Punctum Song": proposal page, drafting prototypes 0.1 / 0.2, size test
 docs/                  GitHub Pages: website, italic page, 720p films
 tools/                 README illustration generator
 v1/                    Punctum v1: a 5×7 matrix with ROND and wght axes

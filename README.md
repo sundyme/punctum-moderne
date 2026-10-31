@@ -261,10 +261,13 @@ python3 tools/readme_art.py # 本页的点阵插图  →  assets/readme/
 
 ```bash
 cd films/five-materials
+python3 tools/subset.py                                  # 中文字幕用的宋体-简子集（仅 macOS，见下）
 node tools/export-events.cjs && python3 tools/score.py   # 由画面事件合成配乐
 npx hyperframes preview                                  # 预览
 npx hyperframes render --fps 60 --quality delivery       # 渲染 1080p60
 ```
+
+中文字幕用的是 macOS 自带的宋体-简（Songti SC）。系统字体不能再分发，所以子集文件不在仓库里，在 Mac 上运行 `tools/subset.py` 生成；《信号》直接调用系统里的宋体-简。
 
 <br>
 

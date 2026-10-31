@@ -7,8 +7,9 @@ films/*/renders/
 films/*/snapshots/
 films/*/frames*/
 *.log
-# release film: Songti SC caption subsets (macOS system font, not redistributable) and regenerable score WAVs
+# films: Songti SC caption subsets (macOS system font, not redistributable; regenerate with tools/subset.py) and regenerable score WAVs
 films/release/assets/fonts/song*-sub.woff2
+films/*/assets/fonts/SongtiSC-*-sub.woff2
 films/release/assets/**/*.wav
 films/release/frames*/
 # CJK proposal: built page and local outputs drawn from Songti SC

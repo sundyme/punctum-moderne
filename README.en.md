@@ -261,10 +261,13 @@ The films are [HyperFrames](https://www.npmjs.com/package/hyperframes) projects;
 
 ```bash
 cd films/five-materials
+python3 tools/subset.py                                  # Songti SC subset for the Chinese captions (macOS only, see below)
 node tools/export-events.cjs && python3 tools/score.py   # synthesize the score from on-screen events
 npx hyperframes preview                                  # preview
 npx hyperframes render --fps 60 --quality delivery       # render 1080p60
 ```
+
+The Chinese captions are set in Songti SC, a macOS system font that may not be redistributed, so the subsets are not in the repository: run `tools/subset.py` on a Mac to generate them. Signal uses the installed Songti SC directly.
 
 <br>
 

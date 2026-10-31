@@ -37,9 +37,12 @@ FONT = None
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 
-def setup(font_path, cjk_dir=HERE):
-    global FONT, radius
+def setup(font_path, cjk_dir=HERE, n=24):
+    """Load the source face; n = dots per em (the proposal compares 16, 24 and 32; the design is 24)."""
+    global FONT, radius, N, P, SPUR_MIN, SERIF_MAX, DECAY
     FONT = ImageFont.truetype(font_path, S)
+    N, P = n, S / n
+    SPUR_MIN, SERIF_MAX, DECAY = 0.45 * P, 2.0 * P, 2.5 * P
     sys.path.insert(0, os.path.join(cjk_dir, "..", "src"))
     from radii import radius as _r
     radius = _r
@@ -195,8 +198,9 @@ def plen(px):
     return sum(math.hypot(a[0] - b[0], a[1] - b[1]) for a, b in zip(px, px[1:]))
 
 
-def direction(px, from_start, span=P):
+def direction(px, from_start, span=None):
     """Unit (dy, dx) of the path leaving its start (from_start) or its end, over about `span` px."""
+    span = P if span is None else span
     seq = px if from_start else px[::-1]
     k, acc = 1, 0.0
     while k < len(seq) - 1 and acc < span:
@@ -299,8 +303,10 @@ def uv(p):
     return (p[1] + .5) / P, (S - (p[0] + .5)) / P
 
 
-def straight_runs(px, axis, min_len=2 * P, tol=0.42 * P):
+def straight_runs(px, axis, min_len=None, tol=None):
     """Maximal straight horizontal (axis 0: constant y) or vertical (axis 1: constant x) runs on a path."""
+    min_len = 2 * P if min_len is None else min_len
+    tol = 0.42 * P if tol is None else tol
     a = np.array([q[0] if axis == 0 else q[1] for q in px], float)   # the coordinate that stays constant
     b = np.array([q[1] if axis == 0 else q[0] for q in px], float)
     runs, i = [], 0
@@ -405,7 +411,7 @@ def fit(edges, keep):
             c = float(np.average([runs[m]["c"] for m in ms], weights=w))
             groups.append((c - .5 if axis == 0 else c, (min(runs[m]["s"] for m in ms), max(runs[m]["t"] for m in ms))))
             members.append(ms)
-        idx = allocate(groups, 1, 22, 2) if axis == 0 else allocate(groups, 1, 23, 2)
+        idx = allocate(groups, 1, N - 2, 2) if axis == 0 else allocate(groups, 1, N - 1, 2)
         for g, ms in enumerate(members):
             target = idx[g] + .5 if axis == 0 else float(idx[g])
             for m in ms:

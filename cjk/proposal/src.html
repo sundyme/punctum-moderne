@@ -206,13 +206,13 @@ input[type=checkbox] { accent-color: var(--violet); }
 <div class="wrap">
   <header class="top">
     <span class="mark">Punctum Moderne</span>
-    <span class="meta">中文扩展 · 设计方案 · 草案 0.1 · 2026.10</span>
+    <span class="meta">中文扩展 · 设计方案 · 草案 0.2 · 2026.10.31</span>
   </header>
 
   <section class="hero" aria-labelledby="t-hero">
     <figure>
       <canvas class="fig" data-fig="hero" role="img" aria-label="“点宋”二字的点阵渲染，底下是思源宋体的源字形"></canvas>
-      <figcaption>“点宋”二字，wght 560 · CNTR 100 · opsz 144。淡紫色是源字形（思源宋体），<em class="v">紫点</em>是球点与喙点。本页所有中文点阵都在浏览器里由思源宋体实时自动起稿，未经人工修整。</figcaption>
+      <figcaption>“点宋”二字，wght 560 · CNTR 100 · opsz 144。淡紫色是源字形（思源宋体），<em class="v">紫点</em>是球点与喙点。本页内嵌汉字由思源宋体自动起稿（原型 <span>cjk/proto2.py</span>），未经人工精修；部分标点为手工试排。</figcaption>
     </figure>
     <div class="hero-body">
       <div>
@@ -220,12 +220,12 @@ input[type=checkbox] { accent-color: var(--violet); }
         <p class="lede">宋体讲究横细竖粗，Didone 讲究竖向重音，两者是同一套笔画逻辑。Punctum Moderne 用点的大小表达重音，所以它可以直接长出一套点阵宋体：横画用发丝点，竖画用主笔点，点、捺脚和横末的喙用球点。</p>
       </div>
       <dl class="facts">
-        <dt>网格</dt><dd>每 em 24 点。3 个中文点距 = 2 个拉丁点距</dd>
+        <dt>网格</dt><dd>每 em 24 行 × 23 列，em 中线是一列。3 个中文点距 = 2 个拉丁点距</dd>
         <dt>UPM</dt><dd>2400。中文点距 100，拉丁点距 150</dd>
         <dt>可变轴</dt><dd><span class="mono">wght</span> 100–900 · <span class="mono">CNTR</span> 0 黑 – 100 宋 · <span class="mono">opsz</span> 12–144</dd>
         <dt>首发字集</dt><dd>通用规范汉字表一级字 3,500 字</dd>
         <dt>起稿源</dt><dd>思源宋体 SC（SIL OFL 1.1）</dd>
-        <dt>体积</dt><dd>3,500 字约 0.55 MB（WOFF2，实测外推）</dd>
+        <dt>体积</dt><dd>3,500 字 0.30 MB（WOFF2，实际构建）</dd>
       </dl>
     </div>
   </section>
@@ -244,16 +244,16 @@ input[type=checkbox] { accent-color: var(--violet); }
       </div>
       <div class="tbl">
         <table>
-          <thead><tr><th>点类</th><th>拉丁里</th><th>宋体里</th><th class="num">半径 · wght 400</th></tr></thead>
+          <thead><tr><th>点类</th><th>拉丁里</th><th>宋体里</th><th class="num">拉丁半径</th><th class="num">中文半径</th></tr></thead>
           <tbody>
-            <tr><td><svg class="sw" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><rect x=".5" y=".5" width="25" height="25"/><circle cx="13" cy="13" r="2.6"/></svg>发丝 <span class="mono">0</span></td><td>横向细线</td><td>横画</td><td class="num">11</td></tr>
-            <tr><td><svg class="sw" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><rect x=".5" y=".5" width="25" height="25"/><circle cx="13" cy="13" r="6.1"/></svg>过渡 <span class="mono">0.5</span></td><td>弧线的粗细过渡</td><td>撇尾、起笔、出钩</td><td class="num">25.5</td></tr>
-            <tr><td><svg class="sw" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><rect x=".5" y=".5" width="25" height="25"/><circle cx="13" cy="13" r="9.6"/></svg>主笔 <span class="mono">1</span></td><td>竖向主干</td><td>竖画、撇头、捺腹</td><td class="num">40</td></tr>
-            <tr><td><svg class="sw" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><rect x=".5" y=".5" width="25" height="25"/><circle class="v" cx="13" cy="13" r="11.7"/></svg>球点 <span class="mono">1.3</span></td><td>a c r 的球形收笔</td><td>点、捺脚</td><td class="num">48.7</td></tr>
-            <tr><td><svg class="sw" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><rect x=".5" y=".5" width="25" height="25"/><circle class="v" cx="13" cy="13" r="11.7"/></svg>喙点 <span class="mono">新增</span></td><td>无</td><td>横末的喙、横折的肩</td><td class="num">48.7 → 0</td></tr>
+            <tr><td><svg class="sw" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><rect x=".5" y=".5" width="25" height="25"/><circle cx="13" cy="13" r="2.6"/></svg>发丝 <span class="mono">0</span></td><td>横向细线</td><td>横画</td><td class="num">11</td><td class="num">20.8</td></tr>
+            <tr><td><svg class="sw" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><rect x=".5" y=".5" width="25" height="25"/><circle cx="13" cy="13" r="6.1"/></svg>过渡 <span class="mono">0.5</span></td><td>弧线的粗细过渡</td><td>撇尾、起笔、出钩</td><td class="num">25.5</td><td class="num">32.3</td></tr>
+            <tr><td><svg class="sw" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><rect x=".5" y=".5" width="25" height="25"/><circle cx="13" cy="13" r="9.6"/></svg>主笔 <span class="mono">1</span></td><td>竖向主干</td><td>竖画、撇头、捺腹</td><td class="num">40</td><td class="num">43.7</td></tr>
+            <tr><td><svg class="sw" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><rect x=".5" y=".5" width="25" height="25"/><circle class="v" cx="13" cy="13" r="11.7"/></svg>球点 <span class="mono">1.3</span></td><td>a c r 的球形收笔</td><td>点、捺脚</td><td class="num">48.7</td><td class="num">50.6</td></tr>
+            <tr><td><svg class="sw" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><rect x=".5" y=".5" width="25" height="25"/><circle class="v" cx="13" cy="13" r="11.7"/></svg>喙点 <span class="mono">新增</span></td><td>无</td><td>横末的喙、横折的肩</td><td class="num">无</td><td class="num">50.6 → 0</td></tr>
           </tbody>
         </table>
-        <p class="cap">半径单位为点距的 1/100，展示尺寸（opsz 144），CNTR 100。前四类与 Punctum Moderne 的 <span>radii.py</span> 完全一致。</p>
+        <p class="cap">wght 400 · opsz 144 · CNTR 100。半径单位为各自点距的 1/100。两种文字用同一个点径模型（<span>src/radii.py</span>），各有一张点径表：中文的发丝点更大，横竖对比约 2.1 : 1，参考思源宋体样本的笔画对比；拉丁沿用 Punctum Moderne 的 3.6 : 1。</p>
       </div>
       <div class="prose">
         <p>中文只需要新增一类点：<b>喙点</b>。它在 CNTR 100 时和球点一样大，CNTR 降到 0 时缩成无。于是同一套骨架在 CNTR 轴的两端，一头是宋体，一头是黑体。第 04 节可以直接拖动验证。</p>
@@ -268,17 +268,17 @@ input[type=checkbox] { accent-color: var(--violet); }
       <div class="gcmp" role="group" aria-label="16、24、32 点每 em 的对比">
         <span></span>
         <span class="h"><b>宋体原形</b>思源宋体</span>
-        <span class="h"><b>16 / em</b>平均 93 点/字</span>
-        <span class="h rec"><b>24 / em 推荐</b>平均 159 点/字</span>
-        <span class="h"><b>32 / em</b>平均 239 点/字</span>
+        <span class="h"><b>16 / em</b>较稀疏</span>
+        <span class="h rec"><b>24 / em 推荐</b>平均 92 点/字</span>
+        <span class="h"><b>32 / em</b>较细密</span>
       </div>
       <div class="reasons-wrap prose">
         <ol class="reasons">
-          <li><span><b>24 点是能保住宋体对比的最低密度。</b>16 点时“永”的撇捺挤成一团，“囊”已经认不出。32 点的发丝点太碎，整字灰度明显变浅，点数也是 24 点的 1.5 倍。</span></li>
-          <li><span><b>24 点和拉丁网格整齐咬合。</b>3 个中文点距正好等于 2 个拉丁点距，两套网格每 1/8 em 对齐一次。UPM 取 2400，中文点距是整数 100，现有点径模型可以原样复用。</span></li>
+          <li><span><b>24 点作为当前试点密度。</b>16 点时“囊”“鬱”的复杂结构明显受挤压；24 点仍需人工修整。32 点能容纳更细的结构，但同字号下点更小，需要另配点径。</span></li>
+          <li><span><b>24 点和拉丁网格整齐咬合。</b>3 个中文点距正好等于 2 个拉丁点距，两套网格的格界周期每 1/8 em 重合一次，点中心因半格偏移并不逐行对齐。UPM 取 2400，中文点距是整数 100。</span></li>
           <li><span><b>24×24 点阵宋体本来就有。</b>UCDOS 时代的 HZK24S 就是 GB 2312 的 24 点阵宋体字库，打印机用了很多年。点宋接着这条谱系，往 Didone 的方向走。</span></li>
         </ol>
-        <p class="cap" style="margin-top:14px">平均点数为常用 300 字的实测值（原型 <span>cjk/proto.py</span>）。“鬱”为 29 画的繁体字，放在这里作为压力测试。</p>
+        <p class="cap" style="margin-top:14px">24/em 平均点数为常用 300 字的实测值（原型 <span>cjk/proto2.py</span>）。“鬱”为 29 画的繁体字，放在这里作为压力测试。</p>
       </div>
       <figure class="metrics">
         <canvas class="fig" data-fig="metrics" role="img" aria-label="中文点阵与拉丁点阵在同一基线上的度量关系"></canvas>
@@ -286,11 +286,12 @@ input[type=checkbox] { accent-color: var(--violet); }
           <li><i></i><span>基线。表意字框为 −300 … 2100（−0.125 … 0.875 em），即基线下 3 行、上 21 行</span></li>
           <li><i class="d"></i><span>拉丁大写高 0.625 em = 10 个拉丁点距 = 15 个中文点距</span></li>
           <li><i class="t"></i><span>字框上下沿。字面约占 22 × 22 点，四边各留 1 点</span></li>
-          <li><i class="g"></i><span>公共网格 1/8 em：每 3 个中文点距、2 个拉丁点距对齐一次。中西间距取 1/8 em</span></li>
+          <li><i class="g"></i><span>公共周期 1/8 em：3 个中文点距 = 2 个拉丁点距，不表示点中心对齐。本页手动加入 1/8 em 中西间距；实际网页可用 CSS <span class="mono">text-autospace</span>，须验证浏览器支持</span></li>
         </ul>
       </figure>
       <div class="prose">
-        <p>点径沿用同一个模型，只是单位换成各自的点距。结果是中文主笔点约为拉丁主笔点的 2/3。中文字面密，笔画本来就该比拉丁细一些，这个比例在中西混排里通常合适。P0 阶段用混排样张校准，目标区间 0.65–0.75。</p>
+        <p><b>列放在整点距上。</b>行数是偶数没有关系，但列数是偶数时，em 中线落在两列之间。一级字里有 206 个字的竖画在中线上（十、中、木、山、王），只能偏半格。所以中文点阵的列中心放在 1 … 23 个点距上，第 12 列就是中线。行中心仍保留半格偏移；公共格界周期不变。</p>
+        <p><b>中文需要独立的点径表。</b>如果直接沿用拉丁的点径表，中文主笔点只有拉丁的 2/3，正文灰度只有思源宋体的 0.36，和拉丁混排时 48 px 以上中文明显偏轻。草案 0.2 给中文单独定了一张点径表：横竖对比取宋体的约 2.1 : 1，主笔点以测试文本中思源宋体的中西灰度比约 1.22 为目标拟合。取整后的样本比值约为 1.19–1.28，结果受字样、字号和栅格器影响，仍需 P0 样张确认。结果是中文主笔点在 wght 400 时约为拉丁的 0.73 倍。</p>
       </div>
     </div>
   </section>
@@ -305,7 +306,8 @@ input[type=checkbox] { accent-color: var(--violet); }
       <div class="strokes" id="strokes-grid"></div>
       <div>
         <h3>密度规则</h3>
-        <div class="prose"><p>无论横竖，两道平行笔画之间都至少空 1 行。竖画只隔 1 个点距会粘成一条粗带；横画只隔 1 个点距，看上去是一片网点，分不清有几道。所以 22 点高的字面里最多排下 11 道平行笔画，这是 24 点网格的硬上限。“囊”这类最密的字要压缩部件高度或简化结构，部件库按位置做变体也是为了这个。</p></div>
+        <div class="prose"><p>无论横竖，两道平行笔画之间都至少空 1 行。竖画只隔 1 个点距会粘成一条粗带；横画只隔 1 个点距，看上去是一片网点，分不清有几道。所以 22 点高的字面里最多排下 11 道平行笔画，这是当前间距规则下的局部容量。此上限只适用于同一区域内互相重叠的等距平行笔画，不是整字笔画数上限。扫描线检查会受交叉笔画影响；更常见的问题是两道笔画在源字形里本来就挨得近：303 个字（9%）有平行笔画间距不到 2 个点距。</p>
+        <p>草案 0.2 的起稿因此加了一步<b>笔画分行</b>：横画、竖画按“重叠的平行笔画之间至少空 1 行”的约束分配到行和列，不各自取最近的一行。一级字里平行笔画落在相邻行的字从 0.1 的 91% 降到 3 个。</p></div>
       </div>
       <figure class="dens">
         <canvas class="fig" data-fig="density" role="img" aria-label="竖画间距与横画间距的对比"></canvas>
@@ -336,13 +338,13 @@ input[type=checkbox] { accent-color: var(--violet); }
         <div class="stage">
           <canvas class="fig" id="pg-cv" data-fig="play" role="img" aria-label="可调的点宋文字渲染"></canvas>
           <div class="readout"><b id="pg-name">点宋 Regular</b><span id="pg-axes">wght 400 · CNTR 100 · opsz 144</span></div>
-          <p class="cap" id="pg-note">中文为思源宋体自动起稿，未经人工修整；拉丁为 Punctum Moderne 的点数据。</p>
+          <p class="cap" id="pg-note">中文为草案 0.2 起稿（一级字 3,500 字，其余字用 0.1 转换器实时起稿），未经人工修整；拉丁为 Punctum Moderne 的点数据。</p>
         </div>
       </div>
       <div class="axes3">
-        <div><h3>wght<span>字重</span></h3><p>主笔点半径从 20 长到 62（展示尺寸）。笔画位置不动，只有点变大。字重高时相邻的点会融成连续笔画。</p></div>
-        <div><h3>CNTR<span>对比</span></h3><p>100 是宋体：横细竖粗，喙点完整。0 时所有点等大，喙点消失，得到点阵黑体。一套骨架出两种字体。</p></div>
-        <div><h3>opsz<span>视觉尺寸</span></h3><p>字号越小，发丝点越大，横画在正文里才不会消失。浏览器会按 CSS 字号自动设置这根轴。</p></div>
+        <div><h3>wght<span>字重</span></h3><p>中文主笔点半径从 22.5 长到 68.3（展示尺寸）。笔画位置不动，只有点变大。字重高时相邻的点会融成连续笔画。</p></div>
+        <div><h3>CNTR<span>对比</span></h3><p>100 是宋体：横细竖粗，喙点完整。0 时所有点等大，喙点消失，得到点阵黑体。同一字重的点黑通常更黑。按样本灰度近似匹配，点黑 Regular 预设为 wght 340，Bold 为 560；不同 opsz 下不保证完全等灰。</p></div>
+        <div><h3>opsz<span>视觉尺寸</span></h3><p>字号越小，发丝点越大，横画在正文里才不会消失。本页将像素字号直接映射到 opsz 作演示。正式字体可使用 CSS font-optical-sizing: auto，须另验浏览器的光学尺寸映射。</p></div>
       </div>
     </div>
   </section>
@@ -350,7 +352,7 @@ input[type=checkbox] { accent-color: var(--violet); }
   <section class="s" id="text" aria-labelledby="t5">
     <header class="sh"><span class="no">05</span><div><p class="eyebrow">Text · 正文</p><h2 id="t5">正文与混排</h2></div></header>
     <div class="body">
-      <div class="prose"><p>同一段文字在三个字号下的样子，opsz 跟随字号。字号小到一个点不足一像素时，点会融合成连续的笔画，读感接近一款细宋体；字号大时，点的结构才显露出来。</p></div>
+      <div class="prose"><p>同一段文字在三个字号下的样子，opsz 跟随字号。字号小到一个点不足一像素时，点会融合成连续的笔画，读感接近一款细宋体；字号大时，点的结构才显露出来。中文和拉丁各用自己的点径表，混排时两者灰度接近。</p></div>
       <div class="paras" id="paras"></div>
     </div>
   </section>
@@ -359,27 +361,27 @@ input[type=checkbox] { accent-color: var(--violet); }
     <header class="sh"><span class="no">06</span><div><p class="eyebrow">Production · 生产</p><h2 id="t6">从思源宋体到点宋</h2></div></header>
     <div class="body">
       <ol class="steps">
-        <li><div><h3>起稿<span class="tag">本页已实现</span></h3><p>思源宋体 SC 光栅化，求距离场和笔画中线，按 24 点网格取样，每道笔画落成一行点。</p></div></li>
-        <li><div><h3>定调<span class="tag">本页已实现</span></h3><p>按局部笔宽分配发丝、过渡、主笔三类点。笔宽的局部峰值判为球点，挂在发丝上的峰值判为喙点。</p></div></li>
-        <li><div><h3>部件</h3><p>约 500 个部件（偏旁与常用构件）按笔画语法人工重绘，并按位置做左窄、上扁、包围等变体。</p></div></li>
-        <li><div><h3>合成</h3><p>按汉字结构描述（IDS）用部件拼字。结构相同的字直接复用同一个部件变体，保证全字库的一致性。</p></div></li>
-        <li><div><h3>精修</h3><p>高频 500 字逐字人工检查。其余字由脚本检查灰度、笔画间距和点碰撞，只看报警的字。</p></div></li>
-        <li><div><h3>构建</h3><p>每个点是对 5 个点字形的复合引用。可变数据只存在这 5 个字形里，汉字字形本身没有任何变体数据。复合字形打开 OVERLAP_COMPOUND，粗字重的融点才能正确渲染。</p></div></li>
-        <li><div><h3>发布</h3><p>桌面版为可变 TTF。网页版 WOFF2 按 unicode-range 切片，页面只下载用到的字。</p></div></li>
+        <li><div><h3>起稿<span class="tag">原型已实现</span></h3><p>思源宋体 SC 光栅化后细化成单像素骨架，拆成笔画段。横画、竖画按间距约束分配到行和列，其余部分沿笔画插值，末端退回原位。沿每段按点距放点，每道笔画落成一行点。</p></div></li>
+        <li><div><h3>定调<span class="tag">原型已实现</span></h3><p>按局部笔宽分配发丝、过渡、主笔三类点。孤立短笔画最宽处判为球点，捺脚判为球点。竖画起笔的斜角、横画的弯尖从骨架上剪掉，横末的喙和横折的肩各收成一个喙点。</p></div></li>
+        <li><div><h3>部件</h3><p>偏旁与常用构件按笔画语法人工重绘，并按位置做左窄、上扁、包围等变体。按 IDS 拆一层，一级字需要约 1,330 个部件、2,330 个“部件 × 位置”组合；最常用的 500 个组合能拼全 39% 的字，其余字的部件靠起稿稿加人工修整。</p></div></li>
+        <li><div><h3>合成</h3><p>按汉字结构描述（IDS）用部件拼字。结构相同的字直接复用同一个部件变体，保证全字库的一致性。候选 IDS 数据 cjkvi-ids 标注 GPLv2。使用前核对具体文件的许可及生成物的义务；仅在构建时使用并不能自动免除许可要求，必要时选择兼容的数据来源。</p></div></li>
+        <li><div><h3>精修</h3><p>高频 500 字逐字人工检查。其余字由脚本检查灰度、笔画间距和点碰撞，结合人工抽样；未报警不代表字形已经合格。</p></div></li>
+        <li><div><h3>构建</h3><p>每个点是对 5 个点字形的复合引用。可变数据只存在这 5 个字形里，汉字字形本身没有任何变体数据。复合字形打开 OVERLAP_COMPOUND，粗字重的融点才能正确渲染。另补 TrueType 的 <span class="mono">vhea</span>/<span class="mono">vmtx</span> 与 BASE 表（VORG 用于 CFF 轮廓，不是本方案 glyf 字体的必备表）、竖排 <span class="mono">vert</span>、标点挤压 <span class="mono">halt</span>/<span class="mono">chws</span>，并实测 CSS <span class="mono">text-spacing-trim</span> 的浏览器支持。</p></div></li>
+        <li><div><h3>发布</h3><p>桌面版为可变 TTF。网页版 WOFF2 按 unicode-range 切片，页面只下载用到的字；切片要覆盖 BMP 以外的字（通用规范汉字表有 196 个）。</p></div></li>
       </ol>
       <div class="size">
         <h3>体积实测</h3>
         <div class="bars">
           <div class="bar-g"><div class="lbl">TTF · 3,500 字</div>
-            <div class="bar"><span class="k">逐点轮廓（拉丁版现做法）</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">100 MB</span></div>
-            <div class="bar win"><span class="k">点字形复合引用</span><div class="track"><div class="fill" style="width:4.9%"></div></div><span class="val">4.9 MB</span></div>
+            <div class="bar"><span class="k">逐点轮廓（拉丁版现做法，外推）</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">100 MB</span></div>
+            <div class="bar win"><span class="k">点字形复合引用（0.2 起稿，实际构建）</span><div class="track"><div class="fill" style="width:3.6%"></div></div><span class="val">3.56 MB</span></div>
           </div>
           <div class="bar-g"><div class="lbl">WOFF2 · 3,500 字</div>
-            <div class="bar"><span class="k">逐点轮廓（拉丁版现做法）</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">6.6 MB</span></div>
-            <div class="bar win"><span class="k">点字形复合引用</span><div class="track"><div class="fill" style="width:8.3%"></div></div><span class="val">0.55 MB</span></div>
+            <div class="bar"><span class="k">逐点轮廓（拉丁版现做法，外推）</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">6.6 MB</span></div>
+            <div class="bar win"><span class="k">点字形复合引用（0.2 起稿，实际构建）</span><div class="track"><div class="fill" style="width:4.5%"></div></div><span class="val">0.30 MB</span></div>
           </div>
         </div>
-        <p>用 fontTools 实际构建两种可变字体：常用 300 字、47,683 个点、12 个母版（wght 3 × CNTR 2 × opsz 2），再线性外推到 3,500 字。复合引用让 TTF 小约 20 倍，WOFF2 小约 12 倍，并且已在 FreeType 中验证各轴可正常插值。部件层也可以做成复合字形（字 → 部件 → 点），还能再小。脚本见 <span class="mono">cjk/sizetest.py</span>。</p>
+        <p>用 fontTools 实际构建：一级字 3,500 字、0.2 起稿的 388,027 个点、12 个母版（wght 3 × CNTR 2 × opsz 2）。逐点轮廓一栏是 0.1 时用 300 字构建再外推的结果。0.2 每字平均 111 点，0.1 是 186 点，所以同样的字数体积少了约 40%。已用 FreeType 做插值试排，但不等于完整兼容性验收。这次体积测试沿用旧点径，尚未加入本页的新中文点径表。部件层也可以做成复合字形（字 → 部件 → 点），还能再小。构建方法见 <span class="mono">cjk/sizetest.py</span>；3,500 字实验脚本保存在本地 <span class="mono">cjk/out/v02-prototype/</span>，尚未整理为可复现的发布管线。</p>
       </div>
     </div>
   </section>
@@ -391,13 +393,13 @@ input[type=checkbox] { accent-color: var(--violet); }
         <table>
           <thead><tr><th>阶段</th><th class="num">字数</th><th>内容</th><th class="num">估算工期</th></tr></thead>
           <tbody>
-            <tr><td><b>P0 试点</b></td><td class="num">300</td><td>约 60 个高频部件、八种笔画点型定稿、全角标点。定下中西笔画比和喙点大小，出第一版可用于网页标题的 Beta。</td><td class="num">4–6 周</td></tr>
-            <tr><td><b>P1 一级字</b></td><td class="num">3,500</td><td>通用规范汉字表一级字，覆盖现代汉语语料约 99.5%。补全竖排标点（vert）、网页切片和中西混排的测试页。</td><td class="num">3–4 月</td></tr>
-            <tr><td><b>P2 GB 2312</b></td><td class="num">6,763</td><td>补齐 GB 2312 字集，覆盖绝大多数旧系统和输入场景。</td><td class="num">+2 月</td></tr>
-            <tr><td><b>P3 全表</b></td><td class="num">8,105</td><td>通用规范汉字表全部三级。繁体 Punctum Song TC 另立项目，复用部件库。</td><td class="num">+2–3 月</td></tr>
+            <tr><td><b>P0 试点</b></td><td class="num">300+ 样字</td><td>按部件选字：先定约 180 个“部件 × 位置”组合，再挑由它们拼成的 300 个合体字。当前选集来自一级字表，尚未按语料字频验证。另加常用独体字和全角标点、拼音字母。八种笔画点型和喙点大小在这一期定稿，出第一版可用于网页标题的 Beta。</td><td class="num">6–8 周</td></tr>
+            <tr><td><b>P1 一级字</b></td><td class="num">3,500</td><td>通用规范汉字表一级字；具体语料覆盖率另行验证。补全竖排标点（vert）、网页切片和中西混排的测试页。</td><td class="num">3–4 月</td></tr>
+            <tr><td><b>P2 GB 2312</b></td><td class="num">6,765</td><td>补齐 GB 2312 字集，覆盖绝大多数旧系统和输入场景。一级字里的啰、瞭不在 GB 2312 里，所以合计 6,765 字。</td><td class="num">+2 月</td></tr>
+            <tr><td><b>P3 全表</b></td><td class="num">8,230</td><td>通用规范汉字表全部 8,105 字，并保留 GB 2312 中不在全表的 125 字，累计 8,230 个汉字。繁体 Punctum Song TC 另立项目，复用部件库。</td><td class="num">+2–3 月</td></tr>
           </tbody>
         </table>
-        <p class="cap">工期按 1 名字体设计师配合本方案的自动化流程粗估，P0 结束后用实际速度重新校准。</p>
+        <p class="cap">工期按 1 名字体设计师配合本方案的自动化流程粗估，P0 结束后用实际速度重新校准。P0 从 4–6 周改为 6–8 周：原先的“60 个部件”低估了位置变体；约 180 个“部件 × 位置”组合是另一层级的实验估算，不能直接和底层部件数等同。各期汉字数不含标点与拉丁。</p>
       </div>
     </div>
   </section>
@@ -409,11 +411,12 @@ input[type=checkbox] { accent-color: var(--violet); }
         <table>
           <thead><tr><th>风险</th><th>表现</th><th>对策</th></tr></thead>
           <tbody>
-            <tr><td><b>复杂字</b></td><td>24 点网格最多排 11 道平行笔画，“囊”（22 画）这类字放不下全部间距</td><td>压缩部件高度，部件按位置简化；仍放不下的逐字人工重构。“鬱”这类繁体字留到 TC 阶段处理。</td></tr>
+            <tr><td><b>复杂字</b></td><td>24 点网格最多排 11 道平行笔画。矗、囊等复杂字会触发局部容量冲突；矗、囊在 0.2 起稿里各有 6–7 个点距的笔画偏离原位</td><td>压缩部件高度，部件按位置简化；仍放不下的逐字人工重构。“鬱”这类繁体字留到 TC 阶段处理。</td></tr>
             <tr><td><b>小字号</b></td><td>12–16 px 时一个点不到一像素</td><td>opsz 放大发丝点，点融合成连续笔画。另可评估 16 点阵像素伴生版：16 px 时 1 点正好 1 像素。</td></tr>
-            <tr><td><b>体积</b></td><td>逐点轮廓 3,500 字约 100 MB</td><td>复合引用实测外推约 4.9 MB（TTF）/ 0.55 MB（WOFF2），网页再按需切片。</td></tr>
-            <tr><td><b>许可</b></td><td>以思源宋体起稿，成品属于 OFL 衍生作品</td><td>点宋以 SIL OFL 1.1 发布，与 Punctum Moderne 一致；名称中不使用思源宋体的保留名 “Source”。</td></tr>
-            <tr><td><b>工作量</b></td><td>逐字精修成本高</td><td>部件优先，脚本质检；人工精力集中在高频 500 字和报警字。</td></tr>
+            <tr><td><b>体积</b></td><td>逐点轮廓 3,500 字约 100 MB</td><td>复合引用实际构建 3.56 MB（TTF）/ 0.30 MB（WOFF2），网页再按需切片。</td></tr>
+            <tr><td><b>许可</b></td><td>以思源宋体起稿，成品属于 OFL 衍生作品</td><td>点宋以 SIL OFL 1.1 发布，与 Punctum Moderne 一致；name 表和 OFL.txt 保留 Adobe 的原版权行，名称中不使用保留名 “Source”。</td></tr>
+            <tr><td><b>工作量</b></td><td>逐字精修成本高；部件组合比原估计多（一级字约 2,330 个）</td><td>部件优先，脚本质检；人工精力集中在高频 500 字和报警字。起稿可作为人工修整的参考；启发式检查中两点宽的字 0.2%，笔画偏离原位的字 1%。</td></tr>
+            <tr><td><b>混排</b></td><td>拉丁缺 ǎ ǐ ǒ ǔ ǖ ǘ ǚ ǜ ǹ ḿ，拼音标不全</td><td>P0 给 Punctum Moderne 补齐这 10 个字母，点宋合并字体随之带上。</td></tr>
           </tbody>
         </table>
       </div>
@@ -424,17 +427,40 @@ input[type=checkbox] { accent-color: var(--violet); }
     <header class="sh"><span class="no">09</span><div><p class="eyebrow">Decisions · 待定</p><h2 id="t9">待拍板的五件事</h2></div></header>
     <div class="body">
       <ul class="dec">
-        <li><span class="q">中文名</span><span class="a">建议 <b>点宋</b>。英文 Punctum Song SC，CNTR 0 的命名实例叫 Punctum Song Hei（点黑）。</span></li>
-        <li><span class="q">中西笔画比</span><span class="a">建议默认 <b>2/3</b>，由点距之比自然得出。P0 用混排样张定稿。</span></li>
-        <li><span class="q">合并字体里拉丁的大小</span><span class="a">建议保持 <b>3:2 网格</b>，大写高 0.625 em，两套网格整齐对齐。如果样张里拉丁显小，可放大到 1.125 倍（大写高约 0.70 em），代价是网格不再对齐。</span></li>
-        <li><span class="q">是否先做 P0 试点</span><span class="a">建议 <b>是</b>。300 字足够验证笔画语法、部件流程和体积，风险最低。</span></li>
+        <li><span class="q">中文名</span><span class="a">建议 <b>点宋</b>。英文 Punctum Song SC，CNTR 0 的命名实例叫 Punctum Song Hei（点黑）；点黑的命名实例按灰度映射字重，Regular 约 wght 340。</span></li>
+        <li><span class="q">中西点径</span><span class="a">建议 <b>中文单独一张点径表</b>，以思源宋体样本的中西灰度比约 1.22 为校准目标（本页已采用）。0.1 的“沿用拉丁点径、主笔比 2/3”会让中文正文偏淡。P0 用混排样张定稿。</span></li>
+        <li><span class="q">合并字体里拉丁的大小</span><span class="a">建议保持 <b>3:2 网格</b>，大写高 0.625 em，两套网格的格界周期为 1/8 em。如果样张里拉丁显小，备选是放大到 7/6 倍：拉丁点距 175（整数），大写高 0.729 em，正好等于思源宋体自带拉丁的大写高，格界周期每 7/24 em 重合一次。0.1 写的 1.125 倍会让点距变成 168.75，不再考虑。</span></li>
+        <li><span class="q">是否先做 P0 试点</span><span class="a">建议 <b>是</b>，并且<b>按部件选字</b>。按字频选的常用 300 字里有 48 个独体字，拼全它们要 159 个底层部件，需要同时照顾独体字与部件复用，适合和按部件选出的样字共同验证。</span></li>
         <li><span class="q">像素伴生版与繁体</span><span class="a">建议 <b>P2 之后再评估</b>，先把简体主线做稳。</span></li>
       </ul>
     </div>
   </section>
 
+  <section class="s" id="changes" aria-labelledby="t10">
+    <header class="sh"><span class="no">10</span><div><p class="eyebrow">Changes · 修订</p><h2 id="t10">草案 0.2 改了什么</h2></div></header>
+    <div class="body">
+      <div class="prose"><p>0.1 发布后，用思源宋体把一级字 3,500 字全部跑了一遍原型，并实际构建了 3,500 字的字体。下面是据此做的修改，起稿报警率来自同一套启发式检查脚本；点径、部件规模和排期分别来自样本实验与估算。报警率不是缺笔率，也不能代替逐字可读性验收。</p></div>
+      <div class="tbl">
+        <table>
+          <thead><tr><th>方面</th><th>草案 0.1</th><th>草案 0.2</th></tr></thead>
+          <tbody>
+            <tr><td><b>起稿</b></td><td>按格子取样笔画中线。85% 的字有笔画排成两点宽，91% 的字有平行笔画落在相邻行</td><td>骨架沿笔画放点，平行笔画按约束分行。两点宽 7 字，相邻行 3 字，笔画偏离原位 1 个点距以上的字 1%</td></tr>
+            <tr><td><b>点黑</b></td><td>只有喙点消失，衬线碎点留在 CNTR 0 里</td><td>衬线从骨架上剪掉，喙和肩各收成一个喙点，点黑只剩笔画</td></tr>
+            <tr><td><b>列</b></td><td>24 列，em 中线落在两列之间</td><td>23 列，放在整点距上，中线是一列</td></tr>
+            <tr><td><b>点径</b></td><td>沿用拉丁点径表，24 px 正文灰度约为思源宋体的 0.36（按 0.2 点数）</td><td>中文单独一张点径表，横竖对比约 2.1 : 1，以样本中西灰度比约 1.22 为目标；取整后约 1.19–1.28</td></tr>
+            <tr><td><b>部件</b></td><td>约 500 个部件</td><td>约 1,330 个部件、2,330 个“部件 × 位置”组合</td></tr>
+            <tr><td><b>P0 选字</b></td><td>高频 300 字，约 60 个部件，4–6 周</td><td>按部件选字，约 180 个组合，6–8 周</td></tr>
+            <tr><td><b>拉丁放大备选</b></td><td>1.125 倍（点距 168.75）</td><td>7/6 倍（点距 175，大写高 0.729 em）</td></tr>
+            <tr><td><b>体积</b></td><td>0.55 MB WOFF2（300 字外推）</td><td>0.30 MB WOFF2（3,500 字实际构建）</td></tr>
+            <tr><td><b>补上的遗漏</b></td><td></td><td>Adobe 版权行；拼音字母；<span class="mono">halt</span>/<span class="mono">chws</span>；竖排度量与 BASE 表；中西间距交给 CSS；IDS 数据的许可；BMP 以外的字；P2 字数 6,765</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
   <footer class="foot">
-    <span class="zh">原型与实测：cjk/proto.py（点阵转换器）· cjk/sizetest.py（体积实测）。本页的实时转换器是 proto.py 的浏览器移植版，源字形来自 Google Fonts 的 Noto Serif SC（即思源宋体）。</span>
+    <span class="zh">原型与实测：cjk/proto2.py（起稿 0.2）· cjk/proto.py（起稿 0.1）· cjk/sizetest.py（体积实测）。本页内嵌一级字 3,500 字的 0.2 点数据（cjk/proposal/data.py 生成）；其余字用 proto.py 的浏览器移植版实时起稿，源字形来自 Google Fonts 的 Noto Serif SC（即思源宋体）。</span>
     <span>Punctum Moderne · SIL Open Font License 1.1 · github.com/sundyme/punctum-moderne</span>
   </footer>
 </div>
@@ -444,10 +470,13 @@ input[type=checkbox] { accent-color: var(--violet); }
 /* ── data ─────────────────────────────────────────────── */
 const LAT = __LATIN__;               // Punctum Moderne: ch → [width in cells, [x, y, tone, …]], y up from the baseline
 const ORN = 2;                       // ornament dot (beak, shoulder): a ball at CNTR 100, nothing at CNTR 0
+const CJK = __CJK__;                 // draft 0.2 dots, built by data.py from cjk/proto2.py: { chars, dots (base64), grid }
 
-/* ── radius model: a straight port of v2/src/radii.py (units: 1/100 pitch) ── */
-const DISPLAY = [[100, 20, 7], [400, 40, 11], [900, 62, 16]];
-const TEXTM = [[100, 30, 16], [400, 50, 30], [900, 66, 40]];
+/* ── radius model: a straight port of src/radii.py (units: 1/100 pitch), one table per script ──
+   The Latin table is Punctum Moderne's. The CJK table keeps the same model and is calibrated in draft 0.2:
+   display contrast = Song's (thick : hairline diameter ≈ 2.1), with a sample Chinese/Latin grey target near 1.22 (rounded tables: about 1.19–1.28). */
+const LATIN_R = { d: [[100, 20, 7], [400, 40, 11], [900, 62, 16]], t: [[100, 30, 16], [400, 50, 30], [900, 66, 40]] };
+const CJK_R = { d: [[100, 22.5, 10.7], [400, 43.7, 20.8], [900, 68.3, 32.5]], t: [[100, 35, 18.7], [400, 58.3, 35], [900, 77.5, 47]] };
 const OPSZ = [[12, 1], [16, .98], [24, .85], [48, .55], [96, .2], [144, 0]];
 function lt(tab, w, k) {
   if (w <= tab[0][0]) return tab[0][k];
@@ -457,13 +486,13 @@ function lt(tab, w, k) {
   }
   return tab[tab.length - 1][k];
 }
-function radius(t, w, c, f) {
-  const rT = lt(DISPLAY, w, 1) + (lt(TEXTM, w, 1) - lt(DISPLAY, w, 1)) * f;
-  const rH = lt(DISPLAY, w, 2) + (lt(TEXTM, w, 2) - lt(DISPLAY, w, 2)) * f;
+function radius(t, w, c, f, R = LATIN_R) {
+  const rT = lt(R.d, w, 1) + (lt(R.t, w, 1) - lt(R.d, w, 1)) * f;
+  const rH = lt(R.d, w, 2) + (lt(R.t, w, 2) - lt(R.d, w, 2)) * f;
   const st = rH + (rT - rH) * t, mono = rT * .86;
   return mono + (st - mono) * c / 100;
 }
-const rad = (t, w, c, f) => t === ORN ? radius(1.3, w, c, f) * Math.pow(c / 100, 1.5) : radius(t, w, c, f);
+const rad = (t, w, c, f, R = CJK_R) => t === ORN ? radius(1.3, w, c, f, R) * Math.pow(c / 100, 1.5) : radius(t, w, c, f, R);
 function textFraction(op) {
   if (op <= OPSZ[0][0]) return OPSZ[0][1];
   for (let n = 0; n < OPSZ.length - 1; n++) {
@@ -473,14 +502,41 @@ function textFraction(op) {
   return 0;
 }
 
-/* ── converter: Song glyph → one line of dots per stroke (port of cjk/proto.py) ── */
+/* ── draft 0.2 dots: unpacked once from CJK.dots (23 columns × 24 rows per character, a byte per cell) ── */
 const S = 576, ASC = .875, W2 = S + 2;
 const SRC = '"Noto Serif SC", "Songti SC", "STSong", serif';
 const TH = { hair: .038, thick: .058 };               // full stroke width in em, calibrated on Noto Serif SC Regular
+const isCJK = (ch) => { const c = ch.codePointAt(0); return (c >= 0x2E80 && c <= 0x9FFF) || (c >= 0xF900 && c <= 0xFAFF) || (c >= 0xFE30 && c <= 0xFE4F) || (c >= 0xFF00 && c <= 0xFFEF) || c >= 0x20000; };
+const TONES = [null, 0, .5, 1, 1.3, ORN];
+const D02 = new Map();                                 // ch → [[col 1…23, row 0…23, tone], …]
+let D02ready = null;
+function loadDots() {
+  if (D02ready) return D02ready;
+  const bin = Uint8Array.from(atob(CJK.dots), c => c.charCodeAt(0));
+  const unpack = (buf) => {
+    const chars = [...CJK.chars];
+    chars.forEach((ch, n) => {
+      const out = [], o = n * 552;
+      for (let k = 0; k < 552; k++) { const t = buf[o + k]; if (t) out.push([k % 23 + 1, Math.floor(k / 23), TONES[t]]); }
+      D02.set(ch, out);
+    });
+  };
+  D02ready = ("DecompressionStream" in window
+    ? new Response(new Blob([bin]).stream().pipeThrough(new DecompressionStream("deflate-raw"))).arrayBuffer().then(b => unpack(new Uint8Array(b)))
+    : Promise.reject(new Error("no DecompressionStream")))
+    .catch(() => { document.documentElement.dataset.nodots = "1"; });
+  return D02ready;
+}
+const GRID = new Map();                                // "ch|N" → dots for the 16 and 32/em comparison
+// proto2.py writes the ornament class as tone 1.31; the page's ornament code is ORN
+for (const n in CJK.grid) for (const ch in CJK.grid[n]) GRID.set(ch + "|" + n, CJK.grid[n][ch].map(([i, j, t]) => [i, j, t === 1.31 ? ORN : t]));
+// columns: draft 0.2 puts column centres on whole pitches (1 … N−1), so the em's centre line is a column
+const colX = (i, P) => i * P;
+
+/* ── live converter (draft 0.1, cjk/proto.py): only for characters outside the 0.2 data ── */
 const rc = document.createElement("canvas"); rc.width = rc.height = S;
 const rx = rc.getContext("2d", { willReadFrequently: true });
 const cache = new Map();
-const isCJK = (ch) => { const c = ch.codePointAt(0); return (c >= 0x2E80 && c <= 0x9FFF) || (c >= 0xF900 && c <= 0xFAFF) || (c >= 0xFE30 && c <= 0xFE4F) || (c >= 0xFF00 && c <= 0xFFEF) || c >= 0x20000; };
 
 function distanceField(ch) {
   rx.clearRect(0, 0, S, S);
@@ -513,7 +569,8 @@ const pk = (v, a, b) => v >= a && v >= b && (v > a || v > b);
 // a centre-line pixel peaks across the stroke in one of four directions; the flat run along a stroke does not count
 const isRidge = (D, k) => { const v = D[k]; return v >= 6 && (pk(v, D[k - 1], D[k + 1]) || pk(v, D[k - W2], D[k + W2]) || pk(v, D[k - W2 - 1], D[k + W2 + 1]) || pk(v, D[k - W2 + 1], D[k + W2 - 1])); };
 
-function dotsFor(ch, N) {
+// 0.1 output uses cell-centred columns (i + ½); it is shifted onto the 0.2 column positions on return
+function liveDots(ch, N) {
   const key = ch + "|" + N;
   if (cache.has(key)) return cache.get(key);
   const D = distanceField(ch), c = S / N, on = new Map();
@@ -547,19 +604,17 @@ function dotsFor(ch, N) {
     tone.set(best, beak ? ORN : 1.3);
   }
   const out = [];
-  for (const [k, t] of tone) out.push([k >> 8, k & 255, t]);
+  for (const [k, t] of tone) out.push([(k >> 8) + .5, k & 255, t]);
   cache.set(key, out);
   return out;
 }
-// calibration hook: ridge-width percentiles (em) over a sample, to set TH for the source face
-window.__calib = (chars) => {
-  const ws = [];
-  for (const ch of chars) { const D = distanceField(ch); for (let y = 1; y <= S; y++) for (let x = 1; x <= S; x++) { const k = y * W2 + x; if (isRidge(D, k)) ws.push(2 * D[k] / 3 / S); } }
-  ws.sort((a, b) => a - b);
-  const q = p => +ws[Math.floor(p / 100 * (ws.length - 1))].toFixed(4);
-  return { n: ws.length, p10: q(10), p25: q(25), p50: q(50), p60: q(59.9), p75: q(75), p80: q(80.4), p90: q(90), p96: q(96.2), p98: q(98) };
-};
-
+function dotsFor(ch, N) {
+  if (N === 24 && D02.has(ch)) return D02.get(ch);
+  const g = GRID.get(ch + "|" + N);
+  if (g) return g;
+  return liveDots(ch, N);
+}
+const fromData = (ch) => D02.has(ch);
 /* ── drawing ─────────────────────────────────────────── */
 let T = {};
 function tokens() {
@@ -582,15 +637,22 @@ function lattice(ctx, x, y, P, cols, rows) {
   const r = Math.max(.7, P * .07);
   for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) disc(ctx, x + (i + .5) * P, y + (j + .5) * P, r);
 }
+// the CJK lattice: N − 1 columns on whole pitches (the em's centre line is the middle column), N rows
+function cjkLattice(ctx, x, y, P, N) {
+  if (P < 3.2) return;
+  ctx.fillStyle = T.grid;
+  const r = Math.max(.7, P * .07);
+  for (let j = 0; j < N; j++) for (let i = 1; i < N; i++) disc(ctx, x + i * P, y + (j + .5) * P, r);
+}
 const hlOn = (t, ax, hl) => hl && t >= 1.3 && ax.c >= 50;
 // one CJK character; (x, y) = top-left of its em box
 function drawCJK(ctx, ch, x, y, em, N, ax, o = {}) {
   const P = em / N;
-  if (o.lattice) lattice(ctx, x, y, P, N, N);
+  if (o.lattice) cjkLattice(ctx, x, y, P, N);
   if (o.ghost) { ctx.fillStyle = T.wash; ctx.font = `400 ${em}px ${SRC}`; ctx.textBaseline = "alphabetic"; ctx.textAlign = "left"; ctx.fillText(ch, x, y + ASC * em); }
   for (const [i, j, t] of dotsFor(ch, N)) {
     ctx.fillStyle = hlOn(t, ax, o.hl !== false) ? T.violet : T.ink;
-    disc(ctx, x + (i + .5) * P, y + (N - j - .5) * P, rad(t, ax.w, ax.c, ax.f) / 100 * P);
+    disc(ctx, x + colX(i, P), y + (N - j - .5) * P, rad(t, ax.w, ax.c, ax.f, o.latinRadii ? LATIN_R : CJK_R) / 100 * P);
   }
 }
 // one Latin glyph on its own 16/em lattice; returns the advance
@@ -613,7 +675,7 @@ function toks(text) {
   const flush = () => { if (buf) { out.push({ s: buf, k: "l" }); buf = ""; } };
   for (const ch of text) {
     if (ch === " ") { flush(); out.push({ s: ch, k: " " }); }
-    else if (isCJK(ch) || !LAT[ch]) { flush(); out.push({ s: ch, k: "c" }); }
+    else if (D02.has(ch) || isCJK(ch) || !LAT[ch]) { flush(); out.push({ s: ch, k: "c" }); }
     else buf += ch;
   }
   flush();
@@ -622,8 +684,10 @@ function toks(text) {
 function layout(text, em, maxW) {
   const PL = em / 16, lines = [[]];
   let x = 0, prev = null;
-  for (const t of toks(text)) {
-    const w = t.k === "c" ? em : t.k === " " ? (LAT[" "][0] + 1) * PL : [...t.s].reduce((s, ch) => s + (LAT[ch][0] + 1) * PL, 0);
+  const width = t => t.k === "c" ? em : t.k === " " ? (LAT[" "][0] + 1) * PL : [...t.s].reduce((s, ch) => s + (LAT[ch][0] + 1) * PL, 0);
+  const runs = toks(text).flatMap(t => t.k === "l" && width(t) > maxW ? [...t.s].map(ch => ({ s: ch, k: "l" })) : [t]);
+  for (const t of runs) {
+    const w = width(t);
     let gap = prev && prev.k !== " " && t.k !== " " && (prev.k === "c") !== (t.k === "c") && !PUNCT.includes(prev.s) && !PUNCT.includes(t.s) ? em / 8 : 0;
     if (x > 0 && x + gap + w > maxW && !(t.k === "c" && CLOSE.includes(t.s))) {
       if (t.k === " ") continue;
@@ -640,7 +704,7 @@ function drawText(ctx, text, x0, y0, em, maxW, ax, o = {}) {
   lines.forEach((ln, n) => {
     const top = y0 + n * lh + (lh - em) / 2, base = top + ASC * em;
     if (o.lattice) for (const t of ln) {                       // each script on its own lattice
-      if (t.k === "c") lattice(ctx, x0 + t.x, top, em / 24, 24, 24);
+      if (t.k === "c") cjkLattice(ctx, x0 + t.x, top, em / 24, 24);
       else if (t.k === "l") { let x = x0 + t.x; for (const ch of t.s) { const c = LAT[ch][0] + 1; lattice(ctx, x, base - 12 * PL, PL, c, 16); x += c * PL; } }
     }
     for (const t of ln) {
@@ -708,7 +772,7 @@ const R = {
     const x0 = 12, top = em * .16, base = top + ASC * em, P = em / 24, PL = em / 16;
     const ax = { w: 400, c: 100, f: 0 };
     // lattices: CJK under 国, Latin under Hg
-    lattice(ctx, x0, top, P, 24, 24);
+    cjkLattice(ctx, x0, top, P, 24);
     const lx = x0 + em + em / 8;
     ctx.fillStyle = T.grid;
     for (let r = -4; r < 12; r++) for (let c = 0; c < latW; c++) disc(ctx, lx + (c + .5) * PL, base - (r + .5) * PL, Math.max(.8, PL * .07));
@@ -756,7 +820,7 @@ const R = {
     const ox = (w - cols * P) / 2, oy = P * .75;
     const ax = { w: 400, c: 100, f: 1 };
     lattice(ctx, ox, oy, P, cols, 8);
-    const put = (i, j, t) => { ctx.fillStyle = T.ink; disc(ctx, ox + (i + .5) * P, oy + (7 - j + .5) * P, radius(t, ax.w, ax.c, ax.f) / 100 * P); };
+    const put = (i, j, t) => { ctx.fillStyle = T.ink; disc(ctx, ox + (i + .5) * P, oy + (7 - j + .5) * P, radius(t, ax.w, ax.c, ax.f, CJK_R) / 100 * P); };
     for (let j = 0; j < 8; j++) { put(1, j, 1); put(2, j, 1); }                       // verticals 1 apart: a band
     for (let j = 0; j < 8; j++) { put(6, j, 1); put(8, j, 1); put(10, j, 1); }         // verticals 2 apart
     for (let j = 1; j < 7; j++) for (let i = 14; i < 20; i++) put(i, j, i === 14 ? .5 : 0);            // hairlines 1 apart: a screen
@@ -812,18 +876,18 @@ const gc = document.querySelector(".gcmp");
     gc.appendChild(cv);
   }
 });
-const PARA = "点阵宋体的每一笔都是一行点。横画用发丝点，竖画用主笔点，点和捺脚用球点。字号变小时，opsz 会放大发丝点，横画在正文里就不会消失。Punctum Moderne 与点宋共用一套点径模型，中西文的灰度因此一致。";
+const PARA = "点阵宋体的每一笔都是一行点。横画用发丝点，竖画用主笔点，点和捺脚用球点。字号变小时，opsz 会放大发丝点，横画在正文里就不会消失。点宋和 Punctum Moderne 用同一个点径模型，各有一张点径表，按思源宋体的中西灰度比校准。";
 const paras = document.getElementById("paras");
 [44, 24, 16].forEach(size => {
   const f = document.createElement("figure");
-  const hair = radius(0, 400, 100, textFraction(size)).toFixed(1);
-  f.innerHTML = `<canvas class="fig" data-fig="para" data-size="${size}" role="img" aria-label="${size} 像素的点宋正文"></canvas><figcaption>${size} px · opsz ${size} · 发丝点半径 ${hair}（展示尺寸为 11）</figcaption>`;
+  const hair = radius(0, 400, 100, textFraction(size), CJK_R).toFixed(1);
+  f.innerHTML = `<canvas class="fig" data-fig="para" data-size="${size}" role="img" aria-label="${size} 像素的点宋正文"></canvas><figcaption>${size} px · opsz ${size} · 中文发丝点半径 ${hair}（展示尺寸为 20.8）</figcaption>`;
   paras.appendChild(f);
 });
 
 /* ── playground state ─────────────────────────────────── */
 const NAMES = { 100: "Thin", 200: "ExtraLight", 300: "Light", 400: "Regular", 500: "Medium", 600: "SemiBold", 700: "Bold", 800: "ExtraBold", 900: "Black" };
-const PRESETS = [["宋 Light", 300, 100], ["宋 Regular", 400, 100], ["宋 Bold", 700, 100], ["黑 Regular", 400, 0], ["黑 Bold", 700, 0]];
+const PRESETS = [["宋 Light", 300, 100], ["宋 Regular", 400, 100], ["宋 Bold", 700, 100], ["黑 Regular", 340, 0], ["黑 Bold", 560, 0]];
 const state = { text: "", w: 400, c: 100, o: 144, size: 64, auto: true, ghost: false, grid: true, hl: true };
 const $ = id => document.getElementById(id);
 const pr = $("presets");
@@ -832,6 +896,13 @@ PRESETS.forEach(([label, w, c]) => {
   b.addEventListener("click", () => { $("ax-w").value = w; $("ax-c").value = c; readUI(); });
   pr.appendChild(b);
 });
+function updateNote() {
+  const fallback = [...new Set([...state.text].filter(ch => ch !== " " && !LAT[ch] && !D02.has(ch)))];
+  const sourceReady = document.fonts?.check('400 64px "Noto Serif SC"', fallback.join("") || "永");
+  $("pg-note").textContent = (D02.size ? "内嵌汉字使用 0.2 自动起稿，部分标点手工试排。" : "内嵌数据未能解压，当前使用 0.1 实时起稿。")
+    + (fallback.length ? ` 实时起稿：${fallback.slice(0, 12).join(" ")}${fallback.length > 12 ? "…" : ""}（0.1，${sourceReady ? "Noto Serif SC" : "系统回退字体"}；不保证源字体含有这些字）。` : "")
+    + " 均未逐字精修；拉丁使用 Punctum Moderne 点数据。";
+}
 function readUI() {
   state.text = $("pg-text").value;
   state.w = +$("ax-w").value; state.c = +$("ax-c").value; state.size = +$("ax-s").value;
@@ -840,11 +911,11 @@ function readUI() {
   state.o = +$("ax-o").value;
   $("ax-o").disabled = state.auto;
   $("o-w").textContent = state.w; $("o-c").textContent = state.c; $("o-o").textContent = state.o; $("o-s").textContent = state.size;
-  const named = state.w % 100 === 0 && (state.c === 0 || state.c === 100);
-  $("pg-name").textContent = named ? `${state.c ? "点宋" : "点黑"} ${NAMES[state.w]}` : "介于命名样式之间";
+  const preset = PRESETS.find(([, w, c]) => w === state.w && c === state.c);
+  $("pg-name").textContent = preset ? "点" + preset[0] : state.c === 100 && NAMES[state.w] ? `点宋 ${NAMES[state.w]}` : "自定义字重与对比";
   $("pg-axes").textContent = `wght ${state.w} · CNTR ${state.c} · opsz ${state.o}`;
   pr.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.w === state.w && +b.dataset.c === state.c)));
-  ensure(state.text).then(() => R.play($("pg-cv")));
+  loadDots().then(() => ensure(state.text)).then(() => { updateNote(); R.play($("pg-cv")); });
 }
 ["ax-w", "ax-c", "ax-o", "ax-s"].forEach(id => $(id).addEventListener("input", readUI));
 ["ck-auto", "ck-ghost", "ck-grid", "ck-hl"].forEach(id => $(id).addEventListener("change", readUI));
@@ -869,13 +940,16 @@ function ensure(text) {
     .catch(() => {})
     .then(() => {
       need.forEach(ch => { loaded.add(ch); cache.forEach((_, k) => { if (k.startsWith(ch + "|")) cache.delete(k); }); });
-      if (!document.fonts.check(`400 64px "Noto Serif SC"`, s)) $("pg-note").textContent = "源字形 Noto Serif SC 未能加载，暂用系统宋体起稿；拉丁为 Punctum Moderne 的点数据。";
+      updateNote();
     });
 }
 const ALL = "点宋王永国囊鬱" + PARA + $("pg-text").value;
 tokens();
 readUI();
-ensure(ALL).then(drawAll);
+loadDots().then(() => {
+  updateNote();
+  return ensure(ALL);
+}).then(drawAll);
 
 let lastW = 0, rz = 0;
 window.addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => { if (document.body.clientWidth !== lastW) { lastW = document.body.clientWidth; drawAll(); } }, 120); });

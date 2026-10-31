@@ -30,7 +30,7 @@
 
 快照：`docs/snapshots/2026-10-31-点宋起稿0.2对比.png`
 
-对应提交：见本条提交
+对应提交：`ebb88f7`
 
 ## 2026-10-31 · 2.500：补全 Latin-1 与 Latin Extended-A
 
